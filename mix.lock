@@ -1,0 +1,7 @@
+[ "exactor": {:git, "git://github.com/sasa1977/exactor.git", "f7f6bae7fead5e0e5525581d44311f803169fa4e", []},
+  "exprintf": {:git, "git://github.com/parroty/exprintf.git", "586c8e07c65805cf8e53d5855bbb7fd1472b777a", []},
+  "exvcr": {:git, "git://github.com/parroty/exvcr.git", "7d070c6525b60580aa34729b626ee3cf81d27838", []},
+  "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "65aa6ae7c1543a0c4e83032c04626af7be7a7f3e", []},
+  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [tag: "v1.4.3"]},
+  "meck": {:git, "git://github.com/eproxus/meck.git", "7e4bcc4e178d84eedd253e137315014e6971f8ef", []},
+  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []} ]

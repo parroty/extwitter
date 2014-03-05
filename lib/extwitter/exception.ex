@@ -1,0 +1,1 @@
+defexception ExTwitter.Error, [:message]

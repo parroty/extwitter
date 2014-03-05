@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/search/tweets.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": false
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        400,
+        "Bad Request"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Wed, 05 Mar 2014 14:40:48 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "64",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Wed, 05 Mar 2014 14:40:48 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Fri, 04-Mar-2016 14:40:48 UTC",
+        "status": "400 Bad Request",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "179",
+        "x-rate-limit-reset": "1394031348",
+        "x-transaction": "9e9580c7f0f026b2",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "{\"errors\":[{\"code\":44,\"message\":\"count parameter is invalid.\"}]}"
+    }
+  }
+]
