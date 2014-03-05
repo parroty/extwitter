@@ -1,10 +1,8 @@
-# ExTwitter
-
 # ExTwitter [![Build Status](https://secure.travis-ci.org/parroty/extwitter.png?branch=master "Build Status")](http://travis-ci.org/parroty/extwitter)
 
 Twitter client library for elixir. It uses <a href="https://github.com/tim/erlang-oauth/" target="_blank">erlang-oauth</a> to call Twitter's REST API.
 
-It only supports very limited set of functions. Refer to `lib/extwitter.ex` for available functions.
+It only supports very limited set of functions yet. Refer to `lib/extwitter.ex` for available functions.
 
 ### Usage
 1. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
