@@ -2,12 +2,12 @@
 
 # ExTwitter [![Build Status](https://secure.travis-ci.org/parroty/extwitter.png?branch=master "Build Status")](http://travis-ci.org/parroty/extwitter)
 
-Twitter client library for Elixir. It uses <a href="https://github.com/tim/erlang-oauth/" target="_blank">erlang-oauth</a> to call Twitter's REST API.
+Twitter client library for elixir. It uses <a href="https://github.com/tim/erlang-oauth/" target="_blank">erlang-oauth</a> to call Twitter's REST API.
 
 It only supports very limited set of functions. Refer to `lib/extwitter.ex` for available functions.
 
 ### Usage
-1. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to <a href="https://dev.twitter.com/docs" target="_blank">https://dev.twitter.com/docs</a> for the detail.
+1. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
 
 2. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`)
 
@@ -22,7 +22,10 @@ iex(1)> ExTwitter.configure(
 ...(1)>   access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
 ...(1)> )
 
-iex(2)> ExTwitter.search("elixir-lang", [count: 5]) |> Enum.map(fn(tweet) -> tweet.text end) |> Enum.join("\n-----\n") |> IO.puts
+iex(2)> ExTwitter.search("elixir-lang", [count: 5]) |>
+...(2)>   Enum.map(fn(tweet) -> tweet.text end) |>
+...(2)>   Enum.join("\n-----\n") |>
+...(2)>   IO.puts
 @feyeleanor have you tried this yet? http://t.co/ehYtIcPzlX
 -----
 @mwotton You mean this? http://t.co/BaeMcVRRMb That had sailed below my radar thus far.

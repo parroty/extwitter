@@ -22,7 +22,6 @@ defmodule ExTwitter.Mixfile do
   defp deps do
     [ {:oauth, github: "tim/erlang-oauth"},
       {:jsex, github: "talentdeficit/jsex"},
-      #{:exvcr, github: "parroty/exvcr"} ]
-      {:exvcr, path: "../exvcr"} ]
+      {:exvcr, github: "parroty/exvcr"} ]
   end
 end
