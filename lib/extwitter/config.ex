@@ -5,6 +5,10 @@ defmodule ExTwitter.Config do
 
   @setting_key :extwitter_oauth
 
+  def start do
+    ExTwitter.Store.set(@setting_key, default_value)
+  end
+
   @doc """
   Set OAuth configuration values.
   """
@@ -23,8 +27,7 @@ defmodule ExTwitter.Config do
   Get OAuth configuration values in tuple format.
   """
   def get_tuples do
-    value = get || default_value
-    value |> Enum.map(fn({k, v}) -> {k, String.to_char_list!(v)} end)
+    get |> Enum.map(fn({k, v}) -> {k, String.to_char_list!(v)} end)
   end
 
   defp default_value do

@@ -17,6 +17,7 @@ defmodule ExTwitter do
   defdelegate configure(oauth),            to: ExTwitter.Config, as: :set
 
   def start(_type, _args) do
-   ExTwitter.Supervisor.start_link
+    ExTwitter.Config.start
+    ExTwitter.Supervisor.start_link
   end
 end

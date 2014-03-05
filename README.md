@@ -6,12 +6,13 @@ It only supports very limited set of functions yet. Refer to `lib/extwitter.ex` 
 
 ### Usage
 1. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
-
-2. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`)
+2. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`).
 
 ### Sample
+Sample execution on iex.
 
 ```Elixir
+$ iex -S mix
 Interactive Elixir - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> ExTwitter.configure(
 ...(1)>   consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
