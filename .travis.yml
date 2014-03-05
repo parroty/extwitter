@@ -1,0 +1,8 @@
+language: erlang
+otp_release:
+  - R16B
+before_install:
+  - mkdir -p vendor/elixir
+  - wget -q https://github.com/elixir-lang/elixir/releases/download/v0.12.4/Precompiled.zip && unzip -qq Precompiled.zip -d vendor/elixir
+  - export PATH="$PATH:$PWD/vendor/elixir/bin"
+script: "MIX_ENV=test mix do deps.get, test"
