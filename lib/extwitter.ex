@@ -5,16 +5,44 @@ defmodule ExTwitter do
 
   use Application.Behaviour
 
-  defdelegate user_timeline,               to: ExTwitter.API.Timelines
-  defdelegate user_timeline(options),      to: ExTwitter.API.Timelines
-  defdelegate search(query, options),      to: ExTwitter.API.Search
-  defdelegate search(query),               to: ExTwitter.API.Search
-  defdelegate update(status),              to: ExTwitter.API.Tweets
-  defdelegate update(status, options),     to: ExTwitter.API.Tweets
+  @doc """
+  GET statuses/user_timeline
+  https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
+  """
+  defdelegate user_timeline,          to: ExTwitter.API.Timelines
+  defdelegate user_timeline(options), to: ExTwitter.API.Timelines
+
+  @doc """
+  GET search/tweets
+  https://dev.twitter.com/docs/api/1.1/get/search/tweets
+  """
+  defdelegate search(query),          to: ExTwitter.API.Search
+  defdelegate search(query, options), to: ExTwitter.API.Search
+
+  @doc """
+  POST statuses/update
+  https://dev.twitter.com/docs/api/1.1/post/statuses/update
+  """
+  defdelegate update(status),          to: ExTwitter.API.Tweets
+  defdelegate update(status, options), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/destroy/:id
+  https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
+  """
   defdelegate destroy_status(id),          to: ExTwitter.API.Tweets
   defdelegate destroy_status(id, options), to: ExTwitter.API.Tweets
 
-  defdelegate configure(oauth),            to: ExTwitter.Config, as: :set
+  @doc """
+  GET lists/statuses
+  https://dev.twitter.com/docs/api/1.1/get/lists/statuses
+  """
+  defdelegate list_timeline(options),              to: ExTwitter.API.Lists
+  defdelegate list_timeline(list, owner),          to: ExTwitter.API.Lists
+  defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
+
+
+  defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 
   def start(_type, _args) do
     ExTwitter.Config.start

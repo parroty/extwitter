@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/lists/statuses.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": false
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 09 Mar 2014 12:48:51 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "2139",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 09 Mar 2014 12:48:51 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 08-Mar-2016 12:48:51 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "154",
+        "x-rate-limit-reset": "1394369521",
+        "x-transaction": "647d037386faa38b",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "[{\"created_at\":\"Sat Mar 08 22:57:14 +0000 2014\",\"id\":442433890431401985,\"id_str\":\"442433890431401985\",\"text\":\"From all of us in @WomEng and at @Twitter, we hope you are having a great International Women's Day!\",\"source\":\"web\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":437698597,\"id_str\":\"437698597\",\"name\":\"Twitter WomEng\",\"screen_name\":\"womeng\",\"location\":\"San Francisco, CA\",\"description\":\"Twitter's Women in Engineering Group\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":16189,\"friends_count\":125,\"listed_count\":135,\"created_at\":\"Thu Dec 15 18:42:44 +0000 2011\",\"favourites_count\":46,\"utc_offset\":-36000,\"time_zone\":\"Hawaii\",\"geo_enabled\":true,\"verified\":true,\"statuses_count\":305,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"C0DEED\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/2346587762\\/6bzyl5e7v13fijy4cs7y_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/2346587762\\/6bzyl5e7v13fijy4cs7y_normal.png\",\"profile_link_color\":\"0084B4\",\"profile_sidebar_border_color\":\"C0DEED\",\"profile_sidebar_fill_color\":\"DDEEF6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":true,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":9,\"favorite_count\":13,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[{\"screen_name\":\"womeng\",\"name\":\"Twitter WomEng\",\"id\":437698597,\"id_str\":\"437698597\",\"indices\":[18,25]},{\"screen_name\":\"twitter\",\"name\":\"Twitter\",\"id\":783214,\"id_str\":\"783214\",\"indices\":[33,41]}]},\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"}]"
+    }
+  }
+]
