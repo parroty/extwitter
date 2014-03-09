@@ -41,7 +41,7 @@ Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level. M
 
 ```Elixir
 $ ./run_iex.sh
-Erlang R16B03 (erts-5.10.4) [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+Erlang R16B03 (erts-5.10.4) [source] [64-bit] [smp:4:4] [async-threads:10]...
 Interactive Elixir (0.12.4) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> (ExTwitter.search("josevalim") |> List.first).text
 ...
