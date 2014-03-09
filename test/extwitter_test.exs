@@ -16,10 +16,17 @@ defmodule ExTwitterTest do
     :ok
   end
 
-  test "gets user timeline" do
+  test "gets authenticated user timeline" do
     use_cassette "user_timeline", custom: true do
       timeline = ExTwitter.user_timeline(count: 1)
       assert Enum.count(timeline) == 1
+    end
+  end
+
+  test "gets specified user timeline" do
+    use_cassette "user_timeline_elixirlang", custom: true do
+      timeline = ExTwitter.user_timeline(screen_name: "elixirlang", count: 1)
+      assert List.first(timeline).user.screen_name == "elixirlang"
     end
   end
 

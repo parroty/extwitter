@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/statuses/user_timeline.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": false
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 09 Mar 2014 10:27:40 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "2369",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 09 Mar 2014 10:27:40 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 08-Mar-2016 10:27:40 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "172",
+        "x-rate-limit-reset": "1394361522",
+        "x-transaction": "df7981a50c343cd3",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "[{\"created_at\":\"Thu Mar 06 00:53:43 +0000 2014\",\"id\":441376042716893185,\"id_str\":\"441376042716893185\",\"text\":\"@mgamini not only in iex, they *are* different things in elixir! at least it puts an end to the single vs double quote debate :)\",\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\/download\\/iphone\\\" rel=\\\"nofollow\\\"\\u003eTwitter for iPhone\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":441287583155228672,\"in_reply_to_status_id_str\":\"441287583155228672\",\"in_reply_to_user_id\":24324139,\"in_reply_to_user_id_str\":\"24324139\",\"in_reply_to_screen_name\":\"mgamini\",\"user\":{\"id\":507309896,\"id_str\":\"507309896\",\"name\":\"Elixir Lang\",\"screen_name\":\"elixirlang\",\"location\":\"\",\"description\":\"The Elixir programming language that runs on the Erlang VM\",\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"expanded_url\":\"http:\\/\\/elixir-lang.org\",\"display_url\":\"elixir-lang.org\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":2347,\"friends_count\":4,\"listed_count\":66,\"created_at\":\"Tue Feb 28 12:31:32 +0000 2012\",\"favourites_count\":29,\"utc_offset\":3600,\"time_zone\":\"Amsterdam\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":350,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_link_color\":\"009999\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"EFEFEF\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[{\"screen_name\":\"mgamini\",\"name\":\"M. Garrett Amini\",\"id\":24324139,\"id_str\":\"24324139\",\"indices\":[0,8]}]},\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"}]"
+    }
+  }
+]
