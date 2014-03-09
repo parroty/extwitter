@@ -2,6 +2,7 @@
   "exprintf": {:git, "git://github.com/parroty/exprintf.git", "586c8e07c65805cf8e53d5855bbb7fd1472b777a", []},
   "exvcr": {:git, "git://github.com/parroty/exvcr.git", "0e45b621b93749a2f31fa6ff87a51d5e79b428f7", []},
   "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "65aa6ae7c1543a0c4e83032c04626af7be7a7f3e", []},
+  "json": {:git, "git://github.com/cblage/elixir-json.git", "725ea02b992aba35c18d0e9c7c3da54689670baf", []},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [tag: "v1.4.3"]},
   "meck": {:git, "git://github.com/eproxus/meck.git", "7e4bcc4e178d84eedd253e137315014e6971f8ef", []},
   "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []} ]

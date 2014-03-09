@@ -19,22 +19,16 @@ defmodule ExTwitter.API.Base do
 
   defp parse_result(result) do
     {:ok, {_response, _header, body}} = result
-    to_string(body) |> JSEX.decode! |> verify_response
+    to_string(body) |> ExTwitter.JSON.decode
   end
-
-  @doc """
-  Verify the API request response, and raises error if response includes error response.
-  """
-  def verify_response([{"errors", details}]), do: raise(ExTwitter.Error, message: inspect details)
-  def verify_response(tuples), do: tuples
 
   @doc """
   Parse tweet record from the API response json.
   """
   def parse_tweet(tuples) do
-    tweet    = ExTwitter.Model.Tweet.new(tuples)
-    user     = ExTwitter.Model.User.new(tweet.user)
-    entities = ExTwitter.Model.Entities.new(tweet.entities)
+    tweet    = tuples         |> ExTwitter.JSON.parse |> ExTwitter.Model.Tweet.new
+    user     = tweet.user     |> ExTwitter.JSON.parse |> ExTwitter.Model.User.new
+    entities = tweet.entities |> ExTwitter.JSON.parse |> ExTwitter.Model.Entities.new
     tweet.update(user: user, entities: entities)
   end
 
