@@ -21,21 +21,4 @@ defmodule ExTwitter.API.Base do
     {:ok, {_response, _header, body}} = result
     to_string(body) |> ExTwitter.JSON.decode
   end
-
-  @doc """
-  Parse tweet record from the API response json.
-  """
-  def parse_tweet(tuples) do
-    tweet    = tuples         |> ExTwitter.JSON.parse |> ExTwitter.Model.Tweet.new
-    user     = tweet.user     |> ExTwitter.JSON.parse |> ExTwitter.Model.User.new
-    entities = tweet.entities |> ExTwitter.JSON.parse |> ExTwitter.Model.Entities.new
-    tweet.update(user: user, entities: entities)
-  end
-
-  @doc """
-  Parse request parameters for the API.
-  """
-  def parse_request_params(options) do
-    Enum.map(options, fn({k,v}) -> {to_char_list(k), to_char_list(v)} end)
-  end
 end

@@ -6,7 +6,7 @@ defmodule ExTwitter.API.Timelines do
   import ExTwitter.API.Base
 
   def user_timeline(options \\ []) do
-    request(:get, "1.1/statuses/user_timeline.json", options |> parse_request_params)
-      |> Enum.map(&parse_tweet/1)
+    request(:get, "1.1/statuses/user_timeline.json", options |> ExTwitter.Parser.parse_request_params)
+      |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 end
