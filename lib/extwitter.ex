@@ -48,6 +48,13 @@ defmodule ExTwitter do
   defdelegate trends(id),          to: ExTwitter.API.Trends
   defdelegate trends(id, options), to: ExTwitter.API.Trends
 
+  @doc """
+  GET followers/list
+  https://api.twitter.com/1.1/followers/list.json
+  """
+  defdelegate followers(screen_name),          to: ExTwitter.API.FriendsAndFollowers
+  defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 
   def start(_type, _args) do

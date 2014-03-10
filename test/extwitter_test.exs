@@ -64,11 +64,17 @@ defmodule ExTwitterTest do
     end
   end
 
-
   test "gets trend with global woeid (id: 1) returns 10 items" do
     use_cassette "trends", custom: true do
       trends = ExTwitter.trends(1)
       assert Enum.count(trends) == 10
+    end
+  end
+
+  test "gets followers of twitter user" do
+    use_cassette "followers", custom: true do
+      followers = ExTwitter.followers("twitter", count: 1)
+      assert Enum.count(followers) == 1
     end
   end
 end
