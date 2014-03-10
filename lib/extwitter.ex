@@ -41,6 +41,12 @@ defmodule ExTwitter do
   defdelegate list_timeline(list, owner),          to: ExTwitter.API.Lists
   defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
 
+  @doc """
+  GET trends/place
+  https://api.twitter.com/1.1/trends/place.json
+  """
+  defdelegate trends(id),          to: ExTwitter.API.Trends
+  defdelegate trends(id, options), to: ExTwitter.API.Trends
 
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 

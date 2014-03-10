@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/trends/place.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": false
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Mon, 10 Mar 2014 15:24:58 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "1957",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Mon, 10 Mar 2014 15:24:58 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Wed, 09-Mar-2016 15:24:58 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "6",
+        "x-rate-limit-reset": "1394465520",
+        "x-transaction": "1e609a8578eed862",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "[{\"trends\":[{\"name\":\"#\\u0412\\u0441\\u0435\\u041F\\u0440\\u043E\\u0441\\u0442\\u0438\\u0442\\u0443\\u0442\\u043A\\u0438\\u0420\\u0424\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%23%D0%92%D1%81%D0%B5%D0%9F%D1%80%D0%BE%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%82%D0%BA%D0%B8%D0%A0%D0%A4\",\"promoted_content\":null,\"query\":\"%23%D0%92%D1%81%D0%B5%D0%9F%D1%80%D0%BE%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%82%D0%BA%D0%B8%D0%A0%D0%A4\",\"events\":null},{\"name\":\"#AkPartileYeniT\\u00FCrkiye\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%23AkPartileYeniT%C3%BCrkiye\",\"promoted_content\":null,\"query\":\"%23AkPartileYeniT%C3%BCrkiye\",\"events\":null},{\"name\":\"#RanaSamahaOnAlhurra\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%23RanaSamahaOnAlhurra\",\"promoted_content\":null,\"query\":\"%23RanaSamahaOnAlhurra\",\"events\":null},{\"name\":\"#ukisssoohyunday\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%23ukisssoohyunday\",\"promoted_content\":null,\"query\":\"%23ukisssoohyunday\",\"events\":null},{\"name\":\"#HOT30PickMe45SOS\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%23HOT30PickMe45SOS\",\"promoted_content\":null,\"query\":\"%23HOT30PickMe45SOS\",\"events\":null},{\"name\":\"Tuncay \\u00D6zkan\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%22Tuncay+%C3%96zkan%22\",\"promoted_content\":null,\"query\":\"%22Tuncay+%C3%96zkan%22\",\"events\":null},{\"name\":\"Dursun \\u00C7i\\u00E7ek\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%22Dursun+%C3%87i%C3%A7ek%22\",\"promoted_content\":null,\"query\":\"%22Dursun+%C3%87i%C3%A7ek%22\",\"events\":null},{\"name\":\"Semoga Besok\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%22Semoga+Besok%22\",\"promoted_content\":null,\"query\":\"%22Semoga+Besok%22\",\"events\":null},{\"name\":\"Bob Marley\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%22Bob+Marley%22\",\"promoted_content\":null,\"query\":\"%22Bob+Marley%22\",\"events\":null},{\"name\":\"South Park\",\"url\":\"http:\\/\\/twitter.com\\/search?q=%22South+Park%22\",\"promoted_content\":null,\"query\":\"%22South+Park%22\",\"events\":null}],\"as_of\":\"2014-03-10T15:24:58Z\",\"created_at\":\"2014-03-10T15:19:12Z\",\"locations\":[{\"name\":\"Worldwide\",\"woeid\":1}]}]"
+    }
+  }
+]

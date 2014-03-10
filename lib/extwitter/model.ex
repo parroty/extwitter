@@ -26,3 +26,6 @@ defrecord ExTwitter.Model.User,
 
 defrecord ExTwitter.Model.Entities,
   hashtags: nil, symbols: nil, urls: nil, user_mentions: nil
+
+defrecord ExTwitter.Model.Trend,
+  events: nil, name: nil, promoted_content: nil, query: nil

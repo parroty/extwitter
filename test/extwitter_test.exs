@@ -63,4 +63,12 @@ defmodule ExTwitterTest do
       assert List.first(timeline).text != nil
     end
   end
+
+
+  test "gets trend with global woeid (id: 1) returns 10 items" do
+    use_cassette "trends", custom: true do
+      trends = ExTwitter.trends(1)
+      assert Enum.count(trends) == 10
+    end
+  end
 end
