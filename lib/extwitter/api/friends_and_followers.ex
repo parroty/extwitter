@@ -13,4 +13,13 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def followers(screen_name, options \\ []) do
     followers([screen_name: screen_name] ++ options)
   end
+
+  def friends(options) when is_list(options) do
+    json = request(:get, "1.1/friends/list.json", options |> ExTwitter.Parser.parse_request_params)
+    json |> ExTwitter.JSON.get("users") |> Enum.map(&ExTwitter.Parser.parse_user/1)
+  end
+
+  def friends(screen_name, options \\ []) do
+    followers([screen_name: screen_name] ++ options)
+  end
 end

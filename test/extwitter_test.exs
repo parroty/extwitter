@@ -77,4 +77,11 @@ defmodule ExTwitterTest do
       assert Enum.count(followers) == 1
     end
   end
+
+  test "gets friends of twitter user" do
+    use_cassette "friends" do
+      friends = ExTwitter.friends("twitter", count: 1)
+      assert Enum.count(friends) == 1
+    end
+  end
 end

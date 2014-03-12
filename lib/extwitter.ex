@@ -55,6 +55,13 @@ defmodule ExTwitter do
   defdelegate followers(screen_name),          to: ExTwitter.API.FriendsAndFollowers
   defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
+  @doc """
+  GET friends/list
+  https://api.twitter.com/1.1/friends/list.json
+  """
+  defdelegate friends(screen_name),          to: ExTwitter.API.FriendsAndFollowers
+  defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 
   def start(_type, _args) do
