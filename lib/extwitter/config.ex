@@ -6,7 +6,7 @@ defmodule ExTwitter.Config do
   @setting_key :extwitter_oauth
 
   def start do
-    ExTwitter.Store.set(@setting_key, default_value)
+    ExTwitter.Store.set(@setting_key, [])
   end
 
   @doc """
@@ -28,10 +28,5 @@ defmodule ExTwitter.Config do
   """
   def get_tuples do
     get |> Enum.map(fn({k, v}) -> {k, to_char_list(v)} end)
-  end
-
-  defp default_value do
-    [ consumer_key: "nil", consumer_secret: "nil",
-      access_token: "nil", access_token_secret: "nil" ]
   end
 end
