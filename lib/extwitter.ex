@@ -13,11 +13,18 @@ defmodule ExTwitter do
   defdelegate user_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
-  GET search/tweets
-  https://dev.twitter.com/docs/api/1.1/get/search/tweets
+  POST statuses/show/:id
+  https://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid
   """
-  defdelegate search(query),          to: ExTwitter.API.Search
-  defdelegate search(query, options), to: ExTwitter.API.Search
+  defdelegate show(id),          to: ExTwitter.API.Tweets
+  defdelegate show(id, options), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/destroy/:id
+  https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
+  """
+  defdelegate destroy_status(id),          to: ExTwitter.API.Tweets
+  defdelegate destroy_status(id, options), to: ExTwitter.API.Tweets
 
   @doc """
   POST statuses/update
@@ -27,11 +34,11 @@ defmodule ExTwitter do
   defdelegate update(status, options), to: ExTwitter.API.Tweets
 
   @doc """
-  POST statuses/destroy/:id
-  https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
+  GET search/tweets
+  https://dev.twitter.com/docs/api/1.1/get/search/tweets
   """
-  defdelegate destroy_status(id),          to: ExTwitter.API.Tweets
-  defdelegate destroy_status(id, options), to: ExTwitter.API.Tweets
+  defdelegate search(query),          to: ExTwitter.API.Search
+  defdelegate search(query, options), to: ExTwitter.API.Search
 
   @doc """
   GET lists/statuses

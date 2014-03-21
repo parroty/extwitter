@@ -45,6 +45,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "shows tweet" do
+    use_cassette "show_tweet" do
+      tweet = ExTwitter.show(446328507694845952)
+      assert tweet.text =~ ~r/ship with the eunit test framework/
+    end
+  end
+
   test "update and destroy status" do
     use_cassette "update_destroy_status", custom: true do
       tweet1 = ExTwitter.update("update sample")
