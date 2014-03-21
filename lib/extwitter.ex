@@ -76,6 +76,14 @@ defmodule ExTwitter do
   defdelegate friends(screen_name),          to: ExTwitter.API.FriendsAndFollowers
   defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
+
+  @doc """
+  GET users/show
+  https://dev.twitter.com/docs/api/1.1/get/users/show
+  """
+  defdelegate user(user_id, screen_name),          to: ExTwitter.API.Users
+  defdelegate user(user_id, screen_name, options), to: ExTwitter.API.Users
+
   @doc """
   GET users/search
   https://dev.twitter.com/docs/api/1.1/get/users/search

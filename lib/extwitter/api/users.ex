@@ -10,4 +10,10 @@ defmodule ExTwitter.API.Users do
     request(:get, "1.1/users/search.json", params)
       |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
+
+  def user(user_id, screen_name, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params([user_id: user_id, screen_name: screen_name] ++ options)
+    request(:get, "1.1/users/show.json", params)
+      |> ExTwitter.Parser.parse_user
+  end
 end

@@ -99,9 +99,16 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "show user" do
+    use_cassette "show_user" do
+      user = ExTwitter.user("elixirlang", "elixirlang")
+      assert user.screen_name == "elixirlang"
+    end
+  end
+
   test "search user" do
     use_cassette "search_user", custom: true do
-      users = ExTwitter.user_search("elixirlang", [count: 1])
+      users = ExTwitter.user_search("elixirlang", count: 1)
       assert List.first(users).screen_name == "elixirlang"
     end
   end
