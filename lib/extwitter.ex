@@ -77,6 +77,13 @@ defmodule ExTwitter do
   defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
+  GET users/search
+  https://dev.twitter.com/docs/api/1.1/get/users/search
+  """
+  defdelegate user_search(query),          to: ExTwitter.API.Users
+  defdelegate user_search(query, options), to: ExTwitter.API.Users
+
+  @doc """
   Provides OAuth configuration setting for accessing twitter server.
   """
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set

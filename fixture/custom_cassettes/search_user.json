@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/users/search.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": false
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Fri, 21 Mar 2014 04:28:22 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "2263",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Fri, 21 Mar 2014 04:28:22 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Sun, 20-Mar-2016 04:28:22 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "169",
+        "x-rate-limit-reset": "1395376255",
+        "x-transaction": "dd9274b36dcb82cb",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "[{\"id\":507309896,\"id_str\":\"507309896\",\"name\":\"Elixir Lang\",\"screen_name\":\"elixirlang\",\"location\":\"\",\"description\":\"The Elixir programming language that runs on the Erlang VM\",\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"expanded_url\":\"http:\\/\\/elixir-lang.org\",\"display_url\":\"elixir-lang.org\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":2408,\"friends_count\":6,\"listed_count\":68,\"created_at\":\"Tue Feb 28 12:31:32 +0000 2012\",\"favourites_count\":31,\"utc_offset\":3600,\"time_zone\":\"Amsterdam\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":370,\"lang\":\"en\",\"status\":{\"created_at\":\"Wed Mar 19 16:53:03 +0000 2014\",\"id\":446328507694845952,\"id_str\":\"446328507694845952\",\"text\":\"@suranyami And you are right, the error you got is because erlang-mini doesn't seem to ship with the eunit test framework!\",\"source\":\"web\",\"truncated\":false,\"in_reply_to_status_id\":446225539796594688,\"in_reply_to_status_id_str\":\"446225539796594688\",\"in_reply_to_user_id\":86202207,\"in_reply_to_user_id_str\":\"86202207\",\"in_reply_to_screen_name\":\"suranyami\",\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[{\"screen_name\":\"suranyami\",\"name\":\"Ravey Day-V Gravy\",\"id\":86202207,\"id_str\":\"86202207\",\"indices\":[0,10]}]},\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_link_color\":\"009999\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"EFEFEF\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false}]"
+    }
+  }
+]

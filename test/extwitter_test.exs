@@ -98,4 +98,11 @@ defmodule ExTwitterTest do
       assert Enum.count(friends) == 1
     end
   end
+
+  test "search user" do
+    use_cassette "search_user", custom: true do
+      users = ExTwitter.user_search("elixirlang", [count: 1])
+      assert List.first(users).screen_name == "elixirlang"
+    end
+  end
 end
