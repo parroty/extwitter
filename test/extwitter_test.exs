@@ -100,7 +100,7 @@ defmodule ExTwitterTest do
   end
 
   test "show user" do
-    use_cassette "show_user" do
+    use_cassette "show_user", custom: true do
       user = ExTwitter.user("elixirlang", "elixirlang")
       assert user.screen_name == "elixirlang"
     end
