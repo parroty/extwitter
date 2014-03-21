@@ -6,7 +6,8 @@ defmodule ExTwitter.API.Search do
   import ExTwitter.API.Base
 
   def search(query, options \\ []) do
-    json = request(:get, "1.1/search/tweets.json", [q: query] ++ options |> ExTwitter.Parser.parse_request_params)
+    params = ExTwitter.Parser.parse_request_params([q: query] ++ options)
+    json = request(:get, "1.1/search/tweets.json", params)
     ExTwitter.JSON.get(json, "statuses") |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 end

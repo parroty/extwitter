@@ -10,7 +10,8 @@ defmodule ExTwitter.API.Lists do
   end
 
   def list_timeline(options) do
-    request(:get, "1.1/lists/statuses.json", options |> ExTwitter.Parser.parse_request_params)
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:get, "1.1/lists/statuses.json", params)
       |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 end
