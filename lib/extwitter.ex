@@ -34,6 +34,13 @@ defmodule ExTwitter do
   defdelegate update(status, options), to: ExTwitter.API.Tweets
 
   @doc """
+  GET statuses/retweeters/ids
+  https://dev.twitter.com/docs/api/1.1/get/statuses/retweeters/ids
+  """
+  defdelegate retweeter_ids(id),          to: ExTwitter.API.Tweets
+  defdelegate retweeter_ids(id, options), to: ExTwitter.API.Tweets
+
+  @doc """
   GET search/tweets
   https://dev.twitter.com/docs/api/1.1/get/search/tweets
   """

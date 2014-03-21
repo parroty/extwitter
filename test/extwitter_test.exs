@@ -62,6 +62,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets retweeter ids" do
+    use_cassette "retweeter_ids", custom: true do
+      ids = ExTwitter.retweeter_ids(444144169058308096)
+      assert Enum.member?(ids, 48156007)
+    end
+  end
+
   # gets "https://twitter.com/twitter/lists/engineering"
   test "gets list timeline" do
     use_cassette "list_timeline_twitter", custom: true do

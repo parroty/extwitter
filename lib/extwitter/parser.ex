@@ -28,6 +28,14 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
+  Parse trend record from the API response json.
+  """
+  def parse_ids(tuples) do
+    dict = tuples |> ExTwitter.JSON.parse |> HashDict.new
+    HashDict.get(dict, "ids")
+  end
+
+  @doc """
   Parse request parameters for the API.
   """
   def parse_request_params(options) do

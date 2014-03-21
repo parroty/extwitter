@@ -21,4 +21,10 @@ defmodule ExTwitter.API.Tweets do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:post, "1.1/statuses/destroy/#{id}.json", params)
   end
+
+  def retweeter_ids(id, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params([id: id] ++ options)
+    request(:get, "1.1/statuses/retweeters/ids.json", params)
+      |> ExTwitter.Parser.parse_ids
+  end
 end
