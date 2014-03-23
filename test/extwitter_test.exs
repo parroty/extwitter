@@ -70,7 +70,7 @@ defmodule ExTwitterTest do
   end
 
   test "gets lists" do
-    use_cassette "lists_twitter" do
+    use_cassette "lists_twitter", custom: true do
       lists = ExTwitter.lists("twitter", count: 1)
       assert Enum.count(lists) == 1
       assert List.first(lists).name =~ ~r/Twitter/
