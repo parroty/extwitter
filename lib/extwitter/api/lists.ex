@@ -5,6 +5,12 @@ defmodule ExTwitter.API.Lists do
 
   import ExTwitter.API.Base
 
+  def lists(screen_name, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params([screen_name: screen_name] ++ options)
+    request(:get, "1.1/lists/list.json", params)
+      |> Enum.map(&ExTwitter.Parser.parse_list/1)
+  end
+
   def list_timeline(list, owner, options \\ []) do
     list_timeline([slug: list, owner_screen_name: owner] ++ options)
   end

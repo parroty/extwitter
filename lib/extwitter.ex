@@ -48,14 +48,6 @@ defmodule ExTwitter do
   defdelegate search(query, options), to: ExTwitter.API.Search
 
   @doc """
-  GET lists/statuses
-  https://dev.twitter.com/docs/api/1.1/get/lists/statuses
-  """
-  defdelegate list_timeline(options),              to: ExTwitter.API.Lists
-  defdelegate list_timeline(list, owner),          to: ExTwitter.API.Lists
-  defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
-
-  @doc """
   GET trends/place
   https://api.twitter.com/1.1/trends/place.json
   """
@@ -90,6 +82,22 @@ defmodule ExTwitter do
   """
   defdelegate user_search(query),          to: ExTwitter.API.Users
   defdelegate user_search(query, options), to: ExTwitter.API.Users
+
+  @doc """
+  GET lists/list
+  https://dev.twitter.com/docs/api/1.1/get/lists/list
+  """
+  defdelegate lists(screen_name),          to: ExTwitter.API.Lists
+  defdelegate lists(screen_name, options), to: ExTwitter.API.Lists
+
+  @doc """
+  GET lists/statuses
+  https://dev.twitter.com/docs/api/1.1/get/lists/statuses
+  """
+  defdelegate list_timeline(options),              to: ExTwitter.API.Lists
+  defdelegate list_timeline(list, owner),          to: ExTwitter.API.Lists
+  defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
+
 
   @doc """
   Provides OAuth configuration setting for accessing twitter server.

@@ -29,3 +29,8 @@ defrecord ExTwitter.Model.Entities,
 
 defrecord ExTwitter.Model.Trend,
   events: nil, name: nil, promoted_content: nil, query: nil
+
+defrecord ExTwitter.Model.List,
+  slug: nil, name: nil, created_at: nil, uri: nil, subscriber_count: nil,
+  id_str: nil, member_count: nil, mode: nil, id: nil, full_name: nil,
+  description: nil, user: nil, following: nil
