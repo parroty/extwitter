@@ -17,28 +17,28 @@ defmodule ExTwitterTest do
   end
 
   test "gets authenticated user timeline" do
-    use_cassette "user_timeline", custom: true do
+    use_cassette "user_timeline" do
       timeline = ExTwitter.user_timeline(count: 1)
       assert Enum.count(timeline) == 1
     end
   end
 
   test "gets specified user timeline" do
-    use_cassette "user_timeline_elixirlang", custom: true do
+    use_cassette "user_timeline_elixirlang" do
       timeline = ExTwitter.user_timeline(screen_name: "elixirlang", count: 1)
       assert List.first(timeline).user.screen_name == "elixirlang"
     end
   end
 
   test "search with count param 2 (gets 2 tweet)" do
-    use_cassette "search_single", custom: true do
+    use_cassette "search_single" do
       tweets = ExTwitter.search("test", [count: 2])
       assert Enum.count(tweets) == 2
     end
   end
 
   test "search with invalid count param raises error" do
-    use_cassette "search_invalid_count", custom: true do
+    use_cassette "search_invalid_count" do
       assert_raise ExTwitter.Error, fn ->
         ExTwitter.search("test", [count: -1])
       end
@@ -46,14 +46,14 @@ defmodule ExTwitterTest do
   end
 
   test "shows tweet" do
-    use_cassette "show_tweet", custom: true do
+    use_cassette "show_tweet" do
       tweet = ExTwitter.show(446328507694845952)
       assert tweet.text =~ ~r/ship with the eunit test framework/
     end
   end
 
   test "update and destroy status" do
-    use_cassette "update_destroy_status", custom: true do
+    use_cassette "update_destroy_status" do
       tweet1 = ExTwitter.update("update sample")
       assert tweet1.text == "update sample"
 
@@ -63,14 +63,14 @@ defmodule ExTwitterTest do
   end
 
   test "gets retweeter ids" do
-    use_cassette "retweeter_ids", custom: true do
+    use_cassette "retweeter_ids" do
       ids = ExTwitter.retweeter_ids(444144169058308096)
       assert Enum.member?(ids, 48156007)
     end
   end
 
   test "gets lists" do
-    use_cassette "lists_twitter", custom: true do
+    use_cassette "lists_twitter" do
       lists = ExTwitter.lists("twitter", count: 1)
       assert Enum.count(lists) == 1
       assert List.first(lists).name =~ ~r/Twitter/
@@ -79,7 +79,7 @@ defmodule ExTwitterTest do
 
   # gets "https://twitter.com/twitter/lists/engineering"
   test "gets list timeline" do
-    use_cassette "list_timeline_twitter", custom: true do
+    use_cassette "list_timeline_twitter" do
       timeline = ExTwitter.list_timeline("engineering", "twitter", count: 1)
       assert Enum.count(timeline) == 1
       assert List.first(timeline).text != nil
@@ -87,35 +87,35 @@ defmodule ExTwitterTest do
   end
 
   test "gets trend with global woeid (id: 1) returns 10 items" do
-    use_cassette "trends", custom: true do
+    use_cassette "trends" do
       trends = ExTwitter.trends(1)
       assert Enum.count(trends) == 10
     end
   end
 
   test "gets followers of twitter user" do
-    use_cassette "followers", custom: true do
+    use_cassette "followers" do
       followers = ExTwitter.followers("twitter", count: 1)
       assert Enum.count(followers) == 1
     end
   end
 
   test "gets friends of twitter user" do
-    use_cassette "friends", custom: true do
+    use_cassette "friends" do
       friends = ExTwitter.friends("twitter", count: 1)
       assert Enum.count(friends) == 1
     end
   end
 
   test "show user" do
-    use_cassette "show_user", custom: true do
+    use_cassette "show_user" do
       user = ExTwitter.user("elixirlang", "elixirlang")
       assert user.screen_name == "elixirlang"
     end
   end
 
   test "search user" do
-    use_cassette "search_user", custom: true do
+    use_cassette "search_user" do
       users = ExTwitter.user_search("elixirlang", count: 1)
       assert List.first(users).screen_name == "elixirlang"
     end

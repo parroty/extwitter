@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "url": "https://api.twitter.com/1.1/statuses/update.json.*",
+      "url": "https://api.twitter.com/1.1/statuses/update.json",
       "headers": [],
       "method": "post",
       "body": "<REMOVED>",
@@ -43,7 +43,7 @@
   },
   {
     "request": {
-      "url": "https://api.twitter.com/1.1/statuses/destroy/441216401122926592.json.*",
+      "url": "https://api.twitter.com/1.1/statuses/destroy/441216401122926592.json",
       "headers": [],
       "method": "post",
       "body": "<REMOVED>",
