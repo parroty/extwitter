@@ -5,7 +5,8 @@ defmodule ExTwitter.Mixfile do
     [ app: :extwitter,
       version: "0.0.1",
       elixir: "~> 0.12.4",
-      deps: deps ]
+      deps: deps(Mix.env),
+      test_coverage: [tool: ExCoveralls] ]
   end
 
   # Configuration for the OTP application
@@ -19,9 +20,18 @@ defmodule ExTwitter.Mixfile do
   #
   # To specify particular versions, regardless of the tag, do:
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
-  defp deps do
+  def deps(:test) do
+    deps(:dev)
+  end
+
+  def deps(:dev) do
+    deps(:prod) ++
+      [ {:exvcr, github: "parroty/exvcr"},
+        {:excoveralls, github: "parroty/excoveralls"} ]
+  end
+
+  def deps(:prod) do
     [ {:oauth, github: "tim/erlang-oauth"},
-      {:exvcr, github: "parroty/exvcr"},
       {:json, github: "cblage/elixir-json"} ]
   end
 end
