@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/geo/search.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Tue, 25 Mar 2014 14:51:29 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "1180",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Tue, 25 Mar 2014 14:51:29 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Thu, 24-Mar-2016 14:51:29 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "14",
+        "x-rate-limit-reset": "1395759989",
+        "x-transaction": "32f25d96256d5a08",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "{\"result\":{\"places\":[{\"id\":\"94965b2c45386f87\",\"url\":\"https:\\/\\/api.twitter.com\\/1.1\\/geo\\/id\\/94965b2c45386f87.json\",\"place_type\":\"admin\",\"name\":\"New York\",\"full_name\":\"New York, US\",\"country_code\":\"US\",\"country\":\"United States\",\"contained_within\":[{\"id\":\"96683cc9126741d1\",\"url\":\"https:\\/\\/api.twitter.com\\/1.1\\/geo\\/id\\/96683cc9126741d1.json\",\"place_type\":\"country\",\"name\":\"United States\",\"full_name\":\"United States\",\"country_code\":\"US\",\"country\":\"United States\",\"bounding_box\":null,\"attributes\":{}}],\"bounding_box\":{\"type\":\"Polygon\",\"coordinates\":[[[-79.76259,40.477399],[-71.777491,40.477399],[-71.777491,45.015865],[-79.76259,45.015865]]]},\"attributes\":{}}]},\"query\":{\"url\":\"https:\\/\\/api.twitter.com\\/1.1\\/geo\\/search.json?<REMOVED>\",\"type\":\"search\",\"params\":{\"accuracy\":0.0,\"granularity\":\"neighborhood\",\"query\":\"new_york\",\"autocomplete\":false,\"trim_place\":false}}}"
+    }
+  }
+]

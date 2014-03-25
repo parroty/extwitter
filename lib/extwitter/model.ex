@@ -34,3 +34,11 @@ defrecord ExTwitter.Model.List,
   slug: nil, name: nil, created_at: nil, uri: nil, subscriber_count: nil,
   id_str: nil, member_count: nil, mode: nil, id: nil, full_name: nil,
   description: nil, user: nil, following: nil
+
+defrecord ExTwitter.Model.Place,
+  id: nil, url: nil, place_type: nil, name: nil, full_name: nil,
+  country_code: nil, country: nil, contained_within: nil,
+  bounding_box: nil, attributes: nil
+
+defrecord ExTwitter.Model.Geo,
+  type: nil, coordinates: nil

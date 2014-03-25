@@ -48,6 +48,13 @@ defmodule ExTwitter do
   defdelegate search(query, options), to: ExTwitter.API.Search
 
   @doc """
+  GET geo/search
+  https://dev.twitter.com/docs/api/1.1/get/geo/search
+  """
+  defdelegate geo_search(query),          to: ExTwitter.API.PlacesAndGeo
+  defdelegate geo_search(query, options), to: ExTwitter.API.PlacesAndGeo
+
+  @doc """
   GET trends/place
   https://api.twitter.com/1.1/trends/place.json
   """

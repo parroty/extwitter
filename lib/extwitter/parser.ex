@@ -45,6 +45,29 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
+  Parse place record from the API response json.
+  """
+  def parse_place(tuples) do
+    place = tuples |> ExTwitter.JSON.parse |> ExTwitter.Model.Place.new
+
+    geo = parse_geo(place.bounding_box)
+    con = Enum.map(place.contained_within, &parse_contained_within/1)
+
+    place.update(bounding_box: geo, contained_within: con)
+  end
+
+  defp parse_contained_within(tuples) do
+    tuples |> ExTwitter.JSON.parse |> ExTwitter.Model.Place.new
+  end
+
+  @doc """
+  Parse geo record from the API response json.
+  """
+  def parse_geo(tuples) do
+    tuples |> ExTwitter.JSON.parse |> ExTwitter.Model.Geo.new
+  end
+
+  @doc """
   Parse request parameters for the API.
   """
   def parse_request_params(options) do

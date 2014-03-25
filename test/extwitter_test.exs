@@ -4,7 +4,7 @@ defmodule ExTwitterTest do
 
   setup_all do
     ExVCR.Config.filter_url_params(true)
-    ExVCR.Config.filter_sensitive_data("oauth_signature=.+", "<REMOVED>")
+    ExVCR.Config.filter_sensitive_data("oauth_signature=[^\"]+", "<REMOVED>")
     ExVCR.Config.filter_sensitive_data("guest_id=.+;", "<REMOVED>")
 
     ExTwitter.configure(
@@ -13,6 +13,7 @@ defmodule ExTwitterTest do
       access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
       access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
     )
+
     :ok
   end
 
@@ -118,6 +119,13 @@ defmodule ExTwitterTest do
     use_cassette "search_user" do
       users = ExTwitter.user_search("elixirlang", count: 1)
       assert List.first(users).screen_name == "elixirlang"
+    end
+  end
+
+  test "search geo" do
+    use_cassette "search_geo" do
+      geo = ExTwitter.geo_search("new_york", max_results: 1)
+      assert List.first(geo).name == "New York"
     end
   end
 end
