@@ -1,4 +1,4 @@
-# ExTwitter [![Build Status](https://secure.travis-ci.org/parroty/extwitter.png?branch=master "Build Status")](http://travis-ci.org/parroty/extwitter) [![Coverage Status](https://coveralls.io/repos/parroty/extwitter/badge.png?branch=master)](https://coveralls.io/r/parroty/extwitter?branch=master
+# ExTwitter [![Build Status](https://secure.travis-ci.org/parroty/extwitter.png?branch=master "Build Status")](http://travis-ci.org/parroty/extwitter) [![Coverage Status](https://coveralls.io/repos/parroty/extwitter/badge.png?branch=master)](https://coveralls.io/r/parroty/extwitter?branch=master)
 
 Twitter client library for elixir. It uses <a href="https://github.com/tim/erlang-oauth/" target="_blank">erlang-oauth</a> to call Twitter's REST API.
 
