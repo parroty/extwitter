@@ -55,6 +55,13 @@ defmodule ExTwitter do
   defdelegate geo_search(query, options), to: ExTwitter.API.PlacesAndGeo
 
   @doc """
+  GET geo/reverse_geocode
+  https://dev.twitter.com/docs/api/1.1/get/geo/reverse_geocode
+  """
+  defdelegate reverse_geocode(lat, long),          to: ExTwitter.API.PlacesAndGeo
+  defdelegate reverse_geocode(lat, long, options), to: ExTwitter.API.PlacesAndGeo
+
+  @doc """
   GET trends/place
   https://api.twitter.com/1.1/trends/place.json
   """

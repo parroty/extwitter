@@ -64,7 +64,11 @@ defmodule ExTwitter.Parser do
   Parse geo record from the API response json.
   """
   def parse_geo(tuples) do
-    tuples |> ExTwitter.JSON.parse |> ExTwitter.Model.Geo.new
+    case tuples do
+      nil    -> nil
+      tuples -> tuples |> ExTwitter.JSON.parse
+                       |> ExTwitter.Model.Geo.new
+    end
   end
 
   @doc """

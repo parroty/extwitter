@@ -128,4 +128,12 @@ defmodule ExTwitterTest do
       assert List.first(geo).name == "New York"
     end
   end
+
+  test "reverse geocode" do
+    use_cassette "reverse_geocode" do
+      geo = ExTwitter.reverse_geocode(37.7821120598956, -122.400612831116, max_results: 1)
+      assert List.first(geo).full_name == "SoMa, San Francisco"
+    end
+  end
+
 end
