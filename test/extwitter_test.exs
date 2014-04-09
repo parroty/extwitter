@@ -101,6 +101,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets list subscriber" do
+    use_cassette "list_subscriber" do
+      users = ExTwitter.list_subscribers("test", "parrotybot")
+      assert Enum.count(users) == 0
+    end
+  end
+
   test "gets trend with global woeid (id: 1) returns 10 items" do
     use_cassette "trends" do
       trends = ExTwitter.trends(1)

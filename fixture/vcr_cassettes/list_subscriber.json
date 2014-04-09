@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/lists/subscribers.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Wed, 09 Apr 2014 13:38:17 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "96",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Wed, 09 Apr 2014 13:38:17 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Fri, 08-Apr-2016 13:38:17 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "178",
+        "x-rate-limit-reset": "1397051570",
+        "x-transaction": "81567109ac26384c",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "{\"users\":[],\"next_cursor\":0,\"next_cursor_str\":\"0\",\"previous_cursor\":0,\"previous_cursor_str\":\"0\"}"
+    }
+  }
+]

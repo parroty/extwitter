@@ -27,4 +27,15 @@ defmodule ExTwitter.API.Lists do
       |> ExTwitter.JSON.get("lists")
       |> Enum.map(&ExTwitter.Parser.parse_list/1)
   end
+
+  def list_subscribers(list, owner, options \\ []) do
+    list_subscribers([slug: list, owner_screen_name: owner] ++ options)
+  end
+
+  def list_subscribers(options) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:get, "1.1/lists/subscribers.json", params)
+      |> ExTwitter.JSON.get("users")
+      |> Enum.map(&ExTwitter.Parser.parse_user/1)
+  end
 end

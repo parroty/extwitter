@@ -134,6 +134,14 @@ defmodule ExTwitter do
   defdelegate list_memberships(options), to: ExTwitter.API.Lists
 
   @doc """
+  GET lists/subscribers
+  https://dev.twitter.com/docs/api/1.1/get/lists/subscribers
+  """
+  defdelegate list_subscribers(options),              to: ExTwitter.API.Lists
+  defdelegate list_subscribers(list, owner),          to: ExTwitter.API.Lists
+  defdelegate list_subscribers(list, owner, options), to: ExTwitter.API.Lists
+
+  @doc """
   Provides OAuth configuration setting for accessing twitter server.
   """
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
