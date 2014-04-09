@@ -126,6 +126,12 @@ defmodule ExTwitter do
   defdelegate list_timeline(list, owner),          to: ExTwitter.API.Lists
   defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
 
+  @doc """
+  GET lists/memberships
+  https://dev.twitter.com/docs/api/1.1/get/lists/memberships
+  """
+  defdelegate list_memberships,          to: ExTwitter.API.Lists
+  defdelegate list_memberships(options), to: ExTwitter.API.Lists
 
   @doc """
   Provides OAuth configuration setting for accessing twitter server.

@@ -85,12 +85,19 @@ defmodule ExTwitterTest do
     end
   end
 
-  # gets "https://twitter.com/twitter/lists/engineering"
   test "gets list timeline" do
     use_cassette "list_timeline_twitter" do
       timeline = ExTwitter.list_timeline("engineering", "twitter", count: 1)
       assert Enum.count(timeline) == 1
       assert List.first(timeline).text != nil
+    end
+  end
+
+  test "gets list membership" do
+    use_cassette "list_membership" do
+      lists = ExTwitter.list_memberships(screen_name: "twitter", count: 1)
+      assert Enum.count(lists) == 1
+      assert List.first(lists).name != nil
     end
   end
 

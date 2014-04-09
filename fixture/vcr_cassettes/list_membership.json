@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/lists/memberships.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Wed, 09 Apr 2014 12:59:32 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "2271",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Wed, 09 Apr 2014 12:59:32 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Fri, 08-Apr-2016 12:59:32 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "8",
+        "x-rate-limit-reset": "1397049051",
+        "x-transaction": "c585dd3277f65881",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "{\"next_cursor\":1464910857666128251,\"next_cursor_str\":\"1464910857666128251\",\"previous_cursor\":0,\"previous_cursor_str\":\"0\",\"lists\":[{\"id\":105718840,\"id_str\":\"105718840\",\"name\":\"Top Executives Tweeting\",\"uri\":\"\\/ThomasLot\\/top-executives-tweeting\",\"subscriber_count\":10,\"member_count\":3845,\"mode\":\"public\",\"description\":\"Follow the tweets of the 1000 most searched executives (112 out 1000 tweet)\",\"slug\":\"top-executives-tweeting\",\"full_name\":\"@ThomasLot\\/top-executives-tweeting\",\"created_at\":\"Wed Feb 12 22:18:29 +0000 2014\",\"following\":false,\"user\":{\"id\":20813954,\"id_str\":\"20813954\",\"name\":\"Thomas Lot\",\"screen_name\":\"ThomasLot\",\"location\":\"Paris, France\",\"description\":\"Display ultra-fresh  Org Charts for all the large & medium companies on earth.       Former Apple France MD & Amazon Europe VP\",\"url\":\"http:\\/\\/t.co\\/12XQhizyED\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/12XQhizyED\",\"expanded_url\":\"http:\\/\\/TheOfficialBoard.com\",\"display_url\":\"TheOfficialBoard.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":317,\"friends_count\":174,\"listed_count\":9,\"created_at\":\"Fri Feb 13 22:36:57 +0000 2009\",\"favourites_count\":28,\"utc_offset\":7200,\"time_zone\":\"Paris\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":237,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"7E766B\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/378800000145825172\\/cnz2JJxB.jpeg\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/378800000145825172\\/cnz2JJxB.jpeg\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/419915033582129152\\/deNi4Rgt_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/419915033582129152\\/deNi4Rgt_normal.jpeg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/20813954\\/1386676065\",\"profile_link_color\":\"A1896C\",\"profile_sidebar_border_color\":\"FFFFFF\",\"profile_sidebar_fill_color\":\"DAECF4\",\"profile_text_color\":\"663B12\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false}}]}"
+    }
+  }
+]
