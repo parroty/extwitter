@@ -70,6 +70,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets favorites" do
+    use_cassette "favorites_twitter" do
+      favorites = ExTwitter.favorites(screen_name: "twitter", count: 1)
+      assert Enum.count(favorites) == 1
+    end
+  end
+
   test "gets lists" do
     use_cassette "lists_twitter" do
       lists = ExTwitter.lists("twitter", count: 1)

@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "url": "https://api.twitter.com/1.1/favorites/list.json",
+      "headers": [],
+      "method": "get",
+      "body": "",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      }
+    },
+    "response": {
+      "type": "ok",
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Wed, 09 Apr 2014 12:51:24 GMT",
+        "pragma": "no-cache",
+        "server": "tfe",
+        "content-length": "3022",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Wed, 09 Apr 2014 12:51:24 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Fri, 08-Apr-2016 12:51:24 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "7",
+        "x-rate-limit-reset": "1397048526",
+        "x-transaction": "4cf3e571ba4436b4",
+        "x-xss-protection": "1; mode=block"
+      },
+      "body": "[{\"created_at\":\"Mon Dec 16 04:34:31 +0000 2013\",\"id\":412440578513571840,\"id_str\":\"412440578513571840\",\"text\":\"Tweeting Twitter @twitter, San Francisco. http:\\/\\/t.co\\/8GHIHfJDhK\",\"source\":\"\\u003ca href=\\\"http:\\/\\/www.apple.com\\\" rel=\\\"nofollow\\\"\\u003eiOS\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":74241914,\"id_str\":\"74241914\",\"name\":\"Alex Leary\",\"screen_name\":\"learyreports\",\"location\":\"\",\"description\":\"Washington Bureau Chief - Tampa Bay Times leary@tampabay.com\",\"url\":\"http:\\/\\/t.co\\/Ym7zC3aCKx\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/Ym7zC3aCKx\",\"expanded_url\":\"http:\\/\\/www.tampabay.com\\/blogs\\/the-buzz-florida-politics\\/\",\"display_url\":\"tampabay.com\\/blogs\\/the-buzz\\u2026\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":5144,\"friends_count\":55,\"listed_count\":272,\"created_at\":\"Mon Sep 14 19:39:48 +0000 2009\",\"favourites_count\":9,\"utc_offset\":-14400,\"time_zone\":\"Eastern Time (US & Canada)\",\"geo_enabled\":true,\"verified\":true,\"statuses_count\":11261,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/446412897715884032\\/0E67rAZd_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/446412897715884032\\/0E67rAZd_normal.jpeg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/74241914\\/1356022280\",\"profile_link_color\":\"009999\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"EFEFEF\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":149,\"favorite_count\":322,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[{\"screen_name\":\"twitter\",\"name\":\"Twitter\",\"id\":783214,\"id_str\":\"783214\",\"indices\":[17,25]}],\"media\":[{\"id\":412440578316443649,\"id_str\":\"412440578316443649\",\"indices\":[42,64],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/BblIhVGCIAE7W5q.jpg\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/BblIhVGCIAE7W5q.jpg\",\"url\":\"http:\\/\\/t.co\\/8GHIHfJDhK\",\"display_url\":\"pic.twitter.com\\/8GHIHfJDhK\",\"expanded_url\":\"http:\\/\\/twitter.com\\/learyreports\\/status\\/412440578513571840\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"medium\":{\"w\":600,\"h\":450,\"resize\":\"fit\"},\"thumb\":{\"w\":150,\"h\":150,\"resize\":\"crop\"},\"small\":{\"w\":340,\"h\":255,\"resize\":\"fit\"},\"large\":{\"w\":960,\"h\":720,\"resize\":\"fit\"}}}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"}]"
+    }
+  }
+]

@@ -105,6 +105,13 @@ defmodule ExTwitter do
   defdelegate user_search(query, options), to: ExTwitter.API.Users
 
   @doc """
+  GET favorites/list
+  https://dev.twitter.com/docs/api/1.1/get/favorites/list
+  """
+  defdelegate favorites,          to: ExTwitter.API.Favorites
+  defdelegate favorites(options), to: ExTwitter.API.Favorites
+
+  @doc """
   GET lists/list
   https://dev.twitter.com/docs/api/1.1/get/lists/list
   """
