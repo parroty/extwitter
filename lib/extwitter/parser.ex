@@ -41,7 +41,7 @@ defmodule ExTwitter.Parser do
   """
   def parse_ids(tuples) do
     tuple = tuples |> ExTwitter.JSON.parse
-    tuple["ids"]
+    Enum.find(tuple, fn({key, _value}) -> key == "ids" end) |> elem(1)
   end
 
   @doc """

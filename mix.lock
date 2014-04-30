@@ -1,9 +1,9 @@
-[ "exactor": {:git, "git://github.com/sasa1977/exactor.git", "f7f6bae7fead5e0e5525581d44311f803169fa4e", []},
-  "excoveralls": {:git, "git://github.com/parroty/excoveralls.git", "407cf15d4085cbe3b628cd16193270b44560f607", []},
-  "exprintf": {:git, "git://github.com/parroty/exprintf.git", "586c8e07c65805cf8e53d5855bbb7fd1472b777a", []},
-  "exvcr": {:git, "git://github.com/parroty/exvcr.git", "9714bbb5119339ee23ea52b5126e6cc2df830315", []},
-  "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "65aa6ae7c1543a0c4e83032c04626af7be7a7f3e", []},
+%{"exactor": {:git, "git://github.com/sasa1977/exactor.git", "f7f6bae7fead5e0e5525581d44311f803169fa4e", []},
+  "excoveralls": {:git, "git://github.com/parroty/excoveralls.git", "915632b2f06f251cb4407b684ab38c2e1fd8c22e", []},
+  "exprintf": {:git, "git://github.com/parroty/exprintf.git", "ab5acce111e9f3400f036ff43ef777a652b47347", []},
+  "exvcr": {:git, "git://github.com/parroty/exvcr.git", "fc2f626f00984abdb033c77470ba3257e4695b95", []},
+  "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "03ad4ff0967331afd01464857d41e5e497ed198c", []},
   "json": {:git, "git://github.com/cblage/elixir-json.git", "725ea02b992aba35c18d0e9c7c3da54689670baf", []},
-  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e50af6e109cb03bd26acf715cbc77de746507d1d", [tag: "v1.4.3"]},
+  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "507fa4c41db33c81e925ab53f4d789d234aaff2f", [tag: "v2.0.1"]},
   "meck": {:git, "git://github.com/eproxus/meck.git", "7e4bcc4e178d84eedd253e137315014e6971f8ef", []},
-  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []} ]
+  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []}}

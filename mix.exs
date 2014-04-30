@@ -4,7 +4,7 @@ defmodule ExTwitter.Mixfile do
   def project do
     [ app: :extwitter,
       version: "0.0.1",
-      elixir: "~> 0.12.4",
+      elixir: ">= 0.12.4",
       deps: deps(Mix.env),
       test_coverage: [tool: ExCoveralls] ]
   end
