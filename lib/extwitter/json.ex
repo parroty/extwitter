@@ -1,3 +1,5 @@
+# elixir-json is used at the moment (jsex fails to parse sometimes).
+
 defmodule ExTwitter.JSON do
   @moduledoc """
   JSON encode/decode wrapper module. It's separated to isolate the code
