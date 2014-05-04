@@ -9,9 +9,9 @@ defmodule ExTwitter.API.Streaming do
   This method returns the pid of the request handler, and
   sending :cancel message request the handler to stop receiving data from server.
   """
-  def sample(processor \\ self, options \\ []) do
+  def sample(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
-    pid = async_request(processor, :get, "1.1/statuses/sample.json", params)
+    pid = async_request(self, :get, "1.1/statuses/sample.json", params)
     create_stream(pid)
   end
 
@@ -44,7 +44,9 @@ defmodule ExTwitter.API.Streaming do
       {:stream, tweet} -> {tweet, pid}
       _other -> receive_next_tweet(pid)
     after
-      3000 -> nil
+      3000 ->
+        send pid, {:cancel, self}
+        nil
     end
   end
 

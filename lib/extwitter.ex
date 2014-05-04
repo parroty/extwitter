@@ -55,6 +55,13 @@ defmodule ExTwitter do
   defdelegate search(query, options), to: ExTwitter.API.Search
 
   @doc """
+  GET statuses/sample
+  https://stream.twitter.com/1.1/statuses/sample.json
+  """
+  defdelegate sample,          to: ExTwitter.API.Streaming
+  defdelegate sample(options), to: ExTwitter.API.Streaming
+
+  @doc """
   GET geo/search
   https://dev.twitter.com/docs/api/1.1/get/geo/search
   """
