@@ -24,21 +24,38 @@ ExTwitter.configure(
 )
 :ok
 ```
+Example for normal API.
 ```Elixir
 ExTwitter.search("elixir-lang", [count: 5]) |>
    Enum.map(fn(tweet) -> tweet.text end) |>
    Enum.join("\n-----\n") |>
    IO.puts
 
-@feyeleanor have you tried this yet? http://t.co/ehYtIcPzlX
+@xxxx have you tried this yet?
 -----
-@mwotton You mean this? http://t.co/BaeMcVRRMb That had sailed below my radar thus far.
+@yyyy You mean this? http://t.co/xxxx That had sailed below my radar thus far.
 -----
-@edmz #elixir-lang. I'm jadams
+@zzzz #elixir-lang. I'm jadams
 -----
 Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level. Medyo naexcite.
 -----
-@KANGKINGKONG_ usually kasi magbbuzz lang yan pag luma na string. talaga ang elixir.
+@aaaa usually kasi magbbuzz lang yan pag luma na string. talaga ang elixir.
+:ok
+```
+Example for streaming API.
+```Elixir
+ExTwitter.sample |>
+   Stream.take(3) |>
+   Enum.to_list |>
+   Enum.map(fn(tweet) -> tweet.text end) |>
+   Enum.join("\n-----\n") |>
+   IO.puts
+
+@xxxx have you tried this yet?
+-----
+@yyyy You mean this? http://t.co/xxxx That had sailed below my radar thus far.
+-----
+@zzzz #elixir-lang. I'm jadams
 :ok
 ```
 
