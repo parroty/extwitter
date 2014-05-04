@@ -9,7 +9,7 @@ defmodule ExTwitter.API.Streaming do
   Returns a small random sample of all public statuses.
   This method returns the Stream that returns the list of tweets.
   """
-  def sample(options \\ []) do
+  def stream_sample(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     pid = async_request(self, :get, "1.1/statuses/sample.json", params)
     create_stream(pid)

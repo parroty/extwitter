@@ -44,7 +44,7 @@ Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level. M
 ```
 Example for streaming API.
 ```Elixir
-ExTwitter.sample |>
+ExTwitter.stream_sample |>
    Stream.take(3) |>
    Enum.to_list |>
    Enum.map(fn(tweet) -> tweet.text end) |>
