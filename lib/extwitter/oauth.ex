@@ -23,4 +23,11 @@ defmodule ExTwitter.OAuth do
   def request_async(:get, url, params, consumer, access_token, access_token_secret) do
     :oauth.get(url, params, consumer, access_token, access_token_secret, [{:sync, false}, {:stream, :self}])
   end
+
+  @doc """
+  Send async request with post method.
+  """
+  def request_async(:post, url, params, consumer, access_token, access_token_secret) do
+    :oauth.post(url, params, consumer, access_token, access_token_secret, [{:sync, false}, {:stream, :self}])
+  end
 end

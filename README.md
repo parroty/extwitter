@@ -22,6 +22,7 @@ ExTwitter.configure(
    access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
    access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
 )
+
 :ok
 ```
 Example for normal API.
@@ -44,19 +45,20 @@ Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level. M
 ```
 Example for streaming API.
 ```Elixir
-ExTwitter.stream_sample |>
-   Stream.take(3) |>
-   Enum.to_list |>
-   Enum.map(fn(tweet) -> tweet.text end) |>
-   Enum.join("\n-----\n") |>
-   IO.puts
+stream = ExTwitter.stream_filter(track: "apple") |>
+  Stream.map(fn(x) -> x.text end) |>
+  Stream.map(fn(x) -> IO.puts "#{x}\n---------------\n" end)
+Enum.to_list(stream)
 
-@xxxx have you tried this yet?
------
-@yyyy You mean this? http://t.co/xxxx That had sailed below my radar thus far.
------
-@zzzz #elixir-lang. I'm jadams
-:ok
+Apple 'iWatch' rumour round-up
+---------------
+Apple iPhone 4s 16GB Black Verizon - Cracked Screen, WORKS PERFECTLY!
+---------------
+Apple iPod nano 7th Generation (PRODUCT) RED (16 GB) (Latest Model) - Full read by eBay: Price 91.0 USD (23 Bids)...
+---------------
+...
+...
+
 ```
 
 ### Notes

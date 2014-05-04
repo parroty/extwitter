@@ -3,16 +3,27 @@ defmodule ExTwitter.API.Streaming do
   Provides streaming API interfaces.
   """
 
-  @timeout 3000
+  @default_timeout 60_000
 
   @doc """
   Returns a small random sample of all public statuses.
-  This method returns the Stream that returns the list of tweets.
+  This method returns the Stream that holds the list of tweets.
   """
   def stream_sample(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     pid = async_request(self, :get, "1.1/statuses/sample.json", params)
-    create_stream(pid)
+    create_stream(pid, @default_timeout)
+  end
+
+  @doc """
+  Returns public statuses that match one or more filter predicates.
+  This method returns the Stream that holds the list of tweets.
+  Specify at least one of the [follow, track, locations] options.
+  """
+  def stream_filter(options, timeout \\ @default_timeout) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    pid = async_request(self, :post, "1.1/statuses/filter.json", params)
+    create_stream(pid, timeout)
   end
 
   defp async_request(processor, method, path, params) do
@@ -32,19 +43,19 @@ defmodule ExTwitter.API.Streaming do
     end)
   end
 
-  defp create_stream(pid) do
+  defp create_stream(pid, timeout) do
     Stream.resource(
       fn -> pid end,
-      fn(pid) -> receive_next_tweet(pid) end,
+      fn(pid) -> receive_next_tweet(pid, timeout) end,
       fn(pid) -> send pid, {:cancel, self} end)
   end
 
-  defp receive_next_tweet(pid) do
+  defp receive_next_tweet(pid, timeout) do
     receive do
       {:stream, tweet} -> {tweet, pid}
-      _other -> receive_next_tweet(pid)
+      _other -> receive_next_tweet(pid, timeout)
     after
-      @timeout ->
+      timeout ->
         send pid, {:cancel, self}
         nil
     end
