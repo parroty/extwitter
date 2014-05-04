@@ -13,11 +13,11 @@ defmodule ExTwitter.API.Base do
       |> parse_result
   end
 
-  defp verify_params([]) do
+  def verify_params([]) do
     raise ExTwitter.Error.new(
       message: "OAuth parameters are not set. Use ExTwitter.Configure function to set parameters in advance.")
   end
-  defp verify_params(params), do: params
+  def verify_params(params), do: params
 
   defp request_url(path) do
     "https://api.twitter.com/#{path}" |> to_char_list

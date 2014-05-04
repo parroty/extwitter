@@ -1,13 +1,13 @@
 defmodule ExTwitter.API.Streaming do
   @moduledoc """
+  Provides streaming API interfaces.
   """
+
+  @timeout 3000
 
   @doc """
   Returns a small random sample of all public statuses.
-
-  Tweets are send to the specified processor (pid) asynchronously.
-  This method returns the pid of the request handler, and
-  sending :cancel message request the handler to stop receiving data from server.
+  This method returns the Stream that returns the list of tweets.
   """
   def sample(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
@@ -16,7 +16,7 @@ defmodule ExTwitter.API.Streaming do
   end
 
   defp async_request(processor, method, path, params) do
-    oauth = ExTwitter.Config.get_tuples |> verify_params
+    oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
 
     spawn(fn ->
@@ -44,7 +44,7 @@ defmodule ExTwitter.API.Streaming do
       {:stream, tweet} -> {tweet, pid}
       _other -> receive_next_tweet(pid)
     after
-      3000 ->
+      @timeout ->
         send pid, {:cancel, self}
         nil
     end
@@ -62,11 +62,9 @@ defmodule ExTwitter.API.Streaming do
             process_stream(processor, request_id, acc)
 
           is_end_of_message(part) ->
-            message =
-              Enum.reverse([part|acc])
-                |> Enum.join("")
-                |> parse_tweet_message
-
+            message = Enum.reverse([part|acc])
+                        |> Enum.join("")
+                        |> parse_tweet_message
             if message do
               send processor, message
             end
@@ -110,12 +108,6 @@ defmodule ExTwitter.API.Streaming do
         nil
     end
   end
-
-  defp verify_params([]) do
-    raise ExTwitter.Error.new(
-      message: "OAuth parameters are not set. Use ExTwitter.Configure function to set parameters in advance.")
-  end
-  defp verify_params(params), do: params
 
   defp request_url(path) do
     "https://stream.twitter.com/#{path}" |> to_char_list
