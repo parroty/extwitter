@@ -32,6 +32,6 @@ defmodule ExTwitter.Mixfile do
 
   def deps(:prod) do
     [ {:oauth, github: "tim/erlang-oauth"},
-      {:json, github: "cblage/elixir-json"} ]
+      {:jsex, github: "talentdeficit/jsex"} ]
   end
 end

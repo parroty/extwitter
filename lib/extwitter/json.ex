@@ -1,5 +1,3 @@
-# elixir-json is used at the moment (jsex fails to parse sometimes).
-
 defmodule ExTwitter.JSON do
   @moduledoc """
   JSON encode/decode wrapper module. It's separated to isolate the code
@@ -10,19 +8,14 @@ defmodule ExTwitter.JSON do
   Decode json string into elixir objects with response verification.
   """
   def decode_and_verify(json) do
-    JSON.decode!(json) |> verify_response
+    JSEX.decode!(json) |> verify_response
   end
 
   @doc """
   Decode json string into elixir objects.
   """
   def decode(json) do
-    case JSON.decode(json) do
-      {:ok, json} ->
-        {:ok, json}
-      error ->
-        {:error, error}
-    end
+    JSEX.decode(json)
   end
 
   @doc """
@@ -30,24 +23,26 @@ defmodule ExTwitter.JSON do
   Some libraries returns as tuples, and some returns HashDict.
   """
   def get(object, key) do
-    HashDict.get(object, key) || []
+    case List.keyfind(object, key, 0, nil) do
+      nil -> []
+      item -> elem(item, 1)
+    end
   end
 
   @doc """
   Parse elixir objects into lists.
   """
   def parse(object) do
-    HashDict.to_list(object)
+    object
   end
 
   @doc """
   Verify the API request response, and raises error if response includes error response.
   """
-  def verify_response(tuples) when is_record(tuples, HashDict) do
-    case HashDict.fetch(tuples, "errors") do
-      {:ok, details} -> raise(ExTwitter.Error, message: inspect details)
-      :error -> tuples
+  def verify_response(tuples) do
+    case List.keyfind(tuples, "errors", 0, nil) do
+      nil   -> tuples
+      error -> raise(ExTwitter.Error, message: inspect elem(error, 1))
     end
   end
-  def verify_response(tuples), do: tuples
 end
