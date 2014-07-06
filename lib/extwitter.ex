@@ -3,7 +3,7 @@ defmodule ExTwitter do
   Provides user interface for the Twitter API.
   """
 
-  use Application.Behaviour
+  use Application
 
   @doc """
   GET statuses/user_timeline

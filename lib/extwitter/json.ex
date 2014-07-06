@@ -23,10 +23,7 @@ defmodule ExTwitter.JSON do
   Some libraries returns as tuples, and some returns HashDict.
   """
   def get(object, key) do
-    case List.keyfind(object, key, 0, nil) do
-      nil -> []
-      item -> elem(item, 1)
-    end
+    Map.get(object, key, [])
   end
 
   @doc """
@@ -40,9 +37,13 @@ defmodule ExTwitter.JSON do
   Verify the API request response, and raises error if response includes error response.
   """
   def verify_response(tuples) do
-    case List.keyfind(tuples, "errors", 0, nil) do
-      nil   -> tuples
-      error -> raise(ExTwitter.Error, message: inspect elem(error, 1))
+    if is_list(tuples) do
+      tuples
+    else
+      case Map.get(tuples, "errors", nil) do
+        nil   -> tuples
+        error -> raise(ExTwitter.Error, message: inspect error)
+      end
     end
   end
 end

@@ -3,8 +3,8 @@ defmodule ExTwitter.Mixfile do
 
   def project do
     [ app: :extwitter,
-      version: "0.1.0",
-      elixir: ">= 0.12.4",
+      version: "0.1.1",
+      elixir: "~> 0.14.2",
       deps: deps(Mix.env),
       description: description,
       package: package,
@@ -28,13 +28,14 @@ defmodule ExTwitter.Mixfile do
 
   def deps(:dev) do
     deps(:prod) ++
-      [ {:exvcr, github: "parroty/exvcr"},
-        {:excoveralls, github: "parroty/excoveralls"} ]
+      [ {:exvcr, "~> 0.1"},
+        {:excoveralls, "~> 0.2"},
+        {:meck, "0.8.2", github: "eproxus/meck"} ]
   end
 
   def deps(:prod) do
     [ {:oauth, github: "tim/erlang-oauth"},
-      {:jsex, github: "talentdeficit/jsex"} ]
+      {:jsex, "~> 2.0"} ]
   end
 
   defp description do

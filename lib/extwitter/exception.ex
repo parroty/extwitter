@@ -1,1 +1,3 @@
-defexception ExTwitter.Error, [:message]
+defmodule ExTwitter.Error do
+  defexception [:message]
+end
