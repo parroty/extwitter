@@ -22,6 +22,6 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   end
 
   def friends(screen_name, options \\ []) do
-    followers([screen_name: screen_name] ++ options)
+    friends([screen_name: screen_name] ++ options)
   end
 end
