@@ -28,8 +28,8 @@ defmodule ExTwitter.Mixfile do
 
   def deps(:dev) do
     deps(:prod) ++
-      [ {:exvcr, "~> 0.1"},
-        {:excoveralls, "~> 0.2"},
+      [ {:exvcr, "~> 0.2"},
+        {:excoveralls, "~> 0.3"},
         {:meck, "0.8.2", github: "eproxus/meck", tag: "0.8.2"},
         {:mock, github: "jjh42/mock"} ]
   end
