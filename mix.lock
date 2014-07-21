@@ -1,6 +1,6 @@
 %{"exactor": {:package, "0.5.0"},
-  "excoveralls": {:package, "0.3.0"},
-  "exvcr": {:package, "0.2.0"},
+  "excoveralls": {:package, "0.3.1"},
+  "exvcr": {:package, "0.2.1"},
   "httpotion": {:package, "0.2.4"},
   "jsex": {:package, "2.0.0"},
   "json": {:git, "git://github.com/cblage/elixir-json.git", "725ea02b992aba35c18d0e9c7c3da54689670baf", []},

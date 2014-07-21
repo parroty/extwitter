@@ -5,7 +5,7 @@ defmodule ExTwitter.Mixfile do
     [ app: :extwitter,
       version: "0.1.2",
       elixir: "~> 0.14.2",
-      deps: deps(Mix.env),
+      deps: deps,
       description: description,
       package: package,
       test_coverage: [tool: ExCoveralls] ]
@@ -22,21 +22,15 @@ defmodule ExTwitter.Mixfile do
   #
   # To specify particular versions, regardless of the tag, do:
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
-  def deps(:test) do
-    deps(:dev)
-  end
-
-  def deps(:dev) do
-    deps(:prod) ++
-      [ {:exvcr, "~> 0.2"},
-        {:excoveralls, "~> 0.3"},
-        {:meck, "0.8.2", github: "eproxus/meck", tag: "0.8.2"},
-        {:mock, github: "jjh42/mock"} ]
-  end
-
-  def deps(:prod) do
-    [ {:oauth, github: "tim/erlang-oauth"},
-      {:jsex, "~> 2.0"} ]
+  def deps do
+    [
+      {:oauth, github: "tim/erlang-oauth"},
+      {:jsex, "~> 2.0"},
+      {:exvcr, "~> 0.2", only: [:dev, :test]},
+      {:excoveralls, "~> 0.3", only: :dev},
+      {:meck, "0.8.2", github: "eproxus/meck", tag: "0.8.2", only: :test},
+      {:mock, github: "jjh42/mock", only: :test}
+    ]
   end
 
   defp description do
