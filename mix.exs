@@ -26,7 +26,7 @@ defmodule ExTwitter.Mixfile do
     [
       {:oauth, github: "tim/erlang-oauth"},
       {:jsex, "~> 2.0"},
-      {:exvcr, "~> 0.2", only: [:dev, :test]},
+      {:exvcr, "~> 0.3", only: [:dev, :test]},
       {:excoveralls, "~> 0.3", only: :dev},
       {:meck, "0.8.2", github: "eproxus/meck", tag: "0.8.2", only: :test},
       {:mock, github: "jjh42/mock", only: :test}
