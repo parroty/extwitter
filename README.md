@@ -58,7 +58,13 @@ Apple iPod nano 7th Generation (PRODUCT) RED (16 GB) (Latest Model) - Full read 
 ---------------
 ...
 ...
+```
 
+Or, more simply,
+```Elixir
+for tweet <- ExTwitter.stream_filter(track: "apple") do
+  IO.puts tweet.text
+end
 ```
 
 ### Notes
