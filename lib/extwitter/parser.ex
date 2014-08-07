@@ -75,7 +75,7 @@ defmodule ExTwitter.Parser do
   Parse request parameters for the API.
   """
   def parse_request_params(options) do
-    Enum.map(options, fn({k,v}) -> {to_char_list(k), to_char_list(v)} end)
+    Enum.map(options, fn({k,v}) -> {to_string(k), to_string(v)} end)
   end
 
   defp merge_map(json, struct) do
