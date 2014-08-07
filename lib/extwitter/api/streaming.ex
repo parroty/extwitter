@@ -29,6 +29,17 @@ defmodule ExTwitter.API.Streaming do
     create_stream(pid, timeout)
   end
 
+  @doc """
+  An interface to control the stream which keeps running infinitely.
+  """
+  def stream_control(pid, :stop) do
+    send pid, {:control_stop, self}
+
+    receive do
+      :ok -> :ok
+    end
+  end
+
   defp async_request(processor, method, path, params) do
     oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
@@ -55,8 +66,16 @@ defmodule ExTwitter.API.Streaming do
 
   defp receive_next_tweet(pid, timeout) do
     receive do
-      {:stream, tweet} -> {tweet, pid}
-      _other -> receive_next_tweet(pid, timeout)
+      {:stream, tweet} ->
+        {tweet, pid}
+
+      {:control_stop, requester} ->
+        send pid, {:cancel, self}
+        send requester, :ok
+        nil
+
+      _ ->
+        receive_next_tweet(pid, timeout)
     after
       timeout ->
         send pid, {:cancel, self}

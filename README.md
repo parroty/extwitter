@@ -60,11 +60,19 @@ Apple iPod nano 7th Generation (PRODUCT) RED (16 GB) (Latest Model) - Full read 
 ...
 ```
 
-Or, more simply,
+The `ExTwitter.stream_control` method allows to send a message to stop the stream.
+
 ```Elixir
-for tweet <- ExTwitter.stream_filter(track: "apple") do
-  IO.puts tweet.text
-end
+# An example to stop receiving stream after 5 seconds passed.
+pid = spawn(fn ->
+  stream = ExTwitter.stream_filter(track: "apple")
+  for tweet <- stream do
+    IO.puts tweet.text
+  end
+end)
+
+:timer.sleep(5000)
+ExTwitter.stream_control(pid, :stop)
 ```
 
 ### Notes

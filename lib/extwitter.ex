@@ -68,6 +68,15 @@ defmodule ExTwitter do
   defdelegate stream_filter(options), to: ExTwitter.API.Streaming
 
   @doc """
+  An interface to control the stream which keeps running infinitely.
+  This method is for handling elixir's stream, and it doesn't
+  involve twitter API call.
+
+  `pid` is the process id where stream is processed.
+  """
+  defdelegate stream_control(pid, :stop), to: ExTwitter.API.Streaming
+
+  @doc """
   GET geo/search
   https://dev.twitter.com/docs/api/1.1/get/geo/search
   """
