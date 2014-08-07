@@ -1,4 +1,4 @@
-%{"exactor": {:package, "0.5.0"},
+%{"exactor": {:package, "0.6.0"},
   "excoveralls": {:package, "0.3.1"},
   "exvcr": {:package, "0.3.0"},
   "httpotion": {:package, "0.2.4"},
