@@ -7,4 +7,4 @@
   "jsx": {:package, "2.0.4"},
   "meck": {:git, "git://github.com/eproxus/meck.git", "dde759050eff19a1a80fd854d7375174b191665d", [tag: "0.8.2"]},
   "mock": {:git, "git://github.com/jjh42/mock.git", "275109db347caf3449b6d123bd4da720fb08b28e", []},
-  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []}}
+  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "2ee206ea921722893200a0ad534c6b6130233325", []}}
