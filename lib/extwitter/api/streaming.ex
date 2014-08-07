@@ -3,6 +3,9 @@ defmodule ExTwitter.API.Streaming do
   Provides streaming API interfaces.
   """
 
+  @doc """
+  The default timeout value (in milliseconds) for how long keeps waiting until next message arrives.
+  """
   @default_timeout 60_000
 
   @doc """
