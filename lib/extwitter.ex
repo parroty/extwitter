@@ -74,7 +74,8 @@ defmodule ExTwitter do
 
   `pid` is the process id where stream is processed.
   """
-  defdelegate stream_control(pid, :stop), to: ExTwitter.API.Streaming
+  defdelegate stream_control(pid, :stop),          to: ExTwitter.API.Streaming
+  defdelegate stream_control(pid, :stop, options), to: ExTwitter.API.Streaming
 
   @doc """
   GET geo/search

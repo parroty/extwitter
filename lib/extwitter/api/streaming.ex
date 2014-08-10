@@ -6,7 +6,8 @@ defmodule ExTwitter.API.Streaming do
   @doc """
   The default timeout value (in milliseconds) for how long keeps waiting until next message arrives.
   """
-  @default_timeout 60_000
+  @default_stream_timeout 60_000
+  @default_control_timeout 10_000
 
   @doc """
   Returns a small random sample of all public statuses.
@@ -15,7 +16,7 @@ defmodule ExTwitter.API.Streaming do
   def stream_sample(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     pid = async_request(self, :get, "1.1/statuses/sample.json", params)
-    create_stream(pid, @default_timeout)
+    create_stream(pid, @default_stream_timeout)
   end
 
   @doc """
@@ -23,7 +24,7 @@ defmodule ExTwitter.API.Streaming do
   This method returns the Stream that holds the list of tweets.
   Specify at least one of the [follow, track, locations] options.
   """
-  def stream_filter(options, timeout \\ @default_timeout) do
+  def stream_filter(options, timeout \\ @default_stream_timeout) do
     params = ExTwitter.Parser.parse_request_params(options)
     pid = async_request(self, :post, "1.1/statuses/filter.json", params)
     create_stream(pid, timeout)
@@ -31,12 +32,17 @@ defmodule ExTwitter.API.Streaming do
 
   @doc """
   An interface to control the stream which keeps running infinitely.
+  options can be used to specify timeout (ex. [timeout: 10000]).
   """
-  def stream_control(pid, :stop) do
+  def stream_control(pid, :stop, options \\ []) do
+    timeout = options[:timeout] || @default_control_timeout
+
     send pid, {:control_stop, self}
 
     receive do
       :ok -> :ok
+    after
+      timeout -> :timeout
     end
   end
 

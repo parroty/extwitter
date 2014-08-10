@@ -54,6 +54,22 @@ defmodule ExTwitterStreamTest do
     assert tweet.text =~ ~r/sample tweet text/
   end
 
+  test "stream control succeeds" do
+    parent = self
+    pid = spawn(fn ->
+      receive do
+        {:control_stop, _pid} -> send parent, :ok
+      after
+        50 -> :timeout
+      end
+    end)
+
+    assert ExTwitter.stream_control(pid, :stop, timeout: 50) == :ok
+  end
+
+  test "stream control timeouts after 10 milliseconds" do
+    assert ExTwitter.stream_control(self, :stop, timeout: 10) == :timeout
+  end
 
   defp wait_async_request_initialization do
     :timer.sleep(100) # put small wait

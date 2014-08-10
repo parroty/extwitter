@@ -164,5 +164,4 @@ defmodule ExTwitterTest do
       assert List.first(geo).full_name == "SoMa, San Francisco"
     end
   end
-
 end
