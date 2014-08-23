@@ -65,7 +65,8 @@ defmodule ExTwitter do
   POST statuses/filter
   https://dev.twitter.com/docs/api/1.1/post/statuses/filter
   """
-  defdelegate stream_filter(options), to: ExTwitter.API.Streaming
+  defdelegate stream_filter(options),          to: ExTwitter.API.Streaming
+  defdelegate stream_filter(options, timeout), to: ExTwitter.API.Streaming
 
   @doc """
   An interface to control the stream which keeps running infinitely.
