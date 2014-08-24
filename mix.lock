@@ -1,5 +1,5 @@
 %{"exactor": {:package, "0.6.0"},
-  "excoveralls": {:package, "0.3.1"},
+  "excoveralls": {:package, "0.3.2"},
   "exvcr": {:package, "0.3.0"},
   "httpotion": {:package, "0.2.4"},
   "jsex": {:package, "2.0.0"},
