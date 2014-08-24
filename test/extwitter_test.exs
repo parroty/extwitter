@@ -62,8 +62,15 @@ defmodule ExTwitterTest do
   test "search with invalid count param raises error" do
     use_cassette "search_invalid_count" do
       assert_raise ExTwitter.Error, fn ->
-        ExTwitter.search("test", [count: -1])
+        ExTwitter.search("test", count: -1)
       end
+    end
+  end
+
+  test "shows retweets" do
+    use_cassette "retweets" do
+      retweets = ExTwitter.retweets(444144169058308096, count: 1)
+      Enum.count(retweets) == 1
     end
   end
 

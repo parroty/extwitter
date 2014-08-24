@@ -5,6 +5,12 @@ defmodule ExTwitter.API.Tweets do
 
   import ExTwitter.API.Base
 
+  def retweets(id, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:get, "1.1/statuses/retweets/#{id}.json", params)
+      |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+  end
+
   def show(id, options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/statuses/show/#{id}.json", params)

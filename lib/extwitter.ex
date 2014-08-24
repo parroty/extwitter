@@ -34,6 +34,13 @@ defmodule ExTwitter do
   defdelegate retweets_of_me(options), to: ExTwitter.API.Timelines
 
   @doc """
+  GET statuses/retweets/:id
+  https://dev.twitter.com/docs/api/1.1/get/statuses/retweets/%3Aid
+  """
+  defdelegate retweets(id),          to: ExTwitter.API.Tweets
+  defdelegate retweets(id, options), to: ExTwitter.API.Tweets
+
+  @doc """
   POST statuses/show/:id
   https://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid
   """

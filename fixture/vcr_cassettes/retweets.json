@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/statuses/retweets/444144169058308096.json"
+    },
+    "response": {
+      "body": "[{\"created_at\":\"Fri Mar 14 13:52:32 +0000 2014\",\"id\":444471139755360256,\"id_str\":\"444471139755360256\",\"text\":\"RT @ErlangCentral: Erlang Factory 2014 \\u2014 Bitcoin &amp; Elixir: Living the Cutting Edge http:\\/\\/t.co\\/T38uGd77HC\",\"source\":\"\\u003ca href=\\\"https:\\/\\/about.twitter.com\\/products\\/tweetdeck\\\" rel=\\\"nofollow\\\"\\u003eTweetDeck\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":48156007,\"id_str\":\"48156007\",\"name\":\"Plataformatec\",\"screen_name\":\"plataformatec\",\"location\":\"S\\u00e3o Paulo, Brazil\",\"description\":\"We build tailored web and mobile applications for our customers.\",\"url\":\"http:\\/\\/t.co\\/ogQGk38OYR\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/ogQGk38OYR\",\"expanded_url\":\"http:\\/\\/plataformatec.com.br\",\"display_url\":\"plataformatec.com.br\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":2363,\"friends_count\":27,\"listed_count\":133,\"created_at\":\"Wed Jun 17 23:11:25 +0000 2009\",\"favourites_count\":48,\"utc_offset\":-10800,\"time_zone\":\"Brasilia\",\"geo_enabled\":true,\"verified\":false,\"statuses_count\":504,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"1A1B1F\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme9\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme9\\/bg.gif\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1891390827\\/logo-plataformatec-icone-com-alpha_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1891390827\\/logo-plataformatec-icone-com-alpha_normal.png\",\"profile_link_color\":\"2FC2EF\",\"profile_sidebar_border_color\":\"181A1E\",\"profile_sidebar_fill_color\":\"252429\",\"profile_text_color\":\"666666\",\"profile_use_background_image\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweeted_status\":{\"created_at\":\"Thu Mar 13 16:13:16 +0000 2014\",\"id\":444144169058308096,\"id_str\":\"444144169058308096\",\"text\":\"Erlang Factory 2014 \\u2014 Bitcoin &amp; Elixir: Living the Cutting Edge http:\\/\\/t.co\\/T38uGd77HC\",\"source\":\"\\u003ca href=\\\"http:\\/\\/ifttt.com\\\" rel=\\\"nofollow\\\"\\u003eIFTTT\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":993425858,\"id_str\":\"993425858\",\"name\":\"Erlang Central\",\"screen_name\":\"ErlangCentral\",\"location\":\"\",\"description\":\"Erlang Central is a complete resource hub for the Erlang programming language community.\",\"url\":\"http:\\/\\/t.co\\/84PFQQCX\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/84PFQQCX\",\"expanded_url\":\"http:\\/\\/erlangcentral.org\\/\",\"display_url\":\"erlangcentral.org\",\"indices\":[0,20]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":1227,\"friends_count\":202,\"listed_count\":50,\"created_at\":\"Thu Dec 06 16:48:06 +0000 2012\",\"favourites_count\":224,\"utc_offset\":3600,\"time_zone\":\"Casablanca\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":1450,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"C0DEED\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/2975022968\\/9fe38f57d845fb9cf64e75bd0b61e94e_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/2975022968\\/9fe38f57d845fb9cf64e75bd0b61e94e_normal.png\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/993425858\\/1398703872\",\"profile_link_color\":\"0084B4\",\"profile_sidebar_border_color\":\"C0DEED\",\"profile_sidebar_fill_color\":\"DDEEF6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":true,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":2,\"favorite_count\":8,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[{\"url\":\"http:\\/\\/t.co\\/T38uGd77HC\",\"expanded_url\":\"http:\\/\\/ift.tt\\/1gnsWe0\",\"display_url\":\"ift.tt\\/1gnsWe0\",\"indices\":[68,90]}],\"user_mentions\":[]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"retweet_count\":2,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[{\"url\":\"http:\\/\\/t.co\\/T38uGd77HC\",\"expanded_url\":\"http:\\/\\/ift.tt\\/1gnsWe0\",\"display_url\":\"ift.tt\\/1gnsWe0\",\"indices\":[87,109]}],\"user_mentions\":[{\"screen_name\":\"ErlangCentral\",\"name\":\"Erlang Central\",\"id\":993425858,\"id_str\":\"993425858\",\"indices\":[3,17]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"}]",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 24 Aug 2014 02:04:17 GMT",
+        "pragma": "no-cache",
+        "server": "tfe_a",
+        "content-length": "5095",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 24 Aug 2014 02:04:17 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 23-Aug-2016 02:04:17 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "60",
+        "x-rate-limit-remaining": "58",
+        "x-rate-limit-reset": "1408846583",
+        "x-transaction": "ead31ed9c98f15fe",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]
