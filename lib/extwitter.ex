@@ -6,6 +6,13 @@ defmodule ExTwitter do
   use Application
 
   @doc """
+  GET statuses/mentions_timeline
+  https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline
+  """
+  defdelegate mentions_timeline,          to: ExTwitter.API.Timelines
+  defdelegate mentions_timeline(options), to: ExTwitter.API.Timelines
+
+  @doc """
   GET statuses/user_timeline
   https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
   """
@@ -13,11 +20,11 @@ defmodule ExTwitter do
   defdelegate user_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
-  GET statuses/mentions_timeline
-  https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline
+  GET statuses/home_timeline
+  https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline
   """
-  defdelegate mentions_timeline,          to: ExTwitter.API.Timelines
-  defdelegate mentions_timeline(options), to: ExTwitter.API.Timelines
+  defdelegate home_timeline,          to: ExTwitter.API.Timelines
+  defdelegate home_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
   POST statuses/show/:id

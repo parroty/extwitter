@@ -5,15 +5,21 @@ defmodule ExTwitter.API.Timelines do
 
   import ExTwitter.API.Base
 
+  def mentions_timeline(options \\ []) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:get, "1.1/statuses/mentions_timeline.json", params)
+      |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+  end
+
   def user_timeline(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/statuses/user_timeline.json", params)
       |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 
-  def mentions_timeline(options \\ []) do
+  def home_timeline(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
-    request(:get, "1.1/statuses/mentions_timeline.json", params)
+    request(:get, "1.1/statuses/home_timeline.json", params)
       |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 end

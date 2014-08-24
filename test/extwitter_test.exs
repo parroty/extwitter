@@ -17,6 +17,13 @@ defmodule ExTwitterTest do
     :ok
   end
 
+  test "gets authenticated user mentions timeline" do
+    use_cassette "mentions_timeline" do
+      timeline = ExTwitter.mentions_timeline(count: 1)
+      assert Enum.count(timeline) == 1
+    end
+  end
+
   test "gets authenticated user timeline" do
     use_cassette "user_timeline" do
       timeline = ExTwitter.user_timeline(count: 1)
@@ -31,18 +38,17 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "gets authenticated user mentions timeline" do
-    use_cassette "mentions_timeline" do
-      timeline = ExTwitter.mentions_timeline(count: 1)
-      assert Enum.count(timeline) == 1
+  test "search with count param 2 (gets 2 tweet)" do
+    use_cassette "search_single" do
+      tweets = ExTwitter.search("test", count: 2)
+      assert Enum.count(tweets) == 2
     end
   end
 
-
-  test "search with count param 2 (gets 2 tweet)" do
-    use_cassette "search_single" do
-      tweets = ExTwitter.search("test", [count: 2])
-      assert Enum.count(tweets) == 2
+  test "gets authenticated user home timeline" do
+    use_cassette "home_timeline" do
+      timeline = ExTwitter.home_timeline(count: 1)
+      assert Enum.count(timeline) == 1
     end
   end
 

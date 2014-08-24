@@ -1,0 +1,48 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/statuses/home_timeline.json"
+    },
+    "response": {
+      "body": "[{\"created_at\":\"Wed Aug 06 06:30:23 +0000 2014\",\"id\":496906112491200513,\"id_str\":\"496906112491200513\",\"text\":\"update sample\",\"source\":\"\\u003ca href=\\\"http:\\/\\/parroty-twitter.herokuapp.com\\\" rel=\\\"nofollow\\\"\\u003eParTwi\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":1032857766,\"id_str\":\"1032857766\",\"name\":\"parrotybot\",\"screen_name\":\"parrotybot\",\"location\":\"\",\"description\":\"\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":1,\"friends_count\":0,\"listed_count\":0,\"created_at\":\"Mon Dec 24 15:01:01 +0000 2012\",\"favourites_count\":0,\"utc_offset\":32400,\"time_zone\":\"Irkutsk\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":10,\"lang\":\"ja\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"C0DEED\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/abs.twimg.com\\/sticky\\/default_profile_images\\/default_profile_3_normal.png\",\"profile_image_url_https\":\"https:\\/\\/abs.twimg.com\\/sticky\\/default_profile_images\\/default_profile_3_normal.png\",\"profile_link_color\":\"0084B4\",\"profile_sidebar_border_color\":\"C0DEED\",\"profile_sidebar_fill_color\":\"DDEEF6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":true,\"default_profile_image\":true,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[]},\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"}]",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 24 Aug 2014 01:24:26 UTC",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "1896",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 24 Aug 2014 01:24:26 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 23-Aug-2016 01:24:26 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "a5cde17083e67c0107b4e5321dca495a",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "10",
+        "x-rate-limit-reset": "1408843611",
+        "x-transaction": "7bcb674e422f065d",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]
