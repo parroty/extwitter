@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/statuses/retweets_of_me.json"
+    },
+    "response": {
+      "body": "[]",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 24 Aug 2014 01:28:19 GMT",
+        "pragma": "no-cache",
+        "server": "tfe_a",
+        "content-length": "2",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 24 Aug 2014 01:28:19 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 23-Aug-2016 01:28:19 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "12",
+        "x-rate-limit-reset": "1408844499",
+        "x-transaction": "3689eae105040200",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

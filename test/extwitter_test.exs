@@ -17,21 +17,21 @@ defmodule ExTwitterTest do
     :ok
   end
 
-  test "gets authenticated user mentions timeline" do
+  test "gets authenticated user's mentions timeline" do
     use_cassette "mentions_timeline" do
       timeline = ExTwitter.mentions_timeline(count: 1)
       assert Enum.count(timeline) == 1
     end
   end
 
-  test "gets authenticated user timeline" do
+  test "gets authenticated user's timeline" do
     use_cassette "user_timeline" do
       timeline = ExTwitter.user_timeline(count: 1)
       assert Enum.count(timeline) == 1
     end
   end
 
-  test "gets specified user timeline" do
+  test "gets specified user's timeline" do
     use_cassette "user_timeline_elixirlang" do
       timeline = ExTwitter.user_timeline(screen_name: "elixirlang", count: 1)
       assert List.first(timeline).user.screen_name == "elixirlang"
@@ -45,10 +45,17 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "gets authenticated user home timeline" do
+  test "gets authenticated user's home timeline" do
     use_cassette "home_timeline" do
       timeline = ExTwitter.home_timeline(count: 1)
       assert Enum.count(timeline) == 1
+    end
+  end
+
+  test "gets authenticated user's retweets of me" do
+    use_cassette "retweets_of_me" do
+      timeline = ExTwitter.retweets_of_me
+      assert Enum.count(timeline) == 0  # testing user doesn't have retweets
     end
   end
 
