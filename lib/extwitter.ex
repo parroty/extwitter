@@ -5,6 +5,18 @@ defmodule ExTwitter do
 
   use Application
 
+  def start(_type, _args) do
+    ExTwitter.Config.start
+    ExTwitter.Supervisor.start_link
+  end
+
+  # -------------- ExTwitter Settings -------------
+
+  @doc """
+  Provides OAuth configuration setting for accessing twitter server.
+  """
+  defdelegate configure(oauth), to: ExTwitter.Config, as: :set
+
   # -------------- Timelines -------------
 
   @doc """
@@ -396,15 +408,4 @@ defmodule ExTwitter do
 
   # -------------- Tweets -------------
 
-  # -------------- ExTwitter Settings -------------
-
-  @doc """
-  Provides OAuth configuration setting for accessing twitter server.
-  """
-  defdelegate configure(oauth), to: ExTwitter.Config, as: :set
-
-  def start(_type, _args) do
-    ExTwitter.Config.start
-    ExTwitter.Supervisor.start_link
-  end
 end
