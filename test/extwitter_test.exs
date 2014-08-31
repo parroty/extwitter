@@ -193,4 +193,16 @@ defmodule ExTwitterTest do
       assert status["rate_limit_context"]["access_token"] == "<REMOVED>"
     end
   end
+
+  test "lookup status" do
+    # Fetching the following tweets
+    #   https://twitter.com/twitter/status/504692034473435136
+    #   https://twitter.com/twitter/status/502883389347622912
+    use_cassette "lookup status" do
+      tweets = ExTwitter.lookup_status("504692034473435136,502883389347622912")
+      assert Enum.count(tweets) == 2
+      assert Enum.at(tweets, 0).text =~ ~r/Want to know how your/
+      assert Enum.at(tweets, 1).text =~ ~r/Honored to be named/
+    end
+  end
 end

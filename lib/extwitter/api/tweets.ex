@@ -33,4 +33,10 @@ defmodule ExTwitter.API.Tweets do
     request(:get, "1.1/statuses/retweeters/ids.json", params)
       |> ExTwitter.Parser.parse_ids
   end
+
+  def lookup_status(id, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params([id: id] ++ options)
+    request(:get, "1.1/statuses/lookup.json", params)
+      |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+  end
 end

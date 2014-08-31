@@ -427,4 +427,11 @@ defmodule ExTwitter do
 
   # -------------- Tweets -------------
 
+  @doc """
+  GET statuses/lookup
+  https://dev.twitter.com/docs/api/1.1/get/statuses/lookup
+  """
+  defdelegate lookup_status(id),          to: ExTwitter.API.Tweets
+  defdelegate lookup_status(id, options), to: ExTwitter.API.Tweets
+
 end
