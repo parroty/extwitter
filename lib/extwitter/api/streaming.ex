@@ -73,19 +73,19 @@ defmodule ExTwitter.API.Streaming do
   defp receive_next_tweet(pid, timeout) do
     receive do
       {:stream, tweet} ->
-        {tweet, pid}
+        {[tweet], pid}
 
       {:control_stop, requester} ->
         send pid, {:cancel, self}
         send requester, :ok
-        nil
+        {:halt, pid}
 
       _ ->
         receive_next_tweet(pid, timeout)
     after
       timeout ->
         send pid, {:cancel, self}
-        nil
+        {:halt, pid}
     end
   end
 
