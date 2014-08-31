@@ -38,7 +38,7 @@ ExTwitter.search("elixir-lang", [count: 5]) |>
 -----
 @zzzz #elixir-lang. I'm jadams
 -----
-Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level. Medyo naexcite.
+Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level.
 -----
 @aaaa usually kasi magbbuzz lang yan pag luma na string. talaga ang elixir.
 :ok
