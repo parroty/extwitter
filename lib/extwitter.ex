@@ -161,17 +161,19 @@ defmodule ExTwitter do
 
   @doc """
   GET followers/list
-  https://api.twitter.com/1.1/followers/list.json
+  https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  defdelegate followers(screen_name),          to: ExTwitter.API.FriendsAndFollowers
-  defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  defdelegate followers(options) when is_list(options), to: ExTwitter.API.FriendsAndFollowers
+  defdelegate followers(screen_name),                   to: ExTwitter.API.FriendsAndFollowers
+  defdelegate followers(screen_name, options),          to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET friends/list
-  https://api.twitter.com/1.1/friends/list.json
+  https://dev.twitter.com/docs/api/1.1/get/friends/list
   """
-  defdelegate friends(screen_name),          to: ExTwitter.API.FriendsAndFollowers
-  defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  defdelegate friends(options) when is_list(options),   to: ExTwitter.API.FriendsAndFollowers
+  defdelegate friends(screen_name),                     to: ExTwitter.API.FriendsAndFollowers
+  defdelegate friends(screen_name, options),            to: ExTwitter.API.FriendsAndFollowers
 
   # GET friendships/lookup
   # https://dev.twitter.com/docs/api/1.1/get/friendships/lookup
@@ -216,6 +218,9 @@ defmodule ExTwitter do
 
   # GET users/lookup
   # https://dev.twitter.com/docs/api/1.1/get/users/lookup
+  defdelegate user_lookup(options) when is_list(options), to: ExTwitter.API.Users
+  defdelegate user_lookup(screen_name),                   to: ExTwitter.API.Users
+  defdelegate user_lookup(screen_name, options),          to: ExTwitter.API.Users
 
   @doc """
   GET users/show

@@ -158,6 +158,14 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "lookup user" do
+    use_cassette "lookup_user" do
+      users = ExTwitter.user_lookup("twitter")
+      assert Enum.count(users) == 1
+      assert Enum.at(users, 0).screen_name == "twitter"
+    end
+  end
+
   test "show user" do
     use_cassette "show_user" do
       user = ExTwitter.user("elixirlang", "elixirlang")
