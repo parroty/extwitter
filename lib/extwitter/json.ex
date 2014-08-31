@@ -30,7 +30,7 @@ defmodule ExTwitter.JSON do
   Parse elixir objects into lists.
   """
   def parse(object) do
-    object
+    object  # do nothing for current library - JSEX
   end
 
   @doc """
