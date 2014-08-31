@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/application/rate_limit_status.json"
+    },
+    "response": {
+      "body": "{\"rate_limit_context\":{\"access_token\":\"<REMOVED>\"},\"resources\":{\"statuses\":{\"\\/statuses\\/mentions_timeline\":{\"limit\":15,\"remaining\":15,\"reset\":1409459909},\"\\/statuses\\/lookup\":{\"limit\":180,\"remaining\":180,\"reset\":1409459909},\"\\/statuses\\/show\\/:id\":{\"limit\":180,\"remaining\":180,\"reset\":1409459909},\"\\/statuses\\/oembed\":{\"limit\":180,\"remaining\":180,\"reset\":1409459909},\"\\/statuses\\/retweeters\\/ids\":{\"limit\":15,\"remaining\":15,\"reset\":1409459909},\"\\/statuses\\/home_timeline\":{\"limit\":15,\"remaining\":15,\"reset\":1409459909},\"\\/statuses\\/user_timeline\":{\"limit\":180,\"remaining\":180,\"reset\":1409459909},\"\\/statuses\\/friends\":{\"limit\":15,\"remaining\":15,\"reset\":1409459909},\"\\/statuses\\/retweets\\/:id\":{\"limit\":60,\"remaining\":60,\"reset\":1409459909},\"\\/statuses\\/retweets_of_me\":{\"limit\":15,\"remaining\":15,\"reset\":1409459909}}}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 31 Aug 2014 04:23:29 GMT",
+        "pragma": "no-cache",
+        "server": "tfe_a",
+        "content-length": "860",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 31 Aug 2014 04:23:29 GMT",
+        "set-cookie": "lang=ja",
+        "set-cookie": "<REMOVED> Expires=Tue, 30-Aug-2016 04:23:29 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "163",
+        "x-rate-limit-reset": "1409459112",
+        "x-transaction": "04c6baf7c2b371ad",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

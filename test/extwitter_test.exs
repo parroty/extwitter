@@ -6,6 +6,7 @@ defmodule ExTwitterTest do
     ExVCR.Config.filter_url_params(true)
     ExVCR.Config.filter_sensitive_data("oauth_signature=[^\"]+", "<REMOVED>")
     ExVCR.Config.filter_sensitive_data("guest_id=.+;", "<REMOVED>")
+    ExVCR.Config.filter_sensitive_data("access_token\":\".+?\"", "access_token\":\"<REMOVED>\"")
 
     ExTwitter.configure(
       consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
@@ -182,6 +183,14 @@ defmodule ExTwitterTest do
     use_cassette "reverse_geocode" do
       geo = ExTwitter.reverse_geocode(37.7821120598956, -122.400612831116, max_results: 1)
       assert List.first(geo).full_name == "SoMa, San Francisco"
+    end
+  end
+
+  test "rate limit status" do
+    use_cassette "rate_limit_status" do
+      status = ExTwitter.rate_limit_status(resources: "statuses")
+      assert status["resources"]["statuses"]["/statuses/home_timeline"]["limit"] > 0
+      assert status["rate_limit_context"]["access_token"] == "<REMOVED>"
     end
   end
 end

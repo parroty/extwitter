@@ -406,6 +406,25 @@ defmodule ExTwitter do
 
   # -------------- Help -------------
 
+  # GET help/configuration
+  # https://dev.twitter.com/docs/api/1.1/get/help/configuration
+
+  # GET help/languages
+  # https://dev.twitter.com/docs/api/1.1/get/help/languages
+
+  # GET help/privacy
+  # https://dev.twitter.com/docs/api/1.1/get/help/privacy
+
+  # GET help/tos
+  # https://dev.twitter.com/docs/api/1.1/get/help/tos
+
+  @doc """
+  GET application/rate_limit_status
+  https://dev.twitter.com/docs/api/1.1/get/application/rate_limit_status
+  """
+  defdelegate rate_limit_status,          to: ExTwitter.API.Help
+  defdelegate rate_limit_status(options), to: ExTwitter.API.Help
+
   # -------------- Tweets -------------
 
 end
