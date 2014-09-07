@@ -18,6 +18,14 @@ defmodule ExTwitterTest do
     :ok
   end
 
+  test "sends request method to search method" do
+    use_cassette "base_request" do
+      response = ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
+      tweets = ExTwitter.JSON.get(response, "statuses") |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+      assert Enum.count(tweets) == 1
+    end
+  end
+
   test "gets authenticated user's mentions timeline" do
     use_cassette "mentions_timeline" do
       timeline = ExTwitter.mentions_timeline(count: 1)

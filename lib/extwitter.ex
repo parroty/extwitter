@@ -17,6 +17,13 @@ defmodule ExTwitter do
   """
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 
+  @doc """
+  Provides general twitter server access interface, which returns json.
+  ex. ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
+  """
+  defdelegate request(method, path),         to: ExTwitter.API.Base
+  defdelegate request(method, path, params), to: ExTwitter.API.Base
+
   # -------------- Timelines -------------
 
   @doc """
