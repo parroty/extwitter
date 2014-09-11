@@ -9,5 +9,5 @@
   "json": {:git, "git://github.com/cblage/elixir-json.git", "725ea02b992aba35c18d0e9c7c3da54689670baf", []},
   "jsx": {:package, "2.1.1"},
   "meck": {:package, "0.8.2"},
-  "mock": {:git, "git://github.com/jjh42/mock.git", "275109db347caf3449b6d123bd4da720fb08b28e", []},
+  "mock": {:git, "git://github.com/parroty/mock.git", "33d095a9b028f9f97f6d506ae6b2feb34630fdc5", [branch: "fix"]},
   "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "2ee206ea921722893200a0ad534c6b6130233325", []}}
