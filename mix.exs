@@ -4,7 +4,7 @@ defmodule ExTwitter.Mixfile do
   def project do
     [ app: :extwitter,
       version: "0.1.5",
-      elixir: "~> 0.14.3 or ~> 0.15.0 or ~> 1.0.0-rc1",
+      elixir: "~> 0.14.3 or ~> 0.15.0 or ~> 1.0.0",
       deps: deps,
       description: description,
       package: package,
@@ -28,7 +28,7 @@ defmodule ExTwitter.Mixfile do
       {:jsex, "~> 2.0"},
       {:exvcr, "~> 0.3", only: [:dev, :test]},
       {:excoveralls, "~> 0.3", only: :dev},
-      {:meck, "0.8.2", github: "eproxus/meck", tag: "0.8.2", only: :test},
+      {:meck, "~> 0.8.2", tag: "0.8.2", only: :test, override: true},
       {:mock, github: "jjh42/mock", only: [:dev, :test]}
     ]
   end
