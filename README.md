@@ -5,8 +5,19 @@ Twitter client library for elixir. It uses <a href="https://github.com/tim/erlan
 It only supports very limited set of functions yet. Refer to <a href="https://github.com/parroty/extwitter/blob/master/lib/extwitter.ex" target="_blank">lib/extwitter.ex</a> and <a href="https://github.com/parroty/extwitter/blob/master/test/extwitter_test.exs" target="_blank">test/extwitter_test.exs</a> for available functions and examples.
 
 ### Usage
-1. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
-2. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`).
+1. Add `extwitter` to deps section in the `mix.exs`.
+2. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
+3. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`).
+
+##### mix.exs
+```elixir
+defp deps do
+  [
+    {:oauth, github: "tim/erlang-oauth"},
+    {:extwitter, "~> 0.1"}
+  ]
+end
+```
 
 ### Sample
 Sample execution on iex.
