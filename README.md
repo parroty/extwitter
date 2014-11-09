@@ -104,7 +104,7 @@ for message <- stream do
     stall_warning = %ExTwitter.Model.StallWarning{} ->
       IO.puts "stall warning = #{stall_warning.code}"
 
-    true ->
+    _ ->
       IO.inspect message
   end
 end
