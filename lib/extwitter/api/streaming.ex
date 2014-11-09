@@ -14,8 +14,9 @@ defmodule ExTwitter.API.Streaming do
   This method returns the Stream that holds the list of tweets.
   """
   def stream_sample(options \\ []) do
+    {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    pid = async_request(self, :get, "1.1/statuses/sample.json", params)
+    pid = async_request(self, :get, "1.1/statuses/sample.json", params, configs)
     create_stream(pid, @default_stream_timeout)
   end
 
@@ -25,9 +26,16 @@ defmodule ExTwitter.API.Streaming do
   Specify at least one of the [follow, track, locations] options.
   """
   def stream_filter(options, timeout \\ @default_stream_timeout) do
+    {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    pid = async_request(self, :post, "1.1/statuses/filter.json", params)
+    pid = async_request(self, :post, "1.1/statuses/filter.json", params, configs)
     create_stream(pid, timeout)
+  end
+
+  defp seperate_configs_from_options(options) do
+    config  = Keyword.take(options, [:receive_messages])
+    options = Keyword.delete(options, :receive_messages)
+    {options, config}
   end
 
   @doc """
@@ -46,7 +54,7 @@ defmodule ExTwitter.API.Streaming do
     end
   end
 
-  defp async_request(processor, method, path, params) do
+  defp async_request(processor, method, path, params, configs) do
     oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
 
@@ -56,7 +64,7 @@ defmodule ExTwitter.API.Streaming do
 
       case response do
         {:ok, request_id} ->
-          process_stream(processor, request_id)
+          process_stream(processor, request_id, configs)
         {:error, reason} ->
           send processor, {:error, reason}
       end
@@ -89,28 +97,28 @@ defmodule ExTwitter.API.Streaming do
     end
   end
 
-  defp process_stream(processor, request_id, acc \\ []) do
+  defp process_stream(processor, request_id, configs, acc \\ []) do
     receive do
       {:http, {request_id, :stream_start, headers}} ->
         send processor, {:header, headers}
-        process_stream(processor, request_id)
+        process_stream(processor, request_id, configs)
 
       {:http, {request_id, :stream, part}} ->
         cond do
           is_empty_message(part) ->
-            process_stream(processor, request_id, acc)
+            process_stream(processor, request_id, configs, acc)
 
           is_end_of_message(part) ->
             message = Enum.reverse([part|acc])
                         |> Enum.join("")
-                        |> parse_tweet_message
+                        |> parse_tweet_message(configs)
             if message do
               send processor, message
             end
-            process_stream(processor, request_id, [])
+            process_stream(processor, request_id, configs, [])
 
           true ->
-            process_stream(processor, request_id, [part|acc])
+            process_stream(processor, request_id, configs, [part|acc])
         end
 
       {:http, {_request_id, {:error, reason}}} ->
@@ -121,21 +129,25 @@ defmodule ExTwitter.API.Streaming do
         send requester, :ok
 
       _ ->
-        process_stream(processor, request_id)
+        process_stream(processor, request_id, configs)
     end
   end
 
   defp is_empty_message(part), do: part == "\r\n"
   defp is_end_of_message(part), do: part =~ ~r/\r\n$/
 
-  defp parse_tweet_message(json) do
+  defp parse_tweet_message(json, configs) do
     try do
       case ExTwitter.JSON.decode(json) do
         {:ok, tweet} ->
           if ExTwitter.JSON.get(tweet, "id_str") != [] do
             {:stream, ExTwitter.Parser.parse_tweet(tweet)}
           else
-            nil
+            if configs[:receive_messages] do
+              parse_control_message(tweet)
+            else
+              nil
+            end
           end
 
         {:error, error} ->
@@ -145,6 +157,22 @@ defmodule ExTwitter.API.Streaming do
       error ->
         IO.inspect [error: error, json: json]
         nil
+    end
+  end
+
+  defp parse_control_message(message) do
+    case message do
+      %{"delete" => tweet} ->
+        {:stream, %ExTwitter.Model.DeletedTweet{status: tweet["status"]}}
+
+      %{"limit" => limit} ->
+        {:stream, %ExTwitter.Model.Limit{track: limit["track"]}}
+
+      %{"warning" => warning} ->
+        {:stream, %ExTwitter.Model.StallWarning{
+                    code: warning["code"], message: warning["message"], percent_full: warning["percent_full"]}}
+
+      true -> nil
     end
   end
 

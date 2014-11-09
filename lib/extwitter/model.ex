@@ -49,3 +49,15 @@ end
 defmodule ExTwitter.Model.Geo do
   defstruct type: nil, coordinates: nil
 end
+
+defmodule ExTwitter.Model.DeletedTweet do
+  defstruct status: nil
+end
+
+defmodule ExTwitter.Model.Limit do
+  defstruct track: nil
+end
+
+defmodule ExTwitter.Model.StallWarning do
+  defstruct code: nil, message: nil, percent_full: nil
+end

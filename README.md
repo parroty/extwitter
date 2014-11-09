@@ -86,6 +86,30 @@ end)
 ExTwitter.stream_control(pid, :stop)
 ```
 
+Twitter returns several message types (<a href="https://dev.twitter.com/streaming/overview/messages-types" target="_blank">dev.twitter.com - Streaming message types</a>). These messages are returned when `receive_messages` option is specified.
+
+```Elixir
+stream = ExTwitter.stream_sample(receive_messages: true)
+for message <- stream do
+  case message do
+    tweet = %ExTwitter.Model.Tweet{} ->
+      IO.puts "tweet = #{tweet.text}"
+
+    deleted_tweet = %ExTwitter.Model.DeletedTweet{} ->
+      IO.puts "deleted tweet = #{deleted_tweet.status["id"]}"
+
+    limit = %ExTwitter.Model.Limit{} ->
+      IO.puts "limit = #{limit.track}"
+
+    stall_warning = %ExTwitter.Model.StallWarning{} ->
+      IO.puts "stall warning = #{stall_warning.code}"
+
+    true ->
+      IO.inspect message
+  end
+end
+```
+
 ### Notes
 `run_iex.sh` launches iex, with initially calling `ExTwitter.configure` defined as `iex/dot.iex`.
 
