@@ -1,7 +1,7 @@
 defmodule ExTwitter.ConfigTest do
   use ExUnit.Case
 
-  test "oauth initialization" do
+  test "oauth initialization global" do
     oauth =
       [ consumer_key: "consumer_key",
         consumer_secret: "comsumer_secret",
@@ -9,6 +9,25 @@ defmodule ExTwitter.ConfigTest do
         access_token_secret: "access_token_secret" ]
     ExTwitter.Config.set(oauth)
 
+    assert ExTwitter.Config.current_scope == :global
     assert ExTwitter.Config.get == oauth
   end
+
+  test "oauth initialization (process)" do
+    conf1 = [conf: :process1]
+    conf2 = [conf: :process2]
+    test = self
+    test_fun = fn(test_pid, config) ->
+      spawn(fn() ->
+        ExTwitter.Config.set(:process, config)
+        send(test_pid, {ExTwitter.Config.current_scope, ExTwitter.Config.get})
+        exit(:normal)
+      end)
+    end
+    test_fun.(test, conf1)
+    test_fun.(test, conf2)
+    assert_receive {:process, conf1}
+    assert_receive {:process, conf2}
+  end
+
 end
