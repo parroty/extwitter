@@ -42,6 +42,6 @@ defmodule ExTwitter.Mixfile do
   defp package do
     [ contributors: ["parroty"],
       licenses: ["MIT"],
-      links: [ { "GitHub", "https://github.com/parroty/extwitter" } ] ]
+      links: %{"GitHub" => "https://github.com/parroty/extwitter"} ]
   end
 end
