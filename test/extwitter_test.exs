@@ -132,7 +132,7 @@ defmodule ExTwitterTest do
 
   test "gets list membership" do
     use_cassette "list_membership" do
-      lists = ExTwitter.list_memberships(screen_name: "twitter", count: 1)
+      lists = ExTwitter.list_memberships(screen_name: "twitter", count: 2)
       assert Enum.count(lists) == 1
       assert List.first(lists).name != nil
     end
@@ -190,7 +190,7 @@ defmodule ExTwitterTest do
 
   test "search geo" do
     use_cassette "search_geo" do
-      geo = ExTwitter.geo_search("new_york", max_results: 1)
+      geo = ExTwitter.geo_search("new york", max_results: 1)
       assert List.first(geo).name == "New York"
     end
   end
@@ -198,7 +198,7 @@ defmodule ExTwitterTest do
   test "reverse geocode" do
     use_cassette "reverse_geocode" do
       geo = ExTwitter.reverse_geocode(37.7821120598956, -122.400612831116, max_results: 1)
-      assert List.first(geo).full_name == "SoMa, San Francisco"
+      assert List.first(geo).full_name =~ "San Francisco"
     end
   end
 
