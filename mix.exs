@@ -3,7 +3,7 @@ defmodule ExTwitter.Mixfile do
 
   def project do
     [ app: :extwitter,
-      version: "0.1.6",
+      version: "0.1.7",
       elixir: "~> 1.0.0",
       deps: deps,
       description: description,
@@ -25,7 +25,7 @@ defmodule ExTwitter.Mixfile do
   def deps do
     [
       {:oauth, github: "tim/erlang-oauth"},
-      {:jsex, "~> 2.0"},
+      {:exjsx, "~> 3.0"},
       {:exvcr, "~> 0.3", only: [:dev, :test]},
       {:excoveralls, "~> 0.3", only: :dev},
       {:meck, "~> 0.8.2", only: :test},
@@ -42,6 +42,6 @@ defmodule ExTwitter.Mixfile do
   defp package do
     [ contributors: ["parroty"],
       licenses: ["MIT"],
-      links: [ { "GitHub", "https://github.com/parroty/extwitter" } ] ]
+      links: %{"GitHub" => "https://github.com/parroty/extwitter"} ]
   end
 end

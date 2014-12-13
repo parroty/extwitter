@@ -8,14 +8,14 @@ defmodule ExTwitter.JSON do
   Decode json string into elixir objects with response verification.
   """
   def decode_and_verify(json) do
-    JSEX.decode!(json) |> verify_response
+    JSX.decode!(json) |> verify_response
   end
 
   @doc """
   Decode json string into elixir objects.
   """
   def decode(json) do
-    JSEX.decode(json)
+    JSX.decode(json)
   end
 
   @doc """
