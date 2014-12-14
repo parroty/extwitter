@@ -9,7 +9,34 @@ It only supports very limited set of functions yet. Refer to <a href="https://gi
 2. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
 3. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`).
 
-##### mix.exs
+#### Configuration
+
+The default behaviour is to configure using the application environment:
+
+In `config/config.exs`, add:
+
+```elixir
+config :ex_twitter, :oauth, [
+   consumer_key: "",
+   consumer_secret: "",
+   access_token: "",
+   access_token_secret: ""
+]
+```
+
+Or manually at runtime:
+
+```elixir
+ExTwitter.configure([consumer_key: "", ...])
+```
+
+You can also configure the current process only:
+
+```elixir
+ExTwitter.configure(:process, [consumer_key: "", ...])
+```
+
+#### mix.exs
 ```elixir
 defp deps do
   [
