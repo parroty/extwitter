@@ -14,8 +14,6 @@ defmodule ExTwitter.ConfigTest do
   end
 
   test "oauth initialization (process)" do
-    conf1 = [conf: :process1]
-    conf2 = [conf: :process2]
     test = self
     test_fun = fn(test_pid, config) ->
       spawn(fn() ->
@@ -24,10 +22,10 @@ defmodule ExTwitter.ConfigTest do
         exit(:normal)
       end)
     end
-    test_fun.(test, conf1)
-    test_fun.(test, conf2)
-    assert_receive {:process, conf1}
-    assert_receive {:process, conf2}
-  end
+    test_fun.(test, [conf: :process1])
+    test_fun.(test, [conf: :process2])
 
+    assert_receive {:process, [conf: :process1]}
+    assert_receive {:process, [conf: :process2]}
+  end
 end
