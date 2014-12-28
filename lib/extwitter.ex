@@ -1,6 +1,6 @@
 defmodule ExTwitter do
   @moduledoc """
-  Provides user interface for the Twitter API.
+  Provides access interfaces for the Twitter API.
   """
 
   use Application
@@ -12,9 +12,47 @@ defmodule ExTwitter do
   # -------------- ExTwitter Settings -------------
 
   @doc """
-  Provides OAuth configuration setting for accessing twitter server.
+  Provides OAuth configuration settings for accessing twitter server.
+
+  The specified configuration applies globally. Use `ExTwitter.configure/2`
+  for setting different configurations on each processes.
+
+  ## Examples
+
+      ExTwitter.configure(
+        consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+        consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET"),
+        access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
+        access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
+      )
+
   """
+  @spec configure(Keyword.t) :: :ok
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
+
+  @doc """
+  Provides OAuth configuration settings for accessing twitter server.
+
+  ## Options
+
+    The `scope` can have one of the following values.
+
+    * `:global` - configuration is shared for all processes.
+
+    * `:process` - configuration is isolated for each process.
+
+  ## Examples
+
+      ExTwitter.configure(
+        :process,
+        consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+        consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET"),
+        access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
+        access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
+      )
+
+  """
+  @spec configure(:global | :process, Keyword.t) :: :ok
   defdelegate configure(scope, oauth), to: ExTwitter.Config, as: :set
 
   @doc """
@@ -28,6 +66,8 @@ defmodule ExTwitter do
 
   @doc """
   GET statuses/mentions_timeline
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline
   """
   defdelegate mentions_timeline,          to: ExTwitter.API.Timelines
@@ -72,16 +112,54 @@ defmodule ExTwitter do
 
   @doc """
   POST statuses/destroy/:id
+
+  ## Examples
+
+      ExTwitter.destroy_status(446328507694845952)
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
   """
-  defdelegate destroy_status(id),          to: ExTwitter.API.Tweets
+  @spec destroy_status(Integer) :: ExTwitter.Model.Tweet.t
+  defdelegate destroy_status(id), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/destroy/:id
+
+  ## Examples
+
+      ExTwitter.destroy_status(446328507694845952, trim_user: true)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
+  """
+  @spec destroy_status(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
   defdelegate destroy_status(id, options), to: ExTwitter.API.Tweets
 
   @doc """
   POST statuses/update
+
+  ## Examples
+
+      ExTwitter.update("update sample")
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/post/statuses/update
   """
-  defdelegate update(status),          to: ExTwitter.API.Tweets
+  @spec update(String.t) :: ExTwitter.Model.Tweet.t
+  defdelegate update(status), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/update
+
+  ## Examples
+
+      ExTwitter.update("update sample", trim_user: true)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/statuses/update
+  """
+  @spec update(String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
   defdelegate update(status, options), to: ExTwitter.API.Tweets
 
   # POST statuses/retweet/:id
@@ -168,19 +246,61 @@ defmodule ExTwitter do
 
   @doc """
   GET followers/list
+
+  Specify either `screen_name` or `options` in the argument.
+
+  ## Examples
+
+      ExTwitter.followers(count: 1)
+      ExTwitter.followers("twitter")
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  defdelegate followers(options) when is_list(options), to: ExTwitter.API.FriendsAndFollowers
-  defdelegate followers(screen_name),                   to: ExTwitter.API.FriendsAndFollowers
-  defdelegate followers(screen_name, options),          to: ExTwitter.API.FriendsAndFollowers
+  @spec followers(String.t | Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  defdelegate followers(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  GET followers/list
+
+  ## Examples
+
+      ExTwitter.followers("twitter", count: 1)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/followers/list
+  """
+  @spec followers(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET friends/list
+
+  Specify either `screen_name` or `options` in the argument.
+
+  ## Examples
+
+      ExTwitter.friends(count: 1)
+      ExTwitter.friends("twitter")
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/get/friends/list
   """
-  defdelegate friends(options) when is_list(options),   to: ExTwitter.API.FriendsAndFollowers
-  defdelegate friends(screen_name),                     to: ExTwitter.API.FriendsAndFollowers
-  defdelegate friends(screen_name, options),            to: ExTwitter.API.FriendsAndFollowers
+  @spec friends(String.t | Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate friends(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  GET friends/list
+
+  ## Examples
+
+      ExTwitter.friends("twitter", count: 1)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/friends/list
+  """
+  @spec friends(String.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
   # GET friendships/lookup
   # https://dev.twitter.com/docs/api/1.1/get/friendships/lookup
@@ -282,9 +402,24 @@ defmodule ExTwitter do
 
   @doc """
   GET favorites/list
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/get/favorites/list
   """
-  defdelegate favorites,          to: ExTwitter.API.Favorites
+  @spec favorites :: [ExTwitter.Model.Tweet.t]
+  defdelegate favorites, to: ExTwitter.API.Favorites
+
+  @doc """
+  GET favorites/list
+
+  ## Examples
+
+      ExTwitter.favorites(screen_name: "twitter", count: 1)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/favorites/list
+  """
+  @spec favorites(Keyword.t) :: [ExTwitter.Model.Tweet.t]
   defdelegate favorites(options), to: ExTwitter.API.Favorites
 
   # POST favorites/destroy
@@ -389,9 +524,28 @@ defmodule ExTwitter do
 
   @doc """
   GET geo/search
+
+  ## Examples
+
+      ExTwitter.geo_search("new york")
+
+  ## Reference
   https://dev.twitter.com/docs/api/1.1/get/geo/search
   """
-  defdelegate geo_search(query),          to: ExTwitter.API.PlacesAndGeo
+  @spec geo_search(String.t) :: [ExTwitter.Model.Place.t]
+  defdelegate geo_search(query), to: ExTwitter.API.PlacesAndGeo
+
+  @doc """
+  GET geo/search
+
+  ## Examples
+
+      ExTwitter.geo_search("new york", max_results: 1)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/geo/search
+  """
+  @spec geo_search(String.t, Keyword.t) :: [ExTwitter.Model.Place.t]
   defdelegate geo_search(query, options), to: ExTwitter.API.PlacesAndGeo
 
   # GET geo/similar_places

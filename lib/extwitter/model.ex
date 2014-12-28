@@ -6,6 +6,8 @@ defmodule ExTwitter.Model.Tweet do
     in_reply_to_user_id_str: nil, lang: nil, place: nil,
     retweet_count: nil, retweeted: nil, source: nil, text: nil,
     truncated: nil, user: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.User do
@@ -24,40 +26,58 @@ defmodule ExTwitter.Model.User do
     profile_use_background_image: nil, protected: nil, screen_name: nil,
     statuses_count: nil, time_zone: nil, url: nil, utc_offset: nil,
     verified: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Entities do
   defstruct hashtags: nil, symbols: nil, urls: nil, user_mentions: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Trend do
   defstruct events: nil, name: nil, promoted_content: nil, query: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.List do
   defstruct slug: nil, name: nil, created_at: nil, uri: nil, subscriber_count: nil,
     id_str: nil, member_count: nil, mode: nil, id: nil, full_name: nil,
     description: nil, user: nil, following: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Place do
   defstruct id: nil, url: nil, place_type: nil, name: nil, full_name: nil,
     country_code: nil, country: nil, contained_within: nil,
     bounding_box: nil, attributes: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Geo do
   defstruct type: nil, coordinates: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.DeletedTweet do
   defstruct status: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Limit do
   defstruct track: nil
+
+  @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.StallWarning do
   defstruct code: nil, message: nil, percent_full: nil
+
+  @type t :: %__MODULE__{}
 end
