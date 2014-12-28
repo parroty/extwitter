@@ -1,0 +1,48 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/lists/members.json"
+    },
+    "response": {
+      "body": "{\"users\":[{\"id\":2200321694,\"id_str\":\"2200321694\",\"name\":\"Elixir Fountain\",\"screen_name\":\"elixirfountain\",\"location\":\"\",\"profile_location\":null,\"description\":\"Delivering the weekly news from around the Elixir Community\",\"url\":\"http:\\/\\/t.co\\/aBO5NQFICd\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/aBO5NQFICd\",\"expanded_url\":\"http:\\/\\/www.elixir-fountain.com\",\"display_url\":\"elixir-fountain.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":1011,\"friends_count\":55,\"listed_count\":36,\"created_at\":\"Sun Nov 17 22:54:07 +0000 2013\",\"favourites_count\":195,\"utc_offset\":-14400,\"time_zone\":\"Atlantic Time (Canada)\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":807,\"lang\":\"en\",\"status\":{\"created_at\":\"Thu Oct 23 13:36:05 +0000 2014\",\"id\":525279494773678080,\"id_str\":\"525279494773678080\",\"text\":\"RT @erlangfactory: @elixirfountain  We have 3 #Elixir talks at Berlin #ErlangFactory Lite on 4 Dec  @josevalim, @emjii and @scrogson http:\\/\\u2026\",\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\\" rel=\\\"nofollow\\\"\\u003eTwitter Web Client\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweeted_status\":{\"created_at\":\"Thu Oct 16 14:40:58 +0000 2014\",\"id\":522759107871518720,\"id_str\":\"522759107871518720\",\"text\":\"@elixirfountain  We have 3 #Elixir talks at Berlin #ErlangFactory Lite on 4 Dec  @josevalim, @emjii and @scrogson http:\\/\\/t.co\\/5gExQpBYOW\",\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\\" rel=\\\"nofollow\\\"\\u003eTwitter Web Client\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":2200321694,\"in_reply_to_user_id_str\":\"2200321694\",\"in_reply_to_screen_name\":\"elixirfountain\",\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":3,\"favorite_count\":0,\"entities\":{\"hashtags\":[{\"text\":\"Elixir\",\"indices\":[27,34]},{\"text\":\"ErlangFactory\",\"indices\":[51,65]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"elixirfountain\",\"name\":\"Elixir Fountain\",\"id\":2200321694,\"id_str\":\"2200321694\",\"indices\":[0,15]},{\"screen_name\":\"josevalim\",\"name\":\"Jos\\u00e9 Valim\",\"id\":10230812,\"id_str\":\"10230812\",\"indices\":[81,91]},{\"screen_name\":\"emjii\",\"name\":\"Eric Meadows-J\\u00f6nsson\",\"id\":24360241,\"id_str\":\"24360241\",\"indices\":[93,99]},{\"screen_name\":\"scrogson\",\"name\":\"Sonny Scroggin\",\"id\":23913906,\"id_str\":\"23913906\",\"indices\":[104,113]}],\"urls\":[{\"url\":\"http:\\/\\/t.co\\/5gExQpBYOW\",\"expanded_url\":\"http:\\/\\/www.erlang-factory.com\\/berlin2014\\/#speakers\",\"display_url\":\"erlang-factory.com\\/berlin2014\\/#sp\\u2026\",\"indices\":[114,136]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"retweet_count\":3,\"favorite_count\":0,\"entities\":{\"hashtags\":[{\"text\":\"Elixir\",\"indices\":[46,53]},{\"text\":\"ErlangFactory\",\"indices\":[70,84]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"erlangfactory\",\"name\":\"Erlang Factory\",\"id\":45553317,\"id_str\":\"45553317\",\"indices\":[3,17]},{\"screen_name\":\"elixirfountain\",\"name\":\"Elixir Fountain\",\"id\":2200321694,\"id_str\":\"2200321694\",\"indices\":[19,34]},{\"screen_name\":\"josevalim\",\"name\":\"Jos\\u00e9 Valim\",\"id\":10230812,\"id_str\":\"10230812\",\"indices\":[100,110]},{\"screen_name\":\"emjii\",\"name\":\"Eric Meadows-J\\u00f6nsson\",\"id\":24360241,\"id_str\":\"24360241\",\"indices\":[112,118]},{\"screen_name\":\"scrogson\",\"name\":\"Sonny Scroggin\",\"id\":23913906,\"id_str\":\"23913906\",\"indices\":[123,132]}],\"urls\":[{\"url\":\"http:\\/\\/t.co\\/5gExQpBYOW\",\"expanded_url\":\"http:\\/\\/www.erlang-factory.com\\/berlin2014\\/#speakers\",\"display_url\":\"erlang-factory.com\\/berlin2014\\/#sp\\u2026\",\"indices\":[139,140]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"C0DEED\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/464070675246751744\\/f4DVhabn_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/464070675246751744\\/f4DVhabn_normal.png\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/2200321694\\/1399478641\",\"profile_link_color\":\"0084B4\",\"profile_sidebar_border_color\":\"C0DEED\",\"profile_sidebar_fill_color\":\"DDEEF6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":true,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false}],\"next_cursor\":0,\"next_cursor_str\":\"0\",\"previous_cursor\":0,\"previous_cursor_str\":\"0\"}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 28 Dec 2014 11:15:37 UTC",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "4838",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 28 Dec 2014 11:15:37 GMT",
+        "set-cookie": "lang=ja",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "a46808bd760cbb93bbdb8a350fa7fefc",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "177",
+        "x-rate-limit-reset": "1419765999",
+        "x-response-time": "44",
+        "x-transaction": "a9b537839aafa05b",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

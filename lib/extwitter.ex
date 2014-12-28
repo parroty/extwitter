@@ -345,6 +345,9 @@ defmodule ExTwitter do
 
   # GET lists/members
   # https://dev.twitter.com/docs/api/1.1/get/lists/members
+  defdelegate list_members(options),              to: ExTwitter.API.Lists
+  defdelegate list_members(list, owner),          to: ExTwitter.API.Lists
+  defdelegate list_members(list, owner, options), to: ExTwitter.API.Lists
 
   # POST lists/members/create
   # https://dev.twitter.com/docs/api/1.1/post/lists/members/create

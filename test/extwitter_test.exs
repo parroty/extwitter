@@ -145,6 +145,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets list member" do
+    use_cassette "list_member" do
+      users = ExTwitter.list_members("test", "parrotybot")
+      assert List.first(users).name == "Elixir Fountain"
+    end
+  end
+
   test "gets trend with global woeid (id: 1) returns 10 items" do
     use_cassette "trends" do
       trends = ExTwitter.trends(1)
