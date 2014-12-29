@@ -28,4 +28,14 @@ defmodule ExTwitter.ConfigTest do
     assert_receive {:process, [conf: :process1]}
     assert_receive {:process, [conf: :process2]}
   end
+
+  test "get_tuples returns list of tuples" do
+    ExTwitter.Config.set([conf: "value"])
+    assert ExTwitter.Config.get_tuples == [{:conf, 'value'}]
+  end
+
+  test "get_tuples returns empty list when config is not set" do
+    ExTwitter.Config.set(nil)
+    assert ExTwitter.Config.get_tuples == []
+  end
 end

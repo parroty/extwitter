@@ -24,7 +24,9 @@ defmodule ExTwitter.Config do
   Get OAuth configuration values in tuple format.
   """
   def get_tuples do
-    ExTwitter.Config.get |> Enum.map(fn({k, v}) -> {k, to_char_list(v)} end)
+    case ExTwitter.Config.get do
+      nil -> []
+      tuples -> tuples |> Enum.map(fn({k, v}) -> {k, to_char_list(v)} end)
+    end
   end
-
 end
