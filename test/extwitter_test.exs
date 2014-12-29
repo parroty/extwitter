@@ -96,7 +96,7 @@ defmodule ExTwitterTest do
       assert tweet1.text == "update sample"
 
       tweet2 = ExTwitter.destroy_status(tweet1.id)
-      assert tweet2 != nil
+      assert tweet2.text == "update sample"
     end
   end
 
