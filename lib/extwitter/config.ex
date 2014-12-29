@@ -15,7 +15,10 @@ defmodule ExTwitter.Config do
   """
   def set(value), do: set(current_scope, value)
   def set(:global, value), do: Application.put_env(:ex_twitter, :oauth, value)
-  def set(:process, value), do: Process.put(:_ex_twitter_oauth, value)
+  def set(:process, value) do
+    Process.put(:_ex_twitter_oauth, value)
+    :ok
+  end
 
   @doc """
   Get OAuth configuration values in tuple format.
