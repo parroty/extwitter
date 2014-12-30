@@ -8,7 +8,8 @@ defmodule ExTwitter.Mixfile do
       deps: deps,
       description: description,
       package: package,
-      test_coverage: [tool: ExCoveralls] ]
+      test_coverage: [tool: ExCoveralls],
+      docs: [main: ExTwitter] ]
   end
 
   # Configuration for the OTP application
