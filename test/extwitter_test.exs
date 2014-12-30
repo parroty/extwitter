@@ -218,7 +218,7 @@ defmodule ExTwitterTest do
   end
 
   test "lookup status" do
-    # Fetching the following tweets
+    # Fetching the following tweets as sample data.
     #   https://twitter.com/twitter/status/504692034473435136
     #   https://twitter.com/twitter/status/502883389347622912
     use_cassette "lookup status" do

@@ -9,10 +9,6 @@ defmodule ExTwitter.API.Streaming do
   @default_stream_timeout 60_000
   @default_control_timeout 10_000
 
-  @doc """
-  Returns a small random sample of all public statuses.
-  This method returns the Stream that holds the list of tweets.
-  """
   def stream_sample(options \\ []) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
@@ -20,11 +16,6 @@ defmodule ExTwitter.API.Streaming do
     create_stream(pid, @default_stream_timeout)
   end
 
-  @doc """
-  Returns public statuses that match one or more filter predicates.
-  This method returns the Stream that holds the list of tweets.
-  Specify at least one of the [follow, track, locations] options.
-  """
   def stream_filter(options, timeout \\ @default_stream_timeout) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
