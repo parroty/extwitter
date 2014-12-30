@@ -57,6 +57,12 @@ defmodule ExTwitter do
   defdelegate configure(scope, oauth), to: ExTwitter.Config, as: :set
 
   @doc """
+  Returns current OAuth configuration settings for accessing twitter server.
+  """
+  @spec configure :: Keyword.t | nil
+  defdelegate configure, to: ExTwitter.Config, as: :get
+
+  @doc """
   Provides general twitter API access interface.
 
   This method simply returns parsed json in Map structure.

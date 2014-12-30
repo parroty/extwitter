@@ -18,6 +18,14 @@ defmodule ExTwitterTest do
     :ok
   end
 
+  test "gets current configuration" do
+    config = ExTwitter.configure
+    assert Keyword.has_key?(config, :consumer_key)
+    assert Keyword.has_key?(config, :consumer_secret)
+    assert Keyword.has_key?(config, :access_token)
+    assert Keyword.has_key?(config, :access_token_secret)
+  end
+
   test "sends request method to search method" do
     use_cassette "base_request" do
       response = ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
