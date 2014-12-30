@@ -5,7 +5,7 @@ Twitter client library for elixir. It uses <a href="https://github.com/tim/erlan
 It only supports very limited set of functions yet. Refer to <a href="https://github.com/parroty/extwitter/blob/master/lib/extwitter.ex" target="_blank">lib/extwitter.ex</a> and <a href="https://github.com/parroty/extwitter/blob/master/test/extwitter_test.exs" target="_blank">test/extwitter_test.exs</a> for available functions and examples.
 
 ### Documentation
-  * http://hexdocs.pm/extwitter/0.2.1/
+  * http://hexdocs.pm/extwitter
 
 ### Usage
 1. Add `extwitter` to deps section in the `mix.exs`.
