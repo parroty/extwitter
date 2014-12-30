@@ -25,7 +25,7 @@ defmodule ExTwitter.API.Users do
     user(user_id, [])
   end
 
-  def user(user_id, options) do
+  def user(user_id, options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(parse_user_id_param(user_id) ++ options)
     request(:get, "1.1/users/show.json", params)
       |> ExTwitter.Parser.parse_user
@@ -41,7 +41,7 @@ defmodule ExTwitter.API.Users do
   end
 
   # TODO: deprecated method
-  def user(user_id, screen_name, options) do
+  def user(user_id, screen_name, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([user_id: user_id, screen_name: screen_name] ++ options)
     request(:get, "1.1/users/show.json", params)
       |> ExTwitter.Parser.parse_user
