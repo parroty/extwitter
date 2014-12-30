@@ -635,26 +635,32 @@ defmodule ExTwitter do
 
   ## Examples
 
-      ExTwitter.user("elixirlang", "elixirlang")
+      ExTwitter.user("elixirlang")
+      ExTwitter.user(507309896)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/users/show
   """
-  @spec user(String.t, String.t) :: ExTwitter.Model.User.t
-  defdelegate user(user_id, screen_name), to: ExTwitter.API.Users
+  @spec user(String.t | Integer) :: ExTwitter.Model.User.t
+  defdelegate user(id_or_screen_name), to: ExTwitter.API.Users
 
   @doc """
   GET users/show
 
   ## Examples
 
-      ExTwitter.user("elixirlang", "elixirlang", include_entities: false)
+      ExTwitter.user("elixirlang", include_entities: false)
+      ExTwitter.user(507309896, include_entities: false)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/users/show
   """
-  @spec user(String.t, String.t, Keyword.t) :: ExTwitter.Model.User.t
-  defdelegate user(user_id, screen_name, options), to: ExTwitter.API.Users
+  @spec user(String.t | Integer, Keyword.t) :: ExTwitter.Model.User.t
+  defdelegate user(id_or_screen_name, options), to: ExTwitter.API.Users
+
+  # TODO: deprecated method
+  @doc false
+  defdelegate user(user_id, screen_name), to: ExTwitter.API.Users
 
   @doc """
   GET users/search

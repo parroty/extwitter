@@ -21,7 +21,27 @@ defmodule ExTwitter.API.Users do
       |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
-  def user(user_id, screen_name, options \\ []) do
+  def user(user_id) do
+    user(user_id, [])
+  end
+
+  def user(user_id, options) do
+    params = ExTwitter.Parser.parse_request_params(parse_user_id_param(user_id) ++ options)
+    request(:get, "1.1/users/show.json", params)
+      |> ExTwitter.Parser.parse_user
+  end
+
+
+  defp parse_user_id_param(user_id) when is_integer(user_id) do
+    [user_id: user_id]
+  end
+
+  defp parse_user_id_param(screen_name) do
+    [screen_name: screen_name]
+  end
+
+  # TODO: deprecated method
+  def user(user_id, screen_name, options) do
     params = ExTwitter.Parser.parse_request_params([user_id: user_id, screen_name: screen_name] ++ options)
     request(:get, "1.1/users/show.json", params)
       |> ExTwitter.Parser.parse_user
