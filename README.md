@@ -6,6 +6,7 @@ It only supports very limited set of functions yet. Refer to <a href="https://gi
 
 ### Documentation
   * http://hexdocs.pm/extwitter
+     * Click `ExTwitter` module in the left pane if PAGE NOT FOUND is displayed.
 
 ### Usage
 1. Add `extwitter` to deps section in the `mix.exs`.
