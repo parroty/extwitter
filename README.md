@@ -145,8 +145,8 @@ end
 
 ```Elixir
 $ ./run_iex.sh
-Erlang R16B03 (erts-5.10.4) [source] [64-bit] [smp:4:4] [async-threads:10]...
-Interactive Elixir (0.12.4) - press Ctrl+C to exit (type h() ENTER for help)
-iex(1)> (ExTwitter.search("josevalim") |> List.first).text
+Erlang/OTP 17 [erts-6.3] [source] [64-bit] [smp:4:4] [async-threads:10]...
+Interactive Elixir (1.0.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> (ExTwitter.search("elixir") |> List.first).text
 ...
 ```
