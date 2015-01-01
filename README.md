@@ -44,7 +44,7 @@ ExTwitter.configure(:process, [consumer_key: "", ...])
 defp deps do
   [
     {:oauth, github: "tim/erlang-oauth"},
-    {:extwitter, "~> 0.1"}
+    {:extwitter, "~> 0.2"}
   ]
 end
 ```
