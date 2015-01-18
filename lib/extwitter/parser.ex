@@ -45,12 +45,22 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse cursored item list.
+  Parse cursored ids.
   """
   def parse_ids_with_cursor(tuples) do
     ids = tuples |> ExTwitter.JSON.get("ids")
     cursor = tuples |> merge_into_struct(%ExTwitter.Model.Cursor{})
     %{cursor | items: ids}
+  end
+
+  @doc """
+  Parse cursored users.
+  """
+  def parse_users_with_cursor(tuples) do
+    users = tuples |> ExTwitter.JSON.get("users")
+                   |> Enum.map(&ExTwitter.Parser.parse_user/1)
+    cursor = tuples |> merge_into_struct(%ExTwitter.Model.Cursor{})
+    %{cursor | items: users}
   end
 
   @doc """

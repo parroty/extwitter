@@ -169,22 +169,22 @@ defmodule ExTwitterTest do
 
   test "gets followers of twitter user" do
     use_cassette "followers" do
-      followers = ExTwitter.followers("twitter", count: 1)
-      assert Enum.count(followers) == 1
+      followers_cursor = ExTwitter.followers("twitter", count: 1)
+      assert Enum.count(followers_cursor.items) == 1
     end
   end
 
   test "gets follower ids of twitter user" do
     use_cassette "follower_ids" do
-      cursor = ExTwitter.follower_ids("twitter", count: 1)
-      assert Enum.count(cursor.items) == 1
+      follower_ids_cursor = ExTwitter.follower_ids("twitter", count: 1)
+      assert Enum.count(follower_ids_cursor.items) == 1
     end
   end
 
   test "gets friends of twitter user" do
     use_cassette "friends" do
-      friends = ExTwitter.friends("twitter", count: 1)
-      assert Enum.count(friends) == 1
+      friends_cursor = ExTwitter.friends("twitter", count: 1)
+      assert Enum.count(friends_cursor.items) == 1
     end
   end
 

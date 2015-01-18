@@ -550,7 +550,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  @spec followers(String.t | Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @spec followers(String.t | Keyword.t) :: ExTwitter.Model.Cursor.t
   defdelegate followers(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -563,7 +563,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  @spec followers(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @spec followers(String.t, Keyword.t) :: ExTwitter.Model.Cursor.t
   defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
