@@ -52,6 +52,7 @@ end
 ### Sample
 Sample execution on iex.
 
+#### configure
 ```Elixir
 $ iex -S mix
 Interactive Elixir - press Ctrl+C to exit (type h() ENTER for help)
@@ -66,6 +67,7 @@ ExTwitter.configure(
 
 :ok
 ```
+#### search
 Example for normal API.
 ```Elixir
 ExTwitter.search("elixir-lang", [count: 5]) |>
@@ -73,6 +75,7 @@ ExTwitter.search("elixir-lang", [count: 5]) |>
    Enum.join("\n-----\n") |>
    IO.puts
 
+# => Tweets will be displayed in the console as follows.
 @xxxx have you tried this yet?
 -----
 @yyyy You mean this? http://t.co/xxxx That had sailed below my radar thus far.
@@ -84,6 +87,8 @@ Akala ko 100 nalang kulang ko sa dark elixir para sa Barb King summoner level.
 @aaaa usually kasi magbbuzz lang yan pag luma na string. talaga ang elixir.
 :ok
 ```
+
+#### streaming
 Example for streaming API.
 ```Elixir
 stream = ExTwitter.stream_filter(track: "apple") |>
@@ -91,6 +96,7 @@ stream = ExTwitter.stream_filter(track: "apple") |>
   Stream.map(fn(x) -> IO.puts "#{x}\n---------------\n" end)
 Enum.to_list(stream)
 
+# => Tweets will be displayed in the console as follows.
 Apple 'iWatch' rumour round-up
 ---------------
 Apple iPhone 4s 16GB Black Verizon - Cracked Screen, WORKS PERFECTLY!
@@ -138,6 +144,27 @@ for message <- stream do
       IO.inspect message
   end
 end
+```
+
+#### cursor
+Some of Twtitter API have paging capability for retrieving large number of items through cursor. The following is an example to iteratively call the API to fetch all the items.
+
+```elixir
+defmodule Retriever do
+  def follower_ids(screen_name, acc \\ [], cursor \\ -1) do
+    cursor = ExTwitter.follower_ids(screen_name, cursor: cursor)
+    if Enum.count(cursor.items) == 0 do
+      List.flatten(acc)
+    else
+      follower_ids(screen_name, [cursor.items|acc], cursor.next_cursor)
+    end
+  end
+end
+
+ids = Retriever.follower_ids("TwitterDev")
+IO.puts "Follower count for TwitterDev is #{Enum.count(ids)}."
+# => Follower count for TwitterDev is 38469.
+
 ```
 
 ### Notes
