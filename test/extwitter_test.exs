@@ -188,6 +188,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets friend ids of twitter user" do
+    use_cassette "friend_ids" do
+      friend_ids_cursor = ExTwitter.friend_ids("twitter", count: 1)
+      assert Enum.count(friend_ids_cursor.items) == 1
+    end
+  end
+
   test "lookup user" do
     use_cassette "lookup_user" do
       users = ExTwitter.user_lookup("twitter")
