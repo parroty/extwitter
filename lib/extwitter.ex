@@ -489,8 +489,35 @@ defmodule ExTwitter do
   # GET friends/ids
   # https://dev.twitter.com/docs/api/1.1/get/friends/ids
 
-  # GET followers/ids
-  # https://dev.twitter.com/docs/api/1.1/get/followers/ids
+  @doc """
+  GET followers/ids
+
+  Specify either `screen_name` or `options` in the argument.
+
+  ## Examples
+
+      ExTwitter.follower_ids(count: 1)
+      ExTwitter.follower_ids("twitter")
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/followers/ids
+  """
+  @spec follower_ids(String.t | Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate follower_ids(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  GET followers/ids
+
+  ## Examples
+
+      ExTwitter.follower_ids("twitter", count: 1)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/followers/ids
+  """
+  @spec follower_ids(String.t, Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate follower_ids(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+
 
   # GET friendships/incoming
   # https://dev.twitter.com/docs/api/1.1/get/friendships/incoming

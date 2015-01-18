@@ -7,7 +7,7 @@ defmodule ExTwitter.Parser do
   Parse tweet record from the API response json.
   """
   def parse_tweet(tuples) do
-    tweet = tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.Tweet{})
+    tweet = tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.Tweet{})
     user  = parse_user(tweet.user)
     %{tweet | user: user}
   end
@@ -16,14 +16,14 @@ defmodule ExTwitter.Parser do
   Parse user record from the API response json.
   """
   def parse_user(tuples) do
-    tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.User{})
+    tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.User{})
   end
 
   @doc """
   Parse trend record from the API response json.
   """
   def parse_trend(tuples) do
-    trend = tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.Trend{})
+    trend = tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.Trend{})
     %{trend | query: (trend.query |> URI.decode)}
   end
 
@@ -31,7 +31,7 @@ defmodule ExTwitter.Parser do
   Parse list record from the API response json.
   """
   def parse_list(tuples) do
-    list = tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.List{})
+    list = tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.List{})
     user = parse_user(list.user)
     %{list | user: user}
   end
@@ -45,10 +45,19 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
+  Parse cursored item list.
+  """
+  def parse_ids_with_cursor(tuples) do
+    ids = tuples |> ExTwitter.JSON.get("ids")
+    cursor = tuples |> merge_into_struct(%ExTwitter.Model.Cursor{})
+    %{cursor | items: ids}
+  end
+
+  @doc """
   Parse place record from the API response json.
   """
   def parse_place(tuples) do
-    place = tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.Place{})
+    place = tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.Place{})
 
     geo = parse_geo(place.bounding_box)
     con = Enum.map(place.contained_within, &parse_contained_within/1)
@@ -57,7 +66,7 @@ defmodule ExTwitter.Parser do
   end
 
   defp parse_contained_within(tuples) do
-    tuples |> ExTwitter.JSON.parse |> merge_map(%ExTwitter.Model.Place{})
+    tuples |> ExTwitter.JSON.parse |> merge_into_struct(%ExTwitter.Model.Place{})
   end
 
   @doc """
@@ -67,7 +76,7 @@ defmodule ExTwitter.Parser do
     case tuples do
       nil    -> nil
       tuples -> tuples |> ExTwitter.JSON.parse
-                       |> merge_map(%ExTwitter.Model.Geo{})
+                       |> merge_into_struct(%ExTwitter.Model.Geo{})
     end
   end
 
@@ -78,7 +87,7 @@ defmodule ExTwitter.Parser do
     Enum.map(options, fn({k,v}) -> {to_string(k), to_string(v)} end)
   end
 
-  defp merge_map(json, struct) do
+  defp merge_into_struct(json, struct) do
     keys = Map.keys(struct)
     Enum.reduce(keys, struct, fn(key, acc) ->
       atom_key = Atom.to_string(key)

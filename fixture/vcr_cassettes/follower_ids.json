@@ -1,0 +1,49 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/followers/ids.json"
+    },
+    "response": {
+      "body": "{\"ids\":[915484134],\"next_cursor\":8882581338626179201,\"next_cursor_str\":\"8882581338626179201\",\"previous_cursor\":0,\"previous_cursor_str\":\"0\"}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 18 Jan 2015 05:52:00 UTC",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "139",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 18 Jan 2015 05:52:00 GMT",
+        "set-cookie": "lang=ja",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "eb2975dd5bbf2a48ea0299bf55a60cb8",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "10",
+        "x-rate-limit-reset": "1421560905",
+        "x-response-time": "19",
+        "x-transaction": "1a6f80b6cc699e7c",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

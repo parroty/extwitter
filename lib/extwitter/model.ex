@@ -1,3 +1,9 @@
+defmodule ExTwitter.Model.Cursor do
+  defstruct items: nil, next_cursor: nil, previous_cursor: nil
+
+  @type t :: %__MODULE__{}
+end
+
 defmodule ExTwitter.Model.Tweet do
   defstruct contributors: nil, coordinates: nil, created_at: nil, entities: nil,
     favorite_count: nil, favorited: nil, geo: nil, id: nil, id_str: nil,
