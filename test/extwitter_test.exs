@@ -243,11 +243,19 @@ defmodule ExTwitterTest do
     # Fetching the following tweets as sample data.
     #   https://twitter.com/twitter/status/504692034473435136
     #   https://twitter.com/twitter/status/502883389347622912
-    use_cassette "lookup status" do
+    use_cassette "lookup_status" do
       tweets = ExTwitter.lookup_status("504692034473435136,502883389347622912")
       assert Enum.count(tweets) == 2
       assert Enum.at(tweets, 0).text =~ ~r/Want to know how your/
       assert Enum.at(tweets, 1).text =~ ~r/Honored to be named/
+    end
+  end
+
+  test "rate limit exceed" do
+    use_cassette "rate_limit_exceed", custom: true do
+      assert_raise ExTwitter.RateLimitExceededError, fn ->
+        ExTwitter.follower_ids("twitter", count: 1)
+      end
     end
   end
 end

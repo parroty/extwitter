@@ -1,3 +1,7 @@
 defmodule ExTwitter.Error do
-  defexception [:message]
+  defexception [:code, :message]
+end
+
+defmodule ExTwitter.RateLimitExceededError do
+  defexception [:code, :message, :reset_in, :reset_at]
 end

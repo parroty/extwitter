@@ -25,7 +25,7 @@ defmodule ExTwitter.API.Base do
   end
 
   defp parse_result(result) do
-    {:ok, {_response, _header, body}} = result
-    to_string(body) |> ExTwitter.JSON.decode_and_verify
+    {:ok, {_response, header, body}} = result
+    ExTwitter.JSON.decode_and_verify(to_string(body), header)
   end
 end

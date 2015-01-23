@@ -15,4 +15,5 @@
   "meck": {:hex, :meck, "0.8.2"},
   "mock": {:git, "git://github.com/parroty/mock.git", "33d095a9b028f9f97f6d506ae6b2feb34630fdc5", [branch: "fix"]},
   "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "2ee206ea921722893200a0ad534c6b6130233325", []},
-  "poison": {:hex, :poison, "1.3.0"}}
+  "poison": {:hex, :poison, "1.3.0"},
+  "timex": {:hex, :timex, "0.13.3"}}

@@ -152,11 +152,21 @@ Some of Twtitter API have paging capability for retrieving large number of items
 ```elixir
 defmodule Retriever do
   def follower_ids(screen_name, acc \\ [], cursor \\ -1) do
-    cursor = ExTwitter.follower_ids(screen_name, cursor: cursor)
+    cursor = fetch_next(screen_name, cursor)
     if Enum.count(cursor.items) == 0 do
       List.flatten(acc)
     else
       follower_ids(screen_name, [cursor.items|acc], cursor.next_cursor)
+    end
+  end
+
+  defp fetch_next(screen_name, cursor) do
+    try do
+      ExTwitter.follower_ids(screen_name, cursor: cursor)
+    rescue
+      e in ExTwitter.RateLimitExceededError ->
+        :timer.sleep ((e.reset_in + 1) * 1000)
+        fetch_next(screen_name, cursor)
     end
   end
 end
@@ -164,7 +174,6 @@ end
 ids = Retriever.follower_ids("TwitterDev")
 IO.puts "Follower count for TwitterDev is #{Enum.count(ids)}."
 # => Follower count for TwitterDev is 38469.
-
 ```
 
 ### Notes
