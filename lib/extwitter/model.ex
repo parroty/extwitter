@@ -1,10 +1,10 @@
-defmodule ExTwitter.Model.Cursor do
-  defstruct items: nil, next_cursor: nil, previous_cursor: nil
-
-  @type t :: %__MODULE__{}
-end
-
 defmodule ExTwitter.Model.Tweet do
+  @moduledoc """
+  Tweet object.
+
+  ## Reference
+  https://dev.twitter.com/overview/api/tweets
+  """
   defstruct contributors: nil, coordinates: nil, created_at: nil, entities: nil,
     favorite_count: nil, favorited: nil, geo: nil, id: nil, id_str: nil,
     in_reply_to_screen_name: nil, in_reply_to_status_id: nil,
@@ -17,6 +17,12 @@ defmodule ExTwitter.Model.Tweet do
 end
 
 defmodule ExTwitter.Model.User do
+  @moduledoc """
+  User object.
+
+  ## Reference
+  https://dev.twitter.com/overview/api/users
+  """
   defstruct contributors_enabled: nil, created_at: nil, default_profile: nil,
     default_profile_image: nil, description: nil, entities: nil,
     favourites_count: nil, follow_request_sent: nil, followers_count: nil,
@@ -37,6 +43,12 @@ defmodule ExTwitter.Model.User do
 end
 
 defmodule ExTwitter.Model.Entities do
+  @moduledoc """
+  Entities object.
+
+  ## Reference
+  https://dev.twitter.com/overview/api/entities
+  """
   defstruct hashtags: nil, symbols: nil, urls: nil, user_mentions: nil
 
   @type t :: %__MODULE__{}
@@ -57,6 +69,12 @@ defmodule ExTwitter.Model.List do
 end
 
 defmodule ExTwitter.Model.Place do
+  @moduledoc """
+  Place object.
+
+  ## Reference
+  https://dev.twitter.com/overview/api/places
+  """
   defstruct id: nil, url: nil, place_type: nil, name: nil, full_name: nil,
     country_code: nil, country: nil, contained_within: nil,
     bounding_box: nil, attributes: nil
@@ -84,6 +102,12 @@ end
 
 defmodule ExTwitter.Model.StallWarning do
   defstruct code: nil, message: nil, percent_full: nil
+
+  @type t :: %__MODULE__{}
+end
+
+defmodule ExTwitter.Model.Cursor do
+  defstruct items: nil, next_cursor: nil, previous_cursor: nil
 
   @type t :: %__MODULE__{}
 end
