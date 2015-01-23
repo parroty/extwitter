@@ -1144,6 +1144,11 @@ defmodule ExTwitter do
   @doc """
   GET application/rate_limit_status
 
+  ## Examples
+
+      status = ExTwitter.rate_limit_status
+      limit = status["resources"]["statuses"]["/statuses/home_timeline"]["remaining"]
+
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/application/rate_limit_status
   """
