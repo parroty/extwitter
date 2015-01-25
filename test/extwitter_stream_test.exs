@@ -2,10 +2,10 @@ defmodule ExTwitterStreamTest do
   use ExUnit.Case, async: false
   import Mock
 
-  @mock_tweet_json "{\"created_at\":\"Wed Mar 19 16:53:03 +0000 2014\",\"id\":446328507694845952,\"id_str\":\"446328507694845952\",\"text\":\"sample tweet text\",\"source\":\"web\",\"truncated\":false,\"in_reply_to_status_id\":446225539796594688,\"in_reply_to_status_id_str\":\"446225539796594688\",\"in_reply_to_user_id\":86202207,\"in_reply_to_user_id_str\":\"86202207\",\"in_reply_to_screen_name\":\"suranyami\",\"user\":{\"id\":507309896,\"id_str\":\"507309896\",\"name\":\"Elixir Lang\",\"screen_name\":\"elixirlang\",\"location\":\"\",\"description\":\"The Elixir programming language that runs on the Erlang VM\",\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/xGmHND9luN\",\"expanded_url\":\"http:\\/\\/elixir-lang.org\",\"display_url\":\"elixir-lang.org\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":2408,\"friends_count\":6,\"listed_count\":68,\"created_at\":\"Tue Feb 28 12:31:32 +0000 2012\",\"favourites_count\":31,\"utc_offset\":3600,\"time_zone\":\"Amsterdam\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":370,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1859982753\\/drop_normal.png\",\"profile_link_color\":\"009999\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"EFEFEF\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"urls\":[],\"user_mentions\":[{\"screen_name\":\"suranyami\",\"name\":\"Ravey Day-V Gravy\",\"id\":86202207,\"id_str\":\"86202207\",\"indices\":[0,10]}]},\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"}\r\n"
-  @mock_limit_json "{\"limit\":{\"timestamp_ms\":\"1415022747749\",\"track\":542}}\r\n"
-  @mock_deleted_tweet "{\"delete\":{\"status\":{\"id\":1234,\"id_str\":\"1234\",\"user_id\":3,\"user_id_str\":\"3\"}}}\r\n"
-  @mock_stall_warning "{\"warning\":{\"code\":\"FALLING_BEHIND\",\"message\":\"Your connection is falling behind and messages are being queued for delivery to you. Your queue is now over 60% full. You will be disconnected when the queue is full.\",\"percent_full\":60}}\r\n"
+  @mock_tweet_json    File.read!("fixture/mocks/tweet.json")
+  @mock_limit_json    File.read!("fixture/mocks/limit.json")
+  @mock_deleted_tweet File.read!("fixture/mocks/deleted_tweet.json")
+  @mock_stall_warning File.read!("fixture/mocks/stall_warning.json")
 
   setup_all do
     ExVCR.Config.filter_url_params(true)
@@ -115,4 +115,3 @@ defmodule ExTwitterStreamTest do
     send pid, {:http, {request_id, :stream, json}}
   end
 end
-
