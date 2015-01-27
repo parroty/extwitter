@@ -5,10 +5,10 @@ defmodule ExTwitter.JSON do
   """
 
   @doc """
-  Decode json string into elixir objects with response verification.
+  Decode json string into elixir objects.
   """
-  def decode_and_verify(body, header) do
-    verify_response(Poison.decode!(body, keys: :atoms), header)
+  def decode!(json) do
+    Poison.decode!(json, keys: :atoms)
   end
 
   @doc """
@@ -26,40 +26,4 @@ defmodule ExTwitter.JSON do
     Map.get(object, key, [])
   end
 
-  @doc """
-  Verify the API request response, and raises error if response includes error response.
-  """
-  def verify_response(body, header) do
-    if is_list(body) do
-      body
-    else
-      case Map.get(body, :errors, nil) do
-        nil ->
-          body
-        errors when is_list(errors) ->
-          parse_error(List.first(errors), header)
-        error ->
-          raise(ExTwitter.Error, message: inspect error)
-      end
-    end
-  end
-
-  defp parse_error(error, header) do
-    %{:code => code, :message => message} = error
-    case code do
-      88 ->
-        reset_at = fetch_rate_limit_reset(header)
-        reset_in = Enum.max([reset_at - Timex.Date.now(:secs), 0])
-        raise ExTwitter.RateLimitExceededError,
-          code: code, message: message, reset_at: reset_at, reset_in: reset_in
-      _  ->
-        raise ExTwitter.Error, code: code, message: message
-    end
-  end
-
-  defp fetch_rate_limit_reset(header) do
-    {_, reset_at_in_string} = List.keyfind(header, 'x-rate-limit-reset', 0)
-    {reset_at, _} = Integer.parse(to_string(reset_at_in_string))
-    reset_at
-  end
 end
