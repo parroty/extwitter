@@ -3,6 +3,9 @@ defmodule ExTwitter.API.Base do
   Provides basic and common functionalities for Twitter API.
   """
 
+  # https://dev.twitter.com/overview/api/response-codes
+  @error_code_rate_limit_exceeded 88
+
   @doc """
   Send API request to the twitter server.
   """
@@ -47,7 +50,7 @@ defmodule ExTwitter.API.Base do
   defp parse_error(error, header) do
     %{:code => code, :message => message} = error
     case code do
-      88 ->
+      @error_code_rate_limit_exceeded ->
         reset_at = fetch_rate_limit_reset(header)
         reset_in = Enum.max([reset_at - Timex.Date.now(:secs), 0])
         raise ExTwitter.RateLimitExceededError,
