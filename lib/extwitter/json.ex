@@ -8,14 +8,14 @@ defmodule ExTwitter.JSON do
   Decode json string into elixir objects with response verification.
   """
   def decode_and_verify(body, header) do
-    verify_response(JSX.decode!(body), header)
+    verify_response(Poison.decode!(body, keys: :atoms), header)
   end
 
   @doc """
   Decode json string into elixir objects.
   """
   def decode(json) do
-    JSX.decode(json)
+    Poison.decode(json, keys: :atoms)
   end
 
   @doc """
@@ -27,20 +27,13 @@ defmodule ExTwitter.JSON do
   end
 
   @doc """
-  Parse elixir objects into lists.
-  """
-  def parse(object) do
-    object  # do nothing for current library - JSEX
-  end
-
-  @doc """
   Verify the API request response, and raises error if response includes error response.
   """
   def verify_response(body, header) do
     if is_list(body) do
       body
     else
-      case Map.get(body, "errors", nil) do
+      case Map.get(body, :errors, nil) do
         nil ->
           body
         errors when is_list(errors) ->
@@ -52,7 +45,7 @@ defmodule ExTwitter.JSON do
   end
 
   defp parse_error(error, header) do
-    %{"code" => code, "message" => message} = error
+    %{:code => code, :message => message} = error
     case code do
       88 ->
         reset_at = fetch_rate_limit_reset(header)

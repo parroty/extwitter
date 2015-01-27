@@ -29,7 +29,7 @@ defmodule ExTwitterTest do
   test "sends request method to search method" do
     use_cassette "base_request" do
       response = ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
-      tweets = ExTwitter.JSON.get(response, "statuses") |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+      tweets = ExTwitter.JSON.get(response, :statuses) |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
       assert Enum.count(tweets) == 1
     end
   end
@@ -234,8 +234,8 @@ defmodule ExTwitterTest do
   test "rate limit status" do
     use_cassette "rate_limit_status" do
       status = ExTwitter.rate_limit_status(resources: "statuses")
-      assert status["resources"]["statuses"]["/statuses/home_timeline"]["limit"] > 0
-      assert status["rate_limit_context"]["access_token"] == "<REMOVED>"
+      assert status[:resources][:statuses][:"/statuses/home_timeline"][:limit] > 0
+      assert status[:rate_limit_context][:access_token] == "<REMOVED>"
     end
   end
 

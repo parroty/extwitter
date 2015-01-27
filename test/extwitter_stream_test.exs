@@ -80,7 +80,7 @@ defmodule ExTwitterStreamTest do
 
     [limit, deleted_tweet, stall_warning] = Enum.take(stream, 3)
     assert limit.track == 542
-    assert deleted_tweet.status["id"] == 1234
+    assert deleted_tweet.status[:id] == 1234
     assert stall_warning.code == "FALLING_BEHIND"
   end
 

@@ -1,3 +1,10 @@
+0.4.0
+------
+#### Enhancements
+
+#### Changes
+* Maps returned by the APIs will have atom keys instead of string keys.
+
 0.3.0
 ------
 #### Enhancements

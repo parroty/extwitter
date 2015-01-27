@@ -131,7 +131,7 @@ defmodule ExTwitter.API.Streaming do
     try do
       case ExTwitter.JSON.decode(json) do
         {:ok, tweet} ->
-          if ExTwitter.JSON.get(tweet, "id_str") != [] do
+          if Map.has_key?(tweet, :id_str) do
             {:stream, ExTwitter.Parser.parse_tweet(tweet)}
           else
             if configs[:receive_messages] do
@@ -153,15 +153,15 @@ defmodule ExTwitter.API.Streaming do
 
   defp parse_control_message(message) do
     case message do
-      %{"delete" => tweet} ->
-        {:stream, %ExTwitter.Model.DeletedTweet{status: tweet["status"]}}
+      %{:delete => tweet} ->
+        {:stream, %ExTwitter.Model.DeletedTweet{status: tweet.status}}
 
-      %{"limit" => limit} ->
-        {:stream, %ExTwitter.Model.Limit{track: limit["track"]}}
+      %{:limit => limit} ->
+        {:stream, %ExTwitter.Model.Limit{track: limit.track}}
 
-      %{"warning" => warning} ->
+      %{:warning => warning} ->
         {:stream, %ExTwitter.Model.StallWarning{
-                    code: warning["code"], message: warning["message"], percent_full: warning["percent_full"]}}
+                    code: warning.code, message: warning.message, percent_full: warning.percent_full}}
 
       true -> nil
     end
