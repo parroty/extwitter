@@ -125,8 +125,9 @@ defmodule ExTwitter.API.Streaming do
     end
   end
 
-  defp is_empty_message(part), do: part == "\r\n"
-  defp is_end_of_message(part), do: part =~ ~r/\r\n$/
+  @crlf "\r\n"
+  def is_empty_message(part),  do: part == @crlf
+  def is_end_of_message(part), do: part |> String.ends_with?(@crlf)
 
   @doc false
   def parse_tweet_message(json, configs) do
