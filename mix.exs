@@ -34,7 +34,8 @@ defmodule ExTwitter.Mixfile do
       {:mock, github: "parroty/mock", only: [:dev, :test], branch: "fix"},
       {:ex_doc, "~> 0.6", only: :docs},
       {:earmark, "~> 0.1", only: :docs},
-      {:inch_ex, "~> 0.2", only: :docs}
+      {:inch_ex, "~> 0.2", only: :docs},
+      {:benchfella, github: "alco/benchfella", only: :dev}
     ]
   end
 

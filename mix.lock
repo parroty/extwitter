@@ -1,4 +1,5 @@
-%{"earmark": {:hex, :earmark, "0.1.12"},
+%{"benchfella": {:git, "git://github.com/alco/benchfella.git", "0fd092f2b20bd1b80fda95eb347ae37919f66ec2", []},
+  "earmark": {:hex, :earmark, "0.1.12"},
   "ex_doc": {:hex, :ex_doc, "0.6.2"},
   "exactor": {:hex, :exactor, "0.7.0"},
   "excoveralls": {:hex, :excoveralls, "0.3.6"},

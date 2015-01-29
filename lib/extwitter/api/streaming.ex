@@ -88,7 +88,8 @@ defmodule ExTwitter.API.Streaming do
     end
   end
 
-  defp process_stream(processor, request_id, configs, acc \\ []) do
+  @doc false
+  def process_stream(processor, request_id, configs, acc \\ []) do
     receive do
       {:http, {request_id, :stream_start, headers}} ->
         send processor, {:header, headers}
@@ -102,7 +103,7 @@ defmodule ExTwitter.API.Streaming do
           is_end_of_message(part) ->
             message = Enum.reverse([part|acc])
                         |> Enum.join("")
-                        |> parse_tweet_message(configs)
+                        |> __MODULE__.parse_tweet_message(configs)
             if message do
               send processor, message
             end
@@ -127,7 +128,8 @@ defmodule ExTwitter.API.Streaming do
   defp is_empty_message(part), do: part == "\r\n"
   defp is_end_of_message(part), do: part =~ ~r/\r\n$/
 
-  defp parse_tweet_message(json, configs) do
+  @doc false
+  def parse_tweet_message(json, configs) do
     try do
       case ExTwitter.JSON.decode(json) do
         {:ok, tweet} ->
