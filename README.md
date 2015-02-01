@@ -132,7 +132,7 @@ for message <- stream do
       IO.puts "tweet = #{tweet.text}"
 
     deleted_tweet = %ExTwitter.Model.DeletedTweet{} ->
-      IO.puts "deleted tweet = #{deleted_tweet.status["id"]}"
+      IO.puts "deleted tweet = #{deleted_tweet.status[:id]}"
 
     limit = %ExTwitter.Model.Limit{} ->
       IO.puts "limit = #{limit.track}"
