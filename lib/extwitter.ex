@@ -421,6 +421,9 @@ defmodule ExTwitter do
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
 
+  The timeout is the maximum milliseconds to wait until receiving
+  next tweet. Specifying `:infinity` makes it wait infinitely.
+
   ## Examples
 
       ExTwitter.stream_filter(track: "apple", timeout: 60000)

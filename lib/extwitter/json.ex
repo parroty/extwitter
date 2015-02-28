@@ -25,5 +25,4 @@ defmodule ExTwitter.JSON do
   def get(object, key) do
     Map.get(object, key, [])
   end
-
 end
