@@ -164,7 +164,8 @@ defmodule ExTwitter.API.Streaming do
 
       %{:warning => warning} ->
         {:stream, %ExTwitter.Model.StallWarning{
-                    code: warning.code, message: warning.message, percent_full: warning.percent_full}}
+                    code: warning.code, message: warning.message,
+                    percent_full: warning.percent_full}}
 
       true -> nil
     end

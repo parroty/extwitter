@@ -437,18 +437,11 @@ defmodule ExTwitter do
   @doc """
   An interface to control the stream.
 
-  This method is for handling elixir's stream which can keep running infinitely.
-  It doesn't make twitter API call.
+  This method is for controlling stream, and it doesn't make twitter API call.
 
   ## Options
 
-  The `options` can have following values, in addition to the
-  twitter API's parameter.
-
-    * `:receive_messages` - true/false flag whether to receive
-    control messages in addition to normal tweets. default is false.
-
-  The `pid` is the process id where stream is processed.
+  The `pid` is the process id where stream is being processed.
 
   ## Examples
 
@@ -471,9 +464,10 @@ defmodule ExTwitter do
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
 
-  `pid` is the process id where stream is processed.
+  The `pid` is the process id where stream is processed.
 
-  `timeout` is the maximum wait time (in milliseconds) to complete the message handling.
+  The `timeout` is the maximum wait time (in milliseconds) to complete
+  the message handling.
 
   ## Examples
 

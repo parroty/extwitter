@@ -78,6 +78,7 @@ defmodule ExTwitterStreamTest do
     send_mock_data(TestHelper.TestStore.get, @mock_deleted_tweet)
     send_mock_data(TestHelper.TestStore.get, @mock_stall_warning)
 
+    # verify response
     [limit, deleted_tweet, stall_warning] = Enum.take(stream, 3)
     assert limit.track == 542
     assert deleted_tweet.status[:id] == 1234
