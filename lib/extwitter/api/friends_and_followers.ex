@@ -11,8 +11,8 @@ defmodule ExTwitter.API.FriendsAndFollowers do
       |> ExTwitter.Parser.parse_users_with_cursor
   end
 
-  def followers(screen_name, options \\ []) do
-    followers([screen_name: screen_name] ++ options)
+  def followers(id, options \\ []) do
+    followers(get_id_option(id) ++ options)
   end
 
   def follower_ids(options) when is_list(options) do
@@ -22,13 +22,7 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   end
 
   def follower_ids(id, options \\ []) do
-    id_opt = cond do
-               is_number(id) ->
-                 [user_id: id]
-               true  ->
-                 [screen_name: id]
-             end
-    follower_ids(id_opt ++ options)
+    follower_ids(get_id_option(id) ++ options)
   end
 
   def friends(options) when is_list(options) do
@@ -37,8 +31,8 @@ defmodule ExTwitter.API.FriendsAndFollowers do
       |> ExTwitter.Parser.parse_users_with_cursor
   end
 
-  def friends(screen_name, options \\ []) do
-    friends([screen_name: screen_name] ++ options)
+  def friends(id, options \\ []) do
+    friends(get_id_option(id) ++ options)
   end
 
   def friend_ids(options) when is_list(options) do
@@ -47,7 +41,16 @@ defmodule ExTwitter.API.FriendsAndFollowers do
       |> ExTwitter.Parser.parse_ids_with_cursor
   end
 
-  def friend_ids(screen_name, options \\ []) do
-    friend_ids([screen_name: screen_name] ++ options)
+  def friend_ids(id, options \\ []) do
+    friend_ids(get_id_option(id) ++ options)
+  end
+
+  defp get_id_option(id) do
+    cond do
+      is_number(id) ->
+        [user_id: id]
+      true ->
+        [screen_name: id]
+    end
   end
 end

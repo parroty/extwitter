@@ -486,18 +486,19 @@ defmodule ExTwitter do
   @doc """
   GET friends/ids
 
-  Specify either `screen_name` or `options` in the argument.
+  Specify one of the `screen_name`, `user_id` or `options` in the argument.
 
   ## Examples
 
-      ExTwitter.friend_ids(count: 1)
       ExTwitter.friend_ids("twitter")
+      ExTwitter.friend_ids(783214)
+      ExTwitter.friend_ids(count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/friends/ids
   """
-  @spec friend_ids(String.t | Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate friend_ids(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+  @spec friend_ids(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate friend_ids(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET friends/ids
@@ -505,28 +506,30 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.friend_ids("twitter", count: 1)
+      ExTwitter.friend_ids(783214, count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/friends/ids
   """
-  @spec friend_ids(String.t, Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate friend_ids(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  @spec friend_ids(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate friend_ids(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET followers/ids
 
-  Specify either `screen_name` or `options` in the argument.
+  Specify one of the `screen_name`, `user_id` or `options` in the argument.
 
   ## Examples
 
-      ExTwitter.follower_ids(count: 1)
       ExTwitter.follower_ids("twitter")
+      ExTwitter.follower_ids(783214)
+      ExTwitter.follower_ids(count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/ids
   """
-  @spec follower_ids(String.t | Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate follower_ids(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+  @spec follower_ids(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate follower_ids(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET followers/ids
@@ -534,12 +537,13 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.follower_ids("twitter", count: 1)
+      ExTwitter.follower_ids(783214, count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/ids
   """
-  @spec follower_ids(String.t, Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate follower_ids(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  @spec follower_ids(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate follower_ids(id, options), to: ExTwitter.API.FriendsAndFollowers
 
 
   # GET friendships/incoming
@@ -563,18 +567,19 @@ defmodule ExTwitter do
   @doc """
   GET followers/list
 
-  Specify either `screen_name` or `options` in the argument.
+  Specify one of the `screen_name`, `user_id` or `options` in the argument.
 
   ## Examples
 
-      ExTwitter.followers(count: 1)
       ExTwitter.followers("twitter")
+      ExTwitter.followers(783214)
+      ExTwitter.followers(count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  @spec followers(String.t | Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate followers(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+  @spec followers(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate followers(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET followers/list
@@ -582,28 +587,30 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.followers("twitter", count: 1)
+      ExTwitter.followers(783214, count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/followers/list
   """
-  @spec followers(String.t, Keyword.t) :: ExTwitter.Model.Cursor.t
-  defdelegate followers(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  @spec followers(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  defdelegate followers(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET friends/list
 
-  Specify either `screen_name` or `options` in the argument.
+  Specify one of the `screen_name`, `user_id` or `options` in the argument.
 
   ## Examples
 
-      ExTwitter.friends(count: 1)
       ExTwitter.friends("twitter")
+      ExTwitter.friends(783214)
+      ExTwitter.friends(count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/friends/list
   """
-  @spec friends(String.t | Keyword.t) :: [ExTwitter.Model.User.t]
-  defdelegate friends(screen_name_or_options), to: ExTwitter.API.FriendsAndFollowers
+  @spec friends(String.t | Integer | Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate friends(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
   GET friends/list
@@ -611,12 +618,13 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.friends("twitter", count: 1)
+      ExTwitter.friends(783214, count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/friends/list
   """
-  @spec friends(String.t, Keyword.t) :: [ExTwitter.Model.User.t]
-  defdelegate friends(screen_name, options), to: ExTwitter.API.FriendsAndFollowers
+  @spec friends(String.t | Integer, Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate friends(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   # GET friendships/lookup
   # https://dev.twitter.com/docs/api/1.1/get/friendships/lookup

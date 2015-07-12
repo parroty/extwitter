@@ -167,14 +167,21 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "gets followers of twitter user" do
+  test "gets followers of twitter user by screen_name" do
     use_cassette "followers" do
       followers_cursor = ExTwitter.followers("twitter", count: 1)
       assert Enum.count(followers_cursor.items) == 1
     end
   end
 
-  test "gets follower ids of twitter user" do
+  test "gets followers of twitter user by user_id" do
+    use_cassette "followers" do
+      followers_cursor = ExTwitter.followers(783214, count: 1)
+      assert Enum.count(followers_cursor.items) == 1
+    end
+  end
+
+  test "gets follower ids of twitter user by screen_name" do
     use_cassette "follower_ids" do
       follower_ids_cursor = ExTwitter.follower_ids("twitter", count: 1)
       assert Enum.count(follower_ids_cursor.items) == 1
@@ -188,16 +195,30 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "gets friends of twitter user" do
+  test "gets friends of twitter user by screen_name" do
     use_cassette "friends" do
       friends_cursor = ExTwitter.friends("twitter", count: 1)
       assert Enum.count(friends_cursor.items) == 1
     end
   end
 
-  test "gets friend ids of twitter user" do
+  test "gets friends of twitter user by user_id" do
+    use_cassette "friends" do
+      friends_cursor = ExTwitter.friends(783214, count: 1)
+      assert Enum.count(friends_cursor.items) == 1
+    end
+  end
+
+  test "gets friend ids of twitter user by screen_name" do
     use_cassette "friend_ids" do
       friend_ids_cursor = ExTwitter.friend_ids("twitter", count: 1)
+      assert Enum.count(friend_ids_cursor.items) == 1
+    end
+  end
+
+  test "gets friend ids of twitter user by user_id" do
+    use_cassette "friend_ids" do
+      friend_ids_cursor = ExTwitter.friend_ids(783214, count: 1)
       assert Enum.count(friend_ids_cursor.items) == 1
     end
   end
