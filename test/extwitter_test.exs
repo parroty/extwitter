@@ -122,9 +122,17 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "gets lists" do
+  test "gets lists by screen_name" do
     use_cassette "lists_twitter" do
       lists = ExTwitter.lists("twitter", count: 1)
+      assert Enum.count(lists) == 1
+      assert List.first(lists).name =~ ~r/Twitter/
+    end
+  end
+
+  test "gets lists by user_id" do
+    use_cassette "lists_twitter" do
+      lists = ExTwitter.lists(783214, count: 1)
       assert Enum.count(lists) == 1
       assert List.first(lists).name =~ ~r/Twitter/
     end
@@ -223,9 +231,17 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "lookup user" do
+  test "lookup user by screen_name" do
     use_cassette "lookup_user" do
       users = ExTwitter.user_lookup("twitter")
+      assert Enum.count(users) == 1
+      assert Enum.at(users, 0).screen_name == "twitter"
+    end
+  end
+
+  test "lookup user by user_id" do
+    use_cassette "lookup_user" do
+      users = ExTwitter.user_lookup(783214)
       assert Enum.count(users) == 1
       assert Enum.at(users, 0).screen_name == "twitter"
     end

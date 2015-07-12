@@ -23,6 +23,15 @@ defmodule ExTwitter.API.Base do
 
   def verify_params(params), do: params
 
+  def get_id_option(id) do
+    cond do
+      is_number(id) ->
+        [user_id: id]
+      true ->
+        [screen_name: id]
+    end
+  end
+
   defp request_url(path) do
     "https://api.twitter.com/#{path}" |> to_char_list
   end

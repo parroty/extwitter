@@ -44,13 +44,4 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def friend_ids(id, options \\ []) do
     friend_ids(get_id_option(id) ++ options)
   end
-
-  defp get_id_option(id) do
-    cond do
-      is_number(id) ->
-        [user_id: id]
-      true ->
-        [screen_name: id]
-    end
-  end
 end

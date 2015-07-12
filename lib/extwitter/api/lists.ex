@@ -5,8 +5,9 @@ defmodule ExTwitter.API.Lists do
 
   import ExTwitter.API.Base
 
-  def lists(screen_name, options \\ []) do
-    params = ExTwitter.Parser.parse_request_params([screen_name: screen_name] ++ options)
+  def lists(id_or_screen_name, options \\ []) do
+    id_option = get_id_option(id_or_screen_name)
+    params = ExTwitter.Parser.parse_request_params(id_option ++ options)
     request(:get, "1.1/lists/list.json", params)
       |> Enum.map(&ExTwitter.Parser.parse_list/1)
   end

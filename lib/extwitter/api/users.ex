@@ -11,8 +11,8 @@ defmodule ExTwitter.API.Users do
       |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
-  def user_lookup(screen_name, options \\ []) do
-    user_lookup([screen_name: screen_name] ++ options)
+  def user_lookup(id, options \\ []) do
+    user_lookup(get_id_option(id) ++ options)
   end
 
   def user_search(query, options \\ []) do

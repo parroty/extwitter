@@ -673,13 +673,14 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.user_lookup("twitter")
+      ExTwitter.user_lookup(783214)
       ExTwitter.user_lookup(screen_name: "twitter")
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/users/lookup
   """
-  @spec user_lookup(String.t | Keyword.t) :: [ExTwitter.Model.User.t]
-  defdelegate user_lookup(screen_name_or_options), to: ExTwitter.API.Users
+  @spec user_lookup(String.t | Integer | Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate user_lookup(id_or_options), to: ExTwitter.API.Users
 
   @doc """
   GET users/lookup
@@ -687,11 +688,12 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.user_lookup("twitter", include_entities: false)
+      ExTwitter.user_lookup(783214, include_entities: false)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/users/lookup
   """
-  @spec user_lookup(String.t | Keyword.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  @spec user_lookup(String.t | Integer, Keyword.t) :: [ExTwitter.Model.User.t]
   defdelegate user_lookup(screen_name, options), to: ExTwitter.API.Users
 
   @doc """
@@ -825,12 +827,13 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.lists("twitter")
+      ExTwitter.lists(783214)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/lists/list
   """
-  @spec lists(String.t) :: [ExTwitter.Model.List.t]
-  defdelegate lists(screen_name), to: ExTwitter.API.Lists
+  @spec lists(String.t | Integer) :: [ExTwitter.Model.List.t]
+  defdelegate lists(id_or_screen_name), to: ExTwitter.API.Lists
 
   @doc """
   GET lists/list
@@ -838,12 +841,13 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.lists("twitter", count: 1)
+      ExTwitter.lists(783214, count: 1)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/lists/list
   """
-  @spec lists(String.t, Keyword.t) :: [ExTwitter.Model.List.t]
-  defdelegate lists(screen_name, options), to: ExTwitter.API.Lists
+  @spec lists(String.t | Integer, Keyword.t) :: [ExTwitter.Model.List.t]
+  defdelegate lists(id_or_screen_name, options), to: ExTwitter.API.Lists
 
   @doc """
   GET lists/statuses
