@@ -1,3 +1,14 @@
+0.4.1
+------
+#### Enhancements
+* Support specifying `user_id` as basic parameter in addition to the existing `screen_name` in the following functions.
+    - ExTwitter.follower_ids
+    - ExTwitter.followers
+    - ExTwitter.friend_ids
+    - ExTwitter.friends
+    - ExTwitter.lists
+    - ExTwitter.user_lookup
+
 0.4.0
 ------
 #### Changes
