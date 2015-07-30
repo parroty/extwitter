@@ -12,6 +12,12 @@ defmodule ExTwitter.Parser do
     %{tweet | user: user}
   end
 
+
+  def parse_upload(object) do
+    struct(ExTwitter.Model.Upload, object)
+  end
+
+
   @doc """
   Parse user record from the API response json.
   """
