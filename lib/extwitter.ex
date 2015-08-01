@@ -1302,4 +1302,18 @@ defmodule ExTwitter do
   """
   @spec lookup_status(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
   defdelegate lookup_status(id, options), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST oauth/request_token
+
+  ## Examples
+
+      ExTwitter.request_token()
+
+  ## Reference
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+
+  @spec request_token() :: [ExTwitter.Model.RequestToken.t]
+  defdelegate request_token(), to: ExTwitter.API.Auth
 end

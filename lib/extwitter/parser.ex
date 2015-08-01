@@ -100,4 +100,12 @@ defmodule ExTwitter.Parser do
   def parse_request_params(options) do
     Enum.map(options, fn({k,v}) -> {to_string(k), to_string(v)} end)
   end
+
+  @doc """
+  Parse request_token response
+  """
+
+  def parse_request_token(object) do
+    struct(ExTwitter.Model.RequestToken, object)
+  end
 end

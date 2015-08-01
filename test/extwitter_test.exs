@@ -337,4 +337,12 @@ defmodule ExTwitterTest do
       end
     end
   end
+
+  test "request token" do
+    t = ExTwitter.request_token()
+    assert t != nil
+    assert t.oauth_token != nil
+    assert t.oauth_token_secret != nil
+    assert t.oauth_callback_confirmed != nil
+  end
 end
