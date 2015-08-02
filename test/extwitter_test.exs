@@ -345,4 +345,20 @@ defmodule ExTwitterTest do
     assert t.oauth_token_secret != nil
     assert t.oauth_callback_confirmed != nil
   end
+
+  test "generate authorize url" do
+    token = "some_token"
+    url = "http://some_domain.com/some_url"
+    
+    params = %{oauth_token: token, oauth_callback: url} |> URI.encode_query
+
+    {:ok, regex_callback} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?" <> params)
+    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?oauth_token=" <> token)
+
+    {:ok, authorize_url_with_callback} = ExTwitter.authorize_url(token, url)
+    {:ok, authorize_url} = ExTwitter.authorize_url(token)
+
+    assert Regex.match?(regex_callback, authorize_url_with_callback)
+    assert Regex.match?(regex, authorize_url)
+  end
 end

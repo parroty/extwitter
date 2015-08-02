@@ -1314,6 +1314,23 @@ defmodule ExTwitter do
   https://dev.twitter.com/web/sign-in/implementing
   """
 
-  @spec request_token() :: [ExTwitter.Model.RequestToken.t]
-  defdelegate request_token(), to: ExTwitter.API.Auth
+  @spec request_token :: [ExTwitter.Model.RequestToken.t]
+  defdelegate request_token, to: ExTwitter.API.Auth
+
+  @doc """
+  Returns the URL you should redirect the user for 3-legged authorization
+
+  ## Reference
+  https://dev.twitter.com/oauth/3-legged
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+  
+  @spec authorize_url(String.t, String.t, Map.t) :: Map
+  defdelegate authorize_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
+
+  @spec authorize_url(String.t, String.t) :: Map
+  defdelegate authorize_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
+
+  @spec authorize_url(String.t) :: Map
+  defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 end

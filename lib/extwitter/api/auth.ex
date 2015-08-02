@@ -14,4 +14,14 @@ defmodule ExTwitter.API.Auth do
       |> Enum.into(%{})
       |> ExTwitter.Parser.parse_request_token
   end
+
+  def authorize_url(oauth_token, redirect_url \\ nil, options \\ %{}) do
+    args = Map.merge(%{oauth_token: oauth_token}, options)
+
+    if redirect_url do
+    	args = Map.merge(%{oauth_callback: redirect_url}, args)
+    end
+
+    {:ok, request_url("oauth/authorize?" <> Elixir.URI.encode_query(args)) |> to_string}
+  end
 end
