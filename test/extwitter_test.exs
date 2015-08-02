@@ -349,7 +349,7 @@ defmodule ExTwitterTest do
   test "generate authorize url" do
     token = "some_token"
     url = "http://some_domain.com/some_url"
-    
+
     params = %{oauth_token: token, oauth_callback: url} |> URI.encode_query
 
     {:ok, regex_callback} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?" <> params)
@@ -361,4 +361,17 @@ defmodule ExTwitterTest do
     assert Regex.match?(regex_callback, authorize_url_with_callback)
     assert Regex.match?(regex, authorize_url)
   end
+
+  # @tag :manual
+  # test "validate access token" do
+  #   verifier = ""
+  #   request_token = ""
+  #   request_token_secret = ""
+
+  #   access_token = ExTwitter.access_token(verifier, request_token, request_token_secret) |> IO.inspect
+
+  #   assert access_token != nil
+  #   assert access_token.oauth_token != nil
+  #   assert access_token.oauth_token_secret != nil
+  # end
 end

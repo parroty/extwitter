@@ -104,8 +104,14 @@ defmodule ExTwitter.Parser do
   @doc """
   Parse request_token response
   """
-
   def parse_request_token(object) do
     struct(ExTwitter.Model.RequestToken, object)
+  end
+
+  @doc """
+  Parse access_token response
+  """
+  def parse_access_token(object) do
+    struct(ExTwitter.Model.AccessToken, object)
   end
 end

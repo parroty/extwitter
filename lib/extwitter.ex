@@ -1333,4 +1333,17 @@ defmodule ExTwitter do
 
   @spec authorize_url(String.t) :: Map
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
+
+  @doc """
+  POST oauth/access_token
+
+  ## Examples
+
+      ExTwitter.access_token("OAUTH_VERIFIER","ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+  ## Reference
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+
+  @spec access_token(String.t, String.t, String.t) :: Map
+  defdelegate access_token(verifier, request_token, request_token_secret), to: ExTwitter.API.Auth
 end
