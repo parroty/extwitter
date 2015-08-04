@@ -1344,6 +1344,6 @@ defmodule ExTwitter do
   https://dev.twitter.com/web/sign-in/implementing
   """
 
-  @spec access_token(String.t, String.t, String.t) :: Map
-  defdelegate access_token(verifier, request_token, request_token_secret), to: ExTwitter.API.Auth
+  @spec access_token(String.t, String.t) :: Map
+  defdelegate access_token(verifier, request_token), to: ExTwitter.API.Auth
 end

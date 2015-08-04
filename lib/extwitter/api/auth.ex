@@ -25,12 +25,12 @@ defmodule ExTwitter.API.Auth do
     {:ok, request_url("oauth/authorize?" <> Elixir.URI.encode_query(args)) |> to_string}
   end
 
-  def access_token(verifier, request_token, request_token_secret) do
+  def access_token(verifier, request_token) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
     case ExTwitter.OAuth.request(:post, request_url("oauth/access_token"),
                                  [oauth_verifier: verifier],
-                                 consumer, request_token, request_token_secret) do
+                                 consumer, request_token, nil) do
       {:ok, {{_, 200, _}, _headers, body}} ->
         Elixir.URI.decode_query(to_string body)
           |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)

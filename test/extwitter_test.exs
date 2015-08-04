@@ -366,9 +366,8 @@ defmodule ExTwitterTest do
   # test "validate access token" do
   #   verifier = ""
   #   request_token = ""
-  #   request_token_secret = ""
 
-  #   access_token = ExTwitter.access_token(verifier, request_token, request_token_secret) |> IO.inspect
+  #   %ExTwitter.Model.AccessToken{} = access_token = ExTwitter.access_token(verifier, request_token) |> IO.inspect
 
   #   assert access_token != nil
   #   assert access_token.oauth_token != nil
