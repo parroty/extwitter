@@ -7,19 +7,23 @@ defmodule ExTwitter.API.Base do
   @error_code_rate_limit_exceeded 88
 
   @doc """
-  Send API request to the twitter server.
+  Send request to the api.twitter.com server.
   """
   def request(method, path, params \\ []) do
-    oauth = ExTwitter.Config.get_tuples |> verify_params
-    consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
-    ExTwitter.OAuth.request(method, request_url(path), params, consumer, oauth[:access_token], oauth[:access_token_secret])
-      |> parse_result
+    do_request(method, request_url(path), params)
   end
 
+  @doc """
+  Send request to the upload.twitter.com server.
+  """
   def upload_request(method, path, params \\ []) do
+    do_request(method, upload_url(path), params)
+  end
+
+  defp do_request(method, url, params) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
-    ExTwitter.OAuth.request(method, upload_url(path), params, consumer, oauth[:access_token], oauth[:access_token_secret])
+    ExTwitter.OAuth.request(method, url, params, consumer, oauth[:access_token], oauth[:access_token_secret])
       |> parse_result
   end
 
