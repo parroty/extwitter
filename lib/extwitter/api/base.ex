@@ -16,6 +16,13 @@ defmodule ExTwitter.API.Base do
       |> parse_result
   end
 
+  def upload_request(method, path, params \\ []) do
+    oauth = ExTwitter.Config.get_tuples |> verify_params
+    consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
+    ExTwitter.OAuth.request(method, upload_url(path), params, consumer, oauth[:access_token], oauth[:access_token_secret])
+      |> parse_result
+  end
+
   def verify_params([]) do
     raise %ExTwitter.Error{
       message: "OAuth parameters are not set. Use ExTwitter.configure function to set parameters in advance." }
@@ -34,6 +41,10 @@ defmodule ExTwitter.API.Base do
 
   defp request_url(path) do
     "https://api.twitter.com/#{path}" |> to_char_list
+  end
+
+  defp upload_url(path) do
+    "https://upload.twitter.com/#{path}" |> to_char_list
   end
 
   defp parse_result(result) do

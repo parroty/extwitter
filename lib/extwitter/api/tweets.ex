@@ -23,6 +23,18 @@ defmodule ExTwitter.API.Tweets do
       |> ExTwitter.Parser.parse_tweet
   end
 
+  defp upload(data, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params([media: data] ++ options)
+    upload_request(:post, "1.1/media/upload.json", params)
+      |> ExTwitter.Parser.parse_upload
+  end
+
+  def upload_tweet(status, data, options \\ []) do
+    res = upload(data)
+    option = [media_ids: res.media_id]
+    update(status, option)
+  end
+
   def destroy_status(id, options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:post, "1.1/statuses/destroy/#{id}.json", params)
