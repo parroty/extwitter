@@ -108,6 +108,19 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "update and destroy status with media" do
+    use_cassette "update_destroy_status_with_media" do
+      image = File.read!("fixture/images/sample.png")
+      tweet1 = ExTwitter.update_with_media("update sample with media", image, trim_user: true)
+      assert tweet1.text =~ "update sample with media"
+      assert Enum.count(tweet1.entities.media) == 1
+
+      tweet2 = ExTwitter.destroy_status(tweet1.id)
+      assert tweet2.text =~ "update sample with media"
+      assert Enum.count(tweet2.entities.media) == 1
+    end
+  end
+
   test "gets retweeter ids" do
     use_cassette "retweeter_ids" do
       ids = ExTwitter.retweeter_ids(444144169058308096)

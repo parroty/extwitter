@@ -23,16 +23,16 @@ defmodule ExTwitter.API.Tweets do
       |> ExTwitter.Parser.parse_tweet
   end
 
+  def update_with_media(status, media_content, options \\ []) do
+    encoded_media_content = Base.encode64(media_content)
+    response = upload(encoded_media_content)
+    update(status, [media_ids: response.media_id] ++ options)
+  end
+
   defp upload(data, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([media: data] ++ options)
     upload_request(:post, "1.1/media/upload.json", params)
       |> ExTwitter.Parser.parse_upload
-  end
-
-  def upload_tweet(status, data, options \\ []) do
-    res = upload(data)
-    option = [media_ids: res.media_id]
-    update(status, option)
   end
 
   def destroy_status(id, options \\ []) do

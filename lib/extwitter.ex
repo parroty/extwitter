@@ -287,8 +287,46 @@ defmodule ExTwitter do
   # POST statuses/retweet/:id
   # https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
 
-  # POST statuses/update_with_media
-  # https://dev.twitter.com/docs/api/1.1/post/statuses/update_with_media
+
+  @doc """
+  POST media/upload
+  POST statuses/update
+
+  ## Examples
+
+      image = File.read!("fixture/images/sample.png")
+      ExTwitter.update_with_media("tweet with media", image)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/media/upload
+  https://dev.twitter.com/rest/public/uploading-media
+
+  ## Note
+  This API works only for images at the moment.
+  (Video files which requires chunked upload is not supported yet).
+  """
+  @spec update_with_media(String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate update_with_media(status, media_content), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST media/upload
+  POST statuses/update
+
+  ## Examples
+
+      image = File.read!("fixture/images/sample.png")
+      ExTwitter.update_with_media("tweet with media", image, trim_user: true)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/media/upload
+  https://dev.twitter.com/rest/public/uploading-media
+
+  ## Note
+  This API works only for images at the moment.
+  (Video files which requires chunked upload is not supported yet).
+  """
+  @spec update_with_media(String.t, String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate update_with_media(status, media_content, options), to: ExTwitter.API.Tweets
 
   # GET statuses/oembed
   # https://dev.twitter.com/docs/api/1.1/get/statuses/oembed

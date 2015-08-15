@@ -1,0 +1,143 @@
+[
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://upload.twitter.com/1.1/media/upload.json"
+    },
+    "response": {
+      "body": "{\"media_id\":632526195335168000,\"media_id_string\":\"632526195335168000\",\"size\":257,\"expires_after_secs\":86400,\"image\":{\"image_type\":\"image\\/png\",\"w\":10,\"h\":10}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 15 Aug 2015 12:16:11 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "vary": "Origin",
+        "content-length": "158",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 15 Aug 2015 12:16:11 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "7b47be2999e109e4e159d5d4f9fe4fa1",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "415",
+        "x-rate-limit-remaining": "412",
+        "x-rate-limit-reset": "1439644165",
+        "x-response-time": "24",
+        "x-transaction": "f26005d326199854",
+        "x-tsa-request-body-time": "0",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/statuses/update.json"
+    },
+    "response": {
+      "body": "{\"created_at\":\"Sat Aug 15 12:16:12 +0000 2015\",\"id\":632526198308909056,\"id_str\":\"632526198308909056\",\"text\":\"update sample with media http:\\/\\/t.co\\/9WNgQKtaoT\",\"source\":\"\\u003ca href=\\\"http:\\/\\/parroty-twitter.herokuapp.com\\\" rel=\\\"nofollow\\\"\\u003eParTwi\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":1032857766,\"id_str\":\"1032857766\"},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[],\"media\":[{\"id\":632526195335168000,\"id_str\":\"632526195335168000\",\"indices\":[25,47],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"url\":\"http:\\/\\/t.co\\/9WNgQKtaoT\",\"display_url\":\"pic.twitter.com\\/9WNgQKtaoT\",\"expanded_url\":\"http:\\/\\/twitter.com\\/parrotybot\\/status\\/632526198308909056\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"thumb\":{\"w\":10,\"h\":10,\"resize\":\"crop\"},\"large\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"small\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"medium\":{\"w\":10,\"h\":10,\"resize\":\"fit\"}}}]},\"extended_entities\":{\"media\":[{\"id\":632526195335168000,\"id_str\":\"632526195335168000\",\"indices\":[25,47],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"url\":\"http:\\/\\/t.co\\/9WNgQKtaoT\",\"display_url\":\"pic.twitter.com\\/9WNgQKtaoT\",\"expanded_url\":\"http:\\/\\/twitter.com\\/parrotybot\\/status\\/632526198308909056\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"thumb\":{\"w\":10,\"h\":10,\"resize\":\"crop\"},\"large\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"small\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"medium\":{\"w\":10,\"h\":10,\"resize\":\"fit\"}}}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 15 Aug 2015 12:16:12 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "1918",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 15 Aug 2015 12:16:12 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "a0b7722be72b685574f9675579184b52",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "148",
+        "x-transaction": "4980eb0d71b31988",
+        "x-tsa-request-body-time": "1",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/statuses/destroy/632526198308909056.json"
+    },
+    "response": {
+      "body": "{\"created_at\":\"Sat Aug 15 12:16:12 +0000 2015\",\"id\":632526198308909056,\"id_str\":\"632526198308909056\",\"text\":\"update sample with media http:\\/\\/t.co\\/9WNgQKtaoT\",\"source\":\"\\u003ca href=\\\"http:\\/\\/parroty-twitter.herokuapp.com\\\" rel=\\\"nofollow\\\"\\u003eParTwi\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":1032857766,\"id_str\":\"1032857766\",\"name\":\"parrotybot\",\"screen_name\":\"parrotybot\",\"location\":\"\",\"description\":\"\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":1,\"friends_count\":0,\"listed_count\":0,\"created_at\":\"Mon Dec 24 15:01:01 +0000 2012\",\"favourites_count\":0,\"utc_offset\":28800,\"time_zone\":\"Irkutsk\",\"geo_enabled\":false,\"verified\":false,\"statuses_count\":11,\"lang\":\"ja\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"C0DEED\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/abs.twimg.com\\/sticky\\/default_profile_images\\/default_profile_3_normal.png\",\"profile_image_url_https\":\"https:\\/\\/abs.twimg.com\\/sticky\\/default_profile_images\\/default_profile_3_normal.png\",\"profile_link_color\":\"0084B4\",\"profile_sidebar_border_color\":\"C0DEED\",\"profile_sidebar_fill_color\":\"DDEEF6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":true,\"default_profile_image\":true,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":0,\"favorite_count\":0,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[],\"media\":[{\"id\":632526195335168000,\"id_str\":\"632526195335168000\",\"indices\":[25,47],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"url\":\"http:\\/\\/t.co\\/9WNgQKtaoT\",\"display_url\":\"pic.twitter.com\\/9WNgQKtaoT\",\"expanded_url\":\"http:\\/\\/twitter.com\\/parrotybot\\/status\\/632526198308909056\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"thumb\":{\"w\":10,\"h\":10,\"resize\":\"crop\"},\"large\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"small\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"medium\":{\"w\":10,\"h\":10,\"resize\":\"fit\"}}}]},\"extended_entities\":{\"media\":[{\"id\":632526195335168000,\"id_str\":\"632526195335168000\",\"indices\":[25,47],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/CMcvOTAVAAAp1C7.png\",\"url\":\"http:\\/\\/t.co\\/9WNgQKtaoT\",\"display_url\":\"pic.twitter.com\\/9WNgQKtaoT\",\"expanded_url\":\"http:\\/\\/twitter.com\\/parrotybot\\/status\\/632526198308909056\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"thumb\":{\"w\":10,\"h\":10,\"resize\":\"crop\"},\"large\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"small\":{\"w\":10,\"h\":10,\"resize\":\"fit\"},\"medium\":{\"w\":10,\"h\":10,\"resize\":\"fit\"}}}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 15 Aug 2015 12:16:12 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "3173",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 15 Aug 2015 12:16:12 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "a0b7722be72b685574f9675579184b52",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "42",
+        "x-transaction": "447c042d20ace7ec",
+        "x-tsa-request-body-time": "0",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]
