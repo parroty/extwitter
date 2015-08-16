@@ -60,7 +60,7 @@ defmodule ExTwitter.API.Base do
     if is_list(body) do
       body
     else
-      case Map.get(body, :errors, nil) do
+      case Map.get(body, :errors, nil) || Map.get(body, :error, nil) do
         nil ->
           body
         errors when is_list(errors) ->
