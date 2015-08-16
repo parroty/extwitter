@@ -284,8 +284,32 @@ defmodule ExTwitter do
   @spec update(String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
   defdelegate update(status, options), to: ExTwitter.API.Tweets
 
-  # POST statuses/retweet/:id
-  # https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
+
+  @doc """
+  POST statuses/retweet/:id
+
+  ## Examples
+
+      ExTwitter.retweet(589095997340405760)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
+  """
+  @spec retweet(Integer) :: ExTwitter.Model.Tweet.t
+  defdelegate retweet(id), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/retweet/:id
+
+  ## Examples
+
+      ExTwitter.retweet(589095997340405760, trim_user: true)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
+  """
+  @spec retweet(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate retweet(id, options), to: ExTwitter.API.Tweets
 
 
   @doc """

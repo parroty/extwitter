@@ -121,6 +121,18 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "retweet and destroy status" do
+    use_cassette "retweet_destroy_status" do
+      sample_tweet_id = 589095997340405760
+
+      tweet1 = ExTwitter.retweet(sample_tweet_id, trim_user: true)
+      assert tweet1.text =~ "RT @twitter:"
+
+      tweet2 = ExTwitter.destroy_status(tweet1.id, trim_user: true)
+      assert tweet2.text =~ "RT @twitter:"
+    end
+  end
+
   test "gets retweeter ids" do
     use_cassette "retweeter_ids" do
       ids = ExTwitter.retweeter_ids(444144169058308096)
