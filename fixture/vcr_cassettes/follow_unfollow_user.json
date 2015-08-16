@@ -1,0 +1,94 @@
+[
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/friendships/create.json"
+    },
+    "response": {
+      "body": "{\"id\":783214,\"id_str\":\"783214\",\"name\":\"Twitter\",\"screen_name\":\"twitter\",\"location\":\"San Francisco, CA\",\"description\":\"Your official source for news, updates and tips from Twitter, Inc.\\n\\n\\nNeed help? Visit http:\\/\\/t.co\\/qq1HEzvnrA.\",\"url\":\"http:\\/\\/t.co\\/5iRhy7wTgu\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/5iRhy7wTgu\",\"expanded_url\":\"http:\\/\\/blog.twitter.com\\/\",\"display_url\":\"blog.twitter.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/qq1HEzvnrA\",\"expanded_url\":\"http:\\/\\/support.twitter.com\",\"display_url\":\"support.twitter.com\",\"indices\":[86,108]}]}},\"protected\":false,\"followers_count\":44677026,\"friends_count\":139,\"listed_count\":88260,\"created_at\":\"Tue Feb 20 14:35:54 +0000 2007\",\"favourites_count\":39,\"utc_offset\":-25200,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":true,\"verified\":true,\"statuses_count\":2088,\"lang\":\"en\",\"status\":{\"created_at\":\"Fri Aug 14 19:15:51 +0000 2015\",\"id\":632269420249743361,\"id_str\":\"632269420249743361\",\"text\":\"Happening now: Follow @IliadLive as they live-Tweet the battles and divine interventions of Homer's The #Iliad. https:\\/\\/t.co\\/fePLikaU6j\",\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\\" rel=\\\"nofollow\\\"\\u003eTwitter Web Client\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":156,\"favorite_count\":392,\"entities\":{\"hashtags\":[{\"text\":\"Iliad\",\"indices\":[104,110]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"IliadLive\",\"name\":\"The Iliad\",\"id\":3419888571,\"id_str\":\"3419888571\",\"indices\":[22,32]}],\"urls\":[{\"url\":\"https:\\/\\/t.co\\/fePLikaU6j\",\"expanded_url\":\"https:\\/\\/twitter.com\\/Gizmodo\\/status\\/632243200279867393\",\"display_url\":\"twitter.com\\/Gizmodo\\/status\\u2026\",\"indices\":[112,135]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"ACDED6\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/657090062\\/l1uqey5sy82r9ijhke1i.png\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/657090062\\/l1uqey5sy82r9ijhke1i.png\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/615680132565504000\\/EIpgSD2K_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/615680132565504000\\/EIpgSD2K_normal.png\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1436401887\",\"profile_link_color\":\"226699\",\"profile_sidebar_border_color\":\"FFFFFF\",\"profile_sidebar_fill_color\":\"F6F6F6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"muting\":false}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 16 Aug 2015 01:40:14 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "3009",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 16 Aug 2015 01:40:14 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "048b9a3259cb429e15075aa3b6573872",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "172",
+        "x-transaction": "8eb5708d0aeb748d",
+        "x-tsa-request-body-time": "1",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/friendships/destroy.json"
+    },
+    "response": {
+      "body": "{\"id\":783214,\"id_str\":\"783214\",\"name\":\"Twitter\",\"screen_name\":\"twitter\",\"location\":\"San Francisco, CA\",\"description\":\"Your official source for news, updates and tips from Twitter, Inc.\\n\\n\\nNeed help? Visit http:\\/\\/t.co\\/qq1HEzvnrA.\",\"url\":\"http:\\/\\/t.co\\/5iRhy7wTgu\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/5iRhy7wTgu\",\"expanded_url\":\"http:\\/\\/blog.twitter.com\\/\",\"display_url\":\"blog.twitter.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/qq1HEzvnrA\",\"expanded_url\":\"http:\\/\\/support.twitter.com\",\"display_url\":\"support.twitter.com\",\"indices\":[86,108]}]}},\"protected\":false,\"followers_count\":44677027,\"friends_count\":139,\"listed_count\":88260,\"created_at\":\"Tue Feb 20 14:35:54 +0000 2007\",\"favourites_count\":39,\"utc_offset\":-25200,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":true,\"verified\":true,\"statuses_count\":2088,\"lang\":\"en\",\"status\":{\"created_at\":\"Fri Aug 14 19:15:51 +0000 2015\",\"id\":632269420249743361,\"id_str\":\"632269420249743361\",\"text\":\"Happening now: Follow @IliadLive as they live-Tweet the battles and divine interventions of Homer's The #Iliad. https:\\/\\/t.co\\/fePLikaU6j\",\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\\" rel=\\\"nofollow\\\"\\u003eTwitter Web Client\\u003c\\/a\\u003e\",\"truncated\":false,\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweet_count\":156,\"favorite_count\":392,\"entities\":{\"hashtags\":[{\"text\":\"Iliad\",\"indices\":[104,110]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"IliadLive\",\"name\":\"The Iliad\",\"id\":3419888571,\"id_str\":\"3419888571\",\"indices\":[22,32]}],\"urls\":[{\"url\":\"https:\\/\\/t.co\\/fePLikaU6j\",\"expanded_url\":\"https:\\/\\/twitter.com\\/Gizmodo\\/status\\/632243200279867393\",\"display_url\":\"twitter.com\\/Gizmodo\\/status\\u2026\",\"indices\":[112,135]}]},\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"ACDED6\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/657090062\\/l1uqey5sy82r9ijhke1i.png\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/657090062\\/l1uqey5sy82r9ijhke1i.png\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/615680132565504000\\/EIpgSD2K_normal.png\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/615680132565504000\\/EIpgSD2K_normal.png\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1436401887\",\"profile_link_color\":\"226699\",\"profile_sidebar_border_color\":\"FFFFFF\",\"profile_sidebar_fill_color\":\"F6F6F6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":true,\"follow_request_sent\":false,\"notifications\":false,\"muting\":false}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 16 Aug 2015 01:40:14 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "3008",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 16 Aug 2015 01:40:14 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "048b9a3259cb429e15075aa3b6573872",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "84",
+        "x-transaction": "7159c0672961fc42",
+        "x-tsa-request-body-time": "0",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

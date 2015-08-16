@@ -216,6 +216,16 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "follow and unfollow user" do
+    use_cassette "follow_unfollow_user" do
+      user1 = ExTwitter.follow("twitter")
+      assert user1.screen_name == "twitter"
+
+      user2 = ExTwitter.unfollow("twitter")
+      assert user2.screen_name == "twitter"
+    end
+  end
+
   test "gets friends of twitter user by screen_name" do
     use_cassette "friends" do
       friends_cursor = ExTwitter.friends("twitter", count: 1)

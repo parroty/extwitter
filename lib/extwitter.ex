@@ -590,11 +590,47 @@ defmodule ExTwitter do
   # GET friendships/outgoing
   # https://dev.twitter.com/docs/api/1.1/get/friendships/outgoing
 
-  # POST friendships/create
-  # https://dev.twitter.com/docs/api/1.1/post/friendships/create
+  @doc """
+  POST friendships/create
 
-  # POST friendships/destroy
-  # https://dev.twitter.com/docs/api/1.1/post/friendships/destroy
+  ## Examples
+
+      ExTwitter.follow("twitter")
+      ExTwitter.follow(783214)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/friendships/create
+  """
+  @spec follow(String.t | Integer) :: ExTwitter.Model.User.t
+  defdelegate follow(id), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  POST friendships/create
+
+  ## Examples
+
+      ExTwitter.follow("twitter", follow: true)
+      ExTwitter.follow(783214, follow: true)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/friendships/create
+  """
+  @spec follow(String.t | Integer, Keyword.t) :: ExTwitter.Model.User.t
+  defdelegate follow(id, options), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  POST friendships/destroy
+
+  ## Examples
+
+      ExTwitter.unfollow("twitter")
+      ExTwitter.unfollow(783214)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/friendships/destroy
+  """
+  @spec unfollow(String.t | Integer) :: ExTwitter.Model.User.t
+  defdelegate unfollow(id), to: ExTwitter.API.FriendsAndFollowers
 
   # POST friendships/update
   # https://dev.twitter.com/docs/api/1.1/post/friendships/update
