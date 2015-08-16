@@ -1,3 +1,12 @@
+0.4.3
+------
+#### Enhancements
+* Support following and unfollowing.
+    - ExTwitter.follow
+    - ExTwitter.unfollow
+* Support retweeting.
+    - ExTwitter.retweet
+
 0.4.2
 ------
 #### Enhancements
