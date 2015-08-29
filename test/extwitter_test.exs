@@ -385,16 +385,17 @@ defmodule ExTwitterTest do
     assert Regex.match?(regex, authenticate_url)
   end
 
-  # Testing access token validation requires a browser action by user and so is left on manual
-  # @tag :manual
-  # test "validate access token" do
-  #   verifier = ""
-  #   request_token = ""
+  @tag :manual
+  test "validate access token" do
+    use_cassette "access_token", custom: true do
+      verifier = "yep its true"
+      request_token = "pls"
 
-  #   %ExTwitter.Model.AccessToken{} = access_token = ExTwitter.access_token(verifier, request_token) |> IO.inspect
+      %ExTwitter.Model.AccessToken{} = access_token = ExTwitter.access_token(verifier, request_token)
 
-  #   assert access_token != nil
-  #   assert access_token.oauth_token != nil
-  #   assert access_token.oauth_token_secret != nil
-  # end
+      assert access_token != nil
+      assert access_token.oauth_token != nil
+      assert access_token.oauth_token_secret != nil
+    end
+  end
 end
