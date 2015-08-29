@@ -1335,6 +1335,22 @@ defmodule ExTwitter do
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
+  Returns the URL you should redirect the user for twitter sign-in
+
+  ## Reference
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+  
+  @spec authenticate_url(String.t, String.t, Map.t) :: Map
+  defdelegate authenticate_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
+
+  @spec authenticate_url(String.t, String.t) :: Map
+  defdelegate authenticate_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
+
+  @spec authenticate_url(String.t) :: Map
+  defdelegate authenticate_url(oauth_token), to: ExTwitter.API.Auth
+
+  @doc """
   POST oauth/access_token
 
   ## Examples

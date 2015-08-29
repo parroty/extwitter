@@ -339,14 +339,19 @@ defmodule ExTwitterTest do
   end
 
   test "request token" do
-    t = ExTwitter.request_token()
-    assert t != nil
-    assert t.oauth_token != nil
-    assert t.oauth_token_secret != nil
-    assert t.oauth_callback_confirmed != nil
+    use_cassette "request_token" do
+      # Fetching request token with which to generate authenticate or authorize requests
+      t = ExTwitter.request_token()
+      assert t != nil
+      assert t.oauth_token != nil
+      assert t.oauth_token_secret != nil
+      assert t.oauth_callback_confirmed != nil
+    end
   end
 
   test "generate authorize url" do
+    # Check generated oauth authorize url against twitter url pattern
+    # Validating the URL actually works is essentially a manual test
     token = "some_token"
     url = "http://some_domain.com/some_url"
 
@@ -362,6 +367,25 @@ defmodule ExTwitterTest do
     assert Regex.match?(regex, authorize_url)
   end
 
+  test "generate authenticate url" do
+    # Check generated oauth authenticate url against twitter url pattern
+    # Validating the URL actually works is essentially a manual test
+    token = "some_token"
+    url = "http://some_domain.com/some_url"
+
+    params = %{oauth_token: token, oauth_callback: url} |> URI.encode_query
+
+    {:ok, regex_callback} = Regex.compile("^https://api.twitter.com/oauth/authenticate\\?" <> params)
+    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authenticate\\?oauth_token=" <> token)
+
+    {:ok, authenticate_url_with_callback} = ExTwitter.authenticate_url(token, url)
+    {:ok, authenticate_url} = ExTwitter.authenticate_url(token)
+
+    assert Regex.match?(regex_callback, authenticate_url_with_callback)
+    assert Regex.match?(regex, authenticate_url)
+  end
+
+  # Testing access token validation requires a browser action by user and so is left on manual
   # @tag :manual
   # test "validate access token" do
   #   verifier = ""

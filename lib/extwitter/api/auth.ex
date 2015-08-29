@@ -25,6 +25,16 @@ defmodule ExTwitter.API.Auth do
     {:ok, request_url("oauth/authorize?" <> Elixir.URI.encode_query(args)) |> to_string}
   end
 
+  def authenticate_url(oauth_token, redirect_url \\ nil, options \\ %{}) do
+    args = Map.merge(%{oauth_token: oauth_token}, options)
+
+    if redirect_url do
+      args = Map.merge(%{oauth_callback: redirect_url}, args)
+    end
+
+    {:ok, request_url("oauth/authenticate?" <> Elixir.URI.encode_query(args)) |> to_string}
+  end
+
   def access_token(verifier, request_token) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
