@@ -385,13 +385,12 @@ defmodule ExTwitterTest do
     assert Regex.match?(regex, authenticate_url)
   end
 
-  @tag :manual
   test "validate access token" do
     use_cassette "access_token", custom: true do
       verifier = "yep its true"
       request_token = "pls"
 
-      %ExTwitter.Model.AccessToken{} = access_token = ExTwitter.access_token(verifier, request_token)
+      {:ok, access_token} = ExTwitter.access_token(verifier, request_token)
 
       assert access_token != nil
       assert access_token.oauth_token != nil

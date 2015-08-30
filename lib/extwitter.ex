@@ -1327,13 +1327,13 @@ defmodule ExTwitter do
   https://dev.twitter.com/web/sign-in/implementing
   """
   
-  @spec authorize_url(String.t, String.t, Map.t) :: Map
+  @spec authorize_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
 
-  @spec authorize_url(String.t, String.t) :: Map
+  @spec authorize_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
 
-  @spec authorize_url(String.t) :: Map
+  @spec authorize_url(String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
@@ -1344,13 +1344,13 @@ defmodule ExTwitter do
   https://dev.twitter.com/web/sign-in/implementing
   """
   
-  @spec authenticate_url(String.t, String.t, Map.t) :: Map
+  @spec authenticate_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
 
-  @spec authenticate_url(String.t, String.t) :: Map
+  @spec authenticate_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
 
-  @spec authenticate_url(String.t) :: Map
+  @spec authenticate_url(String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
@@ -1365,6 +1365,6 @@ defmodule ExTwitter do
   https://dev.twitter.com/web/sign-in/implementing
   """
 
-  @spec access_token(String.t, String.t) :: Map
+  @spec access_token(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate access_token(verifier, request_token), to: ExTwitter.API.Auth
 end

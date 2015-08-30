@@ -42,10 +42,11 @@ defmodule ExTwitter.API.Auth do
                                  [oauth_verifier: verifier],
                                  consumer, request_token, nil) do
       {:ok, {{_, 200, _}, _headers, body}} ->
-        Elixir.URI.decode_query(to_string body)
+        access_token = Elixir.URI.decode_query(to_string body)
           |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)
           |> Enum.into(%{})
           |> ExTwitter.Parser.parse_access_token
+        {:ok, access_token}
       {:ok, {{_, code, _}, _, _}} ->
         {:error, code}
     end
