@@ -1311,6 +1311,7 @@ defmodule ExTwitter do
       ExTwitter.request_token()
 
   ## Reference
+  https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
 
@@ -1318,9 +1319,10 @@ defmodule ExTwitter do
   defdelegate request_token, to: ExTwitter.API.Auth
 
   @doc """
-  Returns the URL you should redirect the user for 3-legged authorization
+  Returns the URL you should redirect the user to for 3-legged authorization
 
   ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authorize
   https://dev.twitter.com/oauth/3-legged
   https://dev.twitter.com/web/sign-in/implementing
   """
@@ -1335,9 +1337,10 @@ defmodule ExTwitter do
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
-  Returns the URL you should redirect the user for twitter sign-in
+  Returns the URL you should redirect the user to for twitter sign-in
 
   ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
   
@@ -1356,7 +1359,9 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.access_token("OAUTH_VERIFIER","ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+
   ## Reference
+  https://dev.twitter.com/oauth/reference/post/oauth/access_token
   https://dev.twitter.com/web/sign-in/implementing
   """
 
