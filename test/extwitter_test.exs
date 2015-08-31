@@ -337,4 +337,64 @@ defmodule ExTwitterTest do
       end
     end
   end
+
+  test "request token" do
+    use_cassette "request_token" do
+      # Fetching request token with which to generate authenticate or authorize requests
+      t = ExTwitter.request_token()
+      assert t != nil
+      assert t.oauth_token != nil
+      assert t.oauth_token_secret != nil
+      assert t.oauth_callback_confirmed != nil
+    end
+  end
+
+  test "generate authorize url" do
+    # Check generated oauth authorize url against twitter url pattern
+    # Validating the URL actually works is essentially a manual test
+    token = "some_token"
+    url = "http://some_domain.com/some_url"
+
+    params = %{oauth_token: token, oauth_callback: url} |> URI.encode_query
+
+    {:ok, regex_callback} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?" <> params)
+    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?oauth_token=" <> token)
+
+    {:ok, authorize_url_with_callback} = ExTwitter.authorize_url(token, url)
+    {:ok, authorize_url} = ExTwitter.authorize_url(token)
+
+    assert Regex.match?(regex_callback, authorize_url_with_callback)
+    assert Regex.match?(regex, authorize_url)
+  end
+
+  test "generate authenticate url" do
+    # Check generated oauth authenticate url against twitter url pattern
+    # Validating the URL actually works is essentially a manual test
+    token = "some_token"
+    url = "http://some_domain.com/some_url"
+
+    params = %{oauth_token: token, oauth_callback: url} |> URI.encode_query
+
+    {:ok, regex_callback} = Regex.compile("^https://api.twitter.com/oauth/authenticate\\?" <> params)
+    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authenticate\\?oauth_token=" <> token)
+
+    {:ok, authenticate_url_with_callback} = ExTwitter.authenticate_url(token, url)
+    {:ok, authenticate_url} = ExTwitter.authenticate_url(token)
+
+    assert Regex.match?(regex_callback, authenticate_url_with_callback)
+    assert Regex.match?(regex, authenticate_url)
+  end
+
+  test "validate access token" do
+    use_cassette "access_token", custom: true do
+      verifier = "yep its true"
+      request_token = "pls"
+
+      {:ok, access_token} = ExTwitter.access_token(verifier, request_token)
+
+      assert access_token != nil
+      assert access_token.oauth_token != nil
+      assert access_token.oauth_token_secret != nil
+    end
+  end
 end

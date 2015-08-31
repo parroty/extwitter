@@ -1302,4 +1302,69 @@ defmodule ExTwitter do
   """
   @spec lookup_status(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
   defdelegate lookup_status(id, options), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST oauth/request_token
+
+  ## Examples
+
+      ExTwitter.request_token()
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/post/oauth/request_token
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+
+  @spec request_token :: [ExTwitter.Model.RequestToken.t]
+  defdelegate request_token, to: ExTwitter.API.Auth
+
+  @doc """
+  Returns the URL you should redirect the user to for 3-legged authorization
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authorize
+  https://dev.twitter.com/oauth/3-legged
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+  
+  @spec authorize_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authorize_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
+
+  @spec authorize_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authorize_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
+
+  @spec authorize_url(String.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
+
+  @doc """
+  Returns the URL you should redirect the user to for twitter sign-in
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authenticate
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+  
+  @spec authenticate_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authenticate_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
+
+  @spec authenticate_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authenticate_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
+
+  @spec authenticate_url(String.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate authenticate_url(oauth_token), to: ExTwitter.API.Auth
+
+  @doc """
+  POST oauth/access_token
+
+  ## Examples
+
+      ExTwitter.access_token("OAUTH_VERIFIER","ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/post/oauth/access_token
+  https://dev.twitter.com/web/sign-in/implementing
+  """
+
+  @spec access_token(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
+  defdelegate access_token(verifier, request_token), to: ExTwitter.API.Auth
 end

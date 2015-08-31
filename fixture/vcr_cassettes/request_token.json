@@ -1,0 +1,49 @@
+[
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/oauth/request_token"
+    },
+    "response": {
+      "body": "oauth_token=6nktKQAAAAAAgwhYAAABT3ozY3I&oauth_token_secret=hNxn0C9ewlruqFi1YiFGkdyb0pST8Fvf&oauth_callback_confirmed=true",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 29 Aug 2015 16:03:52 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_d",
+        "content-length": "121",
+        "content-type": "text/html;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 29 Aug 2015 16:03:52 GMT",
+        "content-security-policy": "default-src 'none'; connect-src 'self'; font-src https://abs.twimg.com https://abs-0.twimg.com data:; frame-src 'self' twitter:; img-src https://abs.twimg.com https://*.twimg.com https://pbs.twimg.com data:; media-src 'none'; object-src 'none'; script-src https://abs.twimg.com https://abs-0.twimg.com https://twitter.com https://mobile.twitter.com; style-src https://abs.twimg.com https://abs-0.twimg.com; report-uri https://twitter.com/i/csp_report?a=NVQWGYLXFVWG6Z3JNY%3D%3D%3D%3D%3D%3D&ro=false;",
+        "ml": "A",
+        "set-cookie": "<REMOVED> Expires=Mon, 28-Aug-2017 16:03:52 UTC",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "31d6fcdc74ba411e79886db45286b76f",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "669",
+        "x-transaction": "a1b71155df71425a",
+        "x-tsa-request-body-time": "0",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-ua-compatible": "IE=edge,chrome=1",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

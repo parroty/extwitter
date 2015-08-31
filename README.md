@@ -176,6 +176,48 @@ IO.puts "Follower count for TwitterDev is #{Enum.count(ids)}."
 # => Follower count for TwitterDev is 38469.
 ```
 
+#### authentication / authorization
+
+Example for authentication ([Sign-in with twitter](https://dev.twitter.com/web/sign-in/implementing)). Authorization ([3-legged authorization](https://dev.twitter.com/oauth/3-legged)) uses the same workflow, just swap `authenticate_url` for `authorize_url` where indicated.
+
+```elixir
+# Request twitter for a new token
+token = ExTwitter.request_token()
+
+# Generate the url for "Sign-in with twitter". 
+# For "3-legged authorization" use ExTwitter.authorize_url instead
+{:ok, authenticate_url} = ExTwitter.authenticate_url(token.oauth_token)
+
+# Copy the url, paste it in your browser and authenticate
+IO.puts authenticate_url
+```
+
+After sign-in you will be redirected to the callback URL you configured for your app. 
+
+Example: 
+
+<pre>http://myapp.com/twitter-callback?oauth_token=<b>copy_this</b>&amp;oauth_verifier=<b>copy_this_too</b></pre>
+
+Copy the oauth_token and oauth_verifier query strings from the URL and use it in the iex snippet below.
+
+```elixir
+oauth_token = "copy_this"
+oauth_verifier = "copy_this_too"
+
+# Exchange for an access token
+{:ok, access_token} = ExTwitter.access_token(oauth_verifier, oauth_token)
+
+# Configure ExTwitter to use your newly obtained access token
+ExTwitter.configure(
+  consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+  consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET"),
+  access_token: access_token.oauth_token,
+  access_token_secret: access_token.oauth_token_secret
+)
+
+ExTwitter.user_timeline
+```
+
 ### Notes
 `run_iex.sh` launches iex, with initially calling `ExTwitter.configure` defined as `iex/dot.iex`.
 

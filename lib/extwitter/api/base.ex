@@ -43,7 +43,7 @@ defmodule ExTwitter.API.Base do
     end
   end
 
-  defp request_url(path) do
+  def request_url(path) do
     "https://api.twitter.com/#{path}" |> to_char_list
   end
 
@@ -51,7 +51,7 @@ defmodule ExTwitter.API.Base do
     "https://upload.twitter.com/#{path}" |> to_char_list
   end
 
-  defp parse_result(result) do
+  def parse_result(result) do
     {:ok, {_response, header, body}} = result
     verify_response(ExTwitter.JSON.decode!(body), header)
   end
