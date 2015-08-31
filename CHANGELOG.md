@@ -1,7 +1,7 @@
 0.4.4
 ------
 #### Enhancements
-* Support authentication / authorization.
+* Support authentication / authorization (#21).
     - ExTwitter.request_token
     - ExTwitter.authorize_url
     - ExTwitter.authenticate_url
