@@ -266,6 +266,14 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets credentials" do
+    use_cassette "verify_credentials", custom: true do
+      user = ExTwitter.verify_credentials
+      assert user.id != nil
+      assert user.screen_name != nil
+    end
+  end
+
   test "lookup user by screen_name" do
     use_cassette "lookup_user" do
       users = ExTwitter.user_lookup("twitter")

@@ -732,8 +732,20 @@ defmodule ExTwitter do
   # GET account/settings
   # https://dev.twitter.com/docs/api/1.1/get/account/settings
 
-  # GET account/verify_credentials
-  # https://dev.twitter.com/docs/api/1.1/get/account/verify_credentials
+  @doc """
+  GET account/verify_credentials
+
+  ## Examples
+
+      ExTwitter.verify_credentials
+      ExTwitter.verify_credentials(include_email: true)
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/get/account/verify_credentials
+  """
+  @spec verify_credentials :: ExTwitter.Model.User.t
+  defdelegate verify_credentials, to: ExTwitter.API.Users
+
 
   # POST account/settings
   # https://dev.twitter.com/docs/api/1.1/post/account/settings
