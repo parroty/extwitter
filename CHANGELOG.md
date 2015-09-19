@@ -1,3 +1,9 @@
+0.4.5
+------
+#### Enhancements
+* Support verifying credentials (#23).
+    - ExTwitter.verify_credentials
+
 0.4.4
 ------
 #### Enhancements
