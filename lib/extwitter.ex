@@ -1320,48 +1320,109 @@ defmodule ExTwitter do
 
   ## Examples
 
-      ExTwitter.request_token()
+      ExTwitter.request_token
 
   ## Reference
   https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
-
   @spec request_token :: [ExTwitter.Model.RequestToken.t]
   defdelegate request_token, to: ExTwitter.API.Auth
 
   @doc """
+  GET oauth/authorize
   Returns the URL you should redirect the user to for 3-legged authorization
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authorize_url(
+          token.oauth_token, "http://myapp.com/twitter-callback", %{force_login: true})
 
   ## Reference
   https://dev.twitter.com/oauth/reference/get/oauth/authorize
   https://dev.twitter.com/oauth/3-legged
   https://dev.twitter.com/web/sign-in/implementing
   """
-  
   @spec authorize_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
 
+  @doc """
+  GET oauth/authorize
+  Returns the URL you should redirect the user to for 3-legged authorization
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authorize_url(token.oauth_token, "http://myapp.com/twitter-callback")
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authorize
+  https://dev.twitter.com/oauth/3-legged
+  https://dev.twitter.com/web/sign-in/implementing
+  """
   @spec authorize_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
 
+  @doc """
+  GET oauth/authorize
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authorize_url(token.oauth_token)
+
+  Returns the URL you should redirect the user to for 3-legged authorization
+  """
   @spec authorize_url(String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
+  GET oauth/authenticate
   Returns the URL you should redirect the user to for twitter sign-in
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authenticate_url(
+          token.oauth_token, "http://myapp.com/twitter-callback", %{force_login: true})
 
   ## Reference
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
-  
   @spec authenticate_url(String.t, String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token, redirect_url, options), to: ExTwitter.API.Auth
 
+  @doc """
+  GET oauth/authenticate
+  Returns the URL you should redirect the user to for twitter sign-in
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authenticate_url(token.oauth_token, "http://myapp.com/twitter-callback")
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authenticate
+  https://dev.twitter.com/web/sign-in/implementing
+  """
   @spec authenticate_url(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token, redirect_url), to: ExTwitter.API.Auth
 
+  @doc """
+  GET oauth/authenticate
+  Returns the URL you should redirect the user to for twitter sign-in
+
+  ## Examples
+
+      token = ExTwitter.request_token
+      ExTwitter.authenticate_url(token.oauth_token)
+
+  ## Reference
+  https://dev.twitter.com/oauth/reference/get/oauth/authenticate
+  https://dev.twitter.com/web/sign-in/implementing
+  """
   @spec authenticate_url(String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token), to: ExTwitter.API.Auth
 
@@ -1370,13 +1431,12 @@ defmodule ExTwitter do
 
   ## Examples
 
-      ExTwitter.access_token("OAUTH_VERIFIER","ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+      ExTwitter.access_token("OAUTH_VERIFIER", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
 
   ## Reference
   https://dev.twitter.com/oauth/reference/post/oauth/access_token
   https://dev.twitter.com/web/sign-in/implementing
   """
-
   @spec access_token(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
   defdelegate access_token(verifier, request_token), to: ExTwitter.API.Auth
 end
