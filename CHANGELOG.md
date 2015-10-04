@@ -1,3 +1,8 @@
+0.5.0
+------
+#### Changes
+* Updates for elixir v1.1 (#24).
+
 0.4.5
 ------
 #### Enhancements
