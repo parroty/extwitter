@@ -4,7 +4,7 @@ defmodule ExTwitter.Mixfile do
   def project do
     [ app: :extwitter,
       version: "0.4.6",
-      elixir: "~> 1.0.0",
+      elixir: ">= 1.0.0",
       deps: deps,
       description: description,
       package: package,
@@ -30,7 +30,7 @@ defmodule ExTwitter.Mixfile do
       {:timex, "~> 0.13"},
       {:exvcr, "~> 0.3", only: [:dev, :test]},
       {:excoveralls, "~> 0.3", only: [:dev, :test]},
-      {:meck, "~> 0.8.2", only: :test},
+      {:meck, "~> 0.8.2", only: [:dev, :test]},
       {:mock, github: "parroty/mock", only: [:dev, :test], branch: "fix"},
       {:ex_doc, "~> 0.6", only: :docs},
       {:earmark, "~> 0.1", only: :docs},
