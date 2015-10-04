@@ -32,7 +32,7 @@ defmodule ExTwitter.Mixfile do
       {:excoveralls, "~> 0.3", only: [:dev, :test]},
       {:meck, "~> 0.8.2", only: [:dev, :test]},
       {:mock, github: "parroty/mock", only: [:dev, :test], branch: "fix"},
-      {:ex_doc, "~> 0.6", only: :docs},
+      {:ex_doc, "~> 0.10", only: :docs},
       {:earmark, "~> 0.1", only: :docs},
       {:inch_ex, "~> 0.2", only: :docs},
       {:benchfella, github: "alco/benchfella", only: :dev}
