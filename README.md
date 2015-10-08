@@ -19,7 +19,7 @@ The default behaviour is to configure using the application environment:
 In `config/config.exs`, add:
 
 ```elixir
-config :ex_twitter, :oauth, [
+config :extwitter, :oauth, [
    consumer_key: "",
    consumer_secret: "",
    access_token: "",
