@@ -9,6 +9,10 @@ defmodule ExTwitter.Mixfile do
       description: description,
       package: package,
       test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test,
+        "vcr": :test, "vcr.delete": :test, "vcr.check": :test, "vcr.show": :test
+      ],
       docs: [main: ExTwitter] ]
   end
 
@@ -28,8 +32,8 @@ defmodule ExTwitter.Mixfile do
       {:oauth, github: "tim/erlang-oauth"},
       {:poison, "~> 1.3"},
       {:timex, "~> 0.13"},
-      {:exvcr, "~> 0.3", only: [:dev, :test]},
-      {:excoveralls, "~> 0.3", only: [:dev, :test]},
+      {:exvcr, "~> 0.3", only: :test},
+      {:excoveralls, "~> 0.3", only: :test},
       {:meck, "~> 0.8.2", only: [:dev, :test]},
       {:mock, github: "parroty/mock", only: [:dev, :test], branch: "fix"},
       {:ex_doc, "~> 0.10", only: :docs},
