@@ -44,7 +44,7 @@ ExTwitter.configure(:process, [consumer_key: "", ...])
 defp deps do
   [
     {:oauth, github: "tim/erlang-oauth"},
-    {:extwitter, "~> 0.2"}
+    {:extwitter, "~> 0.5"}
   ]
 end
 ```
@@ -184,7 +184,7 @@ Example for authentication ([Sign-in with twitter](https://dev.twitter.com/web/s
 # Request twitter for a new token
 token = ExTwitter.request_token()
 
-# Generate the url for "Sign-in with twitter". 
+# Generate the url for "Sign-in with twitter".
 # For "3-legged authorization" use ExTwitter.authorize_url instead
 {:ok, authenticate_url} = ExTwitter.authenticate_url(token.oauth_token)
 
@@ -192,9 +192,9 @@ token = ExTwitter.request_token()
 IO.puts authenticate_url
 ```
 
-After sign-in you will be redirected to the callback URL you configured for your app. 
+After sign-in you will be redirected to the callback URL you configured for your app.
 
-Example: 
+Example:
 
 <pre>http://myapp.com/twitter-callback?oauth_token=<b>copy_this</b>&amp;oauth_verifier=<b>copy_this_too</b></pre>
 
