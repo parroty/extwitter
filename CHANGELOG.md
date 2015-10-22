@@ -1,3 +1,9 @@
+0.5.1
+------
+#### Changes
+* Fix application naming (:ex_twitter -> :extwitter) in config.exs (#25, #26).
+    - Plase use the name :extwitter instead of :ex_twitter after this version.
+
 0.5.0
 ------
 #### Changes
