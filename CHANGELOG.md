@@ -1,3 +1,8 @@
+0.5.2
+------
+#### Changes
+* Add missing attributes for Tweet, User, Entities models (#28).
+
 0.5.1
 ------
 #### Changes
