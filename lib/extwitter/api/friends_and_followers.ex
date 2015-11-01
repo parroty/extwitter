@@ -8,7 +8,7 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def followers(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/followers/list.json", params)
-      |> ExTwitter.Parser.parse_users_with_cursor
+    |> ExTwitter.Parser.parse_users_with_cursor
   end
 
   def followers(id, options \\ []) do
@@ -18,7 +18,7 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def follower_ids(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/followers/ids.json", params)
-      |> ExTwitter.Parser.parse_ids_with_cursor
+    |> ExTwitter.Parser.parse_ids_with_cursor
   end
 
   def follower_ids(id, options \\ []) do
@@ -28,19 +28,19 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def follow(id, options \\ []) do
     params = ExTwitter.Parser.parse_request_params(get_id_option(id) ++ options)
     request(:post, "1.1/friendships/create.json", params)
-      |> ExTwitter.Parser.parse_user
+    |> ExTwitter.Parser.parse_user
   end
 
   def unfollow(id) do
     params = ExTwitter.Parser.parse_request_params(get_id_option(id))
     request(:post, "1.1/friendships/destroy.json", params)
-      |> ExTwitter.Parser.parse_user
+    |> ExTwitter.Parser.parse_user
   end
 
   def friends(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/friends/list.json", params)
-      |> ExTwitter.Parser.parse_users_with_cursor
+    |> ExTwitter.Parser.parse_users_with_cursor
   end
 
   def friends(id, options \\ []) do
@@ -50,7 +50,7 @@ defmodule ExTwitter.API.FriendsAndFollowers do
   def friend_ids(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/friends/ids.json", params)
-      |> ExTwitter.Parser.parse_ids_with_cursor
+    |> ExTwitter.Parser.parse_ids_with_cursor
   end
 
   def friend_ids(id, options \\ []) do

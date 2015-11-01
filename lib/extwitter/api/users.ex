@@ -8,13 +8,13 @@ defmodule ExTwitter.API.Users do
   def verify_credentials(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/account/verify_credentials.json", params)
-      |> ExTwitter.Parser.parse_user
+    |> ExTwitter.Parser.parse_user
   end
 
   def user_lookup(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/users/lookup.json", params)
-      |> Enum.map(&ExTwitter.Parser.parse_user/1)
+    |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
   def user_lookup(id, options \\ []) do
@@ -24,7 +24,7 @@ defmodule ExTwitter.API.Users do
   def user_search(query, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([q: query] ++ options)
     request(:get, "1.1/users/search.json", params)
-      |> Enum.map(&ExTwitter.Parser.parse_user/1)
+    |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
   def user(user_id) do
@@ -34,7 +34,7 @@ defmodule ExTwitter.API.Users do
   def user(user_id, options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(parse_user_id_param(user_id) ++ options)
     request(:get, "1.1/users/show.json", params)
-      |> ExTwitter.Parser.parse_user
+    |> ExTwitter.Parser.parse_user
   end
 
 
@@ -50,6 +50,6 @@ defmodule ExTwitter.API.Users do
   def user(user_id, screen_name, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([user_id: user_id, screen_name: screen_name] ++ options)
     request(:get, "1.1/users/show.json", params)
-      |> ExTwitter.Parser.parse_user
+    |> ExTwitter.Parser.parse_user
   end
 end

@@ -102,8 +102,8 @@ defmodule ExTwitter.API.Streaming do
 
           is_end_of_message(part) ->
             message = Enum.reverse([part|acc])
-                        |> Enum.join("")
-                        |> __MODULE__.parse_tweet_message(configs)
+                      |> Enum.join("")
+                      |> __MODULE__.parse_tweet_message(configs)
             if message do
               send processor, message
             end

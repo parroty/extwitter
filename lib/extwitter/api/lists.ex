@@ -9,7 +9,7 @@ defmodule ExTwitter.API.Lists do
     id_option = get_id_option(id_or_screen_name)
     params = ExTwitter.Parser.parse_request_params(id_option ++ options)
     request(:get, "1.1/lists/list.json", params)
-      |> Enum.map(&ExTwitter.Parser.parse_list/1)
+    |> Enum.map(&ExTwitter.Parser.parse_list/1)
   end
 
   def list_timeline(list, owner, options \\ []) do
@@ -19,14 +19,14 @@ defmodule ExTwitter.API.Lists do
   def list_timeline(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/lists/statuses.json", params)
-      |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+    |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
   end
 
   def list_memberships(options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/lists/memberships.json", params)
-      |> ExTwitter.JSON.get(:lists)
-      |> Enum.map(&ExTwitter.Parser.parse_list/1)
+    |> ExTwitter.JSON.get(:lists)
+    |> Enum.map(&ExTwitter.Parser.parse_list/1)
   end
 
   def list_subscribers(list, owner, options \\ []) do
@@ -36,8 +36,8 @@ defmodule ExTwitter.API.Lists do
   def list_subscribers(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/lists/subscribers.json", params)
-      |> ExTwitter.JSON.get(:users)
-      |> Enum.map(&ExTwitter.Parser.parse_user/1)
+    |> ExTwitter.JSON.get(:users)
+    |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
   def list_members(list, owner, options \\ []) do
@@ -47,7 +47,7 @@ defmodule ExTwitter.API.Lists do
   def list_members(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/lists/members.json", params)
-      |> ExTwitter.JSON.get(:users)
-      |> Enum.map(&ExTwitter.Parser.parse_user/1)
+    |> ExTwitter.JSON.get(:users)
+    |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 end
