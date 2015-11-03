@@ -543,6 +543,28 @@ defmodule ExTwitter do
 
   # --------------  Direct Messages -------------
 
+  @doc """
+  GET direct_messages/show/:id
+
+  ## Examples
+
+      ExTwitter.direct_message(446328507694845952)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/direct_messages/show
+  """
+  @spec direct_message(Integer | String.t) :: ExTwitter.Model.DirectMessage.t
+  defdelegate direct_message(id), to: ExTwitter.API.DirectMessages
+
+  @doc """
+  GET direct_messages
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/direct_messages
+  """
+  @spec direct_messages(Keyword.t) :: [ExTwitter.Model.DirectMessage.t]
+  defdelegate direct_messages(options), to: ExTwitter.API.DirectMessages
+
   # -------------- Friends & Followers -------------
 
   # GET friendships/no_retweets/ids

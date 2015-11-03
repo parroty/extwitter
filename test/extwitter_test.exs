@@ -98,6 +98,21 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "shows direct message" do
+    use_cassette "show_direct_message" do
+      direct_message = ExTwitter.direct_message(615025281712025603)
+      assert direct_message.text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
+  test "gets direct messages list" do
+    use_cassette "list_direct_messages" do
+      direct_messages = ExTwitter.direct_messages(count: 1)
+      assert Enum.count(direct_messages) == 1
+      assert List.first(direct_messages).text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
   test "update and destroy status" do
     use_cassette "update_destroy_status" do
       tweet1 = ExTwitter.update("update sample")

@@ -12,6 +12,15 @@ defmodule ExTwitter.Parser do
     %{tweet | user: user}
   end
 
+  @doc """
+  Parse direct message record from the API response
+  """
+  def parse_direct_message(object) do
+    direct_message = struct(ExTwitter.Model.DirectMessage, object)
+    recipient      = parse_user(direct_message.recipient)
+    sender         = parse_user(direct_message.sender)
+    %{direct_message | recipient: recipient, sender: sender}
+  end
 
   def parse_upload(object) do
     struct(ExTwitter.Model.Upload, object)

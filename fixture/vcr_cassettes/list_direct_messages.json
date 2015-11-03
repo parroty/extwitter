@@ -1,0 +1,184 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/direct_messages.json"
+    },
+    "response": {
+      "headers": {
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-remaining": "13",
+        "last-modified": "Wed, 04 Nov 2015 10:35:52 GMT",
+        "status": "200 OK",
+        "content-length": "8242",
+        "x-response-time": "24",
+        "x-transaction": "6159f9084c2d8651",
+        "server": "tsa_b",
+        "pragma": "no-cache",
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "x-xss-protection": "1; mode=block",
+        "x-content-type-options": "nosniff",
+        "x-rate-limit-limit": 15,
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "date": "Wed, 04 Nov 2015 10:35:52 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "set-cookie":"<REMOVED> Domain=.twitter.com; Path=/; Expires=Fri, 03-Nov-2017 10:35:52 UTC",
+        "x-rate-limit-reset":"1446634233",
+        "x-access-level":"read-write-directmessages",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok",
+      "body": "[{
+  \"id\": 615025281712025600,
+  \"id_str\": \"615025281712025603\",
+  \"text\": \"In case there are any problems with locating the place\",
+  \"sender\": {
+    \"id\": 71686163,
+    \"id_str\": \"71686163\",
+    \"name\": \"cheenu madan\",
+    \"screen_name\": \"cmadan_\",
+    \"location\": \"New Delhi, India\",
+    \"description\": \"I just retweet as I go along.\",
+    \"url\": \"https://t.co/kdZSrk0V8B\",
+    \"entities\": {
+      \"url\": {
+        \"urls\": [
+          {
+            \"url\": \"https://t.co/kdZSrk0V8B\",
+            \"expanded_url\": \"https://www.wanto.in\",
+            \"display_url\": \"wanto.in\",
+            \"indices\": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      \"description\": {
+        \"urls\": []
+      }
+    },
+    \"protected\": false,
+    \"followers_count\": 472,
+    \"friends_count\": 944,
+    \"listed_count\": 22,
+    \"created_at\": \"Sat Sep 05 00:54:34 +0000 2009\",
+    \"favourites_count\": 515,
+    \"utc_offset\": 19800,
+    \"time_zone\": \"New Delhi\",
+    \"geo_enabled\": true,
+    \"verified\": false,
+    \"statuses_count\": 6510,
+    \"lang\": \"en\",
+    \"contributors_enabled\": false,
+    \"is_translator\": false,
+    \"is_translation_enabled\": false,
+    \"profile_background_color\": \"131516\",
+    \"profile_background_image_url\": \"http://abs.twimg.com/images/themes/theme14/bg.gif\",
+    \"profile_background_image_url_https\": \"https://abs.twimg.com/images/themes/theme14/bg.gif\",
+    \"profile_background_tile\": true,
+    \"profile_image_url\": \"http://pbs.twimg.com/profile_images/452458321014833154/wRNlde77_normal.jpeg\",
+    \"profile_image_url_https\": \"https://pbs.twimg.com/profile_images/452458321014833154/wRNlde77_normal.jpeg\",
+    \"profile_link_color\": \"FF4422\",
+    \"profile_sidebar_border_color\": \"FFFFFF\",
+    \"profile_sidebar_fill_color\": \"EFEFEF\",
+    \"profile_text_color\": \"333333\",
+    \"profile_use_background_image\": true,
+    \"has_extended_profile\": false,
+    \"default_profile\": false,
+    \"default_profile_image\": false,
+    \"following\": true,
+    \"follow_request_sent\": false,
+    \"notifications\": false
+  },
+  \"sender_id\": 71686163,
+  \"sender_id_str\": \"71686163\",
+  \"sender_screen_name\": \"cmadan_\",
+  \"recipient\": {
+    \"id\": 14065315,
+    \"id_str\": \"14065315\",
+    \"name\": \"Waseem Ahmad\",
+    \"screen_name\": \"_waseem\",
+    \"location\": \"New Delhi, India\",
+    \"description\": \"I'm a Panzerfaust. I faust Panzers. And also a Duck Puncher. Archlinux user. Standup comedian in sleep. When does narwhal bacon?\",
+    \"url\": \"http://t.co/pJh7WcYv35\",
+    \"entities\": {
+      \"url\": {
+        \"urls\": [
+          {
+            \"url\": \"http://t.co/pJh7WcYv35\",
+            \"expanded_url\": \"http://waseem-ahmad.com\",
+            \"display_url\": \"waseem-ahmad.com\",
+            \"indices\": [
+              0,
+              22
+            ]
+          }
+        ]
+      },
+      \"description\": {
+        \"urls\": []
+      }
+    },
+    \"protected\": false,
+    \"followers_count\": 270,
+    \"friends_count\": 108,
+    \"listed_count\": 9,
+    \"created_at\": \"Sat Mar 01 16:12:49 +0000 2008\",
+    \"favourites_count\": 38,
+    \"utc_offset\": 19800,
+    \"time_zone\": \"New Delhi\",
+    \"geo_enabled\": true,
+    \"verified\": false,
+    \"statuses_count\": 4699,
+    \"lang\": \"en\",
+    \"contributors_enabled\": false,
+    \"is_translator\": false,
+    \"is_translation_enabled\": false,
+    \"profile_background_color\": \"0099B9\",
+    \"profile_background_image_url\": \"http://abs.twimg.com/images/themes/theme4/bg.gif\",
+    \"profile_background_image_url_https\": \"https://abs.twimg.com/images/themes/theme4/bg.gif\",
+    \"profile_background_tile\": false,
+    \"profile_image_url\": \"http://pbs.twimg.com/profile_images/630486679107665920/2RnJACza_normal.jpg\",
+    \"profile_image_url_https\": \"https://pbs.twimg.com/profile_images/630486679107665920/2RnJACza_normal.jpg\",
+    \"profile_banner_url\": \"https://pbs.twimg.com/profile_banners/14065315/1396063411\",
+    \"profile_link_color\": \"0099B9\",
+    \"profile_sidebar_border_color\": \"5ED4DC\",
+    \"profile_sidebar_fill_color\": \"95E8EC\",
+    \"profile_text_color\": \"3C3940\",
+    \"profile_use_background_image\": true,
+    \"has_extended_profile\": false,
+    \"default_profile\": false,
+    \"default_profile_image\": false,
+    \"following\": false,
+    \"follow_request_sent\": false,
+    \"notifications\": false
+  },
+  \"recipient_id\": 14065315,
+  \"recipient_id_str\": \"14065315\",
+  \"recipient_screen_name\": \"_waseem\",
+  \"created_at\": \"Sun Jun 28 05:13:48 +0000 2015\",
+  \"entities\": {
+    \"hashtags\": [],
+    \"symbols\": [],
+    \"user_mentions\": [],
+    \"urls\": []
+  }
+}]",
+    }
+  }
+]
