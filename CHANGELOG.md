@@ -1,3 +1,10 @@
+0.5.3
+------
+#### Enhancements
+* Support showing direct messages (#29).
+    - ExTwitter.direct_messages
+    - ExTwitter.direct_message
+
 0.5.2
 ------
 #### Changes
