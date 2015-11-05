@@ -559,6 +559,23 @@ defmodule ExTwitter do
   @doc """
   GET direct_messages
 
+  ## Examples
+
+      ExTwitter.direct_messages
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/direct_messages
+  """
+  @spec direct_messages :: [ExTwitter.Model.DirectMessage.t]
+  defdelegate direct_messages, to: ExTwitter.API.DirectMessages
+
+  @doc """
+  GET direct_messages
+
+  ## Examples
+
+      ExTwitter.direct_messages(count: 1)
+
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages
   """
