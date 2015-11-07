@@ -105,11 +105,59 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "gets direct messages list without options" do
+    use_cassette "list_direct_messages" do
+      direct_messages = ExTwitter.direct_messages
+      assert Enum.count(direct_messages) == 1
+      assert List.first(direct_messages).text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
   test "gets direct messages list" do
     use_cassette "list_direct_messages" do
       direct_messages = ExTwitter.direct_messages(count: 1)
       assert Enum.count(direct_messages) == 1
       assert List.first(direct_messages).text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
+  test "gets sent direct messages list without options" do
+    use_cassette "sent_direct_messages" do
+      direct_messages = ExTwitter.sent_direct_messages
+      assert Enum.count(direct_messages) == 1
+      assert List.first(direct_messages).text =~ ~r/Please collect the samples./
+    end
+  end
+
+  test "gets sent direct messages list" do
+    use_cassette "sent_direct_messages" do
+      direct_messages = ExTwitter.sent_direct_messages(count: 1)
+      assert Enum.count(direct_messages) == 1
+      assert List.first(direct_messages).text =~ ~r/Please collect the samples./
+    end
+  end
+
+  test "destroy a direct message without options" do
+    use_cassette "destroy_direct_message" do
+      direct_message = ExTwitter.destroy_direct_message(615025281712025603)
+      assert direct_message.text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
+  test "destroy a direct message options" do
+    use_cassette "destroy_direct_message" do
+      direct_message = ExTwitter.destroy_direct_message(615025281712025603, include_entities: false)
+      assert direct_message.text =~ ~r/In case there are any problems with locating the place/
+    end
+  end
+
+  test "new direct message" do
+    use_cassette "new_direct_message" do
+      direct_message = ExTwitter.new_direct_message(71686163, "In case there are any problems with locating the place")
+      assert direct_message.text =~ ~r/In case there are any problems with locating the place/
+
+      direct_message = ExTwitter.new_direct_message("cmadan_", "In case there are any problems with locating the place")
+      assert direct_message.text =~ ~r/In case there are any problems with locating the place/
     end
   end
 
