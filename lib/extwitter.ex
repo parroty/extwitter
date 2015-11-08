@@ -609,19 +609,6 @@ defmodule ExTwitter do
   defdelegate sent_direct_messages(options), to: ExTwitter.API.DirectMessages
 
   @doc """
-  POST direct_messages/destroy/:id
-
-  ## Examples
-
-      ExTwitter.destroy_direct_message(12345)
-
-  ## Reference
-  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
-  """
-  @spec destroy_direct_message(Integer) :: ExTwitter.Model.DirectMessage.t
-  defdelegate destroy_direct_message(id), to: ExTwitter.API.DirectMessages
-
-  @doc """
   POST direct_messages/new
 
   Specify one of the `screen name`, or `user id` in first argument.
@@ -635,6 +622,19 @@ defmodule ExTwitter do
   """
   @spec new_direct_message(String.t | Integer, String.t) :: ExTwitter.Model.DirectMessage.t
   defdelegate new_direct_message(id_or_screen_name, text), to: ExTwitter.API.DirectMessages
+
+  @doc """
+  POST direct_messages/destroy/:id
+
+  ## Examples
+
+      ExTwitter.destroy_direct_message(12345)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
+  """
+  @spec destroy_direct_message(Integer) :: ExTwitter.Model.DirectMessage.t
+  defdelegate destroy_direct_message(id), to: ExTwitter.API.DirectMessages
 
   @doc """
   POST direct_messages/destroy/:id
