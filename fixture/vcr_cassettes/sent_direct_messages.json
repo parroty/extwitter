@@ -1,0 +1,198 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "url": "https://api.twitter.com/1.1/direct_messages/sent.json"
+    },
+    "response": {
+      "headers": {
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-remaining": "14",
+        "last-modified": "Sat, 07 Nov 2015 07:47:50 GMT",
+        "status": "200 OK",
+        "content-length": "3743",
+        "x-response-time": "25",
+        "x-transaction": "952bcfc033ead521",
+        "server": "tsa_b",
+        "pragma": "no-cache",
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "x-xss-protection": "1; mode=block",
+        "x-content-type-options": "nosniff",
+        "x-rate-limit-limit": 15,
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "date": "Sat, 07 Nov 2015 07:53:05 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "set-cookie":"<REMOVED> Domain=.twitter.com; Path=/; Expires=Fri, 03-Nov-2017 10:35:52 UTC",
+        "x-rate-limit-reset":"1446634233",
+        "x-access-level":"read-write-directmessages",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok",
+      "body": "
+[
+  {
+    \"id\": 649548060914270200,
+    \"id_str\": \"649548060914270211\",
+    \"text\": \"Please collect the samples.\",
+    \"sender\": {
+      \"id\": 14065315,
+      \"id_str\": \"14065315\",
+      \"name\": \"Waseem Ahmad\",
+      \"screen_name\": \"_waseem\",
+      \"location\": \"New Delhi, India\",
+      \"description\": \"I'm a Panzerfaust. I faust Panzers. And also a Duck Puncher. Archlinux user. Standup comedian in sleep. When does narwhal bacon?\",
+      \"url\": \"http://t.co/pJh7WcYv35\",
+      \"entities\": {
+        \"url\": {
+          \"urls\": [
+            {
+              \"url\": \"http://t.co/pJh7WcYv35\",
+              \"expanded_url\": \"http://waseem-ahmad.com\",
+              \"display_url\": \"waseem-ahmad.com\",
+              \"indices\": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        \"description\": {
+          \"urls\": []
+        }
+      },
+      \"protected\": false,
+      \"followers_count\": 269,
+      \"friends_count\": 108,
+      \"listed_count\": 9,
+      \"created_at\": \"Sat Mar 01 16:12:49 +0000 2008\",
+      \"favourites_count\": 38,
+      \"utc_offset\": 19800,
+      \"time_zone\": \"New Delhi\",
+      \"geo_enabled\": true,
+      \"verified\": false,
+      \"statuses_count\": 4719,
+      \"lang\": \"en\",
+      \"contributors_enabled\": false,
+      \"is_translator\": false,
+      \"is_translation_enabled\": false,
+      \"profile_background_color\": \"0099B9\",
+      \"profile_background_image_url\": \"http://abs.twimg.com/images/themes/theme4/bg.gif\",
+      \"profile_background_image_url_https\": \"https://abs.twimg.com/images/themes/theme4/bg.gif\",
+      \"profile_background_tile\": false,
+      \"profile_image_url\": \"http://pbs.twimg.com/profile_images/630486679107665920/2RnJACza_normal.jpg\",
+      \"profile_image_url_https\": \"https://pbs.twimg.com/profile_images/630486679107665920/2RnJACza_normal.jpg\",
+      \"profile_banner_url\": \"https://pbs.twimg.com/profile_banners/14065315/1396063411\",
+      \"profile_link_color\": \"0099B9\",
+      \"profile_sidebar_border_color\": \"5ED4DC\",
+      \"profile_sidebar_fill_color\": \"95E8EC\",
+      \"profile_text_color\": \"3C3940\",
+      \"profile_use_background_image\": true,
+      \"has_extended_profile\": false,
+      \"default_profile\": false,
+      \"default_profile_image\": false,
+      \"following\": false,
+      \"follow_request_sent\": false,
+      \"notifications\": false
+    },
+    \"sender_id\": 14065315,
+    \"sender_id_str\": \"14065315\",
+    \"sender_screen_name\": \"_waseem\",
+    \"recipient\": {
+      \"id\": 14454005,
+      \"id_str\": \"14454005\",
+      \"name\": \"Jigar Patel\",
+      \"screen_name\": \"jagira\",
+      \"location\": \"India\",
+      \"description\": \"Driving fast in a slow lane!\",
+      \"url\": \"http://t.co/I9aW0IHAz8\",
+      \"entities\": {
+        \"url\": {
+          \"urls\": [
+            {
+              \"url\": \"http://t.co/I9aW0IHAz8\",
+              \"expanded_url\": \"http://jigarpatel.in\",
+              \"display_url\": \"jigarpatel.in\",
+              \"indices\": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        \"description\": {
+          \"urls\": []
+        }
+      },
+      \"protected\": false,
+      \"followers_count\": 492,
+      \"friends_count\": 200,
+      \"listed_count\": 25,
+      \"created_at\": \"Sun Apr 20 18:57:13 +0000 2008\",
+      \"favourites_count\": 312,
+      \"utc_offset\": 19800,
+      \"time_zone\": \"New Delhi\",
+      \"geo_enabled\": true,
+      \"verified\": false,
+      \"statuses_count\": 637,
+      \"lang\": \"en\",
+      \"contributors_enabled\": false,
+      \"is_translator\": false,
+      \"is_translation_enabled\": false,
+      \"profile_background_color\": \"C0DEED\",
+      \"profile_background_image_url\": \"http://abs.twimg.com/images/themes/theme1/bg.png\",
+      \"profile_background_image_url_https\": \"https://abs.twimg.com/images/themes/theme1/bg.png\",
+      \"profile_background_tile\": false,
+      \"profile_image_url\": \"http://pbs.twimg.com/profile_images/574835799050473472/2nlitgGR_normal.png\",
+      \"profile_image_url_https\": \"https://pbs.twimg.com/profile_images/574835799050473472/2nlitgGR_normal.png\",
+      \"profile_link_color\": \"0084B4\",
+      \"profile_sidebar_border_color\": \"C0DEED\",
+      \"profile_sidebar_fill_color\": \"DDEEF6\",
+      \"profile_text_color\": \"333333\",
+      \"profile_use_background_image\": true,
+      \"has_extended_profile\": false,
+      \"default_profile\": true,
+      \"default_profile_image\": false,
+      \"following\": true,
+      \"follow_request_sent\": false,
+      \"notifications\": false
+    },
+    \"recipient_id\": 14454005,
+    \"recipient_id_str\": \"14454005\",
+    \"recipient_screen_name\": \"jagira\",
+    \"created_at\": \"Thu Oct 01 11:35:00 +0000 2015\",
+    \"entities\": {
+      \"hashtags\": [],
+      \"symbols\": [],
+      \"user_mentions\": [],
+      \"urls\": [
+        {
+          \"url\": \"https://t.co/k3VFmne3uu\",
+          \"expanded_url\": \"https://www.erowid.org/experiences/exp.php?ID=88486\",
+          \"display_url\": \"erowid.org/experiences/ex…\",
+          \"indices\": [
+            0,
+            23
+          ]
+        }
+      ]
+    }
+  }
+]
+      ",
+    }
+  }
+]

@@ -582,6 +582,73 @@ defmodule ExTwitter do
   @spec direct_messages(Keyword.t) :: [ExTwitter.Model.DirectMessage.t]
   defdelegate direct_messages(options), to: ExTwitter.API.DirectMessages
 
+  @doc """
+  GET direct_messages/sent
+
+  ## Examples
+
+      ExTwitter.sent_direct_messages
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/direct_messages/sent
+  """
+  @spec sent_direct_messages :: [ExTwitter.Model.DirectMessage.t]
+  defdelegate sent_direct_messages, to: ExTwitter.API.DirectMessages
+
+  @doc """
+  GET direct_messages/sent
+
+  ## Examples
+
+      ExTwitter.sent_direct_messages(count: 1)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/direct_messages/sent
+  """
+  @spec sent_direct_messages(Keyword.t) :: [ExTwitter.Model.DirectMessage.t]
+  defdelegate sent_direct_messages(options), to: ExTwitter.API.DirectMessages
+
+  @doc """
+  POST direct_messages/destroy/:id
+
+  ## Examples
+
+      ExTwitter.destroy_direct_message(12345)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
+  """
+  @spec destroy_direct_message(Integer) :: ExTwitter.Model.DirectMessage.t
+  defdelegate destroy_direct_message(id), to: ExTwitter.API.DirectMessages
+
+  @doc """
+  POST direct_messages/new
+
+  Specify one of the `screen name`, or `user id` in first argument.
+
+  ## Examples
+
+      ExTwitter.new_direct_message("twitter", "Message text")
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/direct_messages/new
+  """
+  @spec new_direct_message(String.t | Integer, String.t) :: ExTwitter.Model.DirectMessage.t
+  defdelegate new_direct_message(id_or_screen_name, text), to: ExTwitter.API.DirectMessages
+
+  @doc """
+  POST direct_messages/destroy/:id
+
+  ## Examples
+
+      ExTwitter.destroy_direct_message(12345, include_entities: false)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
+  """
+  @spec destroy_direct_message(Integer, Keyword.t) :: ExTwitter.Model.DirectMessage.t
+  defdelegate destroy_direct_message(id, options), to: ExTwitter.API.DirectMessages
+
   # -------------- Friends & Followers -------------
 
   # GET friendships/no_retweets/ids
