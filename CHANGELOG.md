@@ -1,3 +1,11 @@
+0.5.4
+------
+#### Enhancements
+* Add remaining direct messages API end points (#30).
+    - ExTwitter.sent_direct_messages
+    - ExTwitter.destroy_direct_message
+    - ExTwitter.new_direct_message
+
 0.5.3
 ------
 #### Enhancements
