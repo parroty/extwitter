@@ -9,18 +9,24 @@ defmodule ExTwitter.API.Streaming do
   @default_stream_timeout 60_000
   @default_control_timeout 10_000
 
+  require Logger
+
+  defmodule AsyncRequest do
+    defstruct processor: nil, method: nil, path: nil, params: nil, configs: nil
+  end
+  
   def stream_sample(options \\ []) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    pid = async_request(self, :get, "1.1/statuses/sample.json", params, configs)
-    create_stream(pid, @default_stream_timeout)
+    req = %AsyncRequest{processor: self, method: :get, path: "1.1/statuses/sample.json", params: params, configs: configs}
+    create_stream(req, @default_stream_timeout)
   end
 
   def stream_filter(options, timeout \\ @default_stream_timeout) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    pid = async_request(self, :post, "1.1/statuses/filter.json", params, configs)
-    create_stream(pid, timeout)
+    req = %AsyncRequest{processor: self, method: :post, path: "1.1/statuses/filter.json", params: params, configs: configs}
+    create_stream(req, timeout)
   end
 
   defp seperate_configs_from_options(options) do
@@ -45,31 +51,39 @@ defmodule ExTwitter.API.Streaming do
     end
   end
 
-  defp async_request(processor, method, path, params, configs) do
+  defp spawn_async_request(req=%AsyncRequest{}) do
     oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
 
     spawn(fn ->
       response = ExTwitter.OAuth.request_async(
-        method, request_url(path), params, consumer, oauth[:access_token], oauth[:access_token_secret])
+        req.method, request_url(req.path), req.params, consumer, oauth[:access_token], oauth[:access_token_secret])
 
       case response do
         {:ok, request_id} ->
-          process_stream(processor, request_id, configs)
+          process_stream(req.processor, request_id, req.configs)
         {:error, reason} ->
-          send processor, {:error, reason}
+          send req.processor, {:error, reason}
       end
     end)
   end
 
-  defp create_stream(pid, timeout) do
+  defp create_stream(req, timeout) do
     Stream.resource(
-      fn -> pid end,
-      fn(pid) -> receive_next_tweet(pid, timeout) end,
+      fn -> nil end,
+      fn(pid) -> receive_next_tweet(pid, req, timeout) end,
       fn(pid) -> send pid, {:cancel, self} end)
   end
 
-  defp receive_next_tweet(pid, timeout) do
+  defp receive_next_tweet(nil, req, timeout) do
+    receive_next_tweet(spawn_async_request(req), req, timeout)
+  end
+
+  defp receive_next_tweet(pid, req, timeout) do
+    max_timeout = case timeout do
+                    :infinity -> @default_stream_timeout
+                    _ -> timeout
+                  end
     receive do
       {:stream, tweet} ->
         {[tweet], pid}
@@ -79,12 +93,24 @@ defmodule ExTwitter.API.Streaming do
         send requester, :ok
         {:halt, pid}
 
+      {:error, :socket_closed_remotely} ->
+        Logger.warn "Connection closed remotely, restarting stream"
+        receive_next_tweet(nil, req, timeout)
+
       _ ->
-        receive_next_tweet(pid, timeout)
+        receive_next_tweet(pid, req, timeout)
+
     after
-      timeout ->
+      max_timeout ->
         send pid, {:cancel, self}
-        {:halt, pid}
+        case timeout do
+          :infinity ->
+            Logger.debug "Tweet timeout, restarting stream."
+            receive_next_tweet(nil, req, timeout)
+          _ ->
+            Logger.debug "Tweet timeout, stopping stream."
+            {:halt, pid}
+        end
     end
   end
 
@@ -92,12 +118,13 @@ defmodule ExTwitter.API.Streaming do
   def process_stream(processor, request_id, configs, acc \\ []) do
     receive do
       {:http, {request_id, :stream_start, headers}} ->
-        send processor, {:header, headers}
+        send processor, :keepalive
         process_stream(processor, request_id, configs)
 
       {:http, {request_id, :stream, part}} ->
         cond do
           is_empty_message(part) ->
+            send processor, :keepalive
             process_stream(processor, request_id, configs, acc)
 
           is_end_of_message(part) ->
