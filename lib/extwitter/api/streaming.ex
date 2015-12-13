@@ -14,7 +14,7 @@ defmodule ExTwitter.API.Streaming do
   defmodule AsyncRequest do
     defstruct processor: nil, method: nil, path: nil, params: nil, configs: nil
   end
-  
+
   def stream_sample(options \\ []) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
@@ -117,7 +117,7 @@ defmodule ExTwitter.API.Streaming do
   @doc false
   def process_stream(processor, request_id, configs, acc \\ []) do
     receive do
-      {:http, {request_id, :stream_start, headers}} ->
+      {:http, {request_id, :stream_start, _headers}} ->
         send processor, :keepalive
         process_stream(processor, request_id, configs)
 
