@@ -1,3 +1,9 @@
+0.5.5
+------
+#### Enhancements
+* Improve stability of streaming connection.
+    - Restart stream when connection closed remotely or no messages sent (#32).
+
 0.5.4
 ------
 #### Enhancements
