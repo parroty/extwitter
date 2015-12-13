@@ -34,13 +34,23 @@ defmodule ExTwitterStreamTest do
       {:ok, request_id}
     end] do
 
-    stream = ExTwitter.stream_sample
+    # Process stream on different process.
+    parent = self
+    spawn(fn() ->
+      stream = ExTwitter.stream_sample
+      tweet = Enum.take(stream, 1) |> List.first
+      send parent, {:ok, tweet}
+    end)
 
+    # Send mock data after short wait.
     wait_async_request_initialization
     send_mock_data(TestHelper.TestStore.get, @mock_tweet_json)
 
-    tweet = Enum.take(stream, 1) |> List.first
-    assert tweet.text =~ ~r/sample tweet text/
+    # Verify result.
+    receive do
+      {:ok, tweet} ->
+        assert tweet.text =~ ~r/sample tweet text/
+    end
   end
 
   test_with_mock "gets twetter filter stream", :oauth,
@@ -50,16 +60,23 @@ defmodule ExTwitterStreamTest do
       {:ok, request_id}
     end] do
 
-    # initiate processing
-    stream = ExTwitter.stream_filter(follow: "twitter")
+    # Process stream on different process.
+    parent = self
+    spawn(fn() ->
+      stream = ExTwitter.stream_filter(follow: "twitter")
+      tweet = Enum.take(stream, 1) |> List.first
+      send parent, {:ok, tweet}
+    end)
 
-    # send mock data
+    # Send mock data after short wait.
     wait_async_request_initialization
     send_mock_data(TestHelper.TestStore.get, @mock_tweet_json)
 
-    # verify response
-    tweet = Enum.take(stream, 1) |> List.first
-    assert tweet.text =~ ~r/sample tweet text/
+    # Verify result.
+    receive do
+      {:ok, tweet} ->
+        assert tweet.text =~ ~r/sample tweet text/
+    end
   end
 
   test_with_mock "gets twitter stream messages", :oauth,
@@ -69,20 +86,28 @@ defmodule ExTwitterStreamTest do
       {:ok, request_id}
     end] do
 
-    # initiate processing
-    stream = ExTwitter.stream_filter(track: "twitter", receive_messages: true)
+    # Process stream on different process.
+    parent = self
+    spawn(fn() ->
+      stream = ExTwitter.stream_filter(track: "twitter", receive_messages: true)
+      tweets = Enum.take(stream, 3)
+      send parent, {:ok, tweets}
+    end)
 
-    # send mock data
+    # Send mock data after short wait.
     wait_async_request_initialization
     send_mock_data(TestHelper.TestStore.get, @mock_limit_json)
     send_mock_data(TestHelper.TestStore.get, @mock_deleted_tweet)
     send_mock_data(TestHelper.TestStore.get, @mock_stall_warning)
 
-    # verify response
-    [limit, deleted_tweet, stall_warning] = Enum.take(stream, 3)
-    assert limit.track == 542
-    assert deleted_tweet.status[:id] == 1234
-    assert stall_warning.code == "FALLING_BEHIND"
+    # Verify result.
+    receive do
+      {:ok, tweets} ->
+        [limit, deleted_tweet, stall_warning] = tweets
+        assert limit.track == 542
+        assert deleted_tweet.status[:id] == 1234
+        assert stall_warning.code == "FALLING_BEHIND"
+    end
   end
 
   test "stream control succeeds" do
@@ -103,7 +128,7 @@ defmodule ExTwitterStreamTest do
   end
 
   defp wait_async_request_initialization do
-    :timer.sleep(100) # put small wait
+    :timer.sleep(100) # Put small wait for mocking library to become ready.
   end
 
   defp send_mock_data({pid, request_id}, json) do
