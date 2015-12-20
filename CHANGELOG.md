@@ -5,6 +5,7 @@
     - Replaces ExTwitter.request_token/0 with ExTwitter.request_token/1 which has redirect_url parameter.
     - Removes redirect_url paramter from ExTwitter.authorize_url.
     - Removes redirect_url paramter from ExTwitter.authenticate_url.
+* Update versions of dependent modules.
 
 0.5.5
 ------
