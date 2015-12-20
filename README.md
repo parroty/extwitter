@@ -182,7 +182,7 @@ Example for authentication ([Sign-in with twitter](https://dev.twitter.com/web/s
 
 ```elixir
 # Request twitter for a new token
-token = ExTwitter.request_token()
+token = ExTwitter.request_token("http://myapp.com/twitter-callback")
 
 # Generate the url for "Sign-in with twitter".
 # For "3-legged authorization" use ExTwitter.authorize_url instead
