@@ -512,8 +512,9 @@ defmodule ExTwitter do
 
       ExTwitter.stream_control(pid, :stop)
   """
-  @spec stream_control(pid, :stop) :: :ok
-  defdelegate stream_control(pid, :stop), to: ExTwitter.API.Streaming
+  @type stream_control_type :: :stop
+  @spec stream_control(pid, stream_control_type) :: :ok
+  defdelegate stream_control(pid, stream_control_type), to: ExTwitter.API.Streaming
 
   @doc """
   An interface to control the stream.
@@ -538,8 +539,8 @@ defmodule ExTwitter do
 
       ExTwitter.stream_control(pid, :stop, timeout: 50)
   """
-  @spec stream_control(pid, :stop, [timeout: Integer]) :: :ok
-  defdelegate stream_control(pid, :stop, options), to: ExTwitter.API.Streaming
+  @spec stream_control(pid, stream_control_type, [timeout: Integer]) :: :ok
+  defdelegate stream_control(pid, stream_control_type, options), to: ExTwitter.API.Streaming
 
   # --------------  Direct Messages -------------
 
