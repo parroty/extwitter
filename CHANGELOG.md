@@ -1,3 +1,8 @@
+0.6.1
+------
+#### Changes
+* Fix stream operations (ex. Stream.take) in different processes fail to receive tweets (#12, #19).
+
 0.6.0
 ------
 #### Changes
