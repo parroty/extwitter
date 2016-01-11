@@ -5,9 +5,9 @@ sudo: false
 elixir:
   - 1.0.0
   - 1.1.1
+  - 1.2.0
 
 otp_release:
-  - 17.4
   - 18.0
 
 script:
