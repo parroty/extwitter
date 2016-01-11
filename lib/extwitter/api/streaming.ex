@@ -18,14 +18,14 @@ defmodule ExTwitter.API.Streaming do
   def stream_sample(options \\ []) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    req = %AsyncRequest{processor: self, method: :get, path: "1.1/statuses/sample.json", params: params, configs: configs}
+    req = %AsyncRequest{processor: nil, method: :get, path: "1.1/statuses/sample.json", params: params, configs: configs}
     create_stream(req, @default_stream_timeout)
   end
 
   def stream_filter(options, timeout \\ @default_stream_timeout) do
     {options, configs} = seperate_configs_from_options(options)
     params = ExTwitter.Parser.parse_request_params(options)
-    req = %AsyncRequest{processor: self, method: :post, path: "1.1/statuses/filter.json", params: params, configs: configs}
+    req = %AsyncRequest{processor: nil, method: :post, path: "1.1/statuses/filter.json", params: params, configs: configs}
     create_stream(req, timeout)
   end
 
@@ -70,9 +70,9 @@ defmodule ExTwitter.API.Streaming do
 
   defp create_stream(req, timeout) do
     Stream.resource(
-      fn -> nil end,
-      fn(pid) -> receive_next_tweet(pid, req, timeout) end,
-      fn(pid) -> send pid, {:cancel, self} end)
+      fn -> {%{req | processor: self}, nil} end,
+      fn({req, pid}) -> receive_next_tweet(pid, req, timeout) end,
+      fn({_req, pid}) -> send pid, {:cancel, self} end)
   end
 
   defp receive_next_tweet(nil, req, timeout) do
@@ -86,12 +86,12 @@ defmodule ExTwitter.API.Streaming do
                   end
     receive do
       {:stream, tweet} ->
-        {[tweet], pid}
+        {[tweet], {req, pid}}
 
       {:control_stop, requester} ->
         send pid, {:cancel, self}
         send requester, :ok
-        {:halt, pid}
+        {:halt, {req, pid}}
 
       {:error, :socket_closed_remotely} ->
         Logger.warn "Connection closed remotely, restarting stream"
@@ -109,7 +109,7 @@ defmodule ExTwitter.API.Streaming do
             receive_next_tweet(nil, req, timeout)
           _ ->
             Logger.debug "Tweet timeout, stopping stream."
-            {:halt, pid}
+            {:halt, {req, pid}}
         end
     end
   end
