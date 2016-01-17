@@ -28,7 +28,7 @@ defmodule ExTwitterStreamTest do
   end
 
   test_with_mock "gets twetter sample stream", :oauth,
-    [get: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options) ->
+    [get: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options, _httpoptions) ->
       request_id = make_ref
       TestHelper.TestStore.set({self, request_id})
       {:ok, request_id}
@@ -54,7 +54,7 @@ defmodule ExTwitterStreamTest do
   end
 
   test_with_mock "gets twetter filter stream", :oauth,
-    [post: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options) ->
+    [post: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options, _httpoptions) ->
       request_id = make_ref
       TestHelper.TestStore.set({self, request_id})
       {:ok, request_id}
@@ -80,7 +80,7 @@ defmodule ExTwitterStreamTest do
   end
 
   test_with_mock "gets twitter stream messages", :oauth,
-      [post: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options) ->
+      [post: fn(_url, _params, _consumer, _access_token, _access_token_secret, _options, _httpoptions) ->
       request_id = make_ref
       TestHelper.TestStore.set({self, request_id})
       {:ok, request_id}
