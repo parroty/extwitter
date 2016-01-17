@@ -18,7 +18,7 @@
   "meck": {:hex, :meck, "0.8.3"},
   "mimerl": {:hex, :mimerl, "1.0.2"},
   "mock": {:git, "https://github.com/parroty/mock.git", "33d095a9b028f9f97f6d506ae6b2feb34630fdc5", [branch: "fix"]},
-  "oauth": {:git, "https://github.com/parroty/erlang-oauth.git", "4ad3ab0c37bed30c45dc29790c65fb7789263126", [branch: "proxy"]},
+  "oauth": {:git, "https://github.com/parroty/erlang-oauth.git", "f2204123cd45a320892455828f99878333001b9f", [branch: "proxy"]},
   "poison": {:hex, :poison, "1.5.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
   "timex": {:hex, :timex, "0.19.2"},
