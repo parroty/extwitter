@@ -33,7 +33,7 @@ defmodule ExTwitter.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   def deps do
     [
-      {:oauth, github: "tim/erlang-oauth"},
+      {:oauth, github: "parroty/erlang-oauth", branch: "proxy"},
       {:poison, "~> 1.5"},
       {:timex, "~> 1.0.0"},
       {:exvcr, "~> 0.6", only: :test},

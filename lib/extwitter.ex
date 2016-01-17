@@ -10,6 +10,7 @@ defmodule ExTwitter do
     if Application.get_env(:ex_twitter, :oauth, nil) do
       IO.puts :stderr, "[deprecation] Using :ex_twitter in config.exs is deprecated. Use :extwitter instead."
     end
+    ExTwitter.Proxy.initialize
     ExTwitter.Supervisor.start_link
   end
 

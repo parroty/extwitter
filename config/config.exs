@@ -6,3 +6,10 @@ config :extwitter, :oauth, [
    access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
    access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
 ]
+
+config :extwitter, :proxy, [
+   server: System.get_env("TWITTER_PROXY_SERVER"),
+   port: System.get_env("TWITTER_PROXY_PORT"),
+   user: System.get_env("TWITTER_PROXY_USER"),
+   password: System.get_env("TWITTER_PROXY_PASSWORD")
+]
