@@ -6,7 +6,7 @@ defmodule ExTwitter.Model.Tweet do
   https://dev.twitter.com/overview/api/tweets
   """
   defstruct contributors: nil, coordinates: nil, created_at: nil,
-    current_user_retweet: nil, entities: nil, favorite_count: nil,
+    current_user_retweet: nil, entities: nil, extended_entities: nil, favorite_count: nil,
     favorited: nil, filter_level: nil, geo: nil, id: nil, id_str: nil,
     in_reply_to_screen_name: nil, in_reply_to_status_id: nil,
     in_reply_to_status_id_str: nil, in_reply_to_user_id: nil,
