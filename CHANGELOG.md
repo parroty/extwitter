@@ -1,4 +1,4 @@
-0.7.0
+0.6.2
 ------
 #### Enhancements
 * Add configurations for proxy (#36).
