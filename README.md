@@ -257,7 +257,7 @@ defp deps do
 end
 ```
 
-and execute the following command,
+and execute the following command.
 
 ```shell
 $ mix deps.update oauth
