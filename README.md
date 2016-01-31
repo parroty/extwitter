@@ -218,8 +218,8 @@ ExTwitter.configure(
 ExTwitter.user_timeline
 ```
 
-#### proxy
-Proxy for accessing twitter server can be configured as following.
+#### proxy (experimental)
+Proxy for accessing twitter server can be configured as following. It's experimental implementation and interface can change.
 
 In `config/config.exs`,
 ```elixir
@@ -239,6 +239,12 @@ defp deps do
     {:oauth, github: "parroty/erlang-oauth", branch: "proxy"},
   ]
 end
+
+and execute the following command,
+
+```shell
+$ mix deps.update oauth
+```
 
 ### Notes
 `run_iex.sh` launches iex, with initially calling `ExTwitter.configure` defined as `iex/dot.iex`.
