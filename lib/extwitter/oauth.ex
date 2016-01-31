@@ -56,7 +56,9 @@ defmodule ExTwitter.OAuth do
   end
 
   defp has_funtion(function, arity) do
-    :oauth.module_info[:exports]
-    |> Enum.find(fn({k, v}) -> k == function && v == arity end)
+    kv = :oauth.module_info[:exports]
+         |> Enum.find(fn({k, v}) -> k == function && v == arity end)
+
+    kv != nil
   end
 end
