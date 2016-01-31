@@ -5,8 +5,6 @@
 
 #### Changes
 * Add extended_entities field to Model.Tweet (#37).
-* Update dependent modules.
-  - Refering erlang-oauth is tentativly changed to parroty/erlang-oauth for proxy support (#36).
 
 0.6.1
 ------
