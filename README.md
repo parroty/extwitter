@@ -218,6 +218,28 @@ ExTwitter.configure(
 ExTwitter.user_timeline
 ```
 
+#### proxy
+Proxy for accessing twitter server can be configured as following.
+
+In `config/config.exs`,
+```elixir
+use Mix.Config
+
+config :extwitter, :proxy, [
+   server: "www-proxy.mycompany.com",
+   port: 8000,
+   user: "user",
+   password: "password"
+]
+```
+and in `mix.exs`,
+```elixir
+defp deps do
+  [
+    {:oauth, github: "parroty/erlang-oauth", branch: "proxy"},
+  ]
+end
+
 ### Notes
 `run_iex.sh` launches iex, with initially calling `ExTwitter.configure` defined as `iex/dot.iex`.
 
