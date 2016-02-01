@@ -140,7 +140,7 @@ defmodule ExTwitter.Model.RequestToken do
 end
 
 defmodule ExTwitter.Model.AccessToken do
-  defstruct oauth_token: nil, oauth_token_secret: nil
+  defstruct oauth_token: nil, oauth_token_secret: nil, user_id: nil, screen_name: nil
 
   @type t :: %__MODULE__{}
 end
