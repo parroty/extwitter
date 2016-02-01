@@ -1,3 +1,8 @@
+0.6.3
+------
+#### Changes
+* Expose user_id and screen_name from access_token response (#40).
+
 0.6.2
 ------
 #### Enhancements
