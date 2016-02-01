@@ -451,7 +451,9 @@ defmodule ExTwitterTest do
 
       assert access_token != nil
       assert access_token.oauth_token != nil
-      assert access_token.oauth_token_secret != nil
+      assert access_token.oauth_token != nil
+      assert access_token.user_id == "28487251"
+      assert access_token.screen_name == "julianobs"
     end
   end
 end
