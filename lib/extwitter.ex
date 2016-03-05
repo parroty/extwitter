@@ -1034,11 +1034,23 @@ defmodule ExTwitter do
   @spec favorites(Keyword.t) :: [ExTwitter.Model.Tweet.t]
   defdelegate favorites(options), to: ExTwitter.API.Favorites
 
-  # POST favorites/destroy
-  # https://dev.twitter.com/docs/api/1.1/post/favorites/destroy
+  @doc """
+  POST favorites/create
 
-  # POST favorites/create
-  # https://dev.twitter.com/docs/api/1.1/post/favorites/create
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/favorites/create
+  """
+  @spec create_favorite(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate create_favorite(id, options), to: ExTwitter.API.Favorites
+
+  @doc """
+  POST favorites/destroy
+
+  ## Reference
+  https://dev.twitter.com/docs/api/1.1/post/favorites/destroy
+  """
+  @spec destroy_favorite(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate destroy_favorite(id, options), to: ExTwitter.API.Favorites
 
   # -------------- Lists -------------
 

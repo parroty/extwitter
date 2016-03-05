@@ -210,6 +210,22 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "create favorite" do
+    use_cassette "create_favorite_twitter" do
+      id = 243138128959913986
+      tweet = ExTwitter.create_favorite(id, [])
+      assert tweet.id == id
+    end
+  end
+
+  test "destroy favorite" do
+    use_cassette "destroy_favorite_twitter" do
+      id = 243138128959913986
+      tweet = ExTwitter.destroy_favorite(id, [])
+      assert tweet.id == id
+    end
+  end
+
   test "gets lists by screen_name" do
     use_cassette "lists_twitter" do
       lists = ExTwitter.lists("twitter", count: 1)
