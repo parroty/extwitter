@@ -1,0 +1,49 @@
+[
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/favorites/create.json"
+    },
+    "response": {
+      "body": "{\"created_at\":\"Wed Sep 05 00:07:01 +0000 2012\",\"id\":243138128959913986,\"id_str\":\"243138128959913986\",\"text\":\"That feel when you accidentally type Bash commands into Campfire, and you also make a typo in them.\",\"truncated\":false,\"source\":\"\\u003ca href=\\\"http:\\/\\/itunes.apple.com\\/us\\/app\\/twitter\\/id409789998?mt=12\\\" rel=\\\"nofollow\\\"\\u003eTwitter for Mac\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"user\":{\"id\":14500363,\"id_str\":\"14500363\",\"name\":\"Jake Boxer\",\"screen_name\":\"jakeboxer\",\"location\":\"San Francisco, CA\",\"description\":\"Developer at GitHub.\\n\\nNumber one best programmer 0 bugs perfect record.\",\"url\":\"http:\\/\\/t.co\\/pGXds10xFm\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/pGXds10xFm\",\"expanded_url\":\"http:\\/\\/jakeboxer.com\\/\",\"display_url\":\"jakeboxer.com\",\"indices\":[0,22]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":3582,\"friends_count\":296,\"listed_count\":180,\"created_at\":\"Wed Apr 23 20:32:35 +0000 2008\",\"favourites_count\":18896,\"utc_offset\":-28800,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":true,\"verified\":false,\"statuses_count\":17237,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"352726\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme5\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme5\\/bg.gif\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/3600152452\\/e115759ed87f43c15083e0fe780c2fec_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/3600152452\\/e115759ed87f43c15083e0fe780c2fec_normal.jpeg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/14500363\\/1398644332\",\"profile_link_color\":\"D02B55\",\"profile_sidebar_border_color\":\"829D5E\",\"profile_sidebar_fill_color\":\"99CC33\",\"profile_text_color\":\"3E4415\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false},\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":8,\"favorite_count\":105,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[]},\"favorited\":true,\"retweeted\":false,\"lang\":\"en\"}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 05 Mar 2016 09:40:51 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "2462",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 05 Mar 2016 09:40:51 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=en; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-connection-hash": "6e4ed7936b46c7e1102ac628933c031e",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-response-time": "145",
+        "x-transaction": "bcf2c6c6c9188fea",
+        "x-tsa-request-body-time": "0",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]
