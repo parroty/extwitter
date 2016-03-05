@@ -1,10 +1,12 @@
 0.6.3
 ------
-#### Changes
-* Expose user_id and screen_name from access_token response (#40).
+#### Enhancements
 * Implement creating/destroying favorites (#41).
     - ExTwitter.create_favorite
     - ExTwitter.destroy_favorite
+
+#### Changes
+* Expose user_id and screen_name from access_token response (#40).
 
 0.6.2
 ------
