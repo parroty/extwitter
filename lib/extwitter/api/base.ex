@@ -76,7 +76,7 @@ defmodule ExTwitter.API.Base do
     case code do
       @error_code_rate_limit_exceeded ->
         reset_at = fetch_rate_limit_reset(header)
-        reset_in = Enum.max([reset_at - Timex.Date.now(:secs), 0])
+        reset_in = Enum.max([reset_at - now, 0])
         raise ExTwitter.RateLimitExceededError,
           code: code, message: message, reset_at: reset_at, reset_in: reset_in
       _  ->
@@ -88,5 +88,10 @@ defmodule ExTwitter.API.Base do
     {_, reset_at_in_string} = List.keyfind(header, 'x-rate-limit-reset', 0)
     {reset_at, _} = Integer.parse(to_string(reset_at_in_string))
     reset_at
+  end
+
+  defp now do
+    {megsec, sec, _microsec} = :os.timestamp
+    megsec * 1_000_000 + sec
   end
 end
