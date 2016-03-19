@@ -1,3 +1,8 @@
+0.7.0
+------
+#### Changes
+* Drop Timex.Date.now() call in favor of native Erlang (#43).
+
 0.6.3
 ------
 #### Enhancements
