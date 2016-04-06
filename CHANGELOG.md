@@ -1,3 +1,9 @@
+0.7.1
+------
+#### Enhancements
+* Improve handling for connection error.
+    - Trap connection errors and raise with custom exception (#45).
+
 0.7.0
 ------
 #### Changes
