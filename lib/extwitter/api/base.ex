@@ -23,8 +23,12 @@ defmodule ExTwitter.API.Base do
   defp do_request(method, url, params) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
-    ExTwitter.OAuth.request(method, url, params, consumer, oauth[:access_token], oauth[:access_token_secret])
-    |> parse_result
+    token = oauth[:access_token]
+    secret = oauth[:access_token_secret]
+    case ExTwitter.OAuth.request(method, url, params, consumer, token, secret) do
+      {:error, reason} -> raise(ExTwitter.ConnectionError, reason: reason)
+      r -> r |> parse_result
+    end
   end
 
   def verify_params([]) do

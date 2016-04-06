@@ -472,4 +472,12 @@ defmodule ExTwitterTest do
       assert access_token.screen_name == "julianobs"
     end
   end
+
+  test "failed connection" do
+    use_cassette "failed_connection", custom: true do
+      assert_raise ExTwitter.ConnectionError, "connection error", fn ->
+        ExTwitter.follower_ids("twitter", count: 1)
+      end
+    end
+  end
 end
