@@ -29,6 +29,13 @@ defmodule ExTwitter.API.Streaming do
     create_stream(req, timeout)
   end
 
+  def stream_user(options \\ [], timeout \\ @default_stream_timeout) do
+    {options, configs} = seperate_configs_from_options(options)
+    params = ExTwitter.Parser.parse_request_params(options)
+    req = %AsyncRequest{processor: nil, method: :get, path: "1.1/user.json", params: params, configs: configs}
+    create_stream(req, timeout)
+  end
+
   defp seperate_configs_from_options(options) do
     config  = Keyword.take(options, [:receive_messages])
     options = Keyword.delete(options, :receive_messages)
@@ -54,11 +61,9 @@ defmodule ExTwitter.API.Streaming do
   defp spawn_async_request(req=%AsyncRequest{}) do
     oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
     consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
-
     spawn(fn ->
       response = ExTwitter.OAuth.request_async(
         req.method, request_url(req.path), req.params, consumer, oauth[:access_token], oauth[:access_token_secret])
-
       case response do
         {:ok, request_id} ->
           process_stream(req.processor, request_id, req.configs)
@@ -131,7 +136,7 @@ defmodule ExTwitter.API.Streaming do
             message = Enum.reverse([part|acc])
                       |> Enum.join("")
                       |> __MODULE__.parse_tweet_message(configs)
-            if message do
+            if message != nil do
               send processor, message
             end
             process_stream(processor, request_id, configs, [])
@@ -156,23 +161,40 @@ defmodule ExTwitter.API.Streaming do
   def is_empty_message(part),  do: part == @crlf
   def is_end_of_message(part), do: part |> String.ends_with?(@crlf)
 
+  defp parse_message_type(%{friends: friends},_) do
+    {:unfollow,friends}
+  end
+
+  defp parse_message_type(%{event: "follow"} = msg,_) do
+    {:follow,msg}
+  end
+
+  defp parse_message_type(%{text: text} = msg,_) do
+    {:msg,msg}
+  end
+
+  defp parse_message_type(msg,configs) do
+    if configs[:receive_messages] do
+      {:control,parse_control_message(msg)}
+    else
+      {:unknown,nil}
+    end
+  end
+
+
   @doc false
   def parse_tweet_message(json, configs) do
     try do
       case ExTwitter.JSON.decode(json) do
         {:ok, tweet} ->
-          if Map.has_key?(tweet, :id_str) do
-            {:stream, ExTwitter.Parser.parse_tweet(tweet)}
-          else
-            if configs[:receive_messages] do
-              parse_control_message(tweet)
-            else
-              nil
-            end
+          case parse_message_type(tweet,configs) do
+            {:msg,_} -> {:stream, ExTwitter.Parser.parse_tweet(tweet)}
+            {:follow,_} -> {:stream,{:new_follower,tweet}}
+            {:unfollow,_} -> {:stream,{:unfollowed,tweet}}
+            {:control,msg} -> msg
+            {:unknown,_} -> nil
           end
-
-        {:error, error} ->
-          {:error, {error, json}}
+        {:error, error} -> {:error, {error, json}}
       end
     rescue
       error ->
@@ -196,6 +218,9 @@ defmodule ExTwitter.API.Streaming do
 
       true -> nil
     end
+  end
+  defp request_url("1.1/user.json" = path) do
+    "https://userstream.twitter.com/#{path}" |> to_char_list
   end
 
   defp request_url(path) do
