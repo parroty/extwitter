@@ -173,6 +173,10 @@ defmodule ExTwitter.API.Streaming do
     {:unfollow,msg}
   end
 
+  defp parse_message_type(%{event: event} = msg,_) do
+    {:event,msg}
+  end
+
   defp parse_message_type(%{text: text} = msg,_) do
     {:msg,msg}
   end
@@ -193,7 +197,9 @@ defmodule ExTwitter.API.Streaming do
         {:ok, tweet} ->
           case parse_message_type(tweet,configs) do
             {:msg,_} -> {:stream, ExTwitter.Parser.parse_tweet(tweet)}
-            {:follow,_} -> {:stream,{:new_follower,tweet}}
+            {:follow,_} -> {:stream,{:follow,tweet}}
+            {:unfollow,_} -> {:stream,{:unfollow,tweet}}
+            {:event,_} -> {:stream,{:event,tweet}}
             {:friends,_} -> {:stream,{:friends,tweet}}
             {:control,msg} -> msg
             {:unknown,_} -> nil
