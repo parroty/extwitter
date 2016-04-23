@@ -77,7 +77,12 @@ defmodule ExTwitter.API.Streaming do
     Stream.resource(
       fn -> {%{req | processor: self}, nil} end,
       fn({req, pid}) -> receive_next_tweet(pid, req, timeout) end,
-      fn({_req, pid}) -> send pid, {:cancel, self} end)
+      fn({_req, pid}) ->
+        if pid != nil do
+          send pid, {:cancel, self}
+        end
+      end
+    )
   end
 
   defp receive_next_tweet(nil, req, timeout) do
