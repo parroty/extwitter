@@ -178,11 +178,11 @@ defmodule ExTwitter.API.Streaming do
     {:unfollow, msg}
   end
 
-  defp parse_message_type(%{event: event} = msg, _) do
+  defp parse_message_type(%{event: _event} = msg, _) do
     {:event, msg}
   end
 
-  defp parse_message_type(%{text: text} = msg, _) do
+  defp parse_message_type(%{text: _text} = msg, _) do
     {:msg, msg}
   end
 
