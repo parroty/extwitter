@@ -3,6 +3,8 @@
 #### Enhancements
 * Improve handling for connection error.
     - Trap connection errors and raise with custom exception (#45).
+* Support user streaming function.
+    - ExTwitter.stream_user
 
 0.7.0
 ------

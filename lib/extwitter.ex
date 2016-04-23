@@ -428,13 +428,17 @@ defmodule ExTwitter do
   defdelegate stream_sample, to: ExTwitter.API.Streaming
 
   @doc """
-  GET user.json
+  GET user
 
-  Returns users' timeline streaming
-  This method returns the Stream that holds the list of tweets.
+  Returns timeline streaming for a user.
+  This method returns the stream that holds the list of tweets.
+
+  ## Examples
+
+      ExTwitter.stream_user
 
   ## Reference
-  https://dev.twitter.com/docs/api/1.1/get/statuses/sample
+  https://dev.twitter.com/streaming/reference/get/user
   """
   @spec stream_user :: Enumerable.t
   defdelegate stream_user, to: ExTwitter.API.Streaming
@@ -442,8 +446,8 @@ defmodule ExTwitter do
   @spec stream_user(Keyword.t) :: Enumerable.t
   defdelegate stream_user(options), to: ExTwitter.API.Streaming
 
-  @spec stream_user(Keyword.t,Integer) :: Enumerable.t
-  defdelegate stream_user(options,timeout), to: ExTwitter.API.Streaming
+  @spec stream_user(Keyword.t, Integer) :: Enumerable.t
+  defdelegate stream_user(options, timeout), to: ExTwitter.API.Streaming
 
   @doc """
   GET statuses/sample
