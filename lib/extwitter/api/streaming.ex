@@ -161,31 +161,31 @@ defmodule ExTwitter.API.Streaming do
   def is_empty_message(part),  do: part == @crlf
   def is_end_of_message(part), do: part |> String.ends_with?(@crlf)
 
-  defp parse_message_type(%{friends: friends},_) do
-    {:friends,friends}
+  defp parse_message_type(%{friends: friends}, _) do
+    {:friends, friends}
   end
 
-  defp parse_message_type(%{event: "follow"} = msg,_) do
-    {:follow,msg}
+  defp parse_message_type(%{event: "follow"} = msg, _) do
+    {:follow, msg}
   end
 
-  defp parse_message_type(%{event: "unfollow"} = msg,_) do
-    {:unfollow,msg}
+  defp parse_message_type(%{event: "unfollow"} = msg, _) do
+    {:unfollow, msg}
   end
 
-  defp parse_message_type(%{event: event} = msg,_) do
-    {:event,msg}
+  defp parse_message_type(%{event: event} = msg, _) do
+    {:event, msg}
   end
 
-  defp parse_message_type(%{text: text} = msg,_) do
-    {:msg,msg}
+  defp parse_message_type(%{text: text} = msg, _) do
+    {:msg, msg}
   end
 
-  defp parse_message_type(msg,configs) do
+  defp parse_message_type(msg, configs) do
     if configs[:receive_messages] do
-      {:control,parse_control_message(msg)}
+      {:control, parse_control_message(msg)}
     else
-      {:unknown,nil}
+      {:unknown, nil}
     end
   end
 
@@ -196,13 +196,13 @@ defmodule ExTwitter.API.Streaming do
       case ExTwitter.JSON.decode(json) do
         {:ok, tweet} ->
           case parse_message_type(tweet,configs) do
-            {:msg,_} -> {:stream, ExTwitter.Parser.parse_tweet(tweet)}
-            {:follow,_} -> {:stream,{:follow,tweet}}
-            {:unfollow,_} -> {:stream,{:unfollow,tweet}}
-            {:event,_} -> {:stream,{:event,tweet}}
-            {:friends,_} -> {:stream,{:friends,tweet}}
-            {:control,msg} -> msg
-            {:unknown,_} -> nil
+            {:msg, _}       -> {:stream, ExTwitter.Parser.parse_tweet(tweet)}
+            {:follow,_}     -> {:stream, {:follow, tweet}}
+            {:unfollow, _}  -> {:stream, {:unfollow, tweet}}
+            {:event, _}     -> {:stream, {:event, tweet}}
+            {:friends, _}   -> {:stream, {:friends, tweet}}
+            {:control, msg} -> msg
+            {:unknown, _}   -> nil
           end
         {:error, error} -> {:error, {error, json}}
       end
