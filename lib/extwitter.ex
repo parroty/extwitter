@@ -131,6 +131,7 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.user_timeline(count: 1)
+      ExTwitter.user_timeline([screen_name: "josevalim", count: 12])
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
