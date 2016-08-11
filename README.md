@@ -9,7 +9,7 @@ It only supports very limited set of functions yet. Refer to <a href="https://gi
 
 ### Usage
 1. Add `extwitter` to deps section in the `mix.exs`.
-2. Use `ExTwitter.configure` to setup Twitter's OAuth authentication paramters. Refer to https://dev.twitter.com/docs for the detail.
+2. Use `ExTwitter.configure` to setup Twitter's OAuth authentication parameters. Refer to https://dev.twitter.com/docs for the detail.
 3. Call functions in ExTwitter module (ex. `ExTwitter.search("test")`).
 
 #### Configuration
