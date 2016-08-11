@@ -32,8 +32,8 @@ defmodule ExTwitter.API.Base do
   end
 
   def verify_params([]) do
-    raise %ExTwitter.Error{
-      message: "OAuth parameters are not set. Use ExTwitter.configure function to set parameters in advance." }
+    raise ExTwitter.Error,
+      message: "OAuth parameters are not set. Use ExTwitter.configure function to set parameters in advance."
   end
 
   def verify_params(params), do: params
