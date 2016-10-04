@@ -23,7 +23,7 @@ defmodule ExTwitter.Mixfile do
   # Configuration for the OTP application
   def application do
     [ mod: { ExTwitter, [] },
-      applications: [:inets, :ssl, :crypto]]
+      applications: [:inets, :ssl, :crypto, :oauth]]
   end
 
   # Returns the list of dependencies in the format:
