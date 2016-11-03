@@ -38,7 +38,7 @@ defmodule ExTwitter.Mixfile do
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.5", only: :test},
       {:meck, "~> 0.8.2", only: [:dev, :test]},
-      {:mock, github: "parroty/mock", only: [:dev, :test], branch: "fix"},
+      {:mock, github: "jjh42/mock", only: [:dev, :test]},
       {:ex_doc, "~> 0.11", only: :docs},
       {:earmark, "~> 0.1", only: :docs},
       {:inch_ex, "~> 0.5.1", only: :docs},
