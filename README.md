@@ -263,7 +263,7 @@ and execute the following command.
 $ mix deps.update oauth
 ```
 
-The following repository have a basic sample.
+The following repository has a basic sample.
 - https://github.com/parroty/extwitter_proxy
 
 ### Notes
