@@ -186,6 +186,10 @@ defmodule ExTwitter.API.Streaming do
     {:msg, msg}
   end
 
+  defp parse_message_type(%{direct_message: direct_msg}, _) do
+    {:direct_message, direct_msg}
+  end
+
   defp parse_message_type(msg, configs) do
     if configs[:receive_messages] do
       {:control, parse_control_message(msg)}
