@@ -206,6 +206,7 @@ defmodule ExTwitter.API.Streaming do
             {:unfollow, _}  -> {:stream, {:unfollow, tweet}}
             {:event, _}     -> {:stream, {:event, tweet}}
             {:friends, _}   -> {:stream, {:friends, tweet}}
+            {:direct_message, _}   -> {:stream, {:direct_message, tweet}}
             {:control, msg} -> msg
             {:unknown, _}   -> nil
           end
