@@ -933,12 +933,15 @@ defmodule ExTwitter do
 
       ExTwitter.user_lookup("twitter", include_entities: false)
       ExTwitter.user_lookup(783214, include_entities: false)
+      ExTwitter.user_lookup(["twitter", "josevalim"], include_entities: false)
+      ExTwitter.user_lookup([783214, 10230812], include_entities: false)
 
   ## Reference
   https://dev.twitter.com/docs/api/1.1/get/users/lookup
   """
-  @spec user_lookup(String.t | Integer, Keyword.t) :: [ExTwitter.Model.User.t]
-  defdelegate user_lookup(screen_name, options), to: ExTwitter.API.Users
+  @spec user_lookup([String.t | Integer] | String.t | Integer.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  defdelegate user_lookup(id_or_screen_name_list, options), to: ExTwitter.API.Users
+
 
   @doc """
   GET users/show
