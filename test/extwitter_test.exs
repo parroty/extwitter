@@ -416,7 +416,7 @@ defmodule ExTwitterTest do
   test "lookup users with empty list returns nil" do
     use_cassette "lookup_users" do
       users = ExTwitter.user_lookup([], include_entities: false)
-      assert is_nil(users)
+      assert length(users) == 0
     end
   end
 
