@@ -413,6 +413,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "lookup users with empty list returns nil" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup([], include_entities: false)
+      assert is_nil(users)
+    end
+  end
+
   test "show user" do
     use_cassette "show_user" do
       user = ExTwitter.user("elixirlang")

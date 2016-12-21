@@ -18,6 +18,7 @@ defmodule ExTwitter.API.Users do
   end
 
   def user_lookup(id, options \\ [])
+  def user_lookup(id_or_name_list, _) when length(id_or_name_list) == 0, do: nil
   def user_lookup(id_or_name_list, options) when is_list(id_or_name_list) do
     options =
       id_or_name_list
