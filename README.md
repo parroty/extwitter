@@ -153,7 +153,7 @@ end
 ```
 
 #### cursor
-Some of Twtitter API have paging capability for retrieving large number of items through cursor. The following is an example to iteratively call the API to fetch all the items.
+Some of Twitter API have paging capability for retrieving large number of items through cursor. The following is an example to iteratively call the API to fetch all the items.
 
 ```elixir
 defmodule Retriever do
