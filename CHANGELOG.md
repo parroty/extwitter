@@ -1,3 +1,8 @@
+0.7.3
+------
+#### Enhancements
+* Allow for looking up multiple users with a list (#61).
+
 0.7.2
 ------
 #### Changes
