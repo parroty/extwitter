@@ -186,6 +186,10 @@ defmodule ExTwitter.API.Streaming do
     {:msg, msg}
   end
 
+  defp parse_message_type(%{direct_message: direct_msg}, _) do
+    {:direct_message, direct_msg}
+  end
+
   defp parse_message_type(msg, configs) do
     if configs[:receive_messages] do
       {:control, parse_control_message(msg)}
@@ -206,6 +210,7 @@ defmodule ExTwitter.API.Streaming do
             {:unfollow, _}  -> {:stream, {:unfollow, tweet}}
             {:event, _}     -> {:stream, {:event, tweet}}
             {:friends, _}   -> {:stream, {:friends, tweet}}
+            {:direct_message, _}   -> {:stream, {:direct_message, tweet}}
             {:control, msg} -> msg
             {:unknown, _}   -> nil
           end
