@@ -2,6 +2,7 @@
 ------
 #### Enhancements
 * Allow for looking up multiple users with a list (#61).
+* Add new Tweet fields for extended tweets (#57).
 
 0.7.2
 ------
