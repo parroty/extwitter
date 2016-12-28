@@ -369,6 +369,57 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "lookup user by screen_name using options" do
+    use_cassette "lookup_user" do
+      users = ExTwitter.user_lookup(screen_name: "twitter")
+      assert Enum.count(users) == 1
+      assert Enum.at(users, 0).screen_name == "twitter"
+    end
+  end
+
+  test "lookup users by user_id" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup([783214, 10230812])
+      assert Enum.count(users) == 2
+      assert Enum.at(users, 0).screen_name == "twitter"
+      assert Enum.at(users, 1).screen_name == "josevalim"
+    end
+  end
+
+  test "lookup users by screen_name" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup(["twitter", "josevalim"])
+      assert Enum.count(users) == 2
+      assert Enum.at(users, 0).screen_name == "twitter"
+      assert Enum.at(users, 1).screen_name == "josevalim"
+    end
+  end
+
+  test "lookup users by screen_name along with options" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup(["twitter", "josevalim"], include_entities: false)
+      assert Enum.count(users) == 2
+      assert Enum.at(users, 0).screen_name == "twitter"
+      assert Enum.at(users, 1).screen_name == "josevalim"
+    end
+  end
+
+  test "lookup users by user_id along with options" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup([783214, 10230812], include_entities: false)
+      assert Enum.count(users) == 2
+      assert Enum.at(users, 0).screen_name == "twitter"
+      assert Enum.at(users, 1).screen_name == "josevalim"
+    end
+  end
+
+  test "lookup users with empty list returns nil" do
+    use_cassette "lookup_users" do
+      users = ExTwitter.user_lookup([], include_entities: false)
+      assert length(users) == 0
+    end
+  end
+
   test "show user" do
     use_cassette "show_user" do
       user = ExTwitter.user("elixirlang")

@@ -111,6 +111,19 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
+  Parse batch user/lookup request parameters for the API.
+  """
+  def parse_batch_user_lookup_params(options) do
+    Enum.map(options, fn({k,v}) ->
+      if is_list(v) do
+        {to_string(k), Enum.join(v, ",")}
+      else
+        {to_string(k), to_string(v)}
+      end
+    end)
+  end
+
+  @doc """
   Parse request_token response
   """
   def parse_request_token(object) do
