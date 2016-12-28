@@ -3,6 +3,7 @@
 #### Enhancements
 * Allow for looking up multiple users with a list (#61).
 * Add new Tweet fields for extended tweets (#57).
+* Support for direct messages in streaming API (#60).
 
 0.7.2
 ------
