@@ -31,7 +31,7 @@ defmodule ExTwitter.ConfigTest do
 
   test "get_tuples returns list of tuples" do
     ExTwitter.Config.set([conf: "value"])
-    assert ExTwitter.Config.get_tuples == [{:conf, 'value'}]
+    assert ExTwitter.Config.get_tuples == [{:conf, "value"}]
   end
 
   test "get_tuples returns empty list when config is not set" do

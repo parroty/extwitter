@@ -60,10 +60,11 @@ defmodule ExTwitter.API.Streaming do
 
   defp spawn_async_request(req=%AsyncRequest{}) do
     oauth = ExTwitter.Config.get_tuples |> ExTwitter.API.Base.verify_params
-    consumer = {oauth[:consumer_key], oauth[:consumer_secret], :hmac_sha1}
     spawn(fn ->
       response = ExTwitter.OAuth.request_async(
-        req.method, request_url(req.path), req.params, consumer, oauth[:access_token], oauth[:access_token_secret])
+        req.method, request_url(req.path), req.params,
+        oauth[:consumer_key], oauth[:consumer_secret], oauth[:access_token], oauth[:access_token_secret])
+
       case response do
         {:ok, request_id} ->
           process_stream(req.processor, request_id, req.configs)
@@ -240,10 +241,10 @@ defmodule ExTwitter.API.Streaming do
     end
   end
   defp request_url("1.1/user.json" = path) do
-    "https://userstream.twitter.com/#{path}" |> to_char_list
+    "https://userstream.twitter.com/#{path}"
   end
 
   defp request_url(path) do
-    "https://stream.twitter.com/#{path}" |> to_char_list
+    "https://stream.twitter.com/#{path}"
   end
 end
