@@ -61,6 +61,7 @@ defmodule ExTwitter.Parser do
   @doc """
   Parse cursored ids.
   """
+  def parse_ids_with_cursor({:error, msg}), do: {:error, msg}
   def parse_ids_with_cursor(object) do
     ids = object |> ExTwitter.JSON.get(:ids)
     cursor = struct(ExTwitter.Model.Cursor, object)
@@ -70,6 +71,7 @@ defmodule ExTwitter.Parser do
   @doc """
   Parse cursored users.
   """
+  def parse_users_with_cursor({:error, msg}), do: {:error, msg}
   def parse_users_with_cursor(object) do
     users = object |> ExTwitter.JSON.get(:users)
                    |> Enum.map(&ExTwitter.Parser.parse_user/1)

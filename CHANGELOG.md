@@ -1,3 +1,10 @@
+0.8.0
+------
+#### Changes (Breaking)
+* API Change - Major changes related to ExTwitter raising errors.
+    - Most calls will now return an {:error, message} tuple
+      instead of raising an error directly
+
 0.7.3
 ------
 #### Enhancements

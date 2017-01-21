@@ -26,7 +26,7 @@ defmodule ExTwitter.API.Base do
     token = oauth[:access_token]
     secret = oauth[:access_token_secret]
     case ExTwitter.OAuth.request(method, url, params, consumer, token, secret) do
-      {:error, reason} -> raise(ExTwitter.ConnectionError, reason: reason)
+      {:error, {reason, _}} -> {:error, "ConnectionError: #{reason}"}
       r -> r |> parse_result
     end
   end
@@ -70,7 +70,7 @@ defmodule ExTwitter.API.Base do
         errors when is_list(errors) ->
           parse_error(List.first(errors), header)
         error ->
-          raise(ExTwitter.Error, message: inspect error)
+          {:error, "Error: #{inspect error}"}
       end
     end
   end
@@ -81,10 +81,8 @@ defmodule ExTwitter.API.Base do
       @error_code_rate_limit_exceeded ->
         reset_at = fetch_rate_limit_reset(header)
         reset_in = Enum.max([reset_at - now, 0])
-        raise ExTwitter.RateLimitExceededError,
-          code: code, message: message, reset_at: reset_at, reset_in: reset_in
-      _  ->
-        raise ExTwitter.Error, code: code, message: message
+        {:error, "RateLimitExceeded: #{message}, reset at: #{reset_at}, reset in: #{reset_in}"}
+      _  -> {:error, "Error: #{message}"}
     end
   end
 
