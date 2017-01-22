@@ -7,6 +7,9 @@
 * Configurations for proxy is simplified.
     - https://github.com/parroty/extwitter#proxy
 
+* Fix [mix bench] task error and library updates.
+    - Update benchfella and remove some warning notes about setup/teardown.
+
 0.7.3
 ------
 #### Enhancements

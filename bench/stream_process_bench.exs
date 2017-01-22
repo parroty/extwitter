@@ -4,14 +4,31 @@ defmodule ExTwitter.API.Streaming.Process.Bench do
 
   @mock_tweet_json File.read!("fixture/mocks/tweet.json")
 
-  bench "process stream - single chunk", [req_id: make_ref, m: stub_tweet_parsing!] do
-    streamProcessor = spawn_stream_processor(self, req_id)
+  setup_all do
+    :meck.new(ExTwitter.API.Streaming, [:passthrough, :no_history])
+    {:ok, nil}
+  end
+
+  before_each_bench _ do
+    :meck.expect(
+      ExTwitter.API.Streaming, :parse_tweet_message,
+      fn(_,_) -> :parsed end
+    )
+    {:ok, nil}
+  end
+
+  after_each_bench _ do
+    :meck.unload(ExTwitter.API.Streaming)
+  end
+
+  bench "process stream - single chunk", [req_id: make_ref()] do
+    streamProcessor = spawn_stream_processor(self(), req_id)
     send streamProcessor, {:http, {req_id, :stream, @mock_tweet_json}}
     receive_processed_msgs()
   end
 
-  bench "process stream - multi chunk", [req_id: make_ref, parts: msg_chunks, m: stub_tweet_parsing!] do
-    streamProcessor = spawn_stream_processor(self, req_id)
+  bench "process stream - multi chunk", [req_id: make_ref(), parts: msg_chunks()] do
+    streamProcessor = spawn_stream_processor(self(), req_id)
     Enum.each(parts, fn part ->
       send streamProcessor, {:http, {req_id, :stream, part}}
     end)
@@ -33,34 +50,6 @@ defmodule ExTwitter.API.Streaming.Process.Bench do
       _msg         -> raise "got unexpected message back from stream processor!"
     after 1000
       -> raise "timed out waiting for stream processor!"
-    end
-  end
-
-  # stub out tweet parsing so it doesnt affect benchmark time
-  # this is a fairly bad way to do it, but benchfella doesnt support a global
-  # "setup" phase just yet.
-  #
-  # also note that since benchfella doesn't support "after" callbacks to unload
-  # stubs, this stays loaded, so we all benchmarks in this file should be
-  # considered as using the stub.
-  defp stub_tweet_parsing! do
-    try do
-      :meck.validate(ExTwitter.API.Streaming)
-    rescue
-      ErlangError ->
-        Mix.Shell.IO.info """
-        WARNING! We just stubbed ExTwitter.API.Streaming.parse_tweet_message
-        This stub will be effect until this process ends.
-
-        If you are running multiple benchmarks, these ones should be run
-        independently of others, you can specify the files to run directly via
-        `mix bench bench/filename_bench.exs` etc.
-        """
-        :meck.new(ExTwitter.API.Streaming, [:passthrough, :no_history])
-        :meck.expect(
-          ExTwitter.API.Streaming, :parse_tweet_message,
-          fn(_,_) -> :parsed end
-        )
     end
   end
 

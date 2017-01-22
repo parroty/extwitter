@@ -42,7 +42,7 @@ defmodule ExTwitter.Mixfile do
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
       {:earmark, "~> 0.1", only: [:dev, :docs]},
       {:inch_ex, "~> 0.5.1", only: :docs},
-      {:benchfella, github: "alco/benchfella", only: :dev}
+      {:benchfella, "~> 0.3.3", only: :dev}
     ]
   end
 
