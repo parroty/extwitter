@@ -14,7 +14,7 @@ defmodule ExTwitter.ConfigTest do
   end
 
   test "oauth initialization (process)" do
-    test = self
+    test = self()
     test_fun = fn(test_pid, config) ->
       spawn(fn() ->
         ExTwitter.Config.set(:process, config)

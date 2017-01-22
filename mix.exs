@@ -5,9 +5,9 @@ defmodule ExTwitter.Mixfile do
     [ app: :extwitter,
       version: "0.8.0",
       elixir: ">= 1.0.0",
-      deps: deps,
-      description: description,
-      package: package,
+      deps: deps(),
+      description: description(),
+      package: package(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: cli_env_for(:test, [
         "coveralls", "coveralls.detail", "coveralls.post",

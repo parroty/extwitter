@@ -79,7 +79,7 @@ defmodule ExTwitter.API.Base do
     case code do
       @error_code_rate_limit_exceeded ->
         reset_at = fetch_rate_limit_reset(header)
-        reset_in = Enum.max([reset_at - now, 0])
+        reset_in = Enum.max([reset_at - now(), 0])
         raise ExTwitter.RateLimitExceededError,
           code: code, message: message, reset_at: reset_at, reset_in: reset_in
         _  ->

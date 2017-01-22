@@ -49,7 +49,7 @@ defmodule ExTwitter.API.Streaming do
   def stream_control(pid, :stop, options \\ []) do
     timeout = options[:timeout] || @default_control_timeout
 
-    send pid, {:control_stop, self}
+    send pid, {:control_stop, self()}
 
     receive do
       :ok -> :ok
@@ -76,11 +76,11 @@ defmodule ExTwitter.API.Streaming do
 
   defp create_stream(req, timeout) do
     Stream.resource(
-      fn -> {%{req | processor: self}, nil} end,
+      fn -> {%{req | processor: self()}, nil} end,
       fn({req, pid}) -> receive_next_tweet(pid, req, timeout) end,
       fn({_req, pid}) ->
         if pid != nil do
-          send pid, {:cancel, self}
+          send pid, {:cancel, self()}
         end
       end
     )
@@ -100,7 +100,7 @@ defmodule ExTwitter.API.Streaming do
         {[tweet], {req, pid}}
 
       {:control_stop, requester} ->
-        send pid, {:cancel, self}
+        send pid, {:cancel, self()}
         send requester, :ok
         {:halt, {req, pid}}
 
@@ -113,7 +113,7 @@ defmodule ExTwitter.API.Streaming do
 
     after
       max_timeout ->
-        send pid, {:cancel, self}
+        send pid, {:cancel, self()}
         case timeout do
           :infinity ->
             Logger.debug "Tweet timeout, restarting stream."

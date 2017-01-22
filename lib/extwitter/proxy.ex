@@ -7,8 +7,8 @@ defmodule ExTwitter.Proxy do
   Initialize proxy settings based on defintion in config.exs.
   """
   def initialize do
-    if proxy != nil do
-      :httpc.set_options(get_proxy_option(proxy))
+    if proxy() != nil do
+      :httpc.set_options(get_proxy_option(proxy()))
     end
   end
 
@@ -16,8 +16,8 @@ defmodule ExTwitter.Proxy do
   Get proxy settings for sending request based on definition in config.exs.
   """
   def options do
-    if proxy != nil do
-      get_auth_option(proxy)
+    if proxy() != nil do
+      get_auth_option(proxy())
     else
       []
     end
