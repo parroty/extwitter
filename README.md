@@ -43,8 +43,7 @@ ExTwitter.configure(:process, [consumer_key: "", ...])
 ```elixir
 defp deps do
   [
-    {:oauth, github: "tim/erlang-oauth"},
-    {:extwitter, "~> 0.7"}
+    {:extwitter, "~> 0.8"}
   ]
 end
 
@@ -224,8 +223,8 @@ ExTwitter.configure(
 ExTwitter.user_timeline
 ```
 
-#### proxy (experimental)
-Proxy for accessing twitter server can be configured as follows. It's experimental implementation and the interface can change.
+#### proxy
+Proxy for accessing twitter server can be configured as follows.
 
 In `config/config.exs`,
 ```elixir
@@ -238,33 +237,6 @@ config :extwitter, :proxy, [
    password: "password"
 ]
 ```
-and in `mix.exs`,
-```elixir
-
-# make sure to have :extwitter
-def application do
-  [applications: [:logger, :extwitter]]
-end
-
-...
-
-# apply :oauth under parroty/erlang-oauth
-defp deps do
-  [
-    {:oauth, github: "parroty/erlang-oauth", branch: "proxy", override: true},
-    {:extwitter, github: "parroty/extwitter"}
-  ]
-end
-```
-
-and execute the following command.
-
-```shell
-$ mix deps.update oauth
-```
-
-The following repository has a basic sample.
-- https://github.com/parroty/extwitter_proxy
 
 ### Notes
 `run_iex.sh` launches iex, with initially calling `ExTwitter.configure` defined as `iex/dot.iex`.
