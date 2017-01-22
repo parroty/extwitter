@@ -78,8 +78,9 @@ defmodule ExTwitterTest do
 
   test "search with invalid count param raises error" do
     use_cassette "search_invalid_count" do
-      {:error, message} = ExTwitter.search("test", count: -1)
-      assert Regex.match?(~r/^Error: count parameter is invalid/, message)
+      assert_raise ExTwitter.Error, fn ->
+        ExTwitter.search("test", count: -1)
+      end
     end
   end
 
@@ -469,10 +470,9 @@ defmodule ExTwitterTest do
 
   test "rate limit exceed" do
     use_cassette "rate_limit_exceed", custom: true do
-      {:error, msg} = ExTwitter.follower_ids("twitter", count: 1)
-      assert Regex.match?(~r/^RateLimitExceeded/, msg)
-      assert Regex.match?(~r/reset at: \d+/, msg)
-      assert Regex.match?(~r/reset in: \d+/, msg)
+      assert_raise ExTwitter.RateLimitExceededError, fn ->
+        ExTwitter.follower_ids("twitter", count: 1)
+      end
     end
   end
 
@@ -526,8 +526,9 @@ defmodule ExTwitterTest do
 
   test "failed connection" do
     use_cassette "failed_connection", custom: true do
-      {:error, reason} = ExTwitter.follower_ids("twitter", count: 1)
-      assert Regex.match?(~r/^ConnectionError:/, reason)
+      assert_raise ExTwitter.ConnectionError, "connection error", fn ->
+        ExTwitter.follower_ids("twitter", count: 1)
+      end
     end
   end
 end

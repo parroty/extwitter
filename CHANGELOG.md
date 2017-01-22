@@ -1,10 +1,6 @@
 0.8.0
 ------
-#### Changes (Breaking)
-* API Change - Major changes related to ExTwitter raising errors (#56).
-    - Most calls will now return an {:error, message} tuple
-      instead of raising an error directly.
-
+#### Changes
 * OAuth dependency library is updated (#63).
     - Adding `{:oauth, github: "tim/erlang-oauth"}` in mix.exs becomes not required.
 
