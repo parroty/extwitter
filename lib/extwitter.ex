@@ -880,6 +880,9 @@ defmodule ExTwitter do
   @spec verify_credentials :: ExTwitter.Model.User.t
   defdelegate verify_credentials, to: ExTwitter.API.Users
 
+  @spec verify_credentials(Keyword.t) :: ExTwitter.Model.User.t
+  defdelegate verify_credentials(options), to: ExTwitter.API.Users
+
 
   # POST account/settings
   # https://dev.twitter.com/docs/api/1.1/post/account/settings
