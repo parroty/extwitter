@@ -1,3 +1,8 @@
+0.8.1
+------
+#### Changes
+* Fix option for account/verify_credentials (#68).
+
 0.8.0
 ------
 #### Changes
