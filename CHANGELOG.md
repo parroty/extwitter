@@ -3,6 +3,9 @@
 #### Enhancements
 * Add support for users/profile_banner (#70).
 
+#### Changes
+* Update dependencies.
+
 0.8.1
 ------
 #### Changes
