@@ -420,6 +420,22 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "get profile banners by user_id" do
+    use_cassette "user_profile_banner" do
+      profile_banner = ExTwitter.user_profile_banner(783214)
+      assert profile_banner.sizes.web.h > 0
+      assert profile_banner.sizes.web.w > 0
+    end
+  end
+
+  test "get profile banners by screen_name" do
+    use_cassette "user_profile_banner" do
+      profile_banner = ExTwitter.user_profile_banner("twitter")
+      assert profile_banner.sizes.web.h > 0
+      assert profile_banner.sizes.web.w > 0
+    end
+  end
+
   test "show user" do
     use_cassette "show_user" do
       user = ExTwitter.user("elixirlang")

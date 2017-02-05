@@ -945,6 +945,20 @@ defmodule ExTwitter do
   @spec user_lookup([String.t | Integer] | String.t | Integer.t, Keyword.t) :: [ExTwitter.Model.User.t]
   defdelegate user_lookup(id_or_screen_name_list, options), to: ExTwitter.API.Users
 
+  @doc """
+  GET users/profile_banner
+
+  ## Examples
+
+      ExTwitter.user_profile_banner(783214)
+      ExTwitter.user_profile_banner("twitter")
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/users/profile_banner
+  """
+  @spec user_profile_banner(String.t | Integer) :: ExTwitter.Model.ProfileBanner.t
+  defdelegate user_profile_banner(id_or_screen_name), to: ExTwitter.API.Users
+
 
   @doc """
   GET users/show

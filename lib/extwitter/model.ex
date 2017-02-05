@@ -53,6 +53,18 @@ defmodule ExTwitter.Model.User do
   @type t :: %__MODULE__{}
 end
 
+defmodule ExTwitter.Model.ProfileBanner do
+  @moduledoc """
+  Profile Banner object.
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/users/profile_banner
+  """
+  defstruct sizes: nil
+
+  @type t :: %__MODULE__{}
+end
+
 defmodule ExTwitter.Model.DirectMessage do
   defstruct created_at: nil, entities: nil, id: nil, id_str: nil,
     recipient: nil, recipient_id: nil, recipient_screen_name: nil,

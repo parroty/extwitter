@@ -1,3 +1,8 @@
+0.8.2
+------
+#### Enhancements
+* Add support for users/profile_banner (#70).
+
 0.8.1
 ------
 #### Changes

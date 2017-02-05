@@ -1,0 +1,51 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/users/profile_banner.json"
+    },
+    "response": {
+      "body": "{\"sizes\":{\"ipad\":{\"h\":313,\"w\":626,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/ipad\"},\"ipad_retina\":{\"h\":626,\"w\":1252,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/ipad_retina\"},\"web\":{\"h\":260,\"w\":520,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/web\"},\"web_retina\":{\"h\":520,\"w\":1040,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/web_retina\"},\"mobile\":{\"h\":160,\"w\":320,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/mobile\"},\"mobile_retina\":{\"h\":320,\"w\":640,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/mobile_retina\"},\"300x100\":{\"h\":100,\"w\":300,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/300x100\"},\"600x200\":{\"h\":200,\"w\":600,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/600x200\"},\"1500x500\":{\"h\":500,\"w\":1500,\"url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1486224832\\/1500x500\"}}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sun, 05 Feb 2017 13:46:27 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_m",
+        "vary": "Origin",
+        "content-length": "980",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sun, 05 Feb 2017 13:46:27 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "set-cookie": "lang=ja; Path=/",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write-directmessages",
+        "x-connection-hash": "2207ca01d194c3ff275b19322d695aca",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "180",
+        "x-rate-limit-remaining": "179",
+        "x-rate-limit-reset": "1486303287",
+        "x-response-time": "114",
+        "x-transaction": "0032e90e0092eb3b",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

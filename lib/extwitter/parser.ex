@@ -136,4 +136,11 @@ defmodule ExTwitter.Parser do
   def parse_access_token(object) do
     struct(ExTwitter.Model.AccessToken, object)
   end
+
+  @doc """
+  Parse user profile banner from the API response json.
+  """
+  def parse_profile_banner(object) do
+    struct(ExTwitter.Model.ProfileBanner, object)
+  end
 end

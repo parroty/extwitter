@@ -39,6 +39,11 @@ defmodule ExTwitter.API.Users do
     user_lookup(get_id_option(id) ++ options)
   end
 
+  def user_profile_banner(user_id) do
+    request(:get, "1.1/users/profile_banner.json", parse_user_id_param(user_id))
+    |> ExTwitter.Parser.parse_profile_banner
+  end
+
   def user_search(query, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([q: query] ++ options)
     request(:get, "1.1/users/search.json", params)
@@ -54,7 +59,6 @@ defmodule ExTwitter.API.Users do
     request(:get, "1.1/users/show.json", params)
     |> ExTwitter.Parser.parse_user
   end
-
 
   defp parse_user_id_param(user_id) when is_integer(user_id) do
     [user_id: user_id]
