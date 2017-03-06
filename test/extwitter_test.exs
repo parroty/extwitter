@@ -144,7 +144,7 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "destroy a direct message options" do
+  test "destroy a direct message with options" do
     use_cassette "destroy_direct_message" do
       direct_message = ExTwitter.destroy_direct_message(615025281712025603, include_entities: false)
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
