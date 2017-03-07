@@ -902,11 +902,33 @@ defmodule ExTwitter do
   # GET blocks/ids
   # https://dev.twitter.com/rest/reference/get/blocks/ids
 
-  # POST blocks/create
-  # https://dev.twitter.com/rest/reference/post/blocks/create
+  @doc """
+  POST blocks/create
 
-  # POST blocks/destroy
-  # https://dev.twitter.com/rest/reference/post/blocks/destroy
+  ## Examples
+
+      ExTwitter.block("twitter")
+      ExTwitter.block(783214)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/blocks/create
+  """
+  @spec block(String.t | Integer) :: ExTwitter.Model.User.t
+  defdelegate block(id), to: ExTwitter.API.Blocks
+
+  @doc """
+  POST blocks/destroy
+
+  ## Examples
+
+      ExTwitter.unblock("twitter")
+      ExTwitter.unblock(783214)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/blocks/destroy
+  """
+  @spec unblock(String.t | Integer) :: ExTwitter.Model.User.t
+  defdelegate unblock(id), to: ExTwitter.API.Blocks
 
   @doc """
   GET users/lookup

@@ -353,6 +353,24 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "block and unblock user by screen_name" do
+    use_cassette "blocks" do
+      user1 = ExTwitter.block("twitter")
+      assert user1.screen_name == "Twitter"
+      user2 = ExTwitter.unblock("twitter")
+      assert user2.screen_name == "Twitter"
+    end
+  end
+
+  test "block and unblock user by user_id" do
+    use_cassette "blocks" do
+      user1 = ExTwitter.block(783214)
+      assert user1.screen_name == "Twitter"
+      user2 = ExTwitter.unblock(783214)
+      assert user2.screen_name == "Twitter"
+    end
+  end
+
   test "lookup user by screen_name" do
     use_cassette "lookup_user" do
       users = ExTwitter.user_lookup("twitter")
