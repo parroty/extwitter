@@ -1,3 +1,8 @@
+0.8.3
+------
+#### Enhancements
+* Add support for blocking/unblocking users (#71).
+
 0.8.2
 ------
 #### Enhancements
