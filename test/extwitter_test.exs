@@ -144,7 +144,7 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "destroy a direct message options" do
+  test "destroy a direct message with options" do
     use_cassette "destroy_direct_message" do
       direct_message = ExTwitter.destroy_direct_message(615025281712025603, include_entities: false)
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
@@ -350,6 +350,24 @@ defmodule ExTwitterTest do
       user = ExTwitter.verify_credentials
       assert user.id != nil
       assert user.screen_name != nil
+    end
+  end
+
+  test "block and unblock user by screen_name" do
+    use_cassette "blocks" do
+      user1 = ExTwitter.block("twitter")
+      assert user1.screen_name == "Twitter"
+      user2 = ExTwitter.unblock("twitter")
+      assert user2.screen_name == "Twitter"
+    end
+  end
+
+  test "block and unblock user by user_id" do
+    use_cassette "blocks" do
+      user1 = ExTwitter.block(783214)
+      assert user1.screen_name == "Twitter"
+      user2 = ExTwitter.unblock(783214)
+      assert user2.screen_name == "Twitter"
     end
   end
 
