@@ -9,15 +9,7 @@ defmodule ExTwitter.Mixfile do
       description: description(),
       package: package(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: cli_env_for(:test, [
-        "coveralls", "coveralls.detail", "coveralls.post",
-        "vcr", "vcr.delete", "vcr.check", "vcr.show"
-      ]),
       docs: [main: ExTwitter] ]
-  end
-
-  defp cli_env_for(env, tasks) do
-    Enum.reduce(tasks, [], fn(key, acc) -> Keyword.put(acc, :"#{key}", env) end)
   end
 
   # Configuration for the OTP application
