@@ -515,12 +515,12 @@ defmodule ExTwitter do
 
   ## Examples
 
-      ExTwitter.stream_filter(track: "apple", timeout: 60000)
+      ExTwitter.stream_filter(track: "apple", 60000)
 
   ## Reference
   https://dev.twitter.com/streaming/reference/post/statuses/filter
   """
-  @spec stream_filter(Keyword.t, [timeout: Integer]) :: Enumerable.t
+  @spec stream_filter(Keyword.t, timeout) :: Enumerable.t
   defdelegate stream_filter(options, timeout), to: ExTwitter.API.Streaming
 
   @doc """
