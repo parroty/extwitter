@@ -515,7 +515,7 @@ defmodule ExTwitter do
 
   ## Examples
 
-      ExTwitter.stream_filter(track: "apple", 60000)
+      ExTwitter.stream_filter([track: "apple"], 60000)
 
   ## Reference
   https://dev.twitter.com/streaming/reference/post/statuses/filter
