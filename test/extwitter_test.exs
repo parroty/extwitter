@@ -397,36 +397,37 @@ defmodule ExTwitterTest do
 
   test "lookup users by user_id" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup([783214, 10230812])
-      assert Enum.count(users) == 2
-      assert Enum.at(users, 0).screen_name == "twitter"
+      users = ExTwitter.user_lookup([783214, 10230812, 507309896])
+      assert Enum.count(users) == 3
+      assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
+      assert Enum.at(users, 2).screen_name == "elixirlang"
     end
   end
 
   test "lookup users by screen_name" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup(["twitter", "josevalim"])
-      assert Enum.count(users) == 2
-      assert Enum.at(users, 0).screen_name == "twitter"
+      users = ExTwitter.user_lookup(["twitter", "josevalim", "elixirlang"])
+      assert Enum.count(users) == 3
+      assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
     end
   end
 
   test "lookup users by screen_name along with options" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup(["twitter", "josevalim"], include_entities: false)
-      assert Enum.count(users) == 2
-      assert Enum.at(users, 0).screen_name == "twitter"
+      users = ExTwitter.user_lookup(["twitter", "josevalim", "elixirlang"], include_entities: false)
+      assert Enum.count(users) == 3
+      assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
     end
   end
 
   test "lookup users by user_id along with options" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup([783214, 10230812], include_entities: false)
-      assert Enum.count(users) == 2
-      assert Enum.at(users, 0).screen_name == "twitter"
+      users = ExTwitter.user_lookup([783214, 10230812, 507309896], include_entities: false)
+      assert Enum.count(users) == 3
+      assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
     end
   end
