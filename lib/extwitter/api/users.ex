@@ -20,16 +20,11 @@ defmodule ExTwitter.API.Users do
   def user_lookup(id, options \\ [])
   def user_lookup(id_or_name_list, _) when length(id_or_name_list) == 0, do: []
   def user_lookup(id_or_name_list, options) when is_list(id_or_name_list) do
-    options =
-      id_or_name_list
-      |> Enum.map(&get_id_option(&1))
-      |> Enum.reduce(fn(name_id_keyword, acc) ->
-        Keyword.merge(acc, name_id_keyword, fn (_key, v1, v2) ->
-          [v1, v2]
-        end)
-      end)
+    params = [
+      user_id:     for(id <- id_or_name_list, is_integer(id), do: id),
+      screen_name: for(name <- id_or_name_list, is_bitstring(name), do: name) ]
       |> Keyword.merge(options)
-    params = ExTwitter.Parser.parse_batch_user_lookup_params(options)
+      |> ExTwitter.Parser.parse_batch_user_lookup_params
     # Should return [{"screen_name", "twitter"}]
     request(:get, "1.1/users/lookup.json", params)
     |> Enum.map(&ExTwitter.Parser.parse_user/1)
