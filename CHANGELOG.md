@@ -1,3 +1,8 @@
+0.8.4
+------
+#### Changes
+* Fix for crash when calling user_lookup on more than 2 twitter IDs (#78).
+
 0.8.3
 ------
 #### Enhancements
