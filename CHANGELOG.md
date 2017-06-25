@@ -1,3 +1,9 @@
+0.8.5
+------
+#### Changes
+* Update dependency.
+  - Bumped poison dep to 3.0 (#80).
+
 0.8.4
 ------
 #### Changes
