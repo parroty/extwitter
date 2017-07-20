@@ -14,6 +14,38 @@ defmodule ExTwitter.API.Base do
   end
 
   @doc """
+  Upload media in chunks
+  """
+  def upload_media(path, content_type, chunk_size \\ 65536) do
+    media_id = init_media_upload(path, content_type)
+    upload_file_chunks(path, media_id, chunk_size)
+    finalize_upload(media_id)
+    media_id
+  end
+
+  def init_media_upload(path, content_type) do
+    %{size: size} = File.stat! path
+    request_params = [command: "INIT", total_bytes: size, media_type: content_type]
+    response = do_request(:post, media_upload_url(), request_params)
+    response.media_id
+  end
+
+  def upload_file_chunks(path, media_id, chunk_size) do
+    stream = File.stream!(path, [], chunk_size)
+    initial_segment_index = 0
+    Enum.reduce(stream, initial_segment_index, fn(chunk, seg_index) ->
+      request_params = [command: "APPEND", media_id: media_id, media_data: Base.encode64(chunk), segment_index: seg_index]
+      do_request(:post, media_upload_url(), request_params)
+      seg_index + 1
+    end)
+  end
+
+  def finalize_upload(media_id) do
+    request_params = [command: "FINALIZE", media_id: media_id]
+    do_request(:post, media_upload_url(), request_params)
+  end
+
+  @doc """
   Send request to the upload.twitter.com server.
   """
   def upload_request(method, path, params \\ []) do
@@ -44,6 +76,10 @@ defmodule ExTwitter.API.Base do
       true ->
         [screen_name: id]
     end
+  end
+
+  def media_upload_url do
+    "https://upload.twitter.com/1.1/media/upload.json"
   end
 
   def request_url(path) do
