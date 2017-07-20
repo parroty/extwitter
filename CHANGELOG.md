@@ -1,3 +1,8 @@
+0.8.6
+------
+#### Enhancements
+* Add media chunk upload functionality (#83).
+
 0.8.5
 ------
 #### Changes
