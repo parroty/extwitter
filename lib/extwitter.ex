@@ -427,6 +427,9 @@ defmodule ExTwitter do
   @spec search(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
   defdelegate search(query, options), to: ExTwitter.API.Search
 
+  @spec search_next_page(String.t) :: [Map]
+  defdelegate search_next_page(search_result), to: ExTwitter.API.Search
+
   # -------------- Streaming -------------
 
   @doc """
