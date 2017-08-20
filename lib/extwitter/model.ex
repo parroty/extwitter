@@ -155,3 +155,9 @@ defmodule ExTwitter.Model.AccessToken do
 
   @type t :: %__MODULE__{}
 end
+
+defmodule ExTwitter.Model.SearchResponse do
+  defstruct statuses: nil, metadata: nil
+
+  @type t :: %__MODULE__{}
+end

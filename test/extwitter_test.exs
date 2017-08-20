@@ -62,6 +62,20 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "search with metadata" do
+    response1 = use_cassette "search_with_metadata_response1" do
+      ExTwitter.search("test", [count: 1, search_metadata: true])
+    end
+
+    response2 = use_cassette "search_with_metadata_response2" do
+      ExTwitter.search_next_page(response1.metadata)
+    end
+
+    assert Enum.count(response1.statuses) == 1
+    assert Enum.count(response2.statuses) == 1
+    assert List.first(response1.statuses).text != List.first(response2.statuses).text
+  end
+
   test "gets authenticated user's home timeline" do
     use_cassette "home_timeline" do
       timeline = ExTwitter.home_timeline(count: 1)
