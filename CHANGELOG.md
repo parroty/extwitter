@@ -1,3 +1,8 @@
+0.8.7
+------
+#### Enhancements
+* Fix - no metadata for search results (#84).
+
 0.8.6
 ------
 #### Enhancements
