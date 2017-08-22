@@ -25,7 +25,7 @@ defmodule ExTwitter.Proxy do
 
   def get_proxy_option(proxy) do
     if proxy[:server] != nil && proxy[:port] != nil do
-      server = String.to_charlist(proxy[:server])
+      server = String.to_char_list(proxy[:server])
       port = parse_port(proxy[:port])
       [{:proxy, {{server, port}, []}}]
     else
@@ -35,8 +35,8 @@ defmodule ExTwitter.Proxy do
 
   def get_auth_option(proxy) do
     if proxy[:user] != nil && proxy[:password] != nil do
-      user = String.to_charlist(proxy[:user])
-      password = String.to_charlist(proxy[:password])
+      user = String.to_char_list(proxy[:user])
+      password = String.to_char_list(proxy[:password])
       [{:proxy_auth, {user, password}}]
     else
       []
