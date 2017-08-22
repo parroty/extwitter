@@ -2,6 +2,7 @@
 ------
 #### Enhancements
 * Fix - no metadata for search results (#84).
+* Immediately stop stream when oauth config is invalid (#81, #87).
 
 0.8.6
 ------
