@@ -424,8 +424,22 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
-  @spec search(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @spec search(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t] | ExTwitter.Model.SearchResponse
   defdelegate search(query, options), to: ExTwitter.API.Search
+
+  @doc """
+  GET search/tweets
+
+  ## Examples
+
+      response = ExTwitter.search("pizza", [count: 100, search_metadata: true])
+      ExTwitter.search_next_page(response.metadata)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/search/tweets
+  """
+  @spec search_next_page(String.t) :: [Map]
+  defdelegate search_next_page(search_result), to: ExTwitter.API.Search
 
   # -------------- Streaming -------------
 
