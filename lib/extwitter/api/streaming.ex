@@ -8,6 +8,7 @@ defmodule ExTwitter.API.Streaming do
   """
   @default_stream_timeout 60_000
   @default_control_timeout 10_000
+  @http_unauthorized 401
 
   require Logger
 
@@ -108,6 +109,10 @@ defmodule ExTwitter.API.Streaming do
         Logger.warn "Connection closed remotely, restarting stream"
         receive_next_tweet(nil, req, timeout)
 
+      {:error, message} ->
+        Logger.error "Error returned, stopping stream (#{message})."
+        {:halt, {req, pid}}
+
       _ ->
         receive_next_tweet(pid, req, timeout)
 
@@ -153,6 +158,9 @@ defmodule ExTwitter.API.Streaming do
 
       {:http, {_request_id, {:error, reason}}} ->
         send processor, {:error, reason}
+
+      {:http, {_request_id, {{_http, @http_unauthorized, msg}, _headers, _body}}} ->
+        send processor, {:error, msg}
 
       {:cancel, requester} ->
         :httpc.cancel_request(request_id)
