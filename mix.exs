@@ -37,7 +37,7 @@ defmodule ExTwitter.Mixfile do
       {:poison, "~> 3.0"},
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.7", only: :test},
-      {:meck, "~> 0.8.2", only: [:dev, :test]},
+      {:meck, "~> 0.8", only: [:dev, :test]},
       {:mock, "~> 0.2", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
       {:inch_ex, "~> 0.5", only: :docs},
