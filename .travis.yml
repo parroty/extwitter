@@ -3,13 +3,27 @@ language: elixir
 sudo: false
 
 elixir:
-  - 1.2.0
-  - 1.3.2
-  - 1.5.0
+  - 1.1.1
+  - 1.2.6
+  - 1.3.4
+  - 1.4.5
 
 otp_release:
-  - 18.2
+  - 18.3
+  - 19.3
+  - 20.0
 
 script:
   - MIX_ENV=docs mix do deps.get, inch.report
   - MIX_ENV=test mix do deps.get, compile, coveralls.travis
+
+matrix:
+  exclude:
+  - elixir: 1.1.1
+    otp_release: 19.3
+  - elixir: 1.1.1
+    otp_release: 20.0
+  - elixir: 1.2.6
+    otp_release: 20.0
+  - elixir: 1.3.4
+    otp_release: 20.0
