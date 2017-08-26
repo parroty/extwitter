@@ -3,6 +3,7 @@ language: elixir
 sudo: false
 
 elixir:
+  - 1.1.1
   - 1.2.6
   - 1.3.4
   - 1.4.5
@@ -19,6 +20,8 @@ script:
 
 matrix:
   exclude:
+  - elixir: 1.1.1
+    otp_release: 20.0
   - elixir: 1.2.6
     otp_release: 20.0
   - elixir: 1.3.4
