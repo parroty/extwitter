@@ -1,8 +1,13 @@
-0.8.7
+0.9.0
 ------
 #### Enhancements
 * Fix - no metadata for search results (#84).
 * Immediately stop stream when oauth config is invalid (#81, #87).
+* Add unretweet function (#90).
+
+#### Changes
+* Requires elixir 1.3.0 or later.
+   - Bugfix/cleanup char list deprecation warnings (#94).
 
 0.8.6
 ------
