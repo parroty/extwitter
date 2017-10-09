@@ -198,15 +198,16 @@ defmodule ExTwitterTest do
     end
   end
 
-  test "retweet and destroy status" do
-    use_cassette "retweet_destroy_status" do
+  test "retweet and unretweet status" do
+    use_cassette "retweet_unretweet_status" do
+      # https://twitter.com/twitter/statuses/589095997340405760
       sample_tweet_id = 589095997340405760
 
       tweet1 = ExTwitter.retweet(sample_tweet_id, trim_user: true)
-      assert tweet1.text =~ "RT @twitter:"
+      assert tweet1.text =~ "RT @Twitter:"
 
-      tweet2 = ExTwitter.destroy_status(tweet1.id, trim_user: true)
-      assert tweet2.text =~ "RT @twitter:"
+      tweet2 = ExTwitter.unretweet(tweet1.id, trim_user: true)
+      assert tweet2.text =~ "Please read our updated Terms"
     end
   end
 
