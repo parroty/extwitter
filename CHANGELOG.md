@@ -6,8 +6,9 @@
 * Add unretweet function (#90).
 
 #### Changes
-* Requires elixir 1.3.0 or later.
+* Requires elixir 1.4.0 or later.
    - Bugfix/cleanup char list deprecation warnings (#94).
+   - Cleanup deps (#89).
 
 0.8.6
 ------
