@@ -326,7 +326,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/unretweet/:id
   """
-  @spec retweet(Integer) :: ExTwitter.Model.Tweet.t
+  @spec unretweet(Integer) :: ExTwitter.Model.Tweet.t
   defdelegate unretweet(id), to: ExTwitter.API.Tweets
 
   @doc """
