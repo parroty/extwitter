@@ -43,6 +43,7 @@ ExTwitter.configure(:process, [consumer_key: "", ...])
 ```elixir
 defp deps do
   [
+    {:oauther, "~> 1.1"},
     {:extwitter, "~> 0.8"}
   ]
 end
