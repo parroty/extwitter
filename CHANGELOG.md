@@ -1,3 +1,8 @@
+0.9.1
+------
+#### Changes
+* Add extended_tweet field to tweet struct (#95).
+
 0.9.0
 ------
 #### Enhancements
