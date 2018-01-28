@@ -40,6 +40,12 @@ defmodule ExTwitter.API.Tweets do
     request(:post, "1.1/statuses/retweet/#{id}.json", params)
     |> ExTwitter.Parser.parse_tweet
   end
+  
+  def unretweet(id, options \\ []) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:post, "1.1/statuses/unretweet/#{id}.json", params)
+    |> ExTwitter.Parser.parse_tweet
+  end
 
   def destroy_status(id, options \\ []) do
     params = ExTwitter.Parser.parse_request_params(options)

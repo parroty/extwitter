@@ -35,7 +35,7 @@ defmodule ExTwitter.OAuth do
     signed_params = get_signed_params(
       "get", url, params, consumer_key, consumer_secret, access_token, access_token_secret)
     encoded_params = URI.encode_query(signed_params)
-    request = {to_char_list(url <> "?" <> encoded_params), []}
+    request = {to_charlist(url <> "?" <> encoded_params), []}
     send_httpc_request(:get, request, options)
   end
 
@@ -43,7 +43,7 @@ defmodule ExTwitter.OAuth do
     signed_params = get_signed_params(
       "post", url, params, consumer_key, consumer_secret, access_token, access_token_secret)
     encoded_params = URI.encode_query(signed_params)
-    request = {to_char_list(url), [], 'application/x-www-form-urlencoded', encoded_params}
+    request = {to_charlist(url), [], 'application/x-www-form-urlencoded', encoded_params}
     send_httpc_request(:post, request, options)
   end
 

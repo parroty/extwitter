@@ -316,6 +316,32 @@ defmodule ExTwitter do
   @spec retweet(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
   defdelegate retweet(id, options), to: ExTwitter.API.Tweets
 
+  @doc """
+  POST statuses/unretweet/:id
+
+  ## Examples
+
+      ExTwitter.unretweet(589095997340405760)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/statuses/unretweet/:id
+  """
+  @spec unretweet(Integer) :: ExTwitter.Model.Tweet.t
+  defdelegate unretweet(id), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST statuses/unretweet/:id
+
+  ## Examples
+
+      ExTwitter.unretweet(589095997340405760, trim_user: true)
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/post/statuses/unretweet/:id
+  """
+  @spec unretweet(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  defdelegate unretweet(id, options), to: ExTwitter.API.Tweets
+
 
   @doc """
   POST media/upload
