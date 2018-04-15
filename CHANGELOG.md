@@ -1,3 +1,9 @@
+0.9.2
+------
+#### Changes
+* Fixed crash if message is not string (#98).
+
+
 0.9.1
 ------
 #### Changes
