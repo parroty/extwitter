@@ -107,7 +107,16 @@ defmodule ExTwitter.Parser do
   Parse request parameters for the API.
   """
   def parse_request_params(options) do
-    Enum.map(options, fn({k,v}) -> {to_string(k), to_string(v)} end)
+    Enum.map(options, fn
+      {k, v} when is_list(v) -> {to_string(k), elements_to_string(v)}
+      {k, v} -> {to_string(k), to_string(v)}
+    end)
+  end
+
+  defp elements_to_string(elements) do
+    elements
+    |> Enum.map(&to_string(&1))
+    |> Enum.join(",")
   end
 
   @doc """
