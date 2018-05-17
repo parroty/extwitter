@@ -114,9 +114,7 @@ defmodule ExTwitter.Parser do
   end
 
   defp elements_to_string(elements) do
-    elements
-    |> Enum.map(&to_string(&1))
-    |> Enum.join(",")
+    Enum.map_join(elements, ",", &to_string/1)
   end
 
   @doc """
