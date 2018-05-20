@@ -1,3 +1,8 @@
+0.9.3
+------
+#### Changes
+- Fix ArgumentError or UnicodeConversionError when parsing request params with a list as value (#102).
+
 0.9.2
 ------
 #### Changes
