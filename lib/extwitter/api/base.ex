@@ -52,6 +52,13 @@ defmodule ExTwitter.API.Base do
     do_request(method, upload_url(path), params)
   end
 
+  @doc """
+  Send request to the ads-api.twitter.com server.
+  """
+  def ads_request(method, path, params \\ []) do
+    do_request(method, ads_url(path), params)
+  end
+
   defp do_request(method, url, params) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     response = ExTwitter.OAuth.request(method, url, params,
@@ -88,6 +95,10 @@ defmodule ExTwitter.API.Base do
 
   defp upload_url(path) do
     "https://upload.twitter.com/#{path}"
+  end
+
+  defp ads_url(path) do
+    "https://ads-api.twitter.com/#{path}" |> to_char_list
   end
 
   def parse_result(result) do
