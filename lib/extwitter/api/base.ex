@@ -92,7 +92,13 @@ defmodule ExTwitter.API.Base do
 
   def parse_result(result) do
     {:ok, {_response, header, body}} = result
-    verify_response(ExTwitter.JSON.decode!(body), header)
+
+    with {:ok, json} <- ExTwitter.JSON.decode(body) do
+      verify_response(json, header)
+    else
+      {:error, :invalid, pos} -> raise(ExTwitter.Error, message: "Could not parse JSON at position #{pos} for body:\n #{body}", body: body)
+      {:error, {:invalid, _, pos}} -> raise(ExTwitter.Error, message: "Could not parse JSON at position #{pos}: \n #{body}", body: body)
+    end
   end
 
   defp verify_response(body, header) do
