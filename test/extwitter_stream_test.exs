@@ -27,6 +27,77 @@ defmodule ExTwitterStreamTest do
     :ok
   end
 
+
+  test_with_mock "gets Twitter sample stream with multi-chunk message response", ExTwitter.OAuth,
+    [request_async: fn(_method, _url, _params, _consumer_key, _consumer_secret, _access_token, _access_token_secret) ->
+      request_id = make_ref()
+      TestHelper.TestStore.set({self(), request_id})
+      {:ok, request_id}
+    end] do
+
+    # Process stream on different process.
+    parent = self()
+    spawn(fn() ->
+      stream = ExTwitter.stream_sample
+      tweet = Enum.take(stream, 1) |> List.first
+      send parent, {:ok, tweet}
+    end)
+
+    # Send mock data after short wait.
+    wait_async_request_initialization()
+    store = TestHelper.TestStore.get
+    start_stream(store)
+
+    # Split tweet into separate parts
+    middle_index = @mock_tweet_json
+    |> String.length
+    |> Kernel./(2)
+    |> trunc
+
+    {first_message, second_message} = String.split_at(@mock_tweet_json, middle_index)
+
+    # Send separate messages in two halves
+    send_part(store, first_message)
+    send_part(store, second_message)
+
+    # Verify result.
+    receive do
+      {:ok, tweet} ->
+        assert tweet.text =~ ~r/sample tweet text/
+    end
+  end
+
+  test_with_mock "gets Twitter sample stream with line feed in second message", ExTwitter.OAuth,
+    [request_async: fn(_method, _url, _params, _consumer_key, _consumer_secret, _access_token, _access_token_secret) ->
+      request_id = make_ref()
+      TestHelper.TestStore.set({self(), request_id})
+      {:ok, request_id}
+    end] do
+
+  # Process stream on different process.
+  parent = self()
+  spawn(fn() ->
+    stream = ExTwitter.stream_sample
+    tweet = Enum.take(stream, 1) |> List.first
+    send parent, {:ok, tweet}
+  end)
+
+  # Send mock data after short wait.
+  wait_async_request_initialization()
+  store = TestHelper.TestStore.get
+  start_stream(store)
+
+  # Send first messages without a line feed, followed by a line feed in a separate message
+  send_part(store, @mock_tweet_json |> String.replace("\r\n", ""))
+  send_part(store, "\r\n")
+
+  # Verify result.
+  receive do
+    {:ok, tweet} ->
+      assert tweet.text =~ ~r/sample tweet text/
+  end
+end
+
   test_with_mock "gets Twitter sample stream", ExTwitter.OAuth,
     [request_async: fn(_method, _url, _params, _consumer_key, _consumer_secret, _access_token, _access_token_secret) ->
       request_id = make_ref()
@@ -131,13 +202,19 @@ defmodule ExTwitterStreamTest do
     :timer.sleep(100) # Put small wait for mocking library to become ready.
   end
 
-  defp send_mock_data({pid, request_id}, json) do
+  defp start_stream({pid, request_id}) do
     headers = [{'connection', 'close'}, {'date', 'Sun, 06 Jul 2014 14:48:13 UTC'},
                {'transfer-encoding', 'chunked'}, {'content-type', 'application/json'},
                {'x-connection-hash', '4be738c31e867bd602893fb3a320e55e'}]
 
-
     send pid, {:http, {request_id, :stream_start, headers}}
+  end
+
+  defp send_part({pid, request_id}, json), do:
     send pid, {:http, {request_id, :stream, json}}
+
+  defp send_mock_data(store, json) do
+    start_stream(store)
+    send_part(store, json)
   end
 end
