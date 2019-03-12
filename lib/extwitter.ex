@@ -3,9 +3,13 @@ defmodule ExTwitter do
   Provides access interfaces for the Twitter API.
   """
 
+  alias ExTwitter.Behaviour
+  @behaviour Behaviour
+
   use Application
 
   @doc false
+  @impl Application
   def start(_type, _args) do
     if Application.get_env(:ex_twitter, :oauth, nil) do
       IO.puts :stderr, "[deprecation] Using :ex_twitter in config.exs is deprecated. Use :extwitter instead."
@@ -32,7 +36,7 @@ defmodule ExTwitter do
       )
 
   """
-  @spec configure(Keyword.t) :: :ok
+  @impl Behaviour
   defdelegate configure(oauth), to: ExTwitter.Config, as: :set
 
   @doc """
@@ -57,13 +61,13 @@ defmodule ExTwitter do
       )
 
   """
-  @spec configure(:global | :process, Keyword.t) :: :ok
+  @impl Behaviour
   defdelegate configure(scope, oauth), to: ExTwitter.Config, as: :set
 
   @doc """
   Returns current OAuth configuration settings for accessing twitter server.
   """
-  @spec configure :: Keyword.t | nil
+  @impl Behaviour
   defdelegate configure, to: ExTwitter.Config, as: :get
 
   @doc """
@@ -76,7 +80,7 @@ defmodule ExTwitter do
       ExTwitter.request(:get, "1.1/statuses/home_timeline.json")
 
   """
-  @spec request(:get | :post, String.t) :: Map
+  @impl Behaviour
   defdelegate request(method, path), to: ExTwitter.API.Base
 
   @doc """
@@ -89,7 +93,7 @@ defmodule ExTwitter do
       ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
 
   """
-  @spec request(:get | :post, String.t, Keyword.t) :: Map
+  @impl Behaviour
   defdelegate request(method, path, params), to: ExTwitter.API.Base
 
   # -------------- Timelines -------------
@@ -100,7 +104,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline
   """
-  @spec mentions_timeline :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate mentions_timeline, to: ExTwitter.API.Timelines
 
   @doc """
@@ -113,7 +117,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline
   """
-  @spec mentions_timeline(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate mentions_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
@@ -122,7 +126,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/user_timeline
   """
-  @spec user_timeline :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate user_timeline, to: ExTwitter.API.Timelines
 
   @doc """
@@ -136,7 +140,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/user_timeline
   """
-  @spec user_timeline(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate user_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
@@ -145,7 +149,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/home_timeline
   """
-  @spec home_timeline :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate home_timeline, to: ExTwitter.API.Timelines
 
   @doc """
@@ -158,7 +162,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/home_timeline
   """
-  @spec home_timeline(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate home_timeline(options), to: ExTwitter.API.Timelines
 
   @doc """
@@ -167,7 +171,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweets_of_me
   """
-  @spec retweets_of_me :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate retweets_of_me, to: ExTwitter.API.Timelines
 
   @doc """
@@ -180,7 +184,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweets_of_me
   """
-  @spec retweets_of_me(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate retweets_of_me(options), to: ExTwitter.API.Timelines
 
   # -------------- Tweets -------------
@@ -195,8 +199,8 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweets/:id
   """
-  @spec retweets(Integer | String.t) :: [ExTwitter.Model.Tweet.t]
-  defdelegate retweets(id),          to: ExTwitter.API.Tweets
+  @impl Behaviour
+  defdelegate retweets(id), to: ExTwitter.API.Tweets
 
   @doc """
   GET statuses/retweets/:id
@@ -208,7 +212,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweets/:id
   """
-  @spec retweets(Integer | String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate retweets(id, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -221,7 +225,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/show/:id
   """
-  @spec show(Integer | String.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate show(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -234,7 +238,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/show/:id
   """
-  @spec show(Integer | String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate show(id, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -247,7 +251,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/destroy/:id
   """
-  @spec destroy_status(Integer) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate destroy_status(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -260,7 +264,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/destroy/:id
   """
-  @spec destroy_status(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate destroy_status(id, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -273,7 +277,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/update
   """
-  @spec update(String.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate update(status), to: ExTwitter.API.Tweets
 
   @doc """
@@ -286,7 +290,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/update
   """
-  @spec update(String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate update(status, options), to: ExTwitter.API.Tweets
 
 
@@ -300,7 +304,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/retweet/:id
   """
-  @spec retweet(Integer) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate retweet(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -313,7 +317,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/retweet/:id
   """
-  @spec retweet(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate retweet(id, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -326,7 +330,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/unretweet/:id
   """
-  @spec unretweet(Integer) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate unretweet(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -339,7 +343,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/statuses/unretweet/:id
   """
-  @spec unretweet(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate unretweet(id, options), to: ExTwitter.API.Tweets
 
 
@@ -360,7 +364,7 @@ defmodule ExTwitter do
   This API works only for images at the moment.
   (Video files which requires chunked upload is not supported yet).
   """
-  @spec update_with_media(String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate update_with_media(status, media_content), to: ExTwitter.API.Tweets
 
   @doc """
@@ -380,7 +384,7 @@ defmodule ExTwitter do
   This API works only for images at the moment.
   (Video files which requires chunked upload is not supported yet).
   """
-  @spec update_with_media(String.t, String.t, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate update_with_media(status, media_content, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -393,10 +397,10 @@ defmodule ExTwitter do
     media_id = upload_media("/tmp/image.png", "image/png") //chunk size defaults to 65536
     media_id = upload_media("/tmp/image.png", "image/png", 32768)
   """
-  @spec upload_media(String.t, String.t) :: integer()
+  @impl Behaviour
   defdelegate upload_media(path, content_type), to: ExTwitter.API.Base
 
-  @spec upload_media(String.t, String.t, integer()) :: integer()
+  @impl Behaviour
   defdelegate upload_media(path, content_type, chunk_size), to: ExTwitter.API.Base
 
   @doc """
@@ -409,7 +413,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweeters/ids
   """
-  @spec retweeter_ids(Integer | String.t) :: [Integer | String.t]
+  @impl Behaviour
   defdelegate retweeter_ids(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -422,7 +426,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/retweeters/ids
   """
-  @spec retweeter_ids(Integer | String.t, Keyword.t) :: [Integer | String.t]
+  @impl Behaviour
   defdelegate retweeter_ids(id, options), to: ExTwitter.API.Tweets
 
   # -------------- Search -------------
@@ -437,7 +441,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
-  @spec search(String.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate search(query), to: ExTwitter.API.Search
 
   @doc """
@@ -450,7 +454,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
-  @spec search(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t] | ExTwitter.Model.SearchResponse
+  @impl Behaviour
   defdelegate search(query, options), to: ExTwitter.API.Search
 
   @doc """
@@ -464,7 +468,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
-  @spec search_next_page(String.t) :: [Map]
+  @impl Behaviour
   defdelegate search_next_page(search_result), to: ExTwitter.API.Search
 
   # -------------- Streaming -------------
@@ -478,7 +482,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/streaming/reference/get/statuses/sample
   """
-  @spec stream_sample :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_sample, to: ExTwitter.API.Streaming
 
   @doc """
@@ -494,13 +498,13 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/streaming/reference/get/user
   """
-  @spec stream_user :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_user, to: ExTwitter.API.Streaming
 
-  @spec stream_user(Keyword.t) :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_user(options), to: ExTwitter.API.Streaming
 
-  @spec stream_user(Keyword.t, Integer) :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_user(options, timeout), to: ExTwitter.API.Streaming
 
   @doc """
@@ -520,7 +524,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/streaming/reference/get/statuses/sample
   """
-  @spec stream_sample(Keyword.t) :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_sample(options), to: ExTwitter.API.Streaming
 
   @doc """
@@ -545,7 +549,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/streaming/reference/post/statuses/filter
   """
-  @spec stream_filter(Keyword.t) :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_filter(options), to: ExTwitter.API.Streaming
 
   @doc """
@@ -573,7 +577,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/streaming/reference/post/statuses/filter
   """
-  @spec stream_filter(Keyword.t, timeout) :: Enumerable.t
+  @impl Behaviour
   defdelegate stream_filter(options, timeout), to: ExTwitter.API.Streaming
 
   @doc """
@@ -589,8 +593,7 @@ defmodule ExTwitter do
 
       ExTwitter.stream_control(pid, :stop)
   """
-  @type stream_control_type :: :stop
-  @spec stream_control(pid, stream_control_type) :: :ok
+  @impl Behaviour
   defdelegate stream_control(pid, stream_control_type), to: ExTwitter.API.Streaming
 
   @doc """
@@ -616,7 +619,7 @@ defmodule ExTwitter do
 
       ExTwitter.stream_control(pid, :stop, timeout: 50)
   """
-  @spec stream_control(pid, stream_control_type, [timeout: Integer]) :: :ok
+  @impl Behaviour
   defdelegate stream_control(pid, stream_control_type, options), to: ExTwitter.API.Streaming
 
   # --------------  Direct Messages -------------
@@ -631,7 +634,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages/show
   """
-  @spec direct_message(Integer | String.t) :: ExTwitter.Model.DirectMessage.t
+  @impl Behaviour
   defdelegate direct_message(id), to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -644,7 +647,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages
   """
-  @spec direct_messages :: [ExTwitter.Model.DirectMessage.t]
+  @impl Behaviour
   defdelegate direct_messages, to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -657,7 +660,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages
   """
-  @spec direct_messages(Keyword.t) :: [ExTwitter.Model.DirectMessage.t]
+  @impl Behaviour
   defdelegate direct_messages(options), to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -670,7 +673,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages/sent
   """
-  @spec sent_direct_messages :: [ExTwitter.Model.DirectMessage.t]
+  @impl Behaviour
   defdelegate sent_direct_messages, to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -683,7 +686,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/direct_messages/sent
   """
-  @spec sent_direct_messages(Keyword.t) :: [ExTwitter.Model.DirectMessage.t]
+  @impl Behaviour
   defdelegate sent_direct_messages(options), to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -698,7 +701,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/direct_messages/new
   """
-  @spec new_direct_message(String.t | Integer, String.t) :: ExTwitter.Model.DirectMessage.t
+  @impl Behaviour
   defdelegate new_direct_message(id_or_screen_name, text), to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -711,7 +714,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/direct_messages/destroy
   """
-  @spec destroy_direct_message(Integer) :: ExTwitter.Model.DirectMessage.t
+  @impl Behaviour
   defdelegate destroy_direct_message(id), to: ExTwitter.API.DirectMessages
 
   @doc """
@@ -724,7 +727,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/direct_messages/destroy
   """
-  @spec destroy_direct_message(Integer, Keyword.t) :: ExTwitter.Model.DirectMessage.t
+  @impl Behaviour
   defdelegate destroy_direct_message(id, options), to: ExTwitter.API.DirectMessages
 
   # -------------- Friends & Followers -------------
@@ -746,7 +749,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/friends/ids
   """
-  @spec friend_ids(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate friend_ids(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -760,7 +763,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/friends/ids
   """
-  @spec friend_ids(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate friend_ids(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -777,7 +780,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/followers/ids
   """
-  @spec follower_ids(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate follower_ids(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -791,7 +794,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/followers/ids
   """
-  @spec follower_ids(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate follower_ids(id, options), to: ExTwitter.API.FriendsAndFollowers
 
 
@@ -812,7 +815,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/friendships/create
   """
-  @spec follow(String.t | Integer) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate follow(id), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -826,7 +829,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/friendships/create
   """
-  @spec follow(String.t | Integer, Keyword.t) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate follow(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -840,7 +843,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/friendships/destroy
   """
-  @spec unfollow(String.t | Integer) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate unfollow(id), to: ExTwitter.API.FriendsAndFollowers
 
   # POST friendships/update
@@ -863,7 +866,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/followers/list
   """
-  @spec followers(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate followers(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -877,7 +880,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/followers/list
   """
-  @spec followers(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate followers(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -894,7 +897,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/friends/list
   """
-  @spec friends(String.t | Integer | Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate friends(id_or_options), to: ExTwitter.API.FriendsAndFollowers
 
   @doc """
@@ -908,7 +911,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/friends/list
   """
-  @spec friends(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
+  @impl Behaviour
   defdelegate friends(id, options), to: ExTwitter.API.FriendsAndFollowers
 
   # GET friendships/lookup
@@ -930,10 +933,10 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/account/verify_credentials
   """
-  @spec verify_credentials :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate verify_credentials, to: ExTwitter.API.Users
 
-  @spec verify_credentials(Keyword.t) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate verify_credentials(options), to: ExTwitter.API.Users
 
 
@@ -966,7 +969,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/blocks/create
   """
-  @spec block(String.t | Integer) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate block(id), to: ExTwitter.API.Blocks
 
   @doc """
@@ -980,7 +983,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/blocks/destroy
   """
-  @spec unblock(String.t | Integer) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate unblock(id), to: ExTwitter.API.Blocks
 
   @doc """
@@ -995,7 +998,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/lookup
   """
-  @spec user_lookup(String.t | Integer | Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate user_lookup(id_or_options), to: ExTwitter.API.Users
 
   @doc """
@@ -1011,7 +1014,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/lookup
   """
-  @spec user_lookup([String.t | Integer] | String.t | Integer.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate user_lookup(id_or_screen_name_list, options), to: ExTwitter.API.Users
 
   @doc """
@@ -1025,7 +1028,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/profile_banner
   """
-  @spec user_profile_banner(String.t | Integer) :: ExTwitter.Model.ProfileBanner.t
+  @impl Behaviour
   defdelegate user_profile_banner(id_or_screen_name), to: ExTwitter.API.Users
 
 
@@ -1040,7 +1043,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/show
   """
-  @spec user(String.t | Integer) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate user(id_or_screen_name), to: ExTwitter.API.Users
 
   @doc """
@@ -1054,7 +1057,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/show
   """
-  @spec user(String.t | Integer, Keyword.t) :: ExTwitter.Model.User.t
+  @impl Behaviour
   defdelegate user(id_or_screen_name, options), to: ExTwitter.API.Users
 
   # TODO: deprecated method
@@ -1071,7 +1074,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/search
   """
-  @spec user_search(String.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate user_search(query), to: ExTwitter.API.Users
 
   @doc """
@@ -1084,7 +1087,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/search
   """
-  @spec user_search(String.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate user_search(query, options), to: ExTwitter.API.Users
 
   # POST account/remove_profile_banner
@@ -1124,7 +1127,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/favorites/list
   """
-  @spec favorites :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate favorites, to: ExTwitter.API.Favorites
 
   @doc """
@@ -1137,7 +1140,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/favorites/list
   """
-  @spec favorites(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate favorites(options), to: ExTwitter.API.Favorites
 
   @doc """
@@ -1146,7 +1149,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/favorites/create
   """
-  @spec create_favorite(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate create_favorite(id, options), to: ExTwitter.API.Favorites
 
   @doc """
@@ -1155,7 +1158,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/post/favorites/destroy
   """
-  @spec destroy_favorite(Integer, Keyword.t) :: ExTwitter.Model.Tweet.t
+  @impl Behaviour
   defdelegate destroy_favorite(id, options), to: ExTwitter.API.Favorites
 
   # -------------- Lists -------------
@@ -1171,7 +1174,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/list
   """
-  @spec lists(String.t | Integer) :: [ExTwitter.Model.List.t]
+  @impl Behaviour
   defdelegate lists(id_or_screen_name), to: ExTwitter.API.Lists
 
   @doc """
@@ -1185,7 +1188,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/list
   """
-  @spec lists(String.t | Integer, Keyword.t) :: [ExTwitter.Model.List.t]
+  @impl Behaviour
   defdelegate lists(id_or_screen_name, options), to: ExTwitter.API.Lists
 
   @doc """
@@ -1198,7 +1201,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
-  @spec list_timeline(Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate list_timeline(options), to: ExTwitter.API.Lists
 
   @doc """
@@ -1211,7 +1214,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
-  @spec list_timeline(String.t, String.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate list_timeline(list, owner), to: ExTwitter.API.Lists
 
   @doc """
@@ -1224,7 +1227,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
-  @spec list_timeline(String.t, String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate list_timeline(list, owner, options), to: ExTwitter.API.Lists
 
   # POST lists/members/destroy
@@ -1236,7 +1239,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/memberships
   """
-  @spec list_memberships :: [ExTwitter.Model.List.t]
+  @impl Behaviour
   defdelegate list_memberships, to: ExTwitter.API.Lists
 
   # POST lists/members/destroy
@@ -1252,7 +1255,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/memberships
   """
-  @spec list_memberships(Keyword.t) :: [ExTwitter.Model.List.t]
+  @impl Behaviour
   defdelegate list_memberships(options), to: ExTwitter.API.Lists
 
   @doc """
@@ -1265,7 +1268,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
-  @spec list_subscribers(Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_subscribers(options),              to: ExTwitter.API.Lists
 
   @doc """
@@ -1278,7 +1281,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
-  @spec list_subscribers(String.t, String.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_subscribers(list, owner), to: ExTwitter.API.Lists
 
   @doc """
@@ -1291,7 +1294,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
-  @spec list_subscribers(String.t, String.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_subscribers(list, owner, options), to: ExTwitter.API.Lists
 
   # POST lists/subscribers/create
@@ -1319,7 +1322,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/members
   """
-  @spec list_members(Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_members(options), to: ExTwitter.API.Lists
 
   @doc """
@@ -1332,7 +1335,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/members
   """
-  @spec list_members(String.t, String.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_members(list, owner), to: ExTwitter.API.Lists
 
   @doc """
@@ -1345,7 +1348,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/members
   """
-  @spec list_members(String.t, String.t, Keyword.t) :: [ExTwitter.Model.User.t]
+  @impl Behaviour
   defdelegate list_members(list, owner, options), to: ExTwitter.API.Lists
 
   # POST lists/members/create
@@ -1389,7 +1392,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/geo/reverse_geocode
   """
-  @spec reverse_geocode(float, float) :: [ExTwitter.Model.Place.t]
+  @impl Behaviour
   defdelegate reverse_geocode(lat, long), to: ExTwitter.API.PlacesAndGeo
 
   @doc """
@@ -1402,7 +1405,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/geo/reverse_geocode
   """
-  @spec reverse_geocode(float, float, Keyword.t) :: [ExTwitter.Model.Place.t]
+  @impl Behaviour
   defdelegate reverse_geocode(lat, long, options), to: ExTwitter.API.PlacesAndGeo
 
   @doc """
@@ -1415,7 +1418,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/geo/search
   """
-  @spec geo_search(String.t) :: [ExTwitter.Model.Place.t]
+  @impl Behaviour
   defdelegate geo_search(query), to: ExTwitter.API.PlacesAndGeo
 
   @doc """
@@ -1428,7 +1431,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/geo/search
   """
-  @spec geo_search(String.t, Keyword.t) :: [ExTwitter.Model.Place.t]
+  @impl Behaviour
   defdelegate geo_search(query, options), to: ExTwitter.API.PlacesAndGeo
 
   # POST geo/place
@@ -1446,7 +1449,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/trends/place
   """
-  @spec trends(Integer | String.t) :: [ExTwitter.Model.Trend.t]
+  @impl Behaviour
   defdelegate trends(id), to: ExTwitter.API.Trends
 
   @doc """
@@ -1459,7 +1462,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/trends/place
   """
-  @spec trends(Integer | String.t, Keyword.t) :: [ExTwitter.Model.Trend.t]
+  @impl Behaviour
   defdelegate trends(id, options), to: ExTwitter.API.Trends
 
   # GET trends/available
@@ -1497,7 +1500,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
-  @spec rate_limit_status :: Map
+  @impl Behaviour
   defdelegate rate_limit_status, to: ExTwitter.API.Help
 
   @doc """
@@ -1510,7 +1513,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
-  @spec rate_limit_status(Keyword.t) :: Map
+  @impl Behaviour
   defdelegate rate_limit_status(options), to: ExTwitter.API.Help
 
   # -------------- Tweets -------------
@@ -1525,7 +1528,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/lookup
   """
-  @spec lookup_status(String.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate lookup_status(id), to: ExTwitter.API.Tweets
 
   @doc """
@@ -1538,7 +1541,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/statuses/lookup
   """
-  @spec lookup_status(String.t, Keyword.t) :: [ExTwitter.Model.Tweet.t]
+  @impl Behaviour
   defdelegate lookup_status(id, options), to: ExTwitter.API.Tweets
 
   @doc """
@@ -1552,7 +1555,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec request_token(String.t) :: [ExTwitter.Model.RequestToken.t]
+  @impl Behaviour
   defdelegate request_token(redirect_url), to: ExTwitter.API.Auth
 
   @doc """
@@ -1566,7 +1569,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec request_token :: [ExTwitter.Model.RequestToken.t]
+  @impl Behaviour
   defdelegate request_token, to: ExTwitter.API.Auth
 
   @doc """
@@ -1583,7 +1586,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/3-legged
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec authorize_url(String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
+  @impl Behaviour
   defdelegate authorize_url(oauth_token, options), to: ExTwitter.API.Auth
 
   @doc """
@@ -1596,7 +1599,7 @@ defmodule ExTwitter do
 
   Returns the URL you should redirect the user to for 3-legged authorization
   """
-  @spec authorize_url(String.t) :: {:ok, String.t} | {:error, String.t}
+  @impl Behaviour
   defdelegate authorize_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
@@ -1612,7 +1615,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec authenticate_url(String.t Map.t) :: {:ok, String.t} | {:error, String.t}
+  @impl Behaviour
   defdelegate authenticate_url(oauth_token, options), to: ExTwitter.API.Auth
 
   @doc """
@@ -1628,7 +1631,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec authenticate_url(String.t) :: {:ok, String.t} | {:error, String.t}
+  @impl Behaviour
   defdelegate authenticate_url(oauth_token), to: ExTwitter.API.Auth
 
   @doc """
@@ -1642,6 +1645,6 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/post/oauth/access_token
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec access_token(String.t, String.t) :: {:ok, String.t} | {:error, String.t}
+  @impl Behaviour
   defdelegate access_token(verifier, request_token), to: ExTwitter.API.Auth
 end
