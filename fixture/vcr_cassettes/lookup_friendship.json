@@ -1,0 +1,48 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/friendships/lookup.json"
+    },
+    "response": {
+      "body": "[{\"name\":\"Tim Pope\",\"screen_name\":\"tpope\",\"id\":8000842,\"id_str\":\"8000842\",\"connections\":[\"following\"]}]",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Thu, 20 Jun 2019 15:34:05 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_a",
+        "content-length": "103",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Thu, 20 Jun 2019 15:34:05 GMT",
+        "content-disposition": "attachment; filename=json.json",
+        "status": "200 OK",
+        "strict-transport-security": "max-age=631138519",
+        "x-access-level": "read-write",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "11",
+        "x-rate-limit-reset": "1561045583",
+        "x-response-time": "17",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block; report=https://twitter.com/i/xss_report"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

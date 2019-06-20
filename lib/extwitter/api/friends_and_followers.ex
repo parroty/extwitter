@@ -57,13 +57,13 @@ defmodule ExTwitter.API.FriendsAndFollowers do
     friend_ids(get_id_option(id) ++ options)
   end
 
-  def lookup(options) when is_list(options) do
+  def friends_lookup(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:get, "1.1/friendships/lookup.json", params)
     |> ExTwitter.Parser.parse_relationships
   end
 
-  def lookup(id, options \\ []) do
-    lookup(get_id_option(id) ++ options)
+  def friends_lookup(id, options \\ []) do
+    friends_lookup(get_id_option(id) ++ options)
   end
 end

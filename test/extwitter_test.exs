@@ -518,6 +518,13 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "lookup friendship" do
+    use_cassette "lookup_friendship" do
+      [relationship] = ExTwitter.friends_lookup("tpope")
+      assert relationship.connections == ["following"]
+    end
+  end
+
   test "rate limit exceed" do
     use_cassette "rate_limit_exceed", custom: true do
       assert_raise ExTwitter.RateLimitExceededError, fn ->
