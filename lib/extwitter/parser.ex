@@ -150,4 +150,12 @@ defmodule ExTwitter.Parser do
   def parse_profile_banner(object) do
     struct(ExTwitter.Model.ProfileBanner, object)
   end
+
+  @doc """
+  Parse follower relationship from the API response json.
+  """
+  def parse_relationships(object) do
+    object
+    |> Enum.map(&(struct(ExTwitter.Model.Relationship, &1)))
+  end
 end
