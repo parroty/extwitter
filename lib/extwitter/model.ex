@@ -161,3 +161,15 @@ defmodule ExTwitter.Model.SearchResponse do
 
   @type t :: %__MODULE__{}
 end
+
+defmodule ExTwitter.Model.Relationship do
+  @moduledoc """
+  Relationship object
+
+  ## Reference
+  https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup
+  """
+  defstruct name: nil, screen_name: nil, id: nil, id_str: nil, connections: nil
+
+  @type t :: %__MODULE__{}
+end

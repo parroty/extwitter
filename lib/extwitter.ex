@@ -911,8 +911,31 @@ defmodule ExTwitter do
   @spec friends(String.t | Integer, Keyword.t) :: ExTwitter.Model.Cursor.t
   defdelegate friends(id, options), to: ExTwitter.API.FriendsAndFollowers
 
-  # GET friendships/lookup
-  # https://dev.twitter.com/rest/reference/get/friendships/lookup
+  @doc """
+  GET friendships/lookup
+
+  ## Examples
+
+      ExTwitter.friends_lookup("twitter_support")
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/friendships/lookup
+  """
+  @spec friends_lookup(String.t | Integer, Keyword.t) :: ExTwitter.Model.Relationship.t
+  defdelegate friends_lookup(id, options), to: ExTwitter.API.FriendsAndFollowers
+
+  @doc """
+  GET friendships/lookup
+
+  ## Examples
+
+      ExTwitter.friends_lookup("twitter_support")
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/friendships/lookup
+  """
+  @spec friends_lookup(String.t) :: ExTwitter.Model.Relationship.t
+  defdelegate friends_lookup(id), to: ExTwitter.API.FriendsAndFollowers
 
   # -------------- Users -------------
 
