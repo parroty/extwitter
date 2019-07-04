@@ -1,3 +1,8 @@
+0.9.4
+------
+#### Enhancements
+- Implement friendships lookup (#111).
+
 0.9.3
 ------
 #### Changes
