@@ -76,7 +76,7 @@ defmodule ExTwitter do
       ExTwitter.request(:get, "1.1/statuses/home_timeline.json")
 
   """
-  @spec request(:get | :post, String.t) :: Map
+  @spec request(:get | :post, String.t) :: map()
   defdelegate request(method, path), to: ExTwitter.API.Base
 
   @doc """
@@ -89,7 +89,7 @@ defmodule ExTwitter do
       ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
 
   """
-  @spec request(:get | :post, String.t, Keyword.t) :: Map
+  @spec request(:get | :post, String.t, Keyword.t) :: map()
   defdelegate request(method, path, params), to: ExTwitter.API.Base
 
   # -------------- Timelines -------------
@@ -464,7 +464,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
-  @spec search_next_page(String.t) :: [Map]
+  @spec search_next_page(String.t) :: [map()]
   defdelegate search_next_page(search_result), to: ExTwitter.API.Search
 
   # -------------- Streaming -------------
@@ -1520,7 +1520,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
-  @spec rate_limit_status :: Map
+  @spec rate_limit_status :: map()
   defdelegate rate_limit_status, to: ExTwitter.API.Help
 
   @doc """
@@ -1533,7 +1533,7 @@ defmodule ExTwitter do
   ## Reference
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
-  @spec rate_limit_status(Keyword.t) :: Map
+  @spec rate_limit_status(Keyword.t) :: map()
   defdelegate rate_limit_status(options), to: ExTwitter.API.Help
 
   # -------------- Tweets -------------
@@ -1606,7 +1606,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/3-legged
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec authorize_url(String.t, Map.t) :: {:ok, String.t} | {:error, String.t}
+  @spec authorize_url(String.t, map()) :: {:ok, String.t} | {:error, String.t}
   defdelegate authorize_url(oauth_token, options), to: ExTwitter.API.Auth
 
   @doc """
@@ -1635,7 +1635,7 @@ defmodule ExTwitter do
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
-  @spec authenticate_url(String.t Map.t) :: {:ok, String.t} | {:error, String.t}
+  @spec authenticate_url(String.t, map()) :: {:ok, String.t} | {:error, String.t}
   defdelegate authenticate_url(oauth_token, options), to: ExTwitter.API.Auth
 
   @doc """
