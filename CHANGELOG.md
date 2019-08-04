@@ -1,3 +1,8 @@
+0.9.5
+------
+#### Changes
+- Move all specs into a behaviour file (#108).
+
 0.9.4
 ------
 #### Enhancements
