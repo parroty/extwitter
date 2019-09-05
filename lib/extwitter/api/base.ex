@@ -35,7 +35,7 @@ defmodule ExTwitter.API.Base do
     initial_segment_index = 0
     Enum.reduce(stream, initial_segment_index, fn(chunk, seg_index) ->
       request_params = [command: "APPEND", media_id: media_id, media_data: Base.encode64(chunk), segment_index: seg_index]
-      do_request(:post, media_upload_url(), request_params)
+      {:ok, {{_proto, 204, _status_description}, _headers, _body}} = do_request(:post, media_upload_url(), request_params, parse_result: false)
       seg_index + 1
     end)
   end
@@ -52,13 +52,19 @@ defmodule ExTwitter.API.Base do
     do_request(method, upload_url(path), params)
   end
 
-  defp do_request(method, url, params) do
+  defp do_request(method, url, params, options \\ [parse_result: true]) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     response = ExTwitter.OAuth.request(method, url, params,
       oauth[:consumer_key], oauth[:consumer_secret], oauth[:access_token], oauth[:access_token_secret])
     case response do
-      {:error, reason} -> raise(ExTwitter.ConnectionError, reason: reason)
-      r -> r |> parse_result
+      {:error, reason} ->
+        raise(ExTwitter.ConnectionError, reason: reason)
+      r ->
+        if Keyword.get(options, :parse_result, true) do
+          parse_result(r)
+        else
+          response
+        end
     end
   end
 
