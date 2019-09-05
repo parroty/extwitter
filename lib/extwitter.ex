@@ -388,6 +388,44 @@ defmodule ExTwitter do
   defdelegate update_with_media(status, media_content, options), to: ExTwitter.API.Tweets
 
   @doc """
+  POST upload.twitter.com/1.1/media/upload (INIT/APPEND/FINALIZE)
+  POST statuses/update
+
+  The default chunk size is 64kb (65,536 bytes). This can be adjusted via `update_with_chunked_media/4`.
+
+  ## Examples
+
+      ExTwitter.update_with_chunked_media("tweet with chunked media", "/path/to/file.mp4", "video/mp4")
+
+  ## Reference
+  https://developer.twitter.com/en/docs/media/upload-media/overview
+
+  ## Note
+  Unlike `update_with_media/3`, this supports the uploading of all Twitter-supported media types such as video files.
+  """
+  @impl Behaviour
+  defdelegate update_with_chunked_media(status, path, content_type), to: ExTwitter.API.Tweets
+
+  @doc """
+  POST upload.twitter.com/1.1/media/upload (INIT/APPEND/FINALIZE)
+  POST statuses/update
+
+  Chunk size (in bytes) can be configured via the `:chunk_size` option. The default is 64kb (65,536 bytes).
+
+  ## Examples
+
+      ExTwitter.update_with_chunked_media("tweet with chunked media", "/path/to/file.mp4", "video/mp4", trim_user: true, chunk_size: 131_072)
+
+  ## Reference
+  https://developer.twitter.com/en/docs/media/upload-media/overview
+
+  ## Note
+  Unlike `update_with_media/3`, this supports the uploading of all Twitter-supported media types such as video files.
+  """
+  @impl Behaviour
+  defdelegate update_with_chunked_media(status, path, content_type, options), to: ExTwitter.API.Tweets
+
+  @doc """
     Chunk upload media and return media_id.
     POST media/upload (INIT)
     POST media/upload (APPEND)

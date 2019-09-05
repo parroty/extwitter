@@ -30,6 +30,8 @@ defmodule ExTwitter.Behaviour do
   @callback unretweet(integer(), Keyword.t()) :: ExTwitter.Model.Tweet.t()
   @callback update_with_media(String.t(), Keyword.t()) :: ExTwitter.Model.Tweet.t()
   @callback update_with_media(String.t(), String.t(), Keyword.t()) :: ExTwitter.Model.Tweet.t()
+  @callback update_with_chunked_media(String.t(), String.t(), String.t()) :: ExTwitter.Model.Tweet.t()
+  @callback update_with_chunked_media(String.t(), String.t(), String.t(), Keyword.t()) :: ExTwitter.Model.Tweet.t()
   @callback upload_media(String.t(), String.t()) :: integer()
   @callback upload_media(String.t(), String.t(), integer()) :: integer()
   @callback retweeter_ids(integer() | String.t()) :: [integer() | String.t()]

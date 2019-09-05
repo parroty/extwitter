@@ -198,6 +198,36 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "update and destroy status with chunked media upload" do
+    # NOTE: match_requests_on: [:request_body] and disabling of filtering are required for re-recording
+    # Sensitive data must be manually removed from the cassette.
+    use_cassette "update_destroy_status_with_chunked_media" do
+      image_path = "fixture/images/sample.png"
+      tweet1 = ExTwitter.update_with_chunked_media("update sample with chunked media", image_path, "image/png")
+      assert tweet1.text =~ "update sample with chunked media"
+      assert Enum.count(tweet1.entities.media) == 1
+
+      tweet2 = ExTwitter.destroy_status(tweet1.id)
+      assert tweet2.text =~ "update sample with chunked media"
+      assert Enum.count(tweet2.entities.media) == 1
+    end
+  end
+
+  test "update and destroy status with chunked media upload options" do
+    # NOTE: match_requests_on: [:request_body] and disabling of filtering are required for re-recording
+    # Sensitive data must be manually removed from the cassette.
+    use_cassette "update_destroy_status_with_chunked_media_options" do
+      image_path = "fixture/images/sample.png"
+      tweet1 = ExTwitter.update_with_chunked_media("update sample with chunked media", image_path, "image/png", trim_user: true, chunked_size: 131_072)
+      assert tweet1.text =~ "update sample with chunked media"
+      assert Enum.count(tweet1.entities.media) == 1
+
+      tweet2 = ExTwitter.destroy_status(tweet1.id)
+      assert tweet2.text =~ "update sample with chunked media"
+      assert Enum.count(tweet2.entities.media) == 1
+    end
+  end
+
   test "retweet and unretweet status" do
     use_cassette "retweet_unretweet_status" do
       # https://twitter.com/twitter/statuses/589095997340405760
