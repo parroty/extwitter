@@ -5,6 +5,7 @@ defmodule ExTwitter.API.Base do
 
   # https://dev.twitter.com/overview/api/response-codes
   @error_code_rate_limit_exceeded 88
+  @default_chunk_size 65536 # 64kb
 
   @doc """
   Send request to the api.twitter.com server.
@@ -13,10 +14,14 @@ defmodule ExTwitter.API.Base do
     do_request(method, request_url(path), params)
   end
 
+  def default_chunk_size do
+    @default_chunk_size
+  end
+
   @doc """
   Upload media in chunks
   """
-  def upload_media(path, content_type, chunk_size \\ 65536) do
+  def upload_media(path, content_type, chunk_size \\ @default_chunk_size) do
     media_id = init_media_upload(path, content_type)
     upload_file_chunks(path, media_id, chunk_size)
     finalize_upload(media_id)
@@ -35,7 +40,9 @@ defmodule ExTwitter.API.Base do
     initial_segment_index = 0
     Enum.reduce(stream, initial_segment_index, fn(chunk, seg_index) ->
       request_params = [command: "APPEND", media_id: media_id, media_data: Base.encode64(chunk), segment_index: seg_index]
-      do_request(:post, media_upload_url(), request_params)
+      case do_request(:post, media_upload_url(), request_params, parse_result: false) do
+        {:ok, {{_proto, status_code, _status_description}, _headers, _body}} when status_code in 200..299 -> :ok
+      end
       seg_index + 1
     end)
   end
@@ -52,13 +59,19 @@ defmodule ExTwitter.API.Base do
     do_request(method, upload_url(path), params)
   end
 
-  defp do_request(method, url, params) do
+  defp do_request(method, url, params, options \\ [parse_result: true]) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     response = ExTwitter.OAuth.request(method, url, params,
       oauth[:consumer_key], oauth[:consumer_secret], oauth[:access_token], oauth[:access_token_secret])
     case response do
-      {:error, reason} -> raise(ExTwitter.ConnectionError, reason: reason)
-      r -> r |> parse_result
+      {:error, reason} ->
+        raise(ExTwitter.ConnectionError, reason: reason)
+      r ->
+        if Keyword.get(options, :parse_result, true) do
+          parse_result(r)
+        else
+          response
+        end
     end
   end
 

@@ -29,6 +29,12 @@ defmodule ExTwitter.API.Tweets do
     update(status, [media_ids: response.media_id] ++ options)
   end
 
+  def update_with_chunked_media(status, path, content_type, options \\ []) do
+    {chunk_size, options} = Keyword.pop(options, :chunk_size, default_chunk_size())
+    media_id = upload_media(path, content_type, chunk_size)
+    update(status, [media_ids: media_id] ++ options)
+  end
+
   defp upload(data, options \\ []) do
     params = ExTwitter.Parser.parse_request_params([media: data] ++ options)
     upload_request(:post, "1.1/media/upload.json", params)
