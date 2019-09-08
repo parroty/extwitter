@@ -1,3 +1,8 @@
+0.9.6
+------
+#### Enhancements
+- Add support for update with chunked media upload (#114).
+
 0.9.5
 ------
 #### Changes
