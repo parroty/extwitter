@@ -5,6 +5,7 @@ defmodule ExTwitter.Model.Tweet do
   ## Reference
   [Tweet object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct coordinates: nil, created_at: nil, current_user_retweet: nil,
     entities: nil, extended_entities: nil, favorite_count: nil, favorited: nil,
     filter_level: nil, id_str: nil, id: nil, in_reply_to_screen_name: nil,
@@ -58,6 +59,7 @@ defmodule ExTwitter.Model.Tweet do
 end
 
 defmodule ExTwitter.Model.Upload do
+  @derive {Inspect, except: [:raw_data]}
   defstruct expires_after_secs: nil, media_id: nil, media_id_string: nil, size: nil,
     raw_data: nil
 
@@ -77,6 +79,7 @@ defmodule ExTwitter.Model.User do
   ## Reference
   [User object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/user-object)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct created_at: nil, default_profile_image: nil, default_profile: nil,
     derived: nil, description: nil, favourites_count: nil, followers_count: nil,
     friends_count: nil, id_str: nil, id: nil, listed_count: nil, location: nil,
@@ -118,12 +121,14 @@ defmodule ExTwitter.Model.ProfileBanner do
   ## Reference
   [GET users/profile_banner](https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-users-profile_banner)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct sizes: nil, raw_data: nil
 
   @type t :: %__MODULE__{sizes: %{required(String.t()) => map}, raw_data: map}
 end
 
 defmodule ExTwitter.Model.DirectMessage do
+  @derive {Inspect, except: [:raw_data]}
   defstruct created_at: nil, entities: nil, id: nil, id_str: nil,
     recipient: nil, recipient_id: nil, recipient_screen_name: nil,
     sender: nil, sender_id: nil, sender_screen_name: nil, text: nil
@@ -138,6 +143,7 @@ defmodule ExTwitter.Model.Entities do
   ## Reference
   [Entities object[(https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct hashtags: nil, media: nil, symbols: nil, urls: nil, user_mentions: nil,
     polls: nil, raw_data: nil
 
@@ -159,6 +165,7 @@ defmodule ExTwitter.Model.ExtendedEntities do
   ## Reference
   [Extended Entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct hashtags: nil, media: nil, symbols: nil, urls: nil, user_mentions: nil,
     polls: nil, raw_data: nil
 
@@ -180,6 +187,7 @@ defmodule ExTwitter.Model.Hashtag do
   ## Reference
   [Hashtag object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#hashtags)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct indices: nil, text: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -195,6 +203,7 @@ defmodule ExTwitter.Model.Media do
   ## Reference
   [Media object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#media)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct display_url: nil, expanded_url: nil, id: nil, id_str: nil, indices: nil,
     media_url: nil, media_url_https: nil, sizes: nil, source_status_id: nil,
     source_status_id_str: nil, type: nil, url: nil, raw_data: nil
@@ -223,6 +232,7 @@ defmodule ExTwitter.Model.Size do
   ## Reference
   [Size object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#size)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct h: nil, w: nil, resize: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -240,6 +250,7 @@ defmodule ExTwitter.Model.Symbol do
   ## Reference
   [Symbol object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#symbols)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct indices: nil, text: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -257,6 +268,7 @@ defmodule ExTwitter.Model.URL do
   ## Reference
   [URL object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#urls)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct display_url: nil, expanded_url: nil, indices: nil, url: nil, unwound: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -276,6 +288,7 @@ defmodule ExTwitter.Model.UserMention do
   ## Reference
   [User mention object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#mentions)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct id: nil, id_str: nil, indices: nil, name: nil, screen_name: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -295,6 +308,7 @@ defmodule ExTwitter.Model.Poll do
   ## Reference
   [Poll object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#polls)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct options: nil, end_datetime: nil, duration_minutes: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -312,10 +326,10 @@ defmodule ExTwitter.Model.Rule do
   ## Reference
   [Matching rules](https://developer.twitter.com/en/docs/tweets/enrichments/overview/matching-rules)
   """
+  @derive {Inspect, except: [:raw_data]}
+  defstruct tag: nil, id: nil, id_str: nil, raw_data: nil
 
-  defstruct tag: nil, id: nil, id_str: nil
-
-  @type t :: %__MODULE__{tag: String.t(), id: pos_integer, id_str: String.t()}
+  @type t :: %__MODULE__{tag: String.t(), id: pos_integer, id_str: String.t(), raw_data: map}
 end
 
 defmodule ExTwitter.Model.ProfileGeo do
@@ -325,7 +339,7 @@ defmodule ExTwitter.Model.ProfileGeo do
   ## Reference
   [Profile Geo](https://developer.twitter.com/en/docs/tweets/enrichments/overview/profile-geo)
   """
-
+  @derive {Inspect, except: [:raw_data]}
   defstruct country: nil, country_code: nil, locality: nil, region: nil, sub_region: nil,
     full_name: nil, geo: nil, raw_data: nil
 
@@ -347,7 +361,7 @@ defmodule ExTwitter.Model.Trend do
   ## Reference
   https://developer.twitter.com/en/docs/trends/trends-for-location/api-reference/get-trends-place
   """
-
+  @derive {Inspect, except: [:raw_data]}
   defstruct name: nil, promoted_content: nil, query: nil, raw_data: nil, tweet_volume: nil, url: nil
 
   @type t :: %__MODULE__{
@@ -367,6 +381,7 @@ defmodule ExTwitter.Model.List do
   ## Reference
   https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-show
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct created_at: nil, description: nil, following: nil, full_name: nil,
     id_str: nil, id: nil, member_count: nil, mode: nil, name: nil, raw_data: nil,
     slug: nil, subscriber_count: nil, uri: nil, user: nil
@@ -396,6 +411,7 @@ defmodule ExTwitter.Model.Place do
   ## Reference
   [Place object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects#place)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct id: nil, url: nil, place_type: nil, name: nil, full_name: nil,
     country_code: nil, country: nil, contained_within: nil,
     bounding_box: nil, attributes: nil, raw_data: nil
@@ -422,7 +438,7 @@ defmodule ExTwitter.Model.BoundingBox do
   ## Reference
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects
   """
-
+  @derive {Inspect, except: [:raw_data]}
   defstruct coordinates: nil, type: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -439,6 +455,7 @@ defmodule ExTwitter.Model.Coordinates do
   ## Reference
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects#coordinates
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct coordinates: nil, type: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -455,6 +472,7 @@ defmodule ExTwitter.Model.Geo do
   ## Reference
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct coordinates: nil, type: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -511,6 +529,7 @@ defmodule ExTwitter.Model.Cursor do
   ## Reference
   [Cursoring](https://developer.twitter.com/en/docs/basics/cursoring)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct items: nil, next_cursor: nil, previous_cursor: nil, raw_data: nil
 
   @type t :: %__MODULE__{
@@ -528,6 +547,7 @@ defmodule ExTwitter.Model.RequestToken do
   ## Reference
   [POST oauth/request_token](https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct oauth_token: nil, oauth_token_secret: nil, oauth_callback_confirmed: nil,
     raw_data: nil
 
@@ -546,6 +566,7 @@ defmodule ExTwitter.Model.AccessToken do
   ## Reference
   [POST oauth/access_token](https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct oauth_token: nil, oauth_token_secret: nil, user_id: nil, screen_name: nil,
     raw_data: nil
 
@@ -577,6 +598,7 @@ defmodule ExTwitter.Model.Relationship do
   ## Reference
   [GET friendships/lookup](https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup)
   """
+  @derive {Inspect, except: [:raw_data]}
   defstruct name: nil, screen_name: nil, id: nil, id_str: nil, connections: nil,
     raw_data: nil
 
