@@ -9,7 +9,7 @@ defmodule ExTwitter.Parser do
   def parse_tweet(object) do
     tweet = struct(ExTwitter.Model.Tweet, object)
     user  = parse_user(tweet.user)
-    %{tweet | user: user}
+    %{tweet | user: user, raw_data: object}
   end
 
   @doc """
@@ -23,7 +23,7 @@ defmodule ExTwitter.Parser do
   end
 
   def parse_upload(object) do
-    struct(ExTwitter.Model.Upload, object)
+    ExTwitter.Model.Upload |> struct(object) |> Map.put(:raw_data, object)
   end
 
 
@@ -31,7 +31,7 @@ defmodule ExTwitter.Parser do
   Parse user record from the API response json.
   """
   def parse_user(object) do
-    struct(ExTwitter.Model.User, object)
+    ExTwitter.Model.User |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
@@ -39,7 +39,7 @@ defmodule ExTwitter.Parser do
   """
   def parse_trend(object) do
     trend = struct(ExTwitter.Model.Trend, object)
-    %{trend | query: (trend.query |> URI.decode)}
+    %{trend | query: (trend.query |> URI.decode), raw_data: object}
   end
 
   @doc """
@@ -48,7 +48,7 @@ defmodule ExTwitter.Parser do
   def parse_list(object) do
     list = struct(ExTwitter.Model.List, object)
     user = parse_user(list.user)
-    %{list | user: user}
+    %{list | user: user, raw_data: object}
   end
 
   @doc """
@@ -64,7 +64,7 @@ defmodule ExTwitter.Parser do
   def parse_ids_with_cursor(object) do
     ids = object |> ExTwitter.JSON.get(:ids)
     cursor = struct(ExTwitter.Model.Cursor, object)
-    %{cursor | items: ids}
+    %{cursor | items: ids, raw_data: object}
   end
 
   @doc """
@@ -74,7 +74,7 @@ defmodule ExTwitter.Parser do
     users = object |> ExTwitter.JSON.get(:users)
                    |> Enum.map(&ExTwitter.Parser.parse_user/1)
     cursor = struct(ExTwitter.Model.Cursor, object)
-    %{cursor | items: users}
+    %{cursor | items: users, raw_data: object}
   end
 
   @doc """
@@ -86,21 +86,19 @@ defmodule ExTwitter.Parser do
     geo = parse_geo(place.bounding_box)
     con = Enum.map(place.contained_within, &parse_contained_within/1)
 
-    %{place | bounding_box: geo, contained_within: con}
+    %{place | bounding_box: geo, contained_within: con, raw_data: object}
   end
 
   defp parse_contained_within(object) do
-    struct(ExTwitter.Model.Place, object)
+    ExTwitter.Model.Place |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
   Parse geo record from the API response json.
   """
+  def parse_geo(nil), do: nil
   def parse_geo(object) do
-    case object do
-      nil    -> nil
-      object -> struct(ExTwitter.Model.Geo, object)
-    end
+    ExTwitter.Model.Geo |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
@@ -134,21 +132,21 @@ defmodule ExTwitter.Parser do
   Parse request_token response
   """
   def parse_request_token(object) do
-    struct(ExTwitter.Model.RequestToken, object)
+    ExTwitter.Model.RequestToken |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
   Parse access_token response
   """
   def parse_access_token(object) do
-    struct(ExTwitter.Model.AccessToken, object)
+    ExTwitter.Model.AccessToken |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
   Parse user profile banner from the API response json.
   """
   def parse_profile_banner(object) do
-    struct(ExTwitter.Model.ProfileBanner, object)
+    ExTwitter.Model.ProfileBanner |> struct(object) |> Map.put(:raw_data, object)
   end
 
   @doc """
@@ -156,6 +154,8 @@ defmodule ExTwitter.Parser do
   """
   def parse_relationships(object) do
     object
-    |> Enum.map(&(struct(ExTwitter.Model.Relationship, &1)))
+    |> Enum.map(fn relation ->
+      ExTwitter.Model.Relationship |> struct(relation) |> Map.put(:raw_data, relation)
+    end)
   end
 end

@@ -15,12 +15,16 @@ defmodule ExTwitter.Model.Tweet do
     possibly_sensitive: nil, quoted_status_id: nil, quoted_status_id_str: nil,
     quoted_status: nil, scopes: nil, retweet_count: nil, retweeted: nil,
     retweeted_status: nil, source: nil, text: nil, truncated: nil, user: nil,
-    withheld_copyright: nil, withheld_in_countries: nil, withheld_scope: nil
+    withheld_copyright: nil, withheld_in_countries: nil, withheld_scope: nil,
+    raw_data: nil
+
   @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Upload do
-  defstruct expires_after_secs: nil,  media_id: nil, media_id_string: nil, size: nil
+  defstruct expires_after_secs: nil,  media_id: nil, media_id_string: nil, size: nil,
+    raw_data: nil
+
   @type t :: %__MODULE__{}
 end
 
@@ -48,7 +52,7 @@ defmodule ExTwitter.Model.User do
     protected: nil, screen_name: nil, show_all_inline_media: nil,
     status: nil, statuses_count: nil, time_zone: nil, url: nil,
     utc_offset: nil, verified: nil, withheld_in_countries: nil,
-    withheld_scope: nil, email: nil
+    withheld_scope: nil, email: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -60,7 +64,7 @@ defmodule ExTwitter.Model.ProfileBanner do
   ## Reference
   https://dev.twitter.com/rest/reference/get/users/profile_banner
   """
-  defstruct sizes: nil
+  defstruct sizes: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -81,13 +85,13 @@ defmodule ExTwitter.Model.Entities do
   https://dev.twitter.com/overview/api/entities
   """
   defstruct hashtags: nil, media: nil, symbols: nil, urls: nil,
-    user_mentions: nil
+    user_mentions: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Trend do
-  defstruct events: nil, name: nil, promoted_content: nil, query: nil
+  defstruct events: nil, name: nil, promoted_content: nil, query: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -95,7 +99,7 @@ end
 defmodule ExTwitter.Model.List do
   defstruct slug: nil, name: nil, created_at: nil, uri: nil, subscriber_count: nil,
     id_str: nil, member_count: nil, mode: nil, id: nil, full_name: nil,
-    description: nil, user: nil, following: nil
+    description: nil, user: nil, following: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -109,13 +113,13 @@ defmodule ExTwitter.Model.Place do
   """
   defstruct id: nil, url: nil, place_type: nil, name: nil, full_name: nil,
     country_code: nil, country: nil, contained_within: nil,
-    bounding_box: nil, attributes: nil
+    bounding_box: nil, attributes: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.Geo do
-  defstruct type: nil, coordinates: nil
+  defstruct type: nil, coordinates: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -139,19 +143,21 @@ defmodule ExTwitter.Model.StallWarning do
 end
 
 defmodule ExTwitter.Model.Cursor do
-  defstruct items: nil, next_cursor: nil, previous_cursor: nil
+  defstruct items: nil, next_cursor: nil, previous_cursor: nil, raw_data: nil
 
   @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.RequestToken do
-  defstruct oauth_token: nil, oauth_token_secret: nil, oauth_callback_confirmed: nil
+  defstruct oauth_token: nil, oauth_token_secret: nil, oauth_callback_confirmed: nil,
+    raw_data: nil
 
   @type t :: %__MODULE__{}
 end
 
 defmodule ExTwitter.Model.AccessToken do
-  defstruct oauth_token: nil, oauth_token_secret: nil, user_id: nil, screen_name: nil
+  defstruct oauth_token: nil, oauth_token_secret: nil, user_id: nil, screen_name: nil,
+    raw_data: nil
 
   @type t :: %__MODULE__{}
 end
@@ -169,7 +175,8 @@ defmodule ExTwitter.Model.Relationship do
   ## Reference
   https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup
   """
-  defstruct name: nil, screen_name: nil, id: nil, id_str: nil, connections: nil
+  defstruct name: nil, screen_name: nil, id: nil, id_str: nil, connections: nil,
+    raw_data: nil
 
   @type t :: %__MODULE__{}
 end
