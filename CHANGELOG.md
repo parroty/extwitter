@@ -1,3 +1,8 @@
+0.10.0
+------
+#### Enhancements
+- Add raw_data fields and specs to models (#117).
+
 0.9.6
 ------
 #### Enhancements
