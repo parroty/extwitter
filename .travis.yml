@@ -3,12 +3,12 @@ language: elixir
 sudo: false
 
 elixir:
-  - 1.5
-  - 1.6
+  - 1.7
+  - 1.8
 
 otp_release:
-  - 19.3
   - 20.3
+  - 22.0
 
 script:
   - MIX_ENV=docs mix do deps.get, inch.report
@@ -16,5 +16,5 @@ script:
 
 matrix:
   exclude:
-  - elixir: 1.6.0
-    otp_release: 18.3
+  - elixir: 1.7.0
+    otp_release: 20.3

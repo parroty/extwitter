@@ -40,7 +40,7 @@ defmodule ExTwitter.Mixfile do
       {:meck, "~> 0.8.13", only: [:dev, :test]},
       {:mock, "~> 0.2", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
-      {:inch_ex, "~> 0.5", only: :docs},
+      {:inch_ex, "~> 2.0", only: :docs},
       {:benchfella, "~> 0.3.3", only: :dev}
     ]
   end
