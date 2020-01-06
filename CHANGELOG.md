@@ -1,3 +1,8 @@
+0.11.0
+------
+#### Changes
+- Update dependency to fix error with elixir v1.8 (#112, #113).
+
 0.10.0
 ------
 #### Enhancements
