@@ -1,4 +1,4 @@
-# ExTwitter [![Build Status](https://img.shields.io/travis/parroty/extwitter.svg "Build Status")](http://travis-ci.org/parroty/extwitter) [![Coverage Status](http://img.shields.io/coveralls/parroty/extwitter.svg)](https://coveralls.io/r/parroty/extwitter) [![Deps Status](https://beta.hexfaktor.org/badge/all/github/parroty/extwitter.svg)](https://beta.hexfaktor.org/github/parroty/extwitter) [![Inline docs](http://inch-ci.org/github/parroty/extwitter.svg?branch=master&style=flat)](http://inch-ci.org/github/parroty/extwitter)
+# ExTwitter [![Build Status](https://img.shields.io/travis/parroty/extwitter.svg "Build Status")](http://travis-ci.org/parroty/extwitter) [![Coverage Status](http://img.shields.io/coveralls/parroty/extwitter.svg)](https://coveralls.io/r/parroty/extwitter) [![Inline docs](http://inch-ci.org/github/parroty/extwitter.svg?branch=master&style=flat)](http://inch-ci.org/github/parroty/extwitter)
 
 Twitter client library for elixir. It uses <a href="https://github.com/lexmag/oauther" target="_blank">oauther</a> to call Twitter's REST API.
 
