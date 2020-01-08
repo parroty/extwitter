@@ -38,6 +38,16 @@ defmodule ExTwitter.Parser do
     %{direct_message | recipient: recipient, sender: sender}
   end
 
+  @doc """
+  Parse direct message record from the API response json.
+  """
+  def parse_direct_messages_with_cursor(object) do
+    ids = object |> ExTwitter.JSON.get(:events)
+    cursor = struct(Model.Cursor, object)
+    %{cursor | items: ids, raw_data: object}
+  end
+
+
   @spec parse_upload(map) :: Model.Upload.t()
   def parse_upload(object) do
     Model.Upload |> struct(object) |> Map.put(:raw_data, object)

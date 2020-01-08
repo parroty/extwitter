@@ -670,7 +670,7 @@ defmodule ExTwitter do
       ExTwitter.direct_message(446328507694845952)
 
   ## Reference
-  https://dev.twitter.com/rest/reference/get/direct_messages/show
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/get-event
   """
   @impl Behaviour
   defdelegate direct_message(id), to: ExTwitter.API.DirectMessages
@@ -683,7 +683,7 @@ defmodule ExTwitter do
       ExTwitter.direct_messages
 
   ## Reference
-  https://dev.twitter.com/rest/reference/get/direct_messages
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/list-events
   """
   @impl Behaviour
   defdelegate direct_messages, to: ExTwitter.API.DirectMessages
@@ -696,7 +696,7 @@ defmodule ExTwitter do
       ExTwitter.direct_messages(count: 1)
 
   ## Reference
-  https://dev.twitter.com/rest/reference/get/direct_messages
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/list-events
   """
   @impl Behaviour
   defdelegate direct_messages(options), to: ExTwitter.API.DirectMessages
@@ -709,7 +709,7 @@ defmodule ExTwitter do
       ExTwitter.sent_direct_messages
 
   ## Reference
-  https://dev.twitter.com/rest/reference/get/direct_messages/sent
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/list-events
   """
   @impl Behaviour
   defdelegate sent_direct_messages, to: ExTwitter.API.DirectMessages
@@ -722,7 +722,7 @@ defmodule ExTwitter do
       ExTwitter.sent_direct_messages(count: 1)
 
   ## Reference
-  https://dev.twitter.com/rest/reference/get/direct_messages/sent
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/list-events
   """
   @impl Behaviour
   defdelegate sent_direct_messages(options), to: ExTwitter.API.DirectMessages
@@ -737,7 +737,7 @@ defmodule ExTwitter do
       ExTwitter.new_direct_message("twitter", "Message text")
 
   ## Reference
-  https://dev.twitter.com/rest/reference/post/direct_messages/new
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event
   """
   @impl Behaviour
   defdelegate new_direct_message(id_or_screen_name, text), to: ExTwitter.API.DirectMessages
@@ -750,7 +750,7 @@ defmodule ExTwitter do
       ExTwitter.destroy_direct_message(12345)
 
   ## Reference
-  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
   """
   @impl Behaviour
   defdelegate destroy_direct_message(id), to: ExTwitter.API.DirectMessages
@@ -763,7 +763,7 @@ defmodule ExTwitter do
       ExTwitter.destroy_direct_message(12345, include_entities: false)
 
   ## Reference
-  https://dev.twitter.com/rest/reference/post/direct_messages/destroy
+  https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/delete-message-event
   """
   @impl Behaviour
   defdelegate destroy_direct_message(id, options), to: ExTwitter.API.DirectMessages
