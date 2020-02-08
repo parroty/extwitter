@@ -21,7 +21,6 @@
   "mock": {:hex, :mock, "0.3.0", "91523bc43d8c654891284b89b8ad0410212c0ebea332bc719d7167108ea8117d", [:mix], [{:meck, "~> 0.8.7", [hex: :meck, repo: "hexpm", optional: false]}], "hexpm"},
   "nimble_parsec": {:hex, :nimble_parsec, "0.5.3", "def21c10a9ed70ce22754fdeea0810dafd53c2db3219a0cd54cf5526377af1c6", [:mix], [], "hexpm"},
   "oauther": {:hex, :oauther, "1.1.0", "c9a56e200507ce64e069f5273143db0cddd7904cd5d1fe46920388a48f22441b", [:mix], [], "hexpm"},
-  "poison": {:hex, :poison, "3.1.0", "d9eb636610e096f86f25d9a46f35a9facac35609a7591b3be3326e99a0484665", [:mix], [], "hexpm"},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [:make, :rebar], [], "hexpm"},
   "unicode_util_compat": {:hex, :unicode_util_compat, "0.3.1", "a1f612a7b512638634a603c8f401892afbf99b8ce93a45041f8aaca99cadb85e", [:rebar3], [], "hexpm"},
 }
