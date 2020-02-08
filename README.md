@@ -55,6 +55,20 @@ def application do
 end
 ```
 
+#### JSON support
+
+ExTwitter comes with JSON support out of the box via the [Jason](https://github.com/michalmuskala/jason) library. To use it, add `:jason` to your dependencies:
+
+```elixir
+{:jason, "~> 1.1"},
+```
+
+You can customize it to use another library via the `:json_library` configuration:
+
+```elixir
+config :extwitter, :json_library, Poison
+```
+
 ### Sample
 Sample execution on iex.
 
