@@ -1,8 +1,10 @@
-Unreleases
+0.12.0
 ------
 #### Changes
-* Update dependency.
-  - Replaced poison dep with jason 1.1 (#121).
+Replaced poison dep with jason 1.1 (#121).
+
+#### Enhancements
+- Add `full_text` field back into tweet model (#122).
 
 0.11.0
 ------
