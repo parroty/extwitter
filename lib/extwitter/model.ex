@@ -14,7 +14,7 @@ defmodule ExTwitter.Model.Tweet do
     place: nil, possibly_sensitive: nil, quote_count: nil, quoted_status_id_str: nil,
     quoted_status_id: nil, quoted_status: nil, raw_data: nil, reply_count: nil,
     retweet_count: nil, retweeted_status: nil, retweeted: nil, scopes: nil, source: nil,
-    text: nil, truncated: nil, user: nil, withheld_copyright: nil,
+    text: nil, full_text: nil, truncated: nil, user: nil, withheld_copyright: nil,
     withheld_in_countries: nil, withheld_scope: nil
 
   @type t :: %__MODULE__{
@@ -50,6 +50,7 @@ defmodule ExTwitter.Model.Tweet do
     scopes: map | nil,
     source: String.t(),
     text: String.t(),
+    full_text: String.t(),
     truncated: boolean,
     user: ExTwitter.Model.User.t(),
     withheld_copyright: boolean | nil,
