@@ -34,7 +34,7 @@ defmodule ExTwitter.Mixfile do
   def deps do
     [
       {:oauther, "~> 1.1"},
-      {:poison, "~> 3.0"},
+      {:jason, "~> 1.1"},
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.7", only: :test},
       {:meck, "~> 0.8.13", only: [:dev, :test]},

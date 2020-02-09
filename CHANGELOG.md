@@ -1,3 +1,9 @@
+Unreleases
+------
+#### Changes
+* Update dependency.
+  - Replaced poison dep with jason 1.1 (#121).
+
 0.11.0
 ------
 #### Changes

@@ -8,14 +8,14 @@ defmodule ExTwitter.JSON do
   Decode json string into elixir objects.
   """
   def decode!(json) do
-    Poison.decode!(json, keys: :atoms)
+    json_library().decode!(json, keys: :atoms)
   end
 
   @doc """
   Decode json string into elixir objects.
   """
   def decode(json) do
-    Poison.decode(json, keys: :atoms)
+    json_library().decode(json, keys: :atoms)
   end
 
   @doc """
@@ -24,5 +24,9 @@ defmodule ExTwitter.JSON do
   """
   def get(object, key) do
     Map.get(object, key, [])
+  end
+
+  defp json_library do
+    Application.get_env(:extwitter, :json_library, Jason)
   end
 end
