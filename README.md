@@ -47,12 +47,6 @@ defp deps do
     {:extwitter, "~> 0.8"}
   ]
 end
-
-...
-
-def application do
-  [applications: [:logger, :extwitter]]
-end
 ```
 
 #### JSON support
