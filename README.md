@@ -44,7 +44,7 @@ ExTwitter.configure(:process, [consumer_key: "", ...])
 defp deps do
   [
     {:oauther, "~> 1.1"},
-    {:extwitter, "~> 0.8"}
+    {:extwitter, "~> 0.12"}
   ]
 end
 ```
