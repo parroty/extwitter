@@ -116,5 +116,5 @@ defmodule ExTwitter.Behaviour do
   @callback authorize_url(String.t(), map()) :: {:ok, String.t()} | {:error, String.t()}
   @callback authenticate_url(String.t(), map()) :: {:ok, String.t()} | {:error, String.t()}
   @callback authenticate_url(String.t()) :: {:ok, String.t()} | {:error, String.t()}
-  @callback access_token(String.t(), String.t()) :: {:ok, Model.AccessToken.t()} | {:error, String.t()}
+  @callback access_token(String.t(), String.t()) :: {:ok, ExTwitter.Model.AccessToken.t()} | {:error, String.t()}
 end
