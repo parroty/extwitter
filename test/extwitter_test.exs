@@ -9,9 +9,9 @@ defmodule ExTwitterTest do
     ExVCR.Config.filter_sensitive_data("access_token\":\".+?\"", "access_token\":\"<REMOVED>\"")
 
     ExTwitter.configure(
-      consumer_key:        System.get_env("TWITTER_CONSUMER_KEY"),
-      consumer_secret:     System.get_env("TWITTER_CONSUMER_SECRET"),
-      access_token:        System.get_env("TWITTER_ACCESS_TOKEN"),
+      consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+      consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET"),
+      access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
       access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
     )
 
@@ -19,7 +19,7 @@ defmodule ExTwitterTest do
   end
 
   test "gets current configuration" do
-    config = ExTwitter.configure
+    config = ExTwitter.configure()
     assert Keyword.has_key?(config, :consumer_key)
     assert Keyword.has_key?(config, :consumer_secret)
     assert Keyword.has_key?(config, :access_token)
@@ -28,8 +28,11 @@ defmodule ExTwitterTest do
 
   test "sends request method to search method" do
     use_cassette "base_request" do
-      response = ExTwitter.request(:get, "1.1/search/tweets.json", [q: "elixir", count: 1])
-      tweets = ExTwitter.JSON.get(response, :statuses) |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+      response = ExTwitter.request(:get, "1.1/search/tweets.json", q: "elixir", count: 1)
+
+      tweets =
+        ExTwitter.JSON.get(response, :statuses) |> Enum.map(&ExTwitter.Parser.parse_tweet/1)
+
       assert Enum.count(tweets) == 1
     end
   end
@@ -63,13 +66,15 @@ defmodule ExTwitterTest do
   end
 
   test "search with metadata" do
-    response1 = use_cassette "search_with_metadata_response1" do
-      ExTwitter.search("test", [count: 1, search_metadata: true])
-    end
+    response1 =
+      use_cassette "search_with_metadata_response1" do
+        ExTwitter.search("test", count: 1, search_metadata: true)
+      end
 
-    response2 = use_cassette "search_with_metadata_response2" do
-      ExTwitter.search_next_page(response1.metadata)
-    end
+    response2 =
+      use_cassette "search_with_metadata_response2" do
+        ExTwitter.search_next_page(response1.metadata)
+      end
 
     assert Enum.count(response1.statuses) == 1
     assert Enum.count(response2.statuses) == 1
@@ -85,8 +90,9 @@ defmodule ExTwitterTest do
 
   test "gets authenticated user's retweets of me" do
     use_cassette "retweets_of_me" do
-      timeline = ExTwitter.retweets_of_me
-      assert Enum.count(timeline) == 0  # testing user doesn't have retweets
+      timeline = ExTwitter.retweets_of_me()
+      # testing user doesn't have retweets
+      assert Enum.count(timeline) == 0
     end
   end
 
@@ -100,30 +106,32 @@ defmodule ExTwitterTest do
 
   test "shows retweets" do
     use_cassette "retweets" do
-      retweets = ExTwitter.retweets(444144169058308096, count: 1)
+      retweets = ExTwitter.retweets(444_144_169_058_308_096, count: 1)
       Enum.count(retweets) == 1
     end
   end
 
   test "shows tweet" do
     use_cassette "show_tweet" do
-      tweet = ExTwitter.show(446328507694845952)
+      tweet = ExTwitter.show(446_328_507_694_845_952)
       assert tweet.text =~ ~r/ship with the eunit test framework/
     end
   end
 
   test "shows direct message" do
     use_cassette "show_direct_message" do
-      direct_message = ExTwitter.direct_message(615025281712025603)
+      direct_message = ExTwitter.direct_message(615_025_281_712_025_603)
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
     end
   end
 
   test "gets direct messages list without options" do
     use_cassette "list_direct_messages" do
-      direct_messages = ExTwitter.direct_messages
+      direct_messages = ExTwitter.direct_messages()
       assert Enum.count(direct_messages) == 1
-      assert List.first(direct_messages).text =~ ~r/In case there are any problems with locating the place/
+
+      assert List.first(direct_messages).text =~
+               ~r/In case there are any problems with locating the place/
     end
   end
 
@@ -131,13 +139,15 @@ defmodule ExTwitterTest do
     use_cassette "list_direct_messages" do
       direct_messages = ExTwitter.direct_messages(count: 1)
       assert Enum.count(direct_messages) == 1
-      assert List.first(direct_messages).text =~ ~r/In case there are any problems with locating the place/
+
+      assert List.first(direct_messages).text =~
+               ~r/In case there are any problems with locating the place/
     end
   end
 
   test "gets sent direct messages list without options" do
     use_cassette "sent_direct_messages" do
-      direct_messages = ExTwitter.sent_direct_messages
+      direct_messages = ExTwitter.sent_direct_messages()
       assert Enum.count(direct_messages) == 1
       assert List.first(direct_messages).text =~ ~r/Please collect the samples./
     end
@@ -153,24 +163,36 @@ defmodule ExTwitterTest do
 
   test "destroy a direct message without options" do
     use_cassette "destroy_direct_message" do
-      direct_message = ExTwitter.destroy_direct_message(615025281712025603)
+      direct_message = ExTwitter.destroy_direct_message(615_025_281_712_025_603)
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
     end
   end
 
   test "destroy a direct message with options" do
     use_cassette "destroy_direct_message" do
-      direct_message = ExTwitter.destroy_direct_message(615025281712025603, include_entities: false)
+      direct_message =
+        ExTwitter.destroy_direct_message(615_025_281_712_025_603, include_entities: false)
+
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
     end
   end
 
   test "new direct message" do
     use_cassette "new_direct_message" do
-      direct_message = ExTwitter.new_direct_message(71686163, "In case there are any problems with locating the place")
+      direct_message =
+        ExTwitter.new_direct_message(
+          71_686_163,
+          "In case there are any problems with locating the place"
+        )
+
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
 
-      direct_message = ExTwitter.new_direct_message("cmadan_", "In case there are any problems with locating the place")
+      direct_message =
+        ExTwitter.new_direct_message(
+          "cmadan_",
+          "In case there are any problems with locating the place"
+        )
+
       assert direct_message.text =~ ~r/In case there are any problems with locating the place/
     end
   end
@@ -203,7 +225,14 @@ defmodule ExTwitterTest do
     # Sensitive data must be manually removed from the cassette.
     use_cassette "update_destroy_status_with_chunked_media" do
       image_path = "fixture/images/sample.png"
-      tweet1 = ExTwitter.update_with_chunked_media("update sample with chunked media", image_path, "image/png")
+
+      tweet1 =
+        ExTwitter.update_with_chunked_media(
+          "update sample with chunked media",
+          image_path,
+          "image/png"
+        )
+
       assert tweet1.text =~ "update sample with chunked media"
       assert Enum.count(tweet1.entities.media) == 1
 
@@ -218,7 +247,16 @@ defmodule ExTwitterTest do
     # Sensitive data must be manually removed from the cassette.
     use_cassette "update_destroy_status_with_chunked_media_options" do
       image_path = "fixture/images/sample.png"
-      tweet1 = ExTwitter.update_with_chunked_media("update sample with chunked media", image_path, "image/png", trim_user: true, chunked_size: 131_072)
+
+      tweet1 =
+        ExTwitter.update_with_chunked_media(
+          "update sample with chunked media",
+          image_path,
+          "image/png",
+          trim_user: true,
+          chunked_size: 131_072
+        )
+
       assert tweet1.text =~ "update sample with chunked media"
       assert Enum.count(tweet1.entities.media) == 1
 
@@ -231,7 +269,7 @@ defmodule ExTwitterTest do
   test "retweet and unretweet status" do
     use_cassette "retweet_unretweet_status" do
       # https://twitter.com/twitter/statuses/589095997340405760
-      sample_tweet_id = 589095997340405760
+      sample_tweet_id = 589_095_997_340_405_760
 
       tweet1 = ExTwitter.retweet(sample_tweet_id, trim_user: true)
       assert tweet1.text =~ "RT @Twitter:"
@@ -243,8 +281,8 @@ defmodule ExTwitterTest do
 
   test "gets retweeter ids" do
     use_cassette "retweeter_ids" do
-      ids = ExTwitter.retweeter_ids(444144169058308096)
-      assert Enum.member?(ids, 48156007)
+      ids = ExTwitter.retweeter_ids(444_144_169_058_308_096)
+      assert Enum.member?(ids, 48_156_007)
     end
   end
 
@@ -257,7 +295,7 @@ defmodule ExTwitterTest do
 
   test "create favorite" do
     use_cassette "create_favorite_twitter" do
-      id = 243138128959913986
+      id = 243_138_128_959_913_986
       tweet = ExTwitter.create_favorite(id, [])
       assert tweet.id == id
     end
@@ -265,7 +303,7 @@ defmodule ExTwitterTest do
 
   test "destroy favorite" do
     use_cassette "destroy_favorite_twitter" do
-      id = 243138128959913986
+      id = 243_138_128_959_913_986
       tweet = ExTwitter.destroy_favorite(id, [])
       assert tweet.id == id
     end
@@ -281,7 +319,7 @@ defmodule ExTwitterTest do
 
   test "gets lists by user_id" do
     use_cassette "lists_twitter" do
-      lists = ExTwitter.lists(783214, count: 1)
+      lists = ExTwitter.lists(783_214, count: 1)
       assert Enum.count(lists) == 1
       assert List.first(lists).name =~ ~r/Twitter/
     end
@@ -333,7 +371,7 @@ defmodule ExTwitterTest do
 
   test "gets followers of twitter user by user_id" do
     use_cassette "followers" do
-      followers_cursor = ExTwitter.followers(783214, count: 1)
+      followers_cursor = ExTwitter.followers(783_214, count: 1)
       assert Enum.count(followers_cursor.items) == 1
     end
   end
@@ -347,7 +385,7 @@ defmodule ExTwitterTest do
 
   test "gets follower ids of twitter user by user_id" do
     use_cassette "follower_ids" do
-      follower_ids_cursor = ExTwitter.follower_ids(783214, count: 1)
+      follower_ids_cursor = ExTwitter.follower_ids(783_214, count: 1)
       assert Enum.count(follower_ids_cursor.items) == 1
     end
   end
@@ -371,7 +409,7 @@ defmodule ExTwitterTest do
 
   test "gets friends of twitter user by user_id" do
     use_cassette "friends" do
-      friends_cursor = ExTwitter.friends(783214, count: 1)
+      friends_cursor = ExTwitter.friends(783_214, count: 1)
       assert Enum.count(friends_cursor.items) == 1
     end
   end
@@ -385,14 +423,14 @@ defmodule ExTwitterTest do
 
   test "gets friend ids of twitter user by user_id" do
     use_cassette "friend_ids" do
-      friend_ids_cursor = ExTwitter.friend_ids(783214, count: 1)
+      friend_ids_cursor = ExTwitter.friend_ids(783_214, count: 1)
       assert Enum.count(friend_ids_cursor.items) == 1
     end
   end
 
   test "gets credentials" do
     use_cassette "verify_credentials", custom: true do
-      user = ExTwitter.verify_credentials
+      user = ExTwitter.verify_credentials()
       assert user.id != nil
       assert user.screen_name != nil
     end
@@ -409,9 +447,9 @@ defmodule ExTwitterTest do
 
   test "block and unblock user by user_id" do
     use_cassette "blocks" do
-      user1 = ExTwitter.block(783214)
+      user1 = ExTwitter.block(783_214)
       assert user1.screen_name == "Twitter"
-      user2 = ExTwitter.unblock(783214)
+      user2 = ExTwitter.unblock(783_214)
       assert user2.screen_name == "Twitter"
     end
   end
@@ -426,7 +464,7 @@ defmodule ExTwitterTest do
 
   test "lookup user by user_id" do
     use_cassette "lookup_user" do
-      users = ExTwitter.user_lookup(783214)
+      users = ExTwitter.user_lookup(783_214)
       assert Enum.count(users) == 1
       assert Enum.at(users, 0).screen_name == "twitter"
     end
@@ -442,7 +480,7 @@ defmodule ExTwitterTest do
 
   test "lookup users by user_id" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup([783214, 10230812, 507309896])
+      users = ExTwitter.user_lookup([783_214, 10_230_812, 507_309_896])
       assert Enum.count(users) == 3
       assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
@@ -461,7 +499,9 @@ defmodule ExTwitterTest do
 
   test "lookup users by screen_name along with options" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup(["twitter", "josevalim", "elixirlang"], include_entities: false)
+      users =
+        ExTwitter.user_lookup(["twitter", "josevalim", "elixirlang"], include_entities: false)
+
       assert Enum.count(users) == 3
       assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
@@ -470,7 +510,7 @@ defmodule ExTwitterTest do
 
   test "lookup users by user_id along with options" do
     use_cassette "lookup_users" do
-      users = ExTwitter.user_lookup([783214, 10230812, 507309896], include_entities: false)
+      users = ExTwitter.user_lookup([783_214, 10_230_812, 507_309_896], include_entities: false)
       assert Enum.count(users) == 3
       assert Enum.at(users, 0).screen_name == "Twitter"
       assert Enum.at(users, 1).screen_name == "josevalim"
@@ -486,7 +526,7 @@ defmodule ExTwitterTest do
 
   test "get profile banners by user_id" do
     use_cassette "user_profile_banner" do
-      profile_banner = ExTwitter.user_profile_banner(783214)
+      profile_banner = ExTwitter.user_profile_banner(783_214)
       assert profile_banner.sizes.web.h > 0
       assert profile_banner.sizes.web.w > 0
     end
@@ -566,7 +606,7 @@ defmodule ExTwitterTest do
   test "request token" do
     use_cassette "request_token" do
       # Fetching request token with which to generate authenticate or authorize requests
-      t = ExTwitter.request_token()
+      {:ok, t} = ExTwitter.request_token()
       assert t != nil
       assert t.oauth_token != nil
       assert t.oauth_token_secret != nil
@@ -578,7 +618,9 @@ defmodule ExTwitterTest do
     # Check generated oauth authorize url against twitter url pattern
     # Validating the URL actually works is essentially a manual test
     token = "some_token"
-    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authorize\\?oauth_token=" <> token)
+
+    {:ok, regex} =
+      Regex.compile("^https://api.twitter.com/oauth/authorize\\?oauth_token=" <> token)
 
     {:ok, authorize_url} = ExTwitter.authorize_url(token)
 
@@ -589,7 +631,9 @@ defmodule ExTwitterTest do
     # Check generated oauth authenticate url against twitter url pattern
     # Validating the URL actually works is essentially a manual test
     token = "some_token"
-    {:ok, regex} = Regex.compile("^https://api.twitter.com/oauth/authenticate\\?oauth_token=" <> token)
+
+    {:ok, regex} =
+      Regex.compile("^https://api.twitter.com/oauth/authenticate\\?oauth_token=" <> token)
 
     {:ok, authenticate_url} = ExTwitter.authenticate_url(token)
 
