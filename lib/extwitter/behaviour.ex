@@ -110,11 +110,11 @@ defmodule ExTwitter.Behaviour do
   @callback rate_limit_status(Keyword.t()) :: map()
   @callback lookup_status(String.t()) :: [ExTwitter.Model.Tweet.t()]
   @callback lookup_status(String.t(), Keyword.t()) :: [ExTwitter.Model.Tweet.t()]
-  @callback request_token(String.t()) :: [ExTwitter.Model.RequestToken.t()]
-  @callback request_token :: [ExTwitter.Model.RequestToken.t()]
+  @callback request_token(String.t()) :: ExTwitter.Model.RequestToken.t()
+  @callback request_token :: ExTwitter.Model.RequestToken.t()
   @callback authorize_url(String.t()) :: {:ok, String.t()} | {:error, String.t()}
   @callback authorize_url(String.t(), map()) :: {:ok, String.t()} | {:error, String.t()}
   @callback authenticate_url(String.t(), map()) :: {:ok, String.t()} | {:error, String.t()}
   @callback authenticate_url(String.t()) :: {:ok, String.t()} | {:error, String.t()}
-  @callback access_token(String.t(), String.t()) :: {:ok, String.t()} | {:error, String.t()}
+  @callback access_token(String.t(), String.t()) :: {:ok, ExTwitter.Model.AccessToken.t()} | {:error, String.t()}
 end
