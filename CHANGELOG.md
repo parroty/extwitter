@@ -1,3 +1,8 @@
+0.12.1
+------
+#### Changes
+- Fix behavior definition for access_token and request_token (#123).
+
 0.12.0
 ------
 #### Changes
