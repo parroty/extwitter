@@ -2,6 +2,7 @@
 ------
 #### Changes
 - Fix behavior definition for access_token and request_token (#123).
+- Fix for auth.ex to cover all patterns and preventing errors (#124).
 
 0.12.0
 ------
