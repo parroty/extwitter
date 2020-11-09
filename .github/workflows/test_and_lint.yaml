@@ -22,4 +22,3 @@ jobs:
            ${{ runner.os }}-mix-
       - run: mix deps.get
       - run: mix test
-      - run: mix format --check-formatted
