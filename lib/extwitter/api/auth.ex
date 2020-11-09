@@ -7,14 +7,20 @@ defmodule ExTwitter.API.Auth do
   def request_token(redirect_url \\ nil) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     params = if redirect_url, do: [{"oauth_callback", redirect_url}], else: []
-    {:ok, {{_, 200, _}, _headers, body}} =
+    response =
       ExTwitter.OAuth.request(:post, request_url("oauth/request_token"),
         params, oauth[:consumer_key], oauth[:consumer_secret], "", "")
 
-    Elixir.URI.decode_query(to_string body)
-    |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)
-    |> Enum.into(%{})
-    |> ExTwitter.Parser.parse_request_token
+    case response do
+      {:ok, {{_, 200, _}, _headers, body}} ->
+        token =
+          Elixir.URI.decode_query(to_string body)
+          |> Enum.map(fn {k,v} -> {String.to_atom(k), v} end)
+          |> Enum.into(%{})
+          |> ExTwitter.Parser.parse_request_token
+        {:ok, token}
+      _ -> {:error, :unknown}
+    end
   end
 
   def authorize_url(oauth_token, options \\ %{}) do
@@ -32,7 +38,7 @@ defmodule ExTwitter.API.Auth do
   def access_token(verifier, request_token) do
     oauth = ExTwitter.Config.get_tuples |> verify_params
     response = ExTwitter.OAuth.request(:post, request_url("oauth/access_token"),
-      [oauth_verifier: verifier], oauth[:consumer_key], oauth[:consumer_secret], request_token, nil)
+      [{"oauth_verifier", verifier}], oauth[:consumer_key], oauth[:consumer_secret], request_token, nil)
     case response do
       {:ok, {{_, 200, _}, _headers, body}} ->
         access_token = Elixir.URI.decode_query(to_string body)
@@ -40,8 +46,8 @@ defmodule ExTwitter.API.Auth do
         |> Enum.into(%{})
         |> ExTwitter.Parser.parse_access_token
         {:ok, access_token}
-      {:ok, {{_, code, _}, _, _}} ->
-        {:error, code}
+      _ -> {:error, :unknown}
     end
   end
 end
+
