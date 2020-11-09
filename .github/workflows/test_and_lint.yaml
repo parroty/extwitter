@@ -2,7 +2,8 @@ name: test_and_lint
 
 on:
   pull_request:
-    types: [push, opened, synchronize]
+    types: [opened, synchronize]
+  push:
 
 jobs:
   test_and_lint:
