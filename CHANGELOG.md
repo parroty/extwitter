@@ -1,3 +1,9 @@
+0.12.2
+------
+#### Changes
+- Revert "Covering all patterns and preventing errors" (#136).
+   - Fix for breaking change.
+
 0.12.1
 ------
 #### Changes
