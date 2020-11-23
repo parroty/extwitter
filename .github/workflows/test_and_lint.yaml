@@ -1,20 +1,21 @@
 name: test_and_lint
 
-on:
-  pull_request:
-    types: [opened, synchronize]
-  push:
+on: push
 
 jobs:
   test_and_lint:
     name: Test-and-Lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        otp: ['20.3']
+        elixir: ['1.5', '1.9']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-elixir@v1
         with:
-         otp-version: '20.3'
-         elixir-version: '1.7.0'
+         otp-version: ${{ matrix.otp }}
+         elixir-version: ${{ matrix.elixir }}
       - uses: actions/cache@v1
         with:
          path: deps
@@ -22,4 +23,4 @@ jobs:
          restore-keys: |
            ${{ runner.os }}-mix-
       - run: mix deps.get
-      - run: mix test
+      - run: mix coveralls.github
