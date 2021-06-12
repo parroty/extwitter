@@ -3,6 +3,7 @@ defmodule ExTwitter.Model.Tweet do
   Tweet object.
 
   ## Reference
+
   [Tweet object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -78,6 +79,7 @@ defmodule ExTwitter.Model.User do
   User object.
 
   ## Reference
+
   [User object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/user-object)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -120,6 +122,7 @@ defmodule ExTwitter.Model.ProfileBanner do
   Profile Banner object.
 
   ## Reference
+
   [GET users/profile_banner](https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-users-profile_banner)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -142,6 +145,7 @@ defmodule ExTwitter.Model.Entities do
   Entities object.
 
   ## Reference
+
   [Entities object[(https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -164,6 +168,7 @@ defmodule ExTwitter.Model.ExtendedEntities do
   Extended Entities object.
 
   ## Reference
+
   [Extended Entities object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/extended-entities-object)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -186,6 +191,7 @@ defmodule ExTwitter.Model.Hashtag do
   Hashtag object.
 
   ## Reference
+
   [Hashtag object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#hashtags)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -202,6 +208,7 @@ defmodule ExTwitter.Model.Media do
   @moduledoc """
 
   ## Reference
+
   [Media object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#media)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -231,6 +238,7 @@ defmodule ExTwitter.Model.Size do
   Size object.
 
   ## Reference
+
   [Size object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#size)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -249,6 +257,7 @@ defmodule ExTwitter.Model.Symbol do
   Symbol object.
 
   ## Reference
+
   [Symbol object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#symbols)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -267,6 +276,7 @@ defmodule ExTwitter.Model.URL do
   URL object.
 
   ## Reference
+
   [URL object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#urls)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -287,6 +297,7 @@ defmodule ExTwitter.Model.UserMention do
   User mention object.
 
   ## Reference
+
   [User mention object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#mentions)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -307,6 +318,7 @@ defmodule ExTwitter.Model.Poll do
   Poll object.
 
   ## Reference
+
   [Poll object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object#polls)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -325,6 +337,7 @@ defmodule ExTwitter.Model.Rule do
   Matching rules object.
 
   ## Reference
+
   [Matching rules](https://developer.twitter.com/en/docs/tweets/enrichments/overview/matching-rules)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -338,6 +351,7 @@ defmodule ExTwitter.Model.ProfileGeo do
   Profile Geo object.
 
   ## Reference
+
   [Profile Geo](https://developer.twitter.com/en/docs/tweets/enrichments/overview/profile-geo)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -360,6 +374,7 @@ defmodule ExTwitter.Model.Trend do
   Trend object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/trends/trends-for-location/api-reference/get-trends-place
   """
   @derive {Inspect, except: [:raw_data]}
@@ -380,6 +395,7 @@ defmodule ExTwitter.Model.List do
   List object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-show
   """
   @derive {Inspect, except: [:raw_data]}
@@ -410,6 +426,7 @@ defmodule ExTwitter.Model.Place do
   Place object.
 
   ## Reference
+
   [Place object](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects#place)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -437,6 +454,7 @@ defmodule ExTwitter.Model.BoundingBox do
   Bounding box object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects
   """
   @derive {Inspect, except: [:raw_data]}
@@ -454,6 +472,7 @@ defmodule ExTwitter.Model.Coordinates do
   Coordinates object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects#coordinates
   """
   @derive {Inspect, except: [:raw_data]}
@@ -471,6 +490,7 @@ defmodule ExTwitter.Model.Geo do
   Geo object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/geo-objects
   """
   @derive {Inspect, except: [:raw_data]}
@@ -488,6 +508,7 @@ defmodule ExTwitter.Model.DeletedTweet do
   Deleted Tweet object.
 
   ## Reference
+
   [Status deletion notices](https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/statuses-filter)
   """
   defstruct status: nil
@@ -500,6 +521,7 @@ defmodule ExTwitter.Model.Limit do
   Limit object.
 
   ## Reference
+
   [Limit notices](https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/statuses-filter)
   """
   defstruct track: nil
@@ -512,6 +534,7 @@ defmodule ExTwitter.Model.StallWarning do
   Stall Warning object.
 
   ## Reference
+
   [Stall warnings](https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/statuses-filter)
   """
   defstruct code: nil, message: nil, percent_full: nil
@@ -528,6 +551,7 @@ defmodule ExTwitter.Model.Cursor do
   Cursor object.
 
   ## Reference
+
   [Cursoring](https://developer.twitter.com/en/docs/basics/cursoring)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -546,6 +570,7 @@ defmodule ExTwitter.Model.RequestToken do
   Request Token object.
 
   ## Reference
+
   [POST oauth/request_token](https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -565,6 +590,7 @@ defmodule ExTwitter.Model.AccessToken do
   Access Token object.
 
   ## Reference
+
   [POST oauth/access_token](https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token)
   """
   @derive {Inspect, except: [:raw_data]}
@@ -585,6 +611,7 @@ defmodule ExTwitter.Model.SearchResponse do
   Search Response object.
 
   ## Reference
+
   https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets
   """
   defstruct statuses: nil, metadata: nil
@@ -597,6 +624,7 @@ defmodule ExTwitter.Model.Relationship do
   Relationship object.
 
   ## Reference
+
   [GET friendships/lookup](https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-lookup)
   """
   @derive {Inspect, except: [:raw_data]}

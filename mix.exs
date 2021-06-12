@@ -1,36 +1,42 @@
 defmodule ExTwitter.Mixfile do
   use Mix.Project
 
+  @source_url "https://github.com/parroty/extwitter"
+  @version "0.12.5"
+
   def project do
-    [ app: :extwitter,
-      version: "0.12.5",
+    [
+      app: :extwitter,
+      version: @version,
       elixir: ">= 1.4.0",
       deps: deps(),
-      description: description(),
+      docs: docs(),
       package: package(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: cli_env_for(:test, [
-        "coveralls", "coveralls.detail", "coveralls.post",
-        "vcr", "vcr.delete", "vcr.check", "vcr.show"
-      ]),
-      docs: [main: ExTwitter] ]
+      preferred_cli_env:
+        cli_env_for(:test, [
+          "coveralls",
+          "coveralls.detail",
+          "coveralls.post",
+          "vcr",
+          "vcr.delete",
+          "vcr.check",
+          "vcr.show"
+        ]),
+    ]
   end
 
   defp cli_env_for(env, tasks) do
-    Enum.reduce(tasks, [], fn(key, acc) -> Keyword.put(acc, :"#{key}", env) end)
+    Enum.reduce(tasks, [], fn key, acc -> Keyword.put(acc, :"#{key}", env) end)
   end
 
-  # Configuration for the OTP application
   def application do
-    [ mod: { ExTwitter, [] },
-      applications: [:inets, :ssl, :crypto, :logger]]
+    [
+      mod: {ExTwitter, []},
+      applications: [:inets, :ssl, :crypto, :logger]
+    ]
   end
 
-  # Returns the list of dependencies in the format:
-  # { :foobar, git: "https://github.com/elixir-lang/foobar.git", tag: "0.1" }
-  #
-  # To specify particular versions, regardless of the tag, do:
-  # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   def deps do
     [
       {:oauther, "~> 1.1"},
@@ -39,21 +45,35 @@ defmodule ExTwitter.Mixfile do
       {:excoveralls, "~> 0.13", only: :test},
       {:meck, "~> 0.8.13", only: [:dev, :test]},
       {:mock, "~> 0.2", only: [:dev, :test]},
-      {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
+      {:ex_doc, ">= 0.0.0", only: [:dev, :docs], runtime: false},
       {:inch_ex, "~> 2.0", only: :docs},
       {:benchfella, "~> 0.3.3", only: :dev}
     ]
   end
 
-  defp description do
-    """
-    Twitter client library for elixir.
-    """
+  defp docs do
+    [
+      extras: [
+        "CHANGELOG.md": [],
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
+    ]
   end
 
   defp package do
-    [ maintainers: ["parroty"],
+    [
+      description: "Twitter client library for Elixir.",
+      maintainers: ["parroty"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/parroty/extwitter"} ]
+      links: %{
+        "Changelog" => "https://hexdocs.pm/extwitter/changelog.html",
+        "GitHub" => @source_url
+      }
+    ]
   end
 end

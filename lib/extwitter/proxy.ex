@@ -4,7 +4,7 @@ defmodule ExTwitter.Proxy do
   """
 
   @doc """
-  Initialize proxy settings based on defintion in config.exs.
+  Initialize proxy settings based on definition in config.exs.
   """
   def initialize do
     if proxy() != nil do

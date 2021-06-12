@@ -5,7 +5,7 @@ defmodule ExTwitter.Parser do
   alias ExTwitter.Model
 
   @doc """
-  Parse tweet record from the API response json.
+  Parse tweet record from the API response JSON.
   """
   @spec parse_tweet(map | nil) :: Model.Tweet.t() | nil
   def parse_tweet(nil), do: nil
@@ -29,7 +29,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse direct message record from the API response json.
+  Parse direct message record from the API response JSON.
   """
   def parse_direct_message(object) do
     direct_message = struct(Model.DirectMessage, object)
@@ -44,7 +44,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse user record from the API response json.
+  Parse user record from the API response JSON.
   """
   @spec parse_user(map) :: Model.User.t()
   def parse_user(object) do
@@ -54,7 +54,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse profile geo record from the API response json.
+  Parse profile geo record from the API response JSON.
   """
   @spec parse_profile_geo(map | [map] | nil) :: Model.ProfileGeo.t() | [Model.ProfileGeo.t()] | nil
   def parse_profile_geo(nil), do: nil
@@ -70,7 +70,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse trend record from the API response json.
+  Parse trend record from the API response JSON.
   """
   @spec parse_trend(map) :: Model.Trend.t()
   def parse_trend(object) do
@@ -79,7 +79,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse list record from the API response json.
+  Parse list record from the API response JSON.
   """
   @spec parse_list(map) :: Model.List.t()
   def parse_list(object) do
@@ -89,7 +89,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse place record from the API response json.
+  Parse place record from the API response JSON.
   """
   @spec parse_place(map | nil) :: Model.Place.t() | nil
   def parse_place(nil), do: nil
@@ -104,7 +104,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse bounding box record from the API response json.
+  Parse bounding box record from the API response JSON.
   """
   @spec parse_bounding_box(map | nil) :: Model.BoundingBox.t() | nil
   def parse_bounding_box(nil), do: nil
@@ -113,7 +113,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse coordinates record from the API response json.
+  Parse coordinates record from the API response JSON.
   """
   @spec parse_coordinates(map | nil) :: Model.Coordinates.t() | nil
   def parse_coordinates(nil), do: nil
@@ -123,7 +123,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse geo record from the API response json.
+  Parse geo record from the API response JSON.
   """
   @spec parse_geo(map | nil) :: Model.Geo.t() | nil
   def parse_geo(nil), do: nil
@@ -172,7 +172,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse hashtags record from the API response json.
+  Parse hashtags record from the API response JSON.
   """
   @spec parse_hashtags(map | [map] | nil) :: Model.Hashtag.t() | [Model.Hashtag.t()]
   def parse_hashtags(nil), do: []
@@ -186,7 +186,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse media record from the API response json.
+  Parse media record from the API response JSON.
   """
   @spec parse_media(map | [map] | nil) :: Model.Media.t() | [Model.Media.t()]
   def parse_media(nil), do: []
@@ -203,7 +203,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse size record from the API response json.
+  Parse size record from the API response JSON.
   """
   @spec parse_size(map) :: Model.Size.t()
   def parse_size(object) do
@@ -211,7 +211,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse symbols record from the API response json.
+  Parse symbols record from the API response JSON.
   """
   @spec parse_symbols(map | [map] | nil) :: Model.Symbol.t() | [Model.Symbol.t()]
   def parse_symbols(nil), do: []
@@ -225,7 +225,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse urls record from the API response json.
+  Parse urls record from the API response JSON.
   """
   @spec parse_urls(map | [map] | nil) :: Model.URL.t() | [Model.URL.t()]
   def parse_urls(nil), do: []
@@ -239,7 +239,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse user mentions record from the API response json.
+  Parse user mentions record from the API response JSON.
   """
   @spec parse_user_mentions(map | [map] | nil) :: Model.UserMention.t() | [Model.UserMention.t()]
   def parse_user_mentions(nil), do: []
@@ -253,7 +253,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse polls record from the API response json.
+  Parse polls record from the API response JSON.
   """
   @spec parse_polls(map | [map] | nil) :: Model.Poll.t() | [Model.Poll.t()]
   def parse_polls(nil), do: []
@@ -267,7 +267,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse trend record from the API response json.
+  Parse trend record from the API response JSON.
   """
   @spec parse_ids(map) :: [pos_integer]
   def parse_ids(object) do
@@ -320,7 +320,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse access_token response
+  Parse access_token response.
   """
   @spec parse_access_token(map) :: Model.AccessToken.t()
   def parse_access_token(object) do
@@ -328,7 +328,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse user profile banner from the API response json.
+  Parse user profile banner from the API response JSON.
   """
   @spec parse_profile_banner(map) :: Model.ProfileBanner.t()
   def parse_profile_banner(object) do
@@ -336,7 +336,7 @@ defmodule ExTwitter.Parser do
   end
 
   @doc """
-  Parse follower relationship from the API response json.
+  Parse follower relationship from the API response JSON.
   """
   @spec parse_relationships(map) :: [Model.Relationship.t()]
   def parse_relationships(object) do
