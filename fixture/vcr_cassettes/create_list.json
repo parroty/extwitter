@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/lists/create.json"
+    },
+    "response": {
+      "body": "{\"id\":1423797076245327876,\"id_str\":\"1423797076245327876\",\"name\":\"New List\",\"uri\":\"\\/_mozhu\\/lists\\/1423797076245327876\",\"subscriber_count\":0,\"member_count\":0,\"mode\":\"public\",\"description\":\"\",\"slug\":\"1423797076245327876\",\"full_name\":\"@_mozhu\\/1423797076245327876\",\"created_at\":\"Mon Jan 19 20:18:14 +0000 1970\",\"following\":false,\"user\":{\"id\":854302545975664642,\"id_str\":\"854302545975664642\",\"name\":\"Mo Zhu\",\"screen_name\":\"_mozhu\",\"location\":\"United States\",\"description\":\"thinccboi, extra thincc. currently 0x developer. life goal is to get that thigh gap back.\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":35,\"friends_count\":442,\"listed_count\":0,\"created_at\":\"Tue Apr 18 11:56:13 +0000 2017\",\"favourites_count\":614,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":false,\"verified\":false,\"statuses_count\":3772,\"lang\":null,\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"000000\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/854302545975664642\\/1527735024\",\"profile_link_color\":\"FF691F\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\",\"withheld_in_countries\":[]}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 07 Aug 2021 00:04:10 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "1883",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 07 Aug 2021 00:04:10 GMT",
+        "status": "200 OK",
+        "set-cookie": "personalization_id=\"v1_F/U+V0UqEt5FV4q9wFyDWQ==\"; Max-Age=63072000; Expires=Mon, 07 Aug 2023 00:04:10 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None",
+        "x-transaction": "06d06be1bce24bd0",
+        "x-access-level": "read-write",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "0",
+        "content-disposition": "attachment; filename=json.json",
+        "x-content-type-options": "nosniff",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "117bdc5924fe8c1b1eb3165e523d67726e0f14ba7716b6f283b38c5862bbf122"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]

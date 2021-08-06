@@ -316,6 +316,13 @@ defmodule ExTwitterTest do
       assert List.first(users).name == "Elixir Fountain"
     end
   end
+  
+  test "creates list" do
+    use_cassette "create_list" do
+      new_list = ExTwitter.create_list("New List")
+      assert new_list.name == "New List"
+    end
+  end
 
   test "gets trend with global woeid (id: 1) returns 10 items" do
     use_cassette "trends" do
