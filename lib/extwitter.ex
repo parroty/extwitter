@@ -1239,6 +1239,20 @@ defmodule ExTwitter do
   defdelegate create_list(list_name), to: ExTwitter.API.Lists
 
   @doc """
+  POST lists/destroy
+
+    ## Examples
+
+    ExTwitter.destroy_list("new list")
+    ExTwitter.destroy_list([name: "new list"])
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/lists/list
+  """
+  @impl Behaviour
+  defdelegate destroy_list(list_name), to: ExTwitter.API.Lists
+
+  @doc """
   GET lists/list
 
   ## Examples

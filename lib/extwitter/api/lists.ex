@@ -60,4 +60,14 @@ defmodule ExTwitter.API.Lists do
   def create_list(list_name, options \\ []) do
     create_list([name: list_name] ++ options)
   end
+
+  def destroy_list(options) when is_list(options) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:post, "1.1/lists/destroy.json", params)
+    |> ExTwitter.Parser.parse_list
+  end
+
+  def destroy_list(list_id, options \\ []) do
+    destroy_list([list_id: list_id] ++ options)
+  end
 end
