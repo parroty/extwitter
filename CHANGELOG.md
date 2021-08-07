@@ -1,3 +1,8 @@
+0.12.3
+------
+#### Enhancements
+- Suport create lists API (#144).
+
 0.12.2
 ------
 #### Changes
