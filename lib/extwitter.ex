@@ -1225,6 +1225,20 @@ defmodule ExTwitter do
   # -------------- Lists -------------
 
   @doc """
+  POST lists/create
+
+    ## Examples
+
+    ExTwitter.create_list("new list")
+    ExTwitter.create_list([name: "new list"])
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/lists/list
+  """
+  @impl Behaviour
+  defdelegate create_list(list_name), to: ExTwitter.API.Lists
+
+  @doc """
   GET lists/list
 
   ## Examples
