@@ -51,6 +51,17 @@ defmodule ExTwitter.API.Lists do
     |> Enum.map(&ExTwitter.Parser.parse_user/1)
   end
 
+  def add_list_members(list_id, member_ids) do
+    add_list_members([list_id: list_id, user_id: member_ids])
+  end
+
+  def add_list_members(options) do
+    params = ExTwitter.Parser.parse_request_params(options)
+    request(:post, "1.1/lists/members/create_all.json", params)
+    |> ExTwitter.JSON.get(:users)
+    |> Enum.map(&ExTwitter.Parser.parse_user/1)
+  end
+
   def create_list(options) when is_list(options) do
     params = ExTwitter.Parser.parse_request_params(options)
     request(:post, "1.1/lists/create.json", params)
