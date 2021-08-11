@@ -1348,6 +1348,21 @@ defmodule ExTwitter do
   defdelegate list_memberships(options), to: ExTwitter.API.Lists
 
   @doc """
+  POST lists/members/create_all
+
+    ## Examples
+
+    ExTwitter.add_list_members(list_id, members)
+    ExTwitter.add_list_members(list_id, member_ids)
+    ExTwitter.add_list_members([list_id: list_id, user_id: member_ids])
+
+  ## Reference
+  https://dev.twitter.com/rest/reference/get/lists/list
+  """
+  @impl Behaviour
+  defdelegate add_list_members(list_id, members), to: ExTwitter.API.Lists
+
+  @doc """
   GET lists/subscribers
 
   ## Examples

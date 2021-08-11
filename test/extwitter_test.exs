@@ -316,7 +316,24 @@ defmodule ExTwitterTest do
       assert List.first(users).name == "Elixir Fountain"
     end
   end
-  
+
+  test "add members to list" do
+    use_cassette "add_members_to_list" do
+      list = ExTwitter.create_list("Test List")
+
+      member_ids = [
+        12,     # @jack
+        783214, # @twitter
+        25365536, # @kimkardashian
+      ]
+      user = ExTwitter.verify_credentials
+      ExTwitter.add_list_members(list.id, Enum.join(member_ids, ","))
+
+      list_members = ExTwitter.list_members(list.slug, user.screen_name)
+      assert  list_members |> Enum.map(&(&1.id)) |> Enum.sort == member_ids
+    end
+  end
+
   test "creates list" do
     use_cassette "create_list" do
       new_list = ExTwitter.create_list("New List")

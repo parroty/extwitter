@@ -1,0 +1,188 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/account/verify_credentials.json"
+    },
+    "response": {
+      "body": "{\"id\":854302545975664642,\"id_str\":\"854302545975664642\",\"name\":\"Mo Zhu\",\"screen_name\":\"_mozhu\",\"location\":\"United States\",\"description\":\"thinccboi, extra thincc. currently 0x developer. life goal is to get that thigh gap back.\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":35,\"friends_count\":442,\"listed_count\":0,\"created_at\":\"Tue Apr 18 11:56:13 +0000 2017\",\"favourites_count\":614,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":false,\"verified\":false,\"statuses_count\":3771,\"lang\":null,\"status\":{\"created_at\":\"Sat Aug 07 18:03:01 +0000 2021\",\"id\":1424068577812942858,\"id_str\":\"1424068577812942858\",\"text\":\"No more spending money.\",\"truncated\":false,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[]},\"source\":\"\\u003ca href=\\\"https:\\/\\/buffer.com\\\" rel=\\\"nofollow\\\"\\u003eBuffer\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":0,\"favorite_count\":0,\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"000000\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/854302545975664642\\/1527735024\",\"profile_link_color\":\"FF691F\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\",\"withheld_in_countries\":[],\"suspended\":false,\"needs_phone_verification\":false}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "2248",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "status": "200 OK",
+        "set-cookie": "personalization_id=\"v1_iJAHJSQZlYo/4tO/oBE8ag==\"; Max-Age=63072000; Expires=Mon, 07 Aug 2023 20:40:07 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None",
+        "x-transaction": "fc19f88b7539a5c4",
+        "x-access-level": "read-write",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "0",
+        "x-rate-limit-limit": "75",
+        "x-rate-limit-reset": "1628369167",
+        "content-disposition": "attachment; filename=json.json",
+        "x-content-type-options": "nosniff",
+        "x-rate-limit-remaining": "72",
+        "x-twitter-response-tags": "BouncerExempt",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "e7d9ff80254c5241cb63e82b4ae4c20a8c5d202f7bb0b8e46f7d583afa5b9a34"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/lists/create.json"
+    },
+    "response": {
+      "body": "{\"id\":1424108111670005761,\"id_str\":\"1424108111670005761\",\"name\":\"Test List\",\"uri\":\"\\/_mozhu\\/lists\\/1424108111670005761\",\"subscriber_count\":0,\"member_count\":0,\"mode\":\"public\",\"description\":\"\",\"slug\":\"1424108111670005761\",\"full_name\":\"@_mozhu\\/1424108111670005761\",\"created_at\":\"Mon Jan 19 20:19:28 +0000 1970\",\"following\":false,\"user\":{\"id\":854302545975664642,\"id_str\":\"854302545975664642\",\"name\":\"Mo Zhu\",\"screen_name\":\"_mozhu\",\"location\":\"United States\",\"description\":\"thinccboi, extra thincc. currently 0x developer. life goal is to get that thigh gap back.\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":35,\"friends_count\":442,\"listed_count\":0,\"created_at\":\"Tue Apr 18 11:56:13 +0000 2017\",\"favourites_count\":614,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":false,\"verified\":false,\"statuses_count\":3771,\"lang\":null,\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"000000\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/854302545975664642\\/1527735024\",\"profile_link_color\":\"FF691F\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\",\"withheld_in_countries\":[]}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "1884",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "status": "200 OK",
+        "set-cookie": "personalization_id=\"v1_di4alZuXkfoPlP2Mo5YaPQ==\"; Max-Age=63072000; Expires=Mon, 07 Aug 2023 20:40:07 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None",
+        "x-transaction": "2904a06acb785644",
+        "x-access-level": "read-write",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "0",
+        "content-disposition": "attachment; filename=json.json",
+        "x-content-type-options": "nosniff",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "e7d9ff80254c5241cb63e82b4ae4c20a8c5d202f7bb0b8e46f7d583afa5b9a34"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "<REMOVED>",
+      "headers": [],
+      "method": "post",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/lists/members/create_all.json"
+    },
+    "response": {
+      "body": "{\"id\":1424108111670005761,\"id_str\":\"1424108111670005761\",\"name\":\"Test List\",\"uri\":\"\\/_mozhu\\/lists\\/1424108111670005761\",\"subscriber_count\":0,\"member_count\":3,\"mode\":\"public\",\"description\":\"\",\"slug\":\"1424108111670005761\",\"full_name\":\"@_mozhu\\/1424108111670005761\",\"created_at\":\"Sat Aug 07 20:40:07 +0000 2021\",\"following\":true,\"user\":{\"id\":854302545975664642,\"id_str\":\"854302545975664642\",\"name\":\"Mo Zhu\",\"screen_name\":\"_mozhu\",\"location\":\"United States\",\"description\":\"thinccboi, extra thincc. currently 0x developer. life goal is to get that thigh gap back.\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":35,\"friends_count\":442,\"listed_count\":0,\"created_at\":\"Tue Apr 18 11:56:13 +0000 2017\",\"favourites_count\":614,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":false,\"verified\":false,\"statuses_count\":3771,\"lang\":null,\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"000000\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme1\\/bg.png\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1271819478230327302\\/KykTHcpG_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/854302545975664642\\/1527735024\",\"profile_link_color\":\"FF691F\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\",\"withheld_in_countries\":[]}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "1883",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "status": "200 OK",
+        "set-cookie": "personalization_id=\"v1_FlWBWYUrJeTFdrqZszibWA==\"; Max-Age=63072000; Expires=Mon, 07 Aug 2023 20:40:07 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None",
+        "x-transaction": "78c7c44b51944b27",
+        "x-access-level": "read-write",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "0",
+        "content-disposition": "attachment; filename=json.json",
+        "x-content-type-options": "nosniff",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "e7d9ff80254c5241cb63e82b4ae4c20a8c5d202f7bb0b8e46f7d583afa5b9a34"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": {
+        "httpc_options": [],
+        "http_options": {
+          "autoredirect": "false"
+        }
+      },
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/lists/members.json"
+    },
+    "response": {
+      "body": "{\"users\":[{\"id\":25365536,\"id_str\":\"25365536\",\"name\":\"Kim Kardashian West\",\"screen_name\":\"KimKardashian\",\"location\":\" \",\"description\":\"Shop new @SKIMS Fits Everybody August 9 at 9AM PT\",\"url\":\"https:\\/\\/t.co\\/A1XrPviigG\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"https:\\/\\/t.co\\/A1XrPviigG\",\"expanded_url\":\"http:\\/\\/skims.com\",\"display_url\":\"skims.com\",\"indices\":[0,23]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":70105811,\"friends_count\":123,\"listed_count\":72881,\"created_at\":\"Thu Mar 19 19:21:56 +0000 2009\",\"favourites_count\":197,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":true,\"verified\":true,\"statuses_count\":34726,\"lang\":null,\"status\":{\"created_at\":\"Sat Aug 07 06:52:17 +0000 2021\",\"id\":1423899782997712898,\"id_str\":\"1423899782997712898\",\"text\":\"https:\\/\\/t.co\\/UyrqKl2I9y\",\"truncated\":false,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[],\"media\":[{\"id\":1423899778853728256,\"id_str\":\"1423899778853728256\",\"indices\":[0,23],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVcAAFFyh.jpg\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVcAAFFyh.jpg\",\"url\":\"https:\\/\\/t.co\\/UyrqKl2I9y\",\"display_url\":\"pic.twitter.com\\/UyrqKl2I9y\",\"expanded_url\":\"https:\\/\\/twitter.com\\/KimKardashian\\/status\\/1423899782997712898\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"large\":{\"w\":1676,\"h\":2048,\"resize\":\"fit\"},\"thumb\":{\"w\":150,\"h\":150,\"resize\":\"crop\"},\"small\":{\"w\":556,\"h\":680,\"resize\":\"fit\"},\"medium\":{\"w\":982,\"h\":1200,\"resize\":\"fit\"}}}]},\"extended_entities\":{\"media\":[{\"id\":1423899778853728256,\"id_str\":\"1423899778853728256\",\"indices\":[0,23],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVcAAFFyh.jpg\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVcAAFFyh.jpg\",\"url\":\"https:\\/\\/t.co\\/UyrqKl2I9y\",\"display_url\":\"pic.twitter.com\\/UyrqKl2I9y\",\"expanded_url\":\"https:\\/\\/twitter.com\\/KimKardashian\\/status\\/1423899782997712898\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"large\":{\"w\":1676,\"h\":2048,\"resize\":\"fit\"},\"thumb\":{\"w\":150,\"h\":150,\"resize\":\"crop\"},\"small\":{\"w\":556,\"h\":680,\"resize\":\"fit\"},\"medium\":{\"w\":982,\"h\":1200,\"resize\":\"fit\"}}},{\"id\":1423899778853736448,\"id_str\":\"1423899778853736448\",\"indices\":[0,23],\"media_url\":\"http:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVkAATXIq.jpg\",\"media_url_https\":\"https:\\/\\/pbs.twimg.com\\/media\\/E8K1TgJVkAATXIq.jpg\",\"url\":\"https:\\/\\/t.co\\/UyrqKl2I9y\",\"display_url\":\"pic.twitter.com\\/UyrqKl2I9y\",\"expanded_url\":\"https:\\/\\/twitter.com\\/KimKardashian\\/status\\/1423899782997712898\\/photo\\/1\",\"type\":\"photo\",\"sizes\":{\"small\":{\"w\":655,\"h\":680,\"resize\":\"fit\"},\"thumb\":{\"w\":150,\"h\":150,\"resize\":\"crop\"},\"large\":{\"w\":1974,\"h\":2048,\"resize\":\"fit\"},\"medium\":{\"w\":1157,\"h\":1200,\"resize\":\"fit\"}}}]},\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\/download\\/iphone\\\" rel=\\\"nofollow\\\"\\u003eTwitter for iPhone\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":4126,\"favorite_count\":55034,\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"und\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":true,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1282057272357683201\\/hm0ianWU_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1282057272357683201\\/hm0ianWU_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/25365536\\/1483463179\",\"profile_link_color\":\"000000\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\",\"withheld_in_countries\":[]},{\"id\":783214,\"id_str\":\"783214\",\"name\":\"Twitter\",\"screen_name\":\"Twitter\",\"location\":\"everywhere\",\"description\":\"what\\u2019s happening?!\",\"url\":\"https:\\/\\/t.co\\/DAtOo6uuHk\",\"entities\":{\"url\":{\"urls\":[{\"url\":\"https:\\/\\/t.co\\/DAtOo6uuHk\",\"expanded_url\":\"https:\\/\\/about.twitter.com\\/\",\"display_url\":\"about.twitter.com\",\"indices\":[0,23]}]},\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":59513062,\"friends_count\":0,\"listed_count\":87348,\"created_at\":\"Tue Feb 20 14:35:54 +0000 2007\",\"favourites_count\":6292,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":true,\"verified\":true,\"statuses_count\":14718,\"lang\":null,\"status\":{\"created_at\":\"Tue Aug 03 19:59:02 +0000 2021\",\"id\":1422648224893095944,\"id_str\":\"1422648224893095944\",\"text\":\"@heyimbenton oops sorry it got lost in the mail check now!\",\"truncated\":false,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"heyimbenton\",\"name\":\"benton.eth \\ud83c\\udf31\",\"id\":1280236797109428224,\"id_str\":\"1280236797109428224\",\"indices\":[0,12]}],\"urls\":[]},\"source\":\"\\u003ca href=\\\"https:\\/\\/mobile.twitter.com\\\" rel=\\\"nofollow\\\"\\u003eTwitter Web App\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":1422635330684002306,\"in_reply_to_status_id_str\":\"1422635330684002306\",\"in_reply_to_user_id\":1280236797109428224,\"in_reply_to_user_id_str\":\"1280236797109428224\",\"in_reply_to_screen_name\":\"heyimbenton\",\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":4,\"favorite_count\":35,\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"ACDED6\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme18\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme18\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1354479643882004483\\/Btnfm47p_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1354479643882004483\\/Btnfm47p_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/783214\\/1628006468\",\"profile_link_color\":\"1B95E0\",\"profile_sidebar_border_color\":\"FFFFFF\",\"profile_sidebar_fill_color\":\"F6F6F6\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"regular\",\"withheld_in_countries\":[]},{\"id\":12,\"id_str\":\"12\",\"name\":\"jack\\u26a1\\ufe0f\",\"screen_name\":\"jack\",\"location\":\"\",\"description\":\"#bitcoin\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":5648230,\"friends_count\":4805,\"listed_count\":29843,\"created_at\":\"Tue Mar 21 20:50:14 +0000 2006\",\"favourites_count\":35067,\"utc_offset\":null,\"time_zone\":null,\"geo_enabled\":true,\"verified\":true,\"statuses_count\":27718,\"lang\":null,\"status\":{\"created_at\":\"Sat Aug 07 16:13:04 +0000 2021\",\"id\":1424040909587558408,\"id_str\":\"1424040909587558408\",\"text\":\"RT @CharFadirepo: Expanding the #bitcoin narrative is really important to me.\\n\\nSo I\\u2019d like to host a @TwitterSpaces on \\u201c#Bitcoin in #Nigeri\\u2026\",\"truncated\":false,\"entities\":{\"hashtags\":[{\"text\":\"bitcoin\",\"indices\":[32,40]},{\"text\":\"Bitcoin\",\"indices\":[120,128]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"CharFadirepo\",\"name\":\"CharleneFadirepo\",\"id\":2506266578,\"id_str\":\"2506266578\",\"indices\":[3,16]},{\"screen_name\":\"TwitterSpaces\",\"name\":\"Spaces\",\"id\":1065249714214457345,\"id_str\":\"1065249714214457345\",\"indices\":[101,115]}],\"urls\":[]},\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\/#!\\/download\\/ipad\\\" rel=\\\"nofollow\\\"\\u003eTwitter for iPad\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"retweeted_status\":{\"created_at\":\"Sat Aug 07 16:09:32 +0000 2021\",\"id\":1424040019635884035,\"id_str\":\"1424040019635884035\",\"text\":\"Expanding the #bitcoin narrative is really important to me.\\n\\nSo I\\u2019d like to host a @TwitterSpaces on \\u201c#Bitcoin in\\u2026 https:\\/\\/t.co\\/JC70oeWLxN\",\"truncated\":true,\"entities\":{\"hashtags\":[{\"text\":\"bitcoin\",\"indices\":[14,22]},{\"text\":\"Bitcoin\",\"indices\":[102,110]}],\"symbols\":[],\"user_mentions\":[{\"screen_name\":\"TwitterSpaces\",\"name\":\"Spaces\",\"id\":1065249714214457345,\"id_str\":\"1065249714214457345\",\"indices\":[83,97]}],\"urls\":[{\"url\":\"https:\\/\\/t.co\\/JC70oeWLxN\",\"expanded_url\":\"https:\\/\\/twitter.com\\/i\\/web\\/status\\/1424040019635884035\",\"display_url\":\"twitter.com\\/i\\/web\\/status\\/1\\u2026\",\"indices\":[115,138]}]},\"source\":\"\\u003ca href=\\\"http:\\/\\/twitter.com\\/#!\\/download\\/ipad\\\" rel=\\\"nofollow\\\"\\u003eTwitter for iPad\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":true,\"quoted_status_id\":1421922679511261185,\"quoted_status_id_str\":\"1421922679511261185\",\"retweet_count\":131,\"favorite_count\":380,\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"is_quote_status\":true,\"quoted_status_id\":1421922679511261185,\"quoted_status_id_str\":\"1421922679511261185\",\"retweet_count\":131,\"favorite_count\":0,\"favorited\":false,\"retweeted\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"EBEBEB\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme7\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme7\\/bg.gif\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/1115644092329758721\\/AFjOr-K8_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/1115644092329758721\\/AFjOr-K8_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/12\\/1584998840\",\"profile_link_color\":\"990000\",\"profile_sidebar_border_color\":\"DFDFDF\",\"profile_sidebar_fill_color\":\"F3F3F3\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":true,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"regular\",\"withheld_in_countries\":[]}],\"next_cursor\":0,\"next_cursor_str\":\"0\",\"previous_cursor\":0,\"previous_cursor_str\":\"0\",\"total_count\":null}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "date": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_b",
+        "content-length": "10756",
+        "content-type": "application/json;charset=utf-8",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Sat, 07 Aug 2021 20:40:07 GMT",
+        "status": "200 OK",
+        "set-cookie": "personalization_id=\"v1_hHlGEeD6fa7r0K1ayJoQGw==\"; Max-Age=63072000; Expires=Mon, 07 Aug 2023 20:40:07 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None",
+        "x-transaction": "6a73c43a800e6d6e",
+        "x-access-level": "read-write",
+        "x-frame-options": "SAMEORIGIN",
+        "x-xss-protection": "0",
+        "x-rate-limit-limit": "900",
+        "x-rate-limit-reset": "1628369168",
+        "content-disposition": "attachment; filename=json.json",
+        "x-content-type-options": "nosniff",
+        "x-rate-limit-remaining": "897",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "e7d9ff80254c5241cb63e82b4ae4c20a8c5d202f7bb0b8e46f7d583afa5b9a34"
+      },
+      "status_code": [
+        "HTTP/1.1",
+        200,
+        "OK"
+      ],
+      "type": "ok"
+    }
+  }
+]
