@@ -1,7 +1,13 @@
+0.12.4
+------
+#### Enhancements
+- Support destroy lists API (#145).
+- Support add members to a list API (#146).
+
 0.12.3
 ------
 #### Enhancements
-- Suport create lists API (#144).
+- Support create lists API (#144).
 
 0.12.2
 ------
