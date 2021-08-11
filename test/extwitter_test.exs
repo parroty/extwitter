@@ -324,6 +324,14 @@ defmodule ExTwitterTest do
     end
   end
 
+  test "destroys list" do
+    use_cassette "destroy_list" do
+      list = ExTwitter.create_list("New List")
+      destroyed_list = ExTwitter.destroy_list(list.id)
+      assert destroyed_list.id == list.id
+    end
+  end
+
   test "gets trend with global woeid (id: 1) returns 10 items" do
     use_cassette "trends" do
       trends = ExTwitter.trends(1)
