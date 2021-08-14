@@ -131,8 +131,8 @@ defmodule ExTwitter.API.Base do
         reset_in = Enum.max([reset_at - now(), 0])
         raise ExTwitter.RateLimitExceededError,
           code: code, message: message, reset_at: reset_at, reset_in: reset_in
-        _  ->
-          raise ExTwitter.Error, code: code, message: message
+      _  ->
+        raise ExTwitter.Error, code: code, message: message
     end
   end
 
