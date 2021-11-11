@@ -3,7 +3,7 @@ defmodule ExTwitter.Mixfile do
 
   def project do
     [ app: :extwitter,
-      version: "0.12.4",
+      version: "0.12.5",
       elixir: ">= 1.4.0",
       deps: deps(),
       description: description(),

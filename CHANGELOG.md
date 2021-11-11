@@ -1,3 +1,8 @@
+0.12.5
+------
+#### Changes
+- Allow for multiple tweets in a given message (#104).
+
 0.12.4
 ------
 #### Enhancements
