@@ -71,9 +71,9 @@ defmodule ExTwitter do
   defdelegate configure, to: ExTwitter.Config, as: :get
 
   @doc """
-  Provides general twitter API access interface.
+  Provides general Twitter API access interface.
 
-  This method simply returns parsed json in Map structure.
+  This method simply returns parsed JSON in Map structure.
 
   ## Examples
 
@@ -84,9 +84,9 @@ defmodule ExTwitter do
   defdelegate request(method, path), to: ExTwitter.API.Base
 
   @doc """
-  Provides general twitter API access interface.
+  Provides general Twitter API access interface.
 
-  This method simply returns parsed json in Map structure.
+  This method simply returns parsed JSON in Map structure.
 
   ## Examples
 
@@ -426,14 +426,16 @@ defmodule ExTwitter do
   defdelegate update_with_chunked_media(status, path, content_type, options), to: ExTwitter.API.Tweets
 
   @doc """
-    Chunk upload media and return media_id.
-    POST media/upload (INIT)
-    POST media/upload (APPEND)
-    POST media/upload (FINALIZE)
+  Chunk upload media and return media_id.
+  POST media/upload (INIT)
+  POST media/upload (APPEND)
+  POST media/upload (FINALIZE)
 
-    ## Examples
-    media_id = upload_media("/tmp/image.png", "image/png") //chunk size defaults to 65536
-    media_id = upload_media("/tmp/image.png", "image/png", 32768)
+  ## Examples
+
+      media_id = upload_media("/tmp/image.png", "image/png") //chunk size defaults to 65536
+      media_id = upload_media("/tmp/image.png", "image/png", 32768)
+
   """
   @impl Behaviour
   defdelegate upload_media(path, content_type), to: ExTwitter.API.Base
@@ -449,6 +451,7 @@ defmodule ExTwitter do
       ExTwitter.retweeter_ids(444144169058308096)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/statuses/retweeters/ids
   """
   @impl Behaviour
@@ -462,6 +465,7 @@ defmodule ExTwitter do
       ExTwitter.retweeter_ids(444144169058308096, stringify_ids: true)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/statuses/retweeters/ids
   """
   @impl Behaviour
@@ -477,6 +481,7 @@ defmodule ExTwitter do
       ExTwitter.search("test")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
   @impl Behaviour
@@ -490,6 +495,7 @@ defmodule ExTwitter do
       ExTwitter.search("test", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
   @impl Behaviour
@@ -504,6 +510,7 @@ defmodule ExTwitter do
       ExTwitter.search_next_page(response.metadata)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/search/tweets
   """
   @impl Behaviour
@@ -518,6 +525,7 @@ defmodule ExTwitter do
   This method returns the Stream that holds the list of tweets.
 
   ## Reference
+
   https://dev.twitter.com/streaming/reference/get/statuses/sample
   """
   @impl Behaviour
@@ -534,6 +542,7 @@ defmodule ExTwitter do
       ExTwitter.stream_user
 
   ## Reference
+
   https://dev.twitter.com/streaming/reference/get/user
   """
   @impl Behaviour
@@ -554,12 +563,13 @@ defmodule ExTwitter do
   ## Options
 
   The `options` can have following values, in addition to the
-  twitter API's parameter.
+  Twitter API's parameter.
 
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
 
   ## Reference
+
   https://dev.twitter.com/streaming/reference/get/statuses/sample
   """
   @impl Behaviour
@@ -575,7 +585,7 @@ defmodule ExTwitter do
   ## Options
 
   The `options` can have following values, in addition to the
-  twitter API's parameter.
+  Twitter API's parameter.
 
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
@@ -585,6 +595,7 @@ defmodule ExTwitter do
       ExTwitter.stream_filter(track: "apple")
 
   ## Reference
+
   https://dev.twitter.com/streaming/reference/post/statuses/filter
   """
   @impl Behaviour
@@ -600,7 +611,7 @@ defmodule ExTwitter do
   ## Options
 
   The `options` can have following values, in addition to the
-  twitter API's parameter.
+  Twitter API's parameter.
 
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
@@ -613,6 +624,7 @@ defmodule ExTwitter do
       ExTwitter.stream_filter([track: "apple"], 60000)
 
   ## Reference
+
   https://dev.twitter.com/streaming/reference/post/statuses/filter
   """
   @impl Behaviour
@@ -621,7 +633,7 @@ defmodule ExTwitter do
   @doc """
   An interface to control the stream.
 
-  This method is for controlling stream, and it doesn't make twitter API call.
+  This method is for controlling stream, and it doesn't make Twitter API call.
 
   ## Options
 
@@ -630,6 +642,7 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.stream_control(pid, :stop)
+
   """
   @impl Behaviour
   defdelegate stream_control(pid, stream_control_type), to: ExTwitter.API.Streaming
@@ -638,12 +651,12 @@ defmodule ExTwitter do
   An interface to control the stream.
 
   This method is for handling elixir's stream which can keep running infinitely.
-  It doesn't make twitter API call.
+  It doesn't make Twitter API call.
 
   ## Options
 
   The `options` can have following values, in addition to the
-  twitter API's parameter.
+  Twitter API's parameter.
 
     * `:receive_messages` - true/false flag whether to receive
     control messages in addition to normal tweets. default is false.
@@ -656,6 +669,7 @@ defmodule ExTwitter do
   ## Examples
 
       ExTwitter.stream_control(pid, :stop, timeout: 50)
+
   """
   @impl Behaviour
   defdelegate stream_control(pid, stream_control_type, options), to: ExTwitter.API.Streaming
@@ -670,6 +684,7 @@ defmodule ExTwitter do
       ExTwitter.direct_message(446328507694845952)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/direct_messages/show
   """
   @impl Behaviour
@@ -683,6 +698,7 @@ defmodule ExTwitter do
       ExTwitter.direct_messages
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/direct_messages
   """
   @impl Behaviour
@@ -696,6 +712,7 @@ defmodule ExTwitter do
       ExTwitter.direct_messages(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/direct_messages
   """
   @impl Behaviour
@@ -709,6 +726,7 @@ defmodule ExTwitter do
       ExTwitter.sent_direct_messages
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/direct_messages/sent
   """
   @impl Behaviour
@@ -722,6 +740,7 @@ defmodule ExTwitter do
       ExTwitter.sent_direct_messages(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/direct_messages/sent
   """
   @impl Behaviour
@@ -737,6 +756,7 @@ defmodule ExTwitter do
       ExTwitter.new_direct_message("twitter", "Message text")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/direct_messages/new
   """
   @impl Behaviour
@@ -750,6 +770,7 @@ defmodule ExTwitter do
       ExTwitter.destroy_direct_message(12345)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/direct_messages/destroy
   """
   @impl Behaviour
@@ -763,6 +784,7 @@ defmodule ExTwitter do
       ExTwitter.destroy_direct_message(12345, include_entities: false)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/direct_messages/destroy
   """
   @impl Behaviour
@@ -785,6 +807,7 @@ defmodule ExTwitter do
       ExTwitter.friend_ids(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friends/ids
   """
   @impl Behaviour
@@ -799,6 +822,7 @@ defmodule ExTwitter do
       ExTwitter.friend_ids(783214, count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friends/ids
   """
   @impl Behaviour
@@ -816,6 +840,7 @@ defmodule ExTwitter do
       ExTwitter.follower_ids(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/followers/ids
   """
   @impl Behaviour
@@ -830,6 +855,7 @@ defmodule ExTwitter do
       ExTwitter.follower_ids(783214, count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/followers/ids
   """
   @impl Behaviour
@@ -851,6 +877,7 @@ defmodule ExTwitter do
       ExTwitter.follow(783214)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/friendships/create
   """
   @impl Behaviour
@@ -865,6 +892,7 @@ defmodule ExTwitter do
       ExTwitter.follow(783214, follow: true)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/friendships/create
   """
   @impl Behaviour
@@ -879,6 +907,7 @@ defmodule ExTwitter do
       ExTwitter.unfollow(783214)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/friendships/destroy
   """
   @impl Behaviour
@@ -902,6 +931,7 @@ defmodule ExTwitter do
       ExTwitter.followers(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/followers/list
   """
   @impl Behaviour
@@ -916,6 +946,7 @@ defmodule ExTwitter do
       ExTwitter.followers(783214, count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/followers/list
   """
   @impl Behaviour
@@ -933,6 +964,7 @@ defmodule ExTwitter do
       ExTwitter.friends(count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friends/list
   """
   @impl Behaviour
@@ -947,6 +979,7 @@ defmodule ExTwitter do
       ExTwitter.friends(783214, count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friends/list
   """
   @impl Behaviour
@@ -960,6 +993,7 @@ defmodule ExTwitter do
       ExTwitter.friends_lookup("twitter_support")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friendships/lookup
   """
   @spec friends_lookup(String.t | Integer, Keyword.t) :: ExTwitter.Model.Relationship.t
@@ -973,6 +1007,7 @@ defmodule ExTwitter do
       ExTwitter.friends_lookup("twitter_support")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/friendships/lookup
   """
   @spec friends_lookup(String.t) :: ExTwitter.Model.Relationship.t
@@ -992,6 +1027,7 @@ defmodule ExTwitter do
       ExTwitter.verify_credentials(include_email: true)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/account/verify_credentials
   """
   @impl Behaviour
@@ -1028,6 +1064,7 @@ defmodule ExTwitter do
       ExTwitter.block(783214)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/blocks/create
   """
   @impl Behaviour
@@ -1042,6 +1079,7 @@ defmodule ExTwitter do
       ExTwitter.unblock(783214)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/blocks/destroy
   """
   @impl Behaviour
@@ -1057,6 +1095,7 @@ defmodule ExTwitter do
       ExTwitter.user_lookup(screen_name: "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/lookup
   """
   @impl Behaviour
@@ -1073,6 +1112,7 @@ defmodule ExTwitter do
       ExTwitter.user_lookup([783214, 10230812], include_entities: false)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/lookup
   """
   @impl Behaviour
@@ -1087,6 +1127,7 @@ defmodule ExTwitter do
       ExTwitter.user_profile_banner("twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/profile_banner
   """
   @impl Behaviour
@@ -1102,6 +1143,7 @@ defmodule ExTwitter do
       ExTwitter.user(507309896)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/show
   """
   @impl Behaviour
@@ -1116,6 +1158,7 @@ defmodule ExTwitter do
       ExTwitter.user(507309896, include_entities: false)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/show
   """
   @impl Behaviour
@@ -1133,6 +1176,7 @@ defmodule ExTwitter do
       ExTwitter.user_search("elixirlang")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/search
   """
   @impl Behaviour
@@ -1146,6 +1190,7 @@ defmodule ExTwitter do
       ExTwitter.user_search("elixirlang", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/users/search
   """
   @impl Behaviour
@@ -1186,6 +1231,7 @@ defmodule ExTwitter do
   GET favorites/list
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/favorites/list
   """
   @impl Behaviour
@@ -1199,6 +1245,7 @@ defmodule ExTwitter do
       ExTwitter.favorites(screen_name: "twitter", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/favorites/list
   """
   @impl Behaviour
@@ -1208,6 +1255,7 @@ defmodule ExTwitter do
   POST favorites/create
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/favorites/create
   """
   @impl Behaviour
@@ -1217,6 +1265,7 @@ defmodule ExTwitter do
   POST favorites/destroy
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/post/favorites/destroy
   """
   @impl Behaviour
@@ -1227,10 +1276,10 @@ defmodule ExTwitter do
   @doc """
   POST lists/create
 
-    ## Examples
+  ## Examples
 
-    ExTwitter.create_list("new list")
-    ExTwitter.create_list([name: "new list"])
+      ExTwitter.create_list("new list")
+      ExTwitter.create_list([name: "new list"])
 
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/list
@@ -1241,10 +1290,10 @@ defmodule ExTwitter do
   @doc """
   POST lists/destroy
 
-    ## Examples
+  ## Examples
 
-    ExTwitter.destroy_list("new list")
-    ExTwitter.destroy_list([name: "new list"])
+      ExTwitter.destroy_list("new list")
+      ExTwitter.destroy_list([name: "new list"])
 
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/list
@@ -1261,6 +1310,7 @@ defmodule ExTwitter do
       ExTwitter.lists(783214)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/list
   """
   @impl Behaviour
@@ -1275,6 +1325,7 @@ defmodule ExTwitter do
       ExTwitter.lists(783214, count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/list
   """
   @impl Behaviour
@@ -1288,6 +1339,7 @@ defmodule ExTwitter do
       ExTwitter.list_timeline(slug: "twitter-engineering", owner_screen_name: "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
   @impl Behaviour
@@ -1301,6 +1353,7 @@ defmodule ExTwitter do
       ExTwitter.list_timeline("twitter-engineering", "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
   @impl Behaviour
@@ -1314,6 +1367,7 @@ defmodule ExTwitter do
       ExTwitter.list_timeline("twitter-engineering", "twitter", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/statuses
   """
   @impl Behaviour
@@ -1326,6 +1380,7 @@ defmodule ExTwitter do
   GET lists/memberships
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/memberships
   """
   @impl Behaviour
@@ -1342,6 +1397,7 @@ defmodule ExTwitter do
       ExTwitter.list_memberships(screen_name: "twitter", count: 2)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/memberships
   """
   @impl Behaviour
@@ -1350,11 +1406,11 @@ defmodule ExTwitter do
   @doc """
   POST lists/members/create_all
 
-    ## Examples
+  ## Examples
 
-    ExTwitter.add_list_members(list_id, members)
-    ExTwitter.add_list_members(list_id, member_ids)
-    ExTwitter.add_list_members([list_id: list_id, user_id: member_ids])
+      ExTwitter.add_list_members(list_id, members)
+      ExTwitter.add_list_members(list_id, member_ids)
+      ExTwitter.add_list_members([list_id: list_id, user_id: member_ids])
 
   ## Reference
   https://dev.twitter.com/rest/reference/get/lists/list
@@ -1370,6 +1426,7 @@ defmodule ExTwitter do
       ExTwitter.list_subscribers(slug: "twitter-engineering", owner_screen_name: "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
   @impl Behaviour
@@ -1383,6 +1440,7 @@ defmodule ExTwitter do
       ExTwitter.list_subscribers("twitter-engineering", "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
   @impl Behaviour
@@ -1396,6 +1454,7 @@ defmodule ExTwitter do
       ExTwitter.list_subscribers("twitter-engineering", "twitter", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/subscribers
   """
   @impl Behaviour
@@ -1424,6 +1483,7 @@ defmodule ExTwitter do
       ExTwitter.list_members(slug: "twitter-engineering", owner_screen_name: "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/members
   """
   @impl Behaviour
@@ -1437,6 +1497,7 @@ defmodule ExTwitter do
       ExTwitter.list_members("twitter-engineering", "twitter")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/members
   """
   @impl Behaviour
@@ -1450,6 +1511,7 @@ defmodule ExTwitter do
       ExTwitter.list_members("twitter-engineering", "twitter", count: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/lists/members
   """
   @impl Behaviour
@@ -1494,6 +1556,7 @@ defmodule ExTwitter do
       ExTwitter.reverse_geocode(37.7821120598956, -122.400612831116)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/geo/reverse_geocode
   """
   @impl Behaviour
@@ -1507,6 +1570,7 @@ defmodule ExTwitter do
       ExTwitter.reverse_geocode(37.7821120598956, -122.400612831116, max_results: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/geo/reverse_geocode
   """
   @impl Behaviour
@@ -1520,6 +1584,7 @@ defmodule ExTwitter do
       ExTwitter.geo_search("new york")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/geo/search
   """
   @impl Behaviour
@@ -1533,6 +1598,7 @@ defmodule ExTwitter do
       ExTwitter.geo_search("new york", max_results: 1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/geo/search
   """
   @impl Behaviour
@@ -1551,6 +1617,7 @@ defmodule ExTwitter do
       ExTwitter.trends(1)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/trends/place
   """
   @impl Behaviour
@@ -1564,6 +1631,7 @@ defmodule ExTwitter do
       ExTwitter.trends(1, exclude: true)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/trends/place
   """
   @impl Behaviour
@@ -1602,6 +1670,7 @@ defmodule ExTwitter do
       limit = status["resources"]["statuses"]["/statuses/home_timeline"]["remaining"]
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
   @impl Behaviour
@@ -1615,6 +1684,7 @@ defmodule ExTwitter do
       ExTwitter.rate_limit_status(resources: "statuses")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/application/rate_limit_status
   """
   @impl Behaviour
@@ -1630,6 +1700,7 @@ defmodule ExTwitter do
       ExTwitter.lookup_status("504692034473435136,502883389347622912")
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/statuses/lookup
   """
   @impl Behaviour
@@ -1643,6 +1714,7 @@ defmodule ExTwitter do
       ExTwitter.lookup_status("504692034473435136,502883389347622912", trim_user: true)
 
   ## Reference
+
   https://dev.twitter.com/rest/reference/get/statuses/lookup
   """
   @impl Behaviour
@@ -1656,6 +1728,7 @@ defmodule ExTwitter do
       ExTwitter.request_token("http://myapp.com/twitter-callback")
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
@@ -1670,6 +1743,7 @@ defmodule ExTwitter do
       ExTwitter.request_token
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/post/oauth/request_token
   https://dev.twitter.com/web/sign-in/implementing
   """
@@ -1686,6 +1760,7 @@ defmodule ExTwitter do
       ExTwitter.authorize_url(token.oauth_token, %{force_login: true})
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/get/oauth/authorize
   https://dev.twitter.com/oauth/3-legged
   https://dev.twitter.com/web/sign-in/implementing
@@ -1716,6 +1791,7 @@ defmodule ExTwitter do
       ExTwitter.authenticate_url(token.oauth_token, %{force_login: true})
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
@@ -1732,6 +1808,7 @@ defmodule ExTwitter do
       ExTwitter.authenticate_url(token.oauth_token)
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/get/oauth/authenticate
   https://dev.twitter.com/web/sign-in/implementing
   """
@@ -1746,6 +1823,7 @@ defmodule ExTwitter do
       ExTwitter.access_token("OAUTH_VERIFIER", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
 
   ## Reference
+
   https://dev.twitter.com/oauth/reference/post/oauth/access_token
   https://dev.twitter.com/web/sign-in/implementing
   """
