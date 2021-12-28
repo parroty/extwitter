@@ -22,7 +22,7 @@
   "mimerl": {:hex, :mimerl, "1.2.0", "67e2d3f571088d5cfd3e550c383094b47159f3eee8ffa08e64106cdf5e981be3", [:rebar3], [], "hexpm", "f278585650aa581986264638ebf698f8bb19df297f66ad91b18910dfc6e19323"},
   "mock": {:hex, :mock, "0.3.0", "91523bc43d8c654891284b89b8ad0410212c0ebea332bc719d7167108ea8117d", [:mix], [{:meck, "~> 0.8.7", [hex: :meck, repo: "hexpm", optional: false]}], "hexpm", "be96a22868942d62abce899b20a8ea9b466e4dcf8575c0da1a6ab7e399188678"},
   "nimble_parsec": {:hex, :nimble_parsec, "1.2.0", "b44d75e2a6542dcb6acf5d71c32c74ca88960421b6874777f79153bbbbd7dccc", [:mix], [], "hexpm", "52b2871a7515a5ac49b00f214e4165a40724cf99798d8e4a65e4fd64ebd002c1"},
-  "oauther": {:hex, :oauther, "1.1.0", "c9a56e200507ce64e069f5273143db0cddd7904cd5d1fe46920388a48f22441b", [:mix], [], "hexpm", "0bacc6728ab94365e6cc0667305c68fa279de377cdc159565931cf0912a39522"},
+  "oauther": {:hex, :oauther, "1.3.0", "82b399607f0ca9d01c640438b34d74ebd9e4acd716508f868e864537ecdb1f76", [:mix], [], "hexpm", "78eb888ea875c72ca27b0864a6f550bc6ee84f2eeca37b093d3d833fbcaec04e"},
   "parse_trans": {:hex, :parse_trans, "3.3.0", "09765507a3c7590a784615cfd421d101aec25098d50b89d7aa1d66646bc571c1", [:rebar3], [], "hexpm", "17ef63abde837ad30680ea7f857dd9e7ced9476cdd7b0394432af4bfc241b960"},
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.6", "cf344f5692c82d2cd7554f5ec8fd961548d4fd09e7d22f5b62482e5aeaebd4b0", [:make, :mix, :rebar3], [], "hexpm", "bdb0d2471f453c88ff3908e7686f86f9be327d065cc1ec16fa4540197ea04680"},
   "unicode_util_compat": {:hex, :unicode_util_compat, "0.5.0", "8516502659002cec19e244ebd90d312183064be95025a319a6c7e89f4bccd65b", [:rebar3], [], "hexpm", "d48d002e15f5cc105a696cf2f1bbb3fc72b4b770a184d8420c8db20da2674b38"},
