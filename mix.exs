@@ -2,7 +2,7 @@ defmodule ExTwitter.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/parroty/extwitter"
-  @version "0.12.5"
+  @version "0.13.0"
 
   def project do
     [
