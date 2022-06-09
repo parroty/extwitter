@@ -176,7 +176,7 @@ defmodule ExTwitter.Model.ProfileBanner do
 end
 
 defmodule ExTwitter.Model.DirectMessage do
-  @derive {Inspect, except: [:raw_data]}
+  @derive Inspect
   defstruct created_at: nil,
             entities: nil,
             id: nil,
