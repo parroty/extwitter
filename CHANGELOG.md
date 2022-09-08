@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## v0.13.1 - 2022-09-08
 
 #### Changes
-- Fix error on elixir v1.14
-  - Fix derive missing field issue (#150)
+- Fix error on elixir v1.14.
+  - Fix derive missing field issue (#150).
 
 ## v0.13.0 - 2021-12-28
 
