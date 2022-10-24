@@ -3,9 +3,12 @@ defmodule ExTwitter.Behaviour do
   A definition of the intended behavior of the core functions.
   """
 
+  @callback add_list_members(integer(), list()) :: [ExTwitter.Model.List.t()]
   @callback configure(Keyword.t()) :: :ok
   @callback configure(:global | :process, Keyword.t()) :: :ok
   @callback configure() :: Keyword.t() | nil
+  @callback create_list(Keyword.t()) :: ExTwitter.Model.List.t()
+  @callback destroy_list(Keyword.t()) :: ExTwitter.Model.List.t()
   @callback request(:get | :post, String.t()) :: map()
   @callback request(:get | :post, String.t(), Keyword.t()) :: map()
   @callback mentions_timeline :: [ExTwitter.Model.Tweet.t()]
