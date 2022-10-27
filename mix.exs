@@ -2,13 +2,13 @@ defmodule ExTwitter.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/parroty/extwitter"
-  @version "0.13.1"
+  @version "0.14.0"
 
   def project do
     [
       app: :extwitter,
       version: @version,
-      elixir: ">= 1.4.0",
+      elixir: ">= 1.9.0",
       deps: deps(),
       docs: docs(),
       package: package(),
