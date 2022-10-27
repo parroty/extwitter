@@ -10,8 +10,6 @@ jobs:
       matrix:
         include:
           - otp: '20.3'
-            elixir: '1.5'
-          - otp: '20.3'
             elixir: '1.9'
           - otp: '24.2'
             elixir: '1.14'

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :extwitter, :oauth, [
    consumer_key:        System.get_env("TWITTER_CONSUMER_KEY"),
