@@ -41,7 +41,7 @@ defmodule ExTwitter.Mixfile do
     [
       {:oauther, "~> 1.3"},
       {:jason, "~> 1.1"},
-      {:exvcr, "~> 0.8", only: :test},
+      {:exvcr, "~> 0.14", only: :test},
       {:excoveralls, "~> 0.14", only: :test},
       {:meck, "~> 0.8.13", only: [:dev, :test]},
       {:mock, "~> 0.2", only: [:dev, :test]},
