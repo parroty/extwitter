@@ -211,7 +211,7 @@ end
   end
 
   defp send_part({pid, request_id}, json), do:
-    send pid, {:http, {request_id, :stream, json}}
+    send(pid, {:http, {request_id, :stream, json}})
 
   defp send_mock_data(store, json) do
     start_stream(store)
