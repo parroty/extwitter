@@ -9,9 +9,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - otp: '21'
-            elixir: '1.9'
-          - otp: '24.2'
+          - otp: '24'
+            elixir: '1.12'
+          - otp: '26'
             elixir: '1.14'
     env:
       MIX_ENV: test

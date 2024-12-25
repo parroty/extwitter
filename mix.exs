@@ -8,7 +8,7 @@ defmodule ExTwitter.Mixfile do
     [
       app: :extwitter,
       version: @version,
-      elixir: ">= 1.9.0",
+      elixir: ">= 1.12.0",
       deps: deps(),
       docs: docs(),
       package: package(),
