@@ -33,8 +33,17 @@ defmodule ExTwitter.Mixfile do
   def application do
     [
       mod: {ExTwitter, []},
-      applications: [:inets, :ssl, :crypto, :logger, :oauther]
+      applications: [:inets, :ssl, :crypto, :logger, :oauther, :jason],
+      extra_applications: extra_applications(Mix.env())
     ]
+  end
+
+  defp extra_applications(:test), do: common_extra_applications()
+  defp extra_applications(:dev), do: common_extra_applications()
+  defp extra_applications(_), do: []
+
+  defp common_extra_applications do
+    [:exvcr, :mock]
   end
 
   def deps do
@@ -44,7 +53,7 @@ defmodule ExTwitter.Mixfile do
       {:exvcr, "~> 0.14", only: :test},
       {:excoveralls, "~> 0.14", only: :test},
       {:meck, "~> 0.8.13", only: [:dev, :test]},
-      {:mock, "~> 0.2", only: [:dev, :test]},
+      {:mock, "~> 0.3", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs], runtime: false},
       {:inch_ex, "~> 2.0", only: :docs},
       {:benchfella, "~> 0.3.3", only: :dev}
